@@ -1,13 +1,85 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Manrope', sans-serif!important;
+
+  max-width: 100vw;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+p {
+  margin: 0;
+}
+
+.MuiPaper-elevation24 {
+  box-shadow: none!important;
+}
+
+.MuiPaper-root {
+  background-color: transparent!important;
+}
+
+
+/* Firefox.*/
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Manrope'),
+    local('Manrope'),
+    url(./Manrope/static/Manrope-Regular.woff2) format('woff2'),
+    url(./Manrope/static/Manrope-Regular.woff) format('woff');
+}
+
+
+/*Chrome.*/
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Manrope'),
+    url(./Manrope/static/Manrope-Regular.woff2) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+
+
+/* Safari. */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Manrope'),
+    url(./Manrope/static/Manrope-Regular.ttf) format('truetype');
+}
+
+
+
+/* IE. */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 100;
+  src: url(./Manrope/static/Manrope-Regular.ttf) format('truetype');
+}
+
+
+/* Final: */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Manrope'),
+    url(./Manrope/static/Manrope-Regular.woff2) format('woff2'),
+    url(./Manrope/static/Manrope-Regular.woff) format('woff'),
+    url(./Manrope/static/Manrope-Regular.ttf) format('truetype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
