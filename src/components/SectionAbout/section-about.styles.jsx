@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { CustomButton, CustomHeading, CustomText } from '../../styles/common';
+import { CustomHeading, CustomText } from '../../styles/common';
 
-export const GoalsWrapper = styled.section`
+export const AboutWrapper = styled.section`
    width: 100%;
    display: flex;
    flex-direction: column;
@@ -13,10 +13,5 @@ export const Heading = styled(CustomHeading)`
 `
 
 export const Text = styled(CustomText)`
-
-`
-
-export const Button = styled(CustomButton)`
-   align-self: center;
-   margin-top: 50px;
+   max-width: 640px;
 `

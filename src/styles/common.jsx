@@ -21,6 +21,12 @@ export const CustomButton = styled.button`
    font-size: 14px;
    line-height: 19px;
    color: #fefefe;
+
+   position: relative;
+   >img {
+      position: absolute;
+      right: 30px;
+   }
 `
 
 export const CustomHeading = styled.h2`
@@ -29,4 +35,14 @@ export const CustomHeading = styled.h2`
    line-height: 57px;
    color: #F9F9F9;
    margin-bottom: 12px;
+`
+
+export const CustomText = styled.span`
+   font-weight: 200;
+   font-size: 14px;
+   line-height: 20px;
+   letter-spacing: 0.05em;
+   color: #F9F9F9;
+   width: 100%;
+   max-width: 400px;
 `
