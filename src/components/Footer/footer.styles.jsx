@@ -116,13 +116,8 @@ export const MapButton = styled(CustomButton)`
    border-color: #f9f9f9;
    background-color: #f9f9f9;
    color: #0a0a0a;
-   position: relative;
    :hover {
       opacity: 0.8;
-   }
-   >img {
-      position: absolute;
-      right: 30px;
    }
 `
 

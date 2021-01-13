@@ -7,6 +7,6 @@ export const HeaderWrapper = styled.header`
    display: flex;
    justify-content: center;
    transition-duration: 0.7s;
-   background-color: ${props => props.open ? '#020202' : 'transparent'};
+   background-color: ${props => props.open ? '#020202' : 'rgba(10,10,10,0.8)'};
    z-index: 2;
 `

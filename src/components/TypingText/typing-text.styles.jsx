@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const TypingTextWrapper = styled.div`
-color: ${props => props.color};
+   height: 60px;
+   color: ${props => props.color};
    .Typist {
       display: flex;
       align-items: center;
