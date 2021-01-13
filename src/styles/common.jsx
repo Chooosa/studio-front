@@ -29,4 +29,7 @@ export const CustomHeading = styled.h2`
    line-height: 57px;
    color: #F9F9F9;
    margin-bottom: 12px;
+   @media (max-width: 600px) {
+      font-size: 28px;
+   }
 `
