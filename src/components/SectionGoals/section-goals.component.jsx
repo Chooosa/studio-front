@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
+
 import { useHistory } from 'react-router-dom';
 import fireIco from '../../assets/fire.png';
+import { colorSelectors } from '../../redux/color/color.selectors';
 
 import {
    GoalsWrapper,
@@ -11,6 +14,7 @@ import {
 
 const SectionGoals = () => {
    const history = useHistory();
+   const color = useSelector(colorSelectors.color)
 
    const handleNavigation = () => {
       history.push('/portfolio')
@@ -26,7 +30,7 @@ const SectionGoals = () => {
             Вы получите самое оптимальное решение
             из всех возможных.
          </Text>
-         <Button onClick={handleNavigation}>
+         <Button onClick={handleNavigation} color={color}>
             Перейти к портфолио
             <img src={fireIco} alt='fire' />
          </Button>
