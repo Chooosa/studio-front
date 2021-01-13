@@ -38,6 +38,7 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                 onHoverEnd={toggleOverlay}
                 onMouseLeave={() => setShowOverlay(false)}
                 noBorder={true}
+                layout
                 >   
                 <CardInnerContainer
                 color={color}

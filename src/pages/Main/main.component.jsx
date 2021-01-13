@@ -7,6 +7,7 @@ import ServicesSection from '../../components/ServicesSection/services-section.c
 import SectionWe from '../../components/SectionWe/section-we.component';
 import SectionAbout from '../../components/SectionAbout/section-about.component';
 import SectionPlan from '../../components/SectionPlan/section-plan.component';
+import SectionCases from '../../components/SectionCases/section-cases.component';
 
 const Main = () => {
    const refCases = useRef();
@@ -18,6 +19,7 @@ const Main = () => {
          <SectionGoals refCases={refCases} />
          <SectionWe />
          <ServicesSection />
+         <SectionCases />
          <SectionAbout />
          <SectionPlan refApplication={refApplication} />
       </MainWrapper>

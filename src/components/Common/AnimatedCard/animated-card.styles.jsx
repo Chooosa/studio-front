@@ -19,10 +19,10 @@ justify-content: space-between;
 export const CardInnerContainer = styled.div`
 border: 1px solid #1C1C1C;
 position: relative;
-height: 317px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+height: 100%;
 &:hover {
     border-color: ${props => props.color}
 }

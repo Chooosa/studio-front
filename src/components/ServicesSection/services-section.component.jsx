@@ -1,5 +1,4 @@
 import React from 'react';
-// import { InView, useInView } from 'react-intersection-observer';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
@@ -24,11 +23,11 @@ const ServicesSection = () => {
             index={3}
             descriptionWidth={'380px'}
         >
-            <CardContainer>
+            <CardContainer >
                 <AnimatedCard
                     description='Разработаем мобильное приложение под платформы Android или IOS с соблюдением современных стандартов и требований. Все этапы – от создания дизайна до готового продукта.'
                     title='Мобильные
-                приложения'
+                    приложения'
                     color={color}
                 />
                 <AnimatedCard
@@ -37,6 +36,7 @@ const ServicesSection = () => {
                     color={color}
                 />
             </CardContainer>
+
         </Section>
     )
 }
