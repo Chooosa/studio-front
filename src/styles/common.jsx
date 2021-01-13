@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const CustomButton = styled.button`
+export const CustomButton = styled(motion.button)`
    outline: none;
    box-shadow: none;
    display: flex;
@@ -35,6 +36,9 @@ export const CustomHeading = styled.h2`
    line-height: 57px;
    color: #F9F9F9;
    margin-bottom: 12px;
+   @media (max-width: 600px) {
+      font-size: 28px;
+   }
 `
 
 export const CustomText = styled.span`
