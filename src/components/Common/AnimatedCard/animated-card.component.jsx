@@ -13,7 +13,8 @@ import {
     Button,
     Icon,
     CardHeader,
-    CardIcon
+    CardIcon,
+    CardInnerContainer
 } from './animated-card.styles';
 import {ReactComponent as BoltSVG} from '../../../assets/bolt.svg';
 import { useWindowDimensions } from '../../../hooks/dimensions';
@@ -36,9 +37,10 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                 onHoverStart={toggleOverlay}
                 onHoverEnd={toggleOverlay}
                 onMouseLeave={() => setShowOverlay(false)}
-                whileHover={{
-                    borderColor: color
-                }}
+                noBorder={true}
+                >   
+                <CardInnerContainer
+                color={color}
                 >
                     <CardBody>
                         <Title
@@ -78,6 +80,7 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                             </Fragment>
                             : null
                         }
+                    </CardInnerContainer>
                 </CardContainer>
                 :
                 <CardContainer

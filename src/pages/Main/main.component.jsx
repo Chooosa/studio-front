@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { MainWrapper } from './main.styles';
 import SectionTyping from '../../components/SectionTyping/section-typing.components';
@@ -9,14 +9,17 @@ import SectionAbout from '../../components/SectionAbout/section-about.component'
 import SectionPlan from '../../components/SectionPlan/section-plan.component';
 
 const Main = () => {
+   const refCases = useRef();
+   const refApplication = useRef();
+
    return (
       <MainWrapper>
          <SectionTyping />
-         <SectionGoals />
+         <SectionGoals refCases={refCases} />
          <SectionWe />
          <ServicesSection />
          <SectionAbout />
-         <SectionPlan />
+         <SectionPlan refApplication={refApplication} />
       </MainWrapper>
    );
 }

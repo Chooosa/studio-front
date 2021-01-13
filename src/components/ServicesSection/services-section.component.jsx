@@ -22,6 +22,7 @@ const ServicesSection = () => {
             description='Наша компания предоставляет полный спектр услуг
         по созданию и продвижению сайтов, мобильных приложений и веб интерфейсов.'
             index={3}
+            descriptionWidth={'380px'}
         >
             <CardContainer>
                 <AnimatedCard

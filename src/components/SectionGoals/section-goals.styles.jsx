@@ -18,7 +18,7 @@ export const Text = styled(CustomText)`
 
 export const Button = styled(CustomButton)`
    align-self: center;
-   margin-top: 50px;
+   /* margin-top: 50px; */
 
    border-color: ${props => props.color};
    background-color: ${props => props.color};

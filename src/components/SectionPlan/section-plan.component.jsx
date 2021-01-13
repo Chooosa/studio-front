@@ -9,9 +9,10 @@ import Plan from '../Plan/plan.component';
 // } from './section-plan.styles';
 
 
-const SectionPlan = () => {
+const SectionPlan = ({ refApplication }) => {
    return (
       <Section
+         // reff={refPlan}
          title='План работы'
          description='
          За много лет у нас сложился вполне ясный
@@ -22,10 +23,9 @@ const SectionPlan = () => {
             качество и скорость разработки.
          '
          index={6}
+         descriptionWidth={'480px'}
       >
-         <Plan>
-
-         </Plan>
+         <Plan refApplication={refApplication} />
       </Section>
    );
 }

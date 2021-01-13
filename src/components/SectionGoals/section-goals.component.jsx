@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
 
 import fireIco from '../../assets/fire.png';
 import { colorSelectors } from '../../redux/color/color.selectors';
@@ -15,12 +15,12 @@ import {
    Button
 } from './section-goals.styles';
 
-const SectionGoals = () => {
-   const history = useHistory();
+const SectionGoals = ({ refCases }) => {
+   // const history = useHistory();
    const color = useSelector(colorSelectors.color);
 
-   const handleNavigation = () => {
-      history.push('/portfolio')
+   const handleScroll = () => {
+      // refCases.current.scrollIntoView({ behavior: 'smooth' })
    }
 
    return (
@@ -34,8 +34,12 @@ const SectionGoals = () => {
             из всех возможных.
          '
          index={1}
+         headerContainerStyles={{
+            marginBottom: '50px'
+         }}
+         descriptionWidth={'370px'}
       >
-         <Button onClick={handleNavigation} color={color}>
+         <Button onClick={handleScroll} color={color}>
             Перейти к портфолио
             <img src={fireIco} alt='fire' />
          </Button>

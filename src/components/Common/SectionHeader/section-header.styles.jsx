@@ -17,12 +17,12 @@ flex-direction: column;
 export const Header = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: center; 
+align-items: center;
 
 `
 export const Title = styled(CustomHeading)`
 margin: 0;
-text-transform: capitalize;
+/* text-transform: capitalize; */
 `
 
 export const DescriptionContainer = styled.div`
@@ -33,11 +33,11 @@ justify-content: flex-start;
 
 export const Description = styled.p`
 margin: 12px 0px;
-font-size: 14px; 
+font-size: 14px;
 color: #F9F9F9;
 letter-spacing: 0.3px;
 line-height: 20px;
-max-width: ${props => props.width? props.width: '391px'};
+max-width: ${props => props.width ? props.width : '391px'};
 width: 100%;
 text-align: left;
 font-weight: 200;
