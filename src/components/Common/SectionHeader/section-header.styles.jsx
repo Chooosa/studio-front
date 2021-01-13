@@ -37,7 +37,7 @@ font-size: 14px;
 color: #F9F9F9;
 letter-spacing: 0.3px;
 line-height: 20px;
-max-width: 391px;
+max-width: ${props => props.width? props.width: '391px'};
 width: 100%;
 text-align: left;
 font-weight: 200;
