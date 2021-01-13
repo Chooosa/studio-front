@@ -19,7 +19,7 @@ const Main = () => {
          <SectionGoals refCases={refCases} />
          <SectionWe />
          <ServicesSection />
-         <SectionCases />
+         <SectionCases refCases={refCases} />
          <SectionAbout />
          <SectionPlan refApplication={refApplication} />
       </MainWrapper>

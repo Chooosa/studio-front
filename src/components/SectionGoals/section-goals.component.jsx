@@ -20,7 +20,7 @@ const SectionGoals = ({ refCases }) => {
    const color = useSelector(colorSelectors.color);
 
    const handleScroll = () => {
-      // refCases.current.scrollIntoView({ behavior: 'smooth' })
+      refCases.current.scrollIntoView({ behavior: 'smooth' })
    }
 
    return (
