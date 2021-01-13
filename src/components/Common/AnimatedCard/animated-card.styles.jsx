@@ -4,7 +4,7 @@ import {motion} from 'framer-motion';
 export const CardContainer = styled(motion.div)`
 flex: 1 1 100%;
 background-color: #111111;
-border: 1px solid #1C1C1C;
+border: ${props => props.noBorder? 'none': '1px solid #1C1C1C'};
 position: relative;
 height: 317px;
 display: flex;
@@ -12,6 +12,19 @@ flex-direction: column;
 justify-content: space-between;
 @media(max-width: 600px) {
     height: auto;
+}
+`
+
+
+export const CardInnerContainer = styled.div`
+border: 1px solid #1C1C1C;
+position: relative;
+height: 317px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+&:hover {
+    border-color: ${props => props.color}
 }
 `
 

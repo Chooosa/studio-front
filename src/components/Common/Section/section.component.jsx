@@ -6,11 +6,14 @@ import SectionHeader from '../SectionHeader/section-header.component';
 
 
 
-const Section = ({title, index, description, descriptionWidth, children, threshold}) => {
+const Section = ({title, index, description, descriptionWidth, children, threshold, headerContainerStyles, headerDescriptionStyles}) => {
     const [animate, setAnimate] = useState(false)
 
 
     const handleViewportChange = (e, entry) => {
+
+        console.log(e, entry)
+
         if (e&&entry&&entry.intersectionRatio>= 0.5) {
             console.log(entry.intersectionRatio)
             if (!animate) {
@@ -37,6 +40,8 @@ const Section = ({title, index, description, descriptionWidth, children, thresho
                 index={index}
                 show={animate}
                 width={descriptionWidth}
+                headerContainerStyles={headerContainerStyles}
+                headerDescriptionStyles={headerDescriptionStyles}
                 />
                 {children}
             </Container>

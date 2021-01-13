@@ -15,6 +15,8 @@ import {
 } from './animated-numbers.styles';
 import { useAnimation } from 'framer-motion';
 import {useInView} from 'react-intersection-observer';
+import { useSelector } from 'react-redux';
+import { colorSelectors } from '../../../redux/color/color.selectors';
 
 
 const numbers = [<One/>, <Two/>,<Three/>,<Four/>,<Five/>,<Six/>,<Seven/>]
@@ -29,40 +31,50 @@ const AnimatedNumbers = ({index, duration, show}) => {
     const thirdControls = useAnimation()
     const [reverse, setReverse] = useState(false)
     const {inView, ref} = useInView()
+    const color = useSelector(colorSelectors.color)
 
-    const animationStep = {
-        stopColor: '#3fb755',
-        transition: {
-            duration: duration? duration: 0.2,
-            ease: 'linear'
-        }
-    }
 
-    const reverseAnimationStep = {
-        stopColor: '#414141',
-        transition: {
-            duration: duration? duration: 0.3,
-            ease: 'linear'
-        }
-    }
 
-    const animation = async() => {
-        await firstControls.start(animationStep)
-        await secondControls.start(animationStep)
-        return await thirdControls.start(animationStep)
-        
-    }
-
-    const reverseAnimation = async() => {
-        await firstControls.start(reverseAnimationStep)
-        await secondControls.start(reverseAnimationStep)
-        return await thirdControls.start(reverseAnimationStep)
-        
-    }
 
     
 
     useEffect(() => {
+
+        const animationStep = {
+            stopColor: color,
+            transition: {
+                duration: duration? duration: 0.2,
+                ease: 'linear'
+            }
+        }
+    
+        const reverseAnimationStep = {
+            stopColor: '#414141',
+            transition: {
+                duration: duration? duration: 0.3,
+                ease: 'linear'
+            }
+        }
+        const animation = async() => {
+            firstControls.stop()
+            secondControls.stop()
+            thirdControls.stop()
+            await firstControls.start(animationStep)
+            await secondControls.start(animationStep)
+            return await thirdControls.start(animationStep)
+            
+        }
+    
+        const reverseAnimation = async() => {
+            firstControls.stop()
+            secondControls.stop()
+            thirdControls.stop()
+            await firstControls.start(reverseAnimationStep)
+            await secondControls.start(reverseAnimationStep)
+            return await thirdControls.start(reverseAnimationStep)
+            
+        }
+
         if (show) {
             animation()
             .then(() => {
@@ -74,16 +86,15 @@ const AnimatedNumbers = ({index, duration, show}) => {
                 setReverse(false)
             })
         }
-    }, [show])
+    }, [show, duration, color, firstControls, secondControls, thirdControls])
 
     return (
         <AnimatedNumber
         ref={ref}
+        index={index}
         >
-            {
-                inView||show?
                     <svg width="95" height="54" viewBox="0 0 95 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <linearGradient id="grad" x1={reverse? '100%': '0%'} y1={reverse? '100%': '0%'} x2= {reverse? '100%': '0%'} y2= {reverse? '0%': '100%'} >
+                        <linearGradient id={`grad${index}`} x1={reverse? '100%': '0%'} y1={reverse? '100%': '0%'} x2= {reverse? '100%': '0%'} y2= {reverse? '0%': '100%'} >
                             <FirstStop
                             initial={{
                                 stopColor: '#414141'
@@ -109,8 +120,6 @@ const AnimatedNumbers = ({index, duration, show}) => {
                         </linearGradient>
                         {currentNumber}
                     </svg>
-                    :null
-            }
         </AnimatedNumber>
     )
 }

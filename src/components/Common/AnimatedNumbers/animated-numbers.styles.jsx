@@ -3,9 +3,9 @@ import {motion} from 'framer-motion';
 
 export const AnimatedNumber = styled.div`
 >svg {
-    fill: url('#grad');
+    fill: url(${props => `#grad${props.index}`});
     >path {
-        fill: url('#grad');
+        fill: url(${props => `#grad${props.index}`});
     }
 }
 `
