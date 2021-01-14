@@ -19,6 +19,27 @@ const WorkItem = ({work}) => {
     const [fullscreenImage, setFullScreenImage] = useState(undefined)
     const [animating, setAnimating] = useState(false)
 
+
+    const getImageDimension = (w, h) => {
+
+        let left, top, hh, ww;
+        if (w>width){
+            ww=`${width*0.8}px`;
+            const newHeight = width*0.8*h/w
+            left=`${(width-width*0.8)/2}px`;
+            top= `${(height-newHeight)/2}px`;
+            hh=`${newHeight}px`;
+        } else {
+            left=`${(width-w)/2}px`;
+            top= `${(height-h)/2}px`;
+            ww=`${w}px`;
+            hh=`${h}px`;
+        }
+        
+        return {ww, hh, left, top}
+    }
+
+
     const handleFullScreen = (e, w, h, currentWidth, index) => {
         if (!animating) {
             setAnimating(true)
@@ -26,12 +47,19 @@ const WorkItem = ({work}) => {
             let disLeft= fly.getBoundingClientRect().left;
             let disTop= fly.getBoundingClientRect().top;
             const flyCopy = fly.cloneNode(true)
-            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 1s cubic-bezier(1, 1, 1, 1)`;
+            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1)`;
             const el = document.body.appendChild(flyCopy);
             setTimeout(() => {
-                flyCopy.style.left=`${(width-w)/2}px`;
-                flyCopy.style.top= `${(height-h)/2}px`;
-                flyCopy.style.width=`${w}px`;
+                if(w > width) {
+                    const newheight = width*0.8*h/w
+                    flyCopy.style.left=`${(width-width*0.8)/2}px`;
+                    flyCopy.style.top= `${(height-newheight)/2}px`;
+                    flyCopy.style.width=`${width*0.8}px`;
+                } else {
+                    flyCopy.style.left=`${(width-w)/2}px`;
+                    flyCopy.style.top= `${(height-h)/2}px`;
+                    flyCopy.style.width=`${w}px`;
+                }
             }, 300)
             flyCopy.addEventListener('transitionend', () => {
                 setFullScreenImage({index, el})
@@ -40,12 +68,9 @@ const WorkItem = ({work}) => {
         }
     }
 
-    useEffect(() => {
-        if (fullscreenImage) {
-            fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
-            // fullscreenImage.el.parentNode.removeChild(fullscreenImage.el)
-        }
-    }, [fullscreenImage])
+    const removeNode = () => {
+        fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+    }
 
     return (
         <Container>
@@ -74,7 +99,7 @@ const WorkItem = ({work}) => {
                             work.Gallery.map((img, index) => {
                                 
                                 return (
-                                    <SlideImage key={index} src={CMS_URL+img.url} alt='example' style={{width: width>600? img.width*0.8: width*0.7  }} onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7, index)}/>
+                                    <SlideImage key={index} src={CMS_URL+img.url} alt='example' style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}/>
                                 )
                             })
                         }
@@ -98,14 +123,32 @@ const WorkItem = ({work}) => {
                     backgroundColor: 'rgba(0,0,0,0.2)',
                     zIndex: 1110
                 }}
-                onClick={() => setFullScreenImage(undefined)}
+                onClick={() => {
+                    removeNode()
+                    setFullScreenImage(undefined)
+                }}
                 >
                     <div 
                     style={{
-                        position: 'relative'
+                        position: 'relative',
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                     }}
                     >
-                        <SlideImage  src={CMS_URL+work.Gallery[fullscreenImage.index].url} alt='example-fullscreen'/>
+                        <SlideImage  
+                        src={CMS_URL+work.Gallery[fullscreenImage.index].url} 
+                        alt='example-fullscreen' onLoad={removeNode} 
+                        style={{
+                            width: getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).ww,
+                            position: 'absolute',
+                            left:getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).left,
+                            top: getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).top
+                        }}
+                        
+                        />
                     </div>
                 </div>
                 :null
