@@ -17,7 +17,7 @@ import {
 } from './section-cases.styles';
 import Case from './Case/case.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -33,8 +33,6 @@ const SectionCases = () => {
     const handleNavigation = () => {
         history.push(`/works/${currentIndex===0? 'Application': 'Website'}`)
     }
-
-
 
 
 

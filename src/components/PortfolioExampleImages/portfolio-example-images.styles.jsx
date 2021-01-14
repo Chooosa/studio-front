@@ -19,8 +19,8 @@ export const TableWrapper = styled.div`
 export const ItemWrapper = styled.img`
     display: flex;
     width: ${props => 100/props.columns - 1}%;
-    heigth: 100%;
-    margin: ${props => props.columns === 2 ? 10 : 5}px 0px
+    height: 100%;
+    margin: ${props => props.columns === 2 ? 10 : 5}px 0px;
 `
 
 export const TitleWrapper = styled.div`
