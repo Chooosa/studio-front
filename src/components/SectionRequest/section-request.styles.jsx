@@ -18,7 +18,6 @@ export const InputFieldsColumn = styled.div`
     display: flex;
     height: 100%;
     flex-direction: column;
-    align-self: center;
     margin: 5px 0px;    
 `
 
@@ -67,7 +66,6 @@ export const ExtraInfoWrapper = styled.div`
     height: 100%;
     width: 100%;
     position: relative;
-    margin-top: 12px;
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
