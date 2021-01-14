@@ -12,11 +12,19 @@ import {
     PreviewImage
 } from './case.styles';
 import {CMS_URL} from '../../../config';
+import { useSelector } from 'react-redux';
+import { colorSelectors } from '../../../redux/color/color.selectors';
+import { useHistory } from 'react-router-dom';
 
 
 const Case = ({caseToDisplay}) => {
+    const color = useSelector(colorSelectors.color)
+    const history = useHistory()
 
-    console.log('render')
+
+    const handleNavigation = (id) => {
+        history.push(`/works/${caseToDisplay.Type}/${id}`)
+    }
 
     return (
         <CaseContainer>
@@ -31,7 +39,12 @@ const Case = ({caseToDisplay}) => {
                         </ReactMarkdown>
                     </ContentDescription>
                 </ContentBody>
-                <ActionButton>Смотреть всю работу</ActionButton>
+                <ActionButton 
+                color={color}
+                onClick={() => handleNavigation(caseToDisplay.id)}
+                >
+                    Смотреть всю работу
+                </ActionButton>
             </ContentContainer>
             <PreviewImage
             >

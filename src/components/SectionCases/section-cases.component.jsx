@@ -11,10 +11,13 @@ import {
     CasesContainer,
     Slider,
     SliderContainer,
-    SLiderInnerContainer
+    SLiderInnerContainer,
+    AllCasesButton,
+    AllCasesButtonContainer
 } from './section-cases.styles';
 import Case from './Case/case.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
+import { Link, useHistory } from 'react-router-dom';
 
 
 
@@ -24,6 +27,16 @@ const SectionCases = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
     const color = useSelector(colorSelectors.color)
     const {width} = useWindowDimensions()
+    const history = useHistory()
+
+
+    const handleNavigation = () => {
+        history.push(`/works/${currentIndex===0? 'Application': 'Website'}`)
+    }
+
+
+
+
 
     useEffect(() => {
         axios(`${CMS_URL}/main-cases`)
@@ -43,7 +56,6 @@ const SectionCases = () => {
         })
     }, [])
 
-    console.log(works)
 
     const setCurrentPage = (index) => {
         if (index!==currentIndex) {
@@ -58,6 +70,7 @@ const SectionCases = () => {
         description='Самые свежие работы нашей студии с подробным описанием задачи и её решением.'
         descriptionWidth={'332px'}
         index={4}
+        threshold={0.2}
         >
             <ControlsContainer>
                 <Button 
@@ -95,6 +108,14 @@ const SectionCases = () => {
                 </Slider>
                 </SLiderInnerContainer>
             </SliderContainer>
+            <AllCasesButtonContainer>
+                        <AllCasesButton
+                        color={color}
+                        onClick={handleNavigation}
+                        >
+                        Все работы
+                        </AllCasesButton>
+            </AllCasesButtonContainer>
         </Section>
     )
 }

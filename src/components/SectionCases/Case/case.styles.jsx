@@ -53,13 +53,18 @@ color: #F9F9F9;
 
 `
 export const ContentBody = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
 width: 100%;
 height: 100%;
-padding: 70px 33px 20px 60px;
-justify-content: space-between;
+padding: 0 33px 0 60px;
+>div >ul {
+    padding-inline-start: 0px;
+}
 @media(max-width: 600px) {
     width: 100%;
-    padding:40px 33px 40px 8%;
+    padding:0 33px 0px 8%;
     height: 252px;
 }
 `
