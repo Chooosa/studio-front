@@ -1,22 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
 
 import {
-    SectionRequestWrapper,
-    Heading,
-    Text,
     InputFieldsWrapper,
+    InputFieldsRowPosition,
     InputWrapper,
+    InputField,
+    LabelWrapper,
+    FileInput,
+    FileInputLabel,
     Button,
     Icon,
     PersonalDataAgreement,
     Error,
+    InputFieldsColumn,
+    ExtraInfoWrapper,
+    ExtraInfo,
+    FilesList,
 } from './section-request.styles';
 import Section from '../Common/Section/section.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
+import { useWindowDimensions } from '../../hooks/dimensions';
 import Send from '../../assets/post.png';
+import Attach from '../../assets/attach.png';
+import Delete from '../../assets/delete.png';
+import {API_URL} from '../../config';
 
 const validationSchema = yup.object().shape({
     email: yup.string()
@@ -29,32 +40,45 @@ const validationSchema = yup.object().shape({
     name: yup.string()
        .trim()
        .required('Обязательное поле'),
+    text: yup.string()
+       .trim()
+       .required('Обязательное поле'),
  })
 
 const SectionRequest = () => {
     const themeColor = useSelector(colorSelectors.color);
+    const {width} = useWindowDimensions();
 
-    const axios = require('axios');
+    const [filesArray, setFilesArray] = useState([]);
 
     const sendRequest = async (values) => {
-        axios.post(`https://lilekov-studio.com/api/application`, {values})
-        .then(function (response) {
-            console.log(response);
-          })
-        .catch(function (error) {
-            console.log(error);
+        axios.interceptors.request.use(function (config) {
+            console.log(config.data);
+            return config;
+          }, function (error) {
+            return Promise.reject(error);
           });
-        // axios({
-        //     method: 'post',
-        //     url: 'https://lilekov-studio.com/api/application',
-        //     data: values
-        //   })
-        // .then(function (response) {
-        //     console.log(response);
-        //   })
-        // .catch(function (error) {
-        //     console.log(error);
-        //   });
+        try {
+            const resp = await axios.post(`${API_URL}application`, {json: values,
+            file: filesArray});
+            console.log(resp.data);
+            return resp;
+        } 
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    const addFile = (file) => {
+        setFilesArray([...filesArray, file]);
+    }
+
+    const removeFile = (id) => {
+        let files = filesArray;
+        setFilesArray(
+            () => files.filter((item) => item.lastModified !== id)
+        )
+
     }
 
     return (
@@ -74,40 +98,95 @@ const SectionRequest = () => {
          descriptionWidth={'390px'}
         >
             <Formik
-                initialValues={{ email: '', name: '', phone: '' }}
+                initialValues={{ email: '', name: '', phone: '', text: '' }}
                 onSubmit={(values) => sendRequest(values)}
                 validationSchema={validationSchema}
                 validateOnChange={false}
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                 <InputFieldsWrapper onSubmit={handleSubmit} >
-                    <InputWrapper
-                    value={values.name}
-                    color={themeColor} 
-                    name='name' 
-                    placeholder='Ваше имя:'
-                    onChange={handleChange('name')} 
-                    required />
-                    <Error>{errors.name}</Error>
-                    <InputWrapper
-                    mask='+79999999999'
-                    value={values.phone}
-                    type='tel' 
-                    color={themeColor} 
-                    name='phone' 
-                    placeholder='Номер телефона:'
-                    onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
-                    required />
-                    <Error>{errors.phone}</Error>
-                    <InputWrapper
-                    value={values.email}
-                    type='email' 
-                    color={themeColor} 
-                    name='email' 
-                    placeholder='E-mail:'
-                    onChange={handleChange('email')} 
-                    required />
-                    <Error>{errors.email}</Error>
+                    <InputFieldsRowPosition width={width}>
+                        <InputFieldsColumn>
+                        <InputWrapper>
+                            <InputField
+                                placeholder=' '
+                                value={values.name}
+                                color={themeColor} 
+                                name='name'
+                                id='name' 
+                                onChange={handleChange('name')}
+                                />
+                            <LabelWrapper htmlFor='name'>Ваше имя:</LabelWrapper>
+                            <Error>{errors.name}</Error>
+                        </InputWrapper>
+                            <InputWrapper>
+                                <InputField
+                                placeholder=' '
+                                mask='+79999999999'
+                                value={values.phone}
+                                type='tel'
+                                id='tel' 
+                                color={themeColor} 
+                                name='phone' 
+                                onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
+                                />
+                                <LabelWrapper htmlFor='tel'>Номер телефона:</LabelWrapper>
+                                <Error>{errors.phone}</Error>
+                            </InputWrapper>
+                            <InputWrapper>
+                                <InputField
+                                placeholder=' '
+                                value={values.email}
+                                type='email' 
+                                color={themeColor} 
+                                name='email'
+                                id='email' 
+                                onChange={handleChange('email')} 
+                                />
+                                <LabelWrapper htmlFor='email'>E-mail:</LabelWrapper>
+                                <Error>{errors.email}</Error>
+                            </InputWrapper>
+                        </InputFieldsColumn>
+                        <InputFieldsColumn>
+                            <ExtraInfoWrapper>
+                                <ExtraInfo
+                                placeholder=' '
+                                value={values.text}
+                                name='text' 
+                                id='text'
+                                onChange={handleChange('text')}
+                                />
+                                <LabelWrapper htmlFor='text'>Сообщение</LabelWrapper>
+                                <Error>{errors.text}</Error>
+                            </ExtraInfoWrapper>
+                            <FileInput
+                            onChange={(event) => addFile(event.target.files[0])}
+                            multiple
+                            id='file'
+                            type='file'
+                            >
+                            </FileInput>
+                            <FileInputLabel htmlFor='file'>
+                                Прикрепить файл
+                                <Icon src={Attach} />
+                            </FileInputLabel>
+                            <FilesList>
+                                {filesArray.map((item) => {
+                                    return (
+                                        <li key={item.lastModified}
+                                        >
+                                        <div>
+                                        <img src={Attach} alt='' />
+                                        <span>{item.name}</span>
+                                        <img src={Delete} alt='' 
+                                        onClick={() => removeFile(item.lastModified)} />
+                                        </div>
+                                        </li>
+                                    )
+                                })}
+                            </FilesList>
+                        </InputFieldsColumn>
+                    </InputFieldsRowPosition>
                     <Button
                     type='submit'
                     >
@@ -117,75 +196,13 @@ const SectionRequest = () => {
                 </InputFieldsWrapper>
                 )}
             </Formik>
-            <PersonalDataAgreement>
+            <PersonalDataAgreement width={width}>
                 <span>
                 Нажимая “Отправить заявку” вы соглашаетесь с порядком 
                 обработки <a href=''>персональных данных.</a>
                 </span>
             </PersonalDataAgreement>
         </Section>
-        // <SectionRequestWrapper>
-        //     <Heading>
-        //         Оставить заявку
-        //     </Heading>
-        //     <Text>
-        //         Вы можете задать нам вопрос по разработке сайта или 
-        //         приложения и получить ответ удобным способом. 
-        //         Также мы можем назвать предварительную стоимость вашего проекта 
-        //         и примерные сроки.
-        //         Расскажите о нём и вместе мы воплотим его в жизнь.
-        //     </Text>
-            // <Formik
-            //     initialValues={{ email: '', name: '', phone: '' }}
-            //     onSubmit={(values) => sendRequest(values)}
-            //     validationSchema={validationSchema}
-            //     validateOnChange={false}
-            // >
-            //     {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
-            //         <InputFieldsWrapper onSubmit={handleSubmit} >
-            //             <InputWrapper
-            //             value={values.name}
-            //             color={themeColor} 
-            //             name='name' 
-            //             placeholder='Ваше имя:'
-            //             onChange={handleChange('name')} 
-            //             required />
-            //             <Error>{errors.name}</Error>
-            //             <InputWrapper
-            //             mask='+79999999999'
-            //             value={values.phone}
-            //             type='tel' 
-            //             color={themeColor} 
-            //             name='phone' 
-            //             placeholder='Номер телефона:'
-            //             onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
-            //             required />
-            //             <Error>{errors.phone}</Error>
-            //             <InputWrapper
-            //             value={values.email}
-            //             type='email' 
-            //             color={themeColor} 
-            //             name='email' 
-            //             placeholder='E-mail:'
-            //             onChange={handleChange('email')} 
-            //             required />
-            //             <Error>{errors.email}</Error>
-            //             <Button
-            //             type='submit'
-            //             >
-            //                     Отправить заявку
-            //                     <Icon src={Send} />
-            //             </Button>
-            //         </InputFieldsWrapper>
-            //     )}
-            // </Formik>
-            // <PersonalDataAgreement>
-            //     <span>
-            //     Нажимая “Отправить заявку” вы соглашаетесь с порядком 
-            //     обработки <a href=''>персональных данных.</a>
-            //     </span>
-            // </PersonalDataAgreement>
-        // </SectionRequestWrapper>
     )
 }
 

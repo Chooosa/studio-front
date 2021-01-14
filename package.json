@@ -2,6 +2,7 @@
   "name": "lilekov-studio-front",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://lilekov-studio.com/api/",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.6",
