@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const CustomButton = styled.button`
+export const CustomButton = styled(motion.button)`
    outline: none;
    box-shadow: none;
    display: flex;

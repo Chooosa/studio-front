@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { MainWrapper } from './main.styles';
 import SectionTyping from '../../components/SectionTyping/section-typing.components';
@@ -6,17 +6,24 @@ import SectionGoals from '../../components/SectionGoals/section-goals.component'
 import ServicesSection from '../../components/ServicesSection/services-section.component';
 import SectionWe from '../../components/SectionWe/section-we.component';
 import SectionAbout from '../../components/SectionAbout/section-about.component';
+import SectionPlan from '../../components/SectionPlan/section-plan.component';
 import SectionCases from '../../components/SectionCases/section-cases.component';
+import SectionRequest from '../../components/SectionRequest/section-request.component';
 
 const Main = () => {
+   const refCases = useRef();
+   const refApplication = useRef();
+
    return (
       <MainWrapper>
          <SectionTyping />
-         <SectionGoals/>
-         <ServicesSection/>
-         <SectionCases/>
+         <SectionGoals refCases={refCases} />
          <SectionWe />
+         <ServicesSection />
+         <SectionCases />
          <SectionAbout />
+         <SectionPlan refApplication={refApplication} />
+         <SectionRequest />
       </MainWrapper>
    );
 }

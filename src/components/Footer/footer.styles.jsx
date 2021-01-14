@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { CustomButton } from '../../styles/common';
+import { motion } from 'framer-motion';
+
 
 export const FooterWrapper = styled.footer`
    width: 100%;
@@ -86,7 +88,7 @@ export const MapWrapper = styled.div`
    }
 `
 
-export const MapContainer = styled.div`
+export const MapContainer = styled(motion.div)`
    width: 100%;
    height: 100%;
    position: absolute;
