@@ -53,7 +53,6 @@ const SectionRequest = () => {
 
     const sendRequest = async (values) => {
         axios.interceptors.request.use(function (config) {
-            console.log(config.data);
             return config;
           }, function (error) {
             return Promise.reject(error);
@@ -61,7 +60,6 @@ const SectionRequest = () => {
         try {
             const resp = await axios.post(`${API_URL}application`, {json: values,
             file: filesArray});
-            console.log(resp.data);
             return resp;
         } 
         catch (err) {
@@ -70,7 +68,9 @@ const SectionRequest = () => {
     }
 
     const addFile = (file) => {
-        setFilesArray([...filesArray, file]);
+        if (file && file.lastModified){
+            setFilesArray([...filesArray, file]);
+        }
     }
 
     const removeFile = (id) => {
@@ -155,6 +155,7 @@ const SectionRequest = () => {
                                 name='text' 
                                 id='text'
                                 onChange={handleChange('text')}
+                                color={themeColor}
                                 />
                                 <LabelWrapper htmlFor='text'>Сообщение</LabelWrapper>
                                 <Error>{errors.text}</Error>
@@ -173,6 +174,8 @@ const SectionRequest = () => {
                             <FilesList>
                                 {filesArray.map((item) => {
                                     return (
+                                        
+                                        item ? 
                                         <li key={item.lastModified}
                                         >
                                         <div>
@@ -182,6 +185,9 @@ const SectionRequest = () => {
                                         onClick={() => removeFile(item.lastModified)} />
                                         </div>
                                         </li>
+                                        :
+                                        null
+                                        
                                     )
                                 })}
                             </FilesList>
