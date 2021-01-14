@@ -53,7 +53,6 @@ const SectionRequest = () => {
 
     const sendRequest = async (values) => {
         axios.interceptors.request.use(function (config) {
-            console.log(config.data);
             return config;
           }, function (error) {
             return Promise.reject(error);
@@ -61,7 +60,6 @@ const SectionRequest = () => {
         try {
             const resp = await axios.post(`${API_URL}application`, {json: values,
             file: filesArray});
-            console.log(resp.data);
             return resp;
         } 
         catch (err) {
