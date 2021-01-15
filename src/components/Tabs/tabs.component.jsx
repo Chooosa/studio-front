@@ -3,6 +3,7 @@ import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import { colorSelectors } from '../../redux/color/color.selectors';
+import BottomTabBar from '../BottomTab/bottom-tab.component';
 
 import {
     AnimatedLine,
@@ -12,8 +13,14 @@ import {
     TabBodyContainer
 } from './tabs.styles';
 
+
+
+
+
+
+
 const Tabs = ({children, tabNames, tabOverride}) => {
-    const [currentTab, setCurrentTab] = useState(0)
+    const [currentTab, setCurrentTab] = useState(tabOverride? tabOverride: 0)
     const color = useSelector(colorSelectors.color)
     const headerRef = useRef()
     const [animatedLineStyles, setAnimatedLineStyles] = useState({width: 0, offset: 0})
@@ -21,10 +28,8 @@ const Tabs = ({children, tabNames, tabOverride}) => {
 
 
     useEffect(() => {
-            console.log(width)
-            if (width>0) {
+            if (width>612) {
                 const rect = headerRef.current.children[currentTab].getBoundingClientRect()
-                console.log(rect)
                 const parentOffset = headerRef.current?.offsetLeft
                 const width = headerRef.current? rect.width: 0
                 const offset = headerRef.current? rect.left - parentOffset : 0
@@ -32,11 +37,7 @@ const Tabs = ({children, tabNames, tabOverride}) => {
             }
     }, [currentTab, width])
 
-    useEffect(() => {
-        if (tabOverride) {
-            setCurrentTab(tabOverride)
-        }
-    }, [tabOverride])
+
 
     const handleTabChange = (index) => {
 
@@ -46,48 +47,70 @@ const Tabs = ({children, tabNames, tabOverride}) => {
     return (
         <Fragment>
             <TabsHeaderOuterContainer>
-                <TabsHeader
-                ref={headerRef}
-                >
-                    {
-                        tabNames.map((name, index) => {
-                            const ref= React.createRef()
-                            return <TabHeader 
-                            key={index} 
-                            onClick={() => handleTabChange(index)}
-                            color={color}
-                            ref={ref}
-                            active={index===currentTab}
-                            animate={{
-                                color: index===currentTab? color: '#f9f9f9',
-                            }}
-                            transition={{
-                                duration: 0.3
-                            }}
-                            >
-                                {name}
-                            </TabHeader>
-                        })
-                    }
-                </TabsHeader>
-                <AnimatedLine
-                animate={{
-                    width: animatedLineStyles.width,
-                    x: animatedLineStyles.offset
-                }}
-                transition={{
-                    duration: 0.3
-                }}
-                color={color}
-                />
+                {
+                    width> 612?
+                    <Fragment>
+                    <TabsHeader
+                    ref={headerRef}
+                    >
+                        {
+                            tabNames.map((name, index) => {
+                                const ref= React.createRef()
+                                return <TabHeader 
+                                key={index} 
+                                onClick={() => handleTabChange(index)}
+                                color={color}
+                                ref={ref}
+                                active={index===currentTab}
+                                animate={{
+                                    color: index===currentTab? color: '#f9f9f9',
+                                }}
+                                transition={{
+                                    duration: 0.3
+                                }}
+                                >
+                                    {name}
+                                </TabHeader>
+                            })
+                        }
+                    </TabsHeader>
+                    <AnimatedLine
+                    animate={{
+                        width: animatedLineStyles.width,
+                        x: animatedLineStyles.offset
+                    }}
+                    transition={{
+                        duration: 0.3
+                    }}
+                    color={color}
+                    />
+                    </Fragment>
+                    :             
+                    <BottomTabBar
+                    tabNames={tabNames}
+                    currentTab={currentTab}
+                    onTabClick={handleTabChange}
+                    />
+                }
             </TabsHeaderOuterContainer>
             <TabBodyContainer>
                 {/* <AnimatePresence> */}
                 {
-                    children[currentTab]
+                    children.map((child, index) => {
+                        return (
+                            <Fragment>
+                                {
+                                    currentTab===index?
+                                    child
+                                    : null
+                                }
+                            </Fragment>
+                        )
+                    })
                 }
                 {/* </AnimatePresence> */}
             </TabBodyContainer>
+
         </Fragment>
     )
 }

@@ -33,7 +33,7 @@ color: #F9F9F9;
 
 
 export const NumberContainer = styled.div`
-@media(max-width: 600px) {
+@media(max-width: 611px) {
     display: none;
 }
 `

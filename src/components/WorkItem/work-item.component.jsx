@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import { useWindowDimensions } from '../../hooks/dimensions';
@@ -13,12 +15,31 @@ import {
     SlideImage
 } from './work-item.styles';
 
+let callback;
 
 const WorkItem = ({work}) => {
     const {width, height} = useWindowDimensions()
     const [fullscreenImage, setFullScreenImage] = useState(undefined)
     const [animating, setAnimating] = useState(false)
+    const {section, itemId} = useParams()
+    const containerRef = useRef()
 
+
+
+    useEffect(() => {
+        
+        if (section===work.Type&&itemId.toString()===work.id.toString()) {
+            setTimeout(() => {
+                if (localStorage.getItem('scroll')==='false') {
+                    localStorage.setItem('scroll', 'true')
+                    window.scrollTo({
+                        behavior: 'smooth',
+                        top: containerRef.current?.offsetTop-60
+                    })
+                } 
+            }, 300)
+        }
+    }, [])
 
     const getImageDimension = (w, h) => {
 
@@ -42,6 +63,7 @@ const WorkItem = ({work}) => {
 
     const handleFullScreen = (e, w, h, currentWidth, index) => {
         if (!animating) {
+            console.log('eve')
             setAnimating(true)
             const fly = e.target
             let disLeft= fly.getBoundingClientRect().left;
@@ -72,8 +94,33 @@ const WorkItem = ({work}) => {
         fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
     }
 
+    const getSliderHeight = () => {
+        console.log(work.Gallery[0])
+        if (work.Gallery.length>1) {
+            return width>600? work.Gallery[0].height*0.8: width*0.7*work.Gallery[0].height/work.Gallery[0].width> work.Gallery[0].height*0.7?work.Gallery[0].height*0.7:width*0.7*work.Gallery[0].height/work.Gallery[0].width
+        } else {
+            return (width>996?956-40: width-80)*work.Gallery[0].height/work.Gallery[0].width
+        }
+    }
+
+    const registerCallBack = (e, w, h, currentWidth, index) => {
+        callback = setTimeout(() => {
+            console.log(e)
+            handleFullScreen(e, w, h, currentWidth, index)
+        }, 50)
+    }
+
+    const cancelCallback = (e) => {
+        if (callback) {
+            clearTimeout(callback)
+        }
+    }
+
+
     return (
-        <Container>
+        <Container
+        ref={containerRef}
+        >
             <Title>
                 {work.Title}
             </Title>
@@ -85,7 +132,11 @@ const WorkItem = ({work}) => {
                     {work.SecondDescriptionBlock}
                 </TextSection>
             </TextContent>
-            <SliderContainer>
+            <SliderContainer
+            style={{
+                height: `${getSliderHeight()}px`
+            }}
+            >
                 {
                     work.Gallery.length>1?
                     <Slider
@@ -94,12 +145,21 @@ const WorkItem = ({work}) => {
                     initialSlide={0}
                     infinite={false}
                     rows={1}
+                    arrows={false}
                     >
                         {
                             work.Gallery.map((img, index) => {
                                 
                                 return (
-                                    <SlideImage key={index} src={CMS_URL+img.url} alt='example' style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}/>
+                                    // onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                                    <SlideImage 
+                                    key={index} 
+                                    src={CMS_URL+img.url} 
+                                    alt='example' 
+                                    style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} 
+                                    onMouseDown={(e) => registerCallBack(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                                    onMouseMove={cancelCallback}
+                                    />
                                 )
                             })
                         }

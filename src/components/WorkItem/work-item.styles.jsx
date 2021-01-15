@@ -7,7 +7,8 @@ padding: 34px 20px 34px 20px;
 display: flex;
 flex-direction: column;
 background: #111111;
-margin-top: 120px;
+margin-top: 100px;
+margin-bottom: 20px;
 @media(max-width: 600px) {
     margin-top: 50px;
 }

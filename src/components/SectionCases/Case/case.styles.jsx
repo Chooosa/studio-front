@@ -43,6 +43,11 @@ margin-bottom: 24px;
 font-size: 24px;
 color: #F9F9F9;
 line-height: 33px;
+@media(max-width: 500px) {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 16px;
+}
 `
 
 export const ContentDescription = styled.div`
@@ -50,6 +55,11 @@ font-size: 14px;
 line-height: 20px;
 letter-spacing: 0.3px;
 color: #F9F9F9;
+@media(max-width: 500px) {
+    font-size: 14px;
+    line-height: 18px;
+    
+}
 
 `
 export const ContentBody = styled.div`

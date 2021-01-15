@@ -23,6 +23,21 @@ margin-right: 8%;
 font-family: initial; */
 cursor: pointer;
 display: flex;
+
+@media(max-width: 895px) {
+    margin-right:6%;
+    &:last-child {
+        margin-right:0;
+    }
+}
+@media(max-width: 780px) {
+    margin-right:5%;
+    font-size: 28px;
+}
+@media(max-width: 675px) {
+    margin-right:3.5%;
+    font-size: 26px;
+}
 `
 
 

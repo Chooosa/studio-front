@@ -15,7 +15,12 @@ const Main = () => {
    const refApplication = useRef();
 
    return (
-      <MainWrapper>
+      <MainWrapper
+      // initial={{opacity: 0}}
+      // animate={{opacity: 1}}
+      // exit={{opacity: 0}}
+      // transition={{duration: 0.5}}
+      >
          <SectionTyping />
          <SectionGoals refCases={refCases} />
          <SectionWe />

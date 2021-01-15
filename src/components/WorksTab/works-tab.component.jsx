@@ -16,7 +16,6 @@ const WorksTab = ({description, works}) => {
 
     const handleViewportChange = (e, entry) => {
         if (e&&entry&&(entry.intersectionRatio>= 0.5)) {
-            console.log(entry.intersectionRatio)
             if (!animate) {
                 setAnimate(true)
             }
@@ -45,11 +44,12 @@ const WorksTab = ({description, works}) => {
                         />
                     </NumberContainer>
                 </TabHeader>
-            </InView>
+                </InView>
             {
-                works.map((work) => {
+                works.map((work, index) => {
                     return (
                         <WorkItem
+                        key={index}
                         work={work}
                         />
                     )
