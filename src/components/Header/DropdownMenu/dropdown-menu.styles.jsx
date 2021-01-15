@@ -11,7 +11,7 @@ export const DropdownMenuWrapper = styled.nav`
    top: 70px;
    left: 0;
    border-bottom: 1px solid ${props => props.open ? '#f9f9f9' : 'transparent'};
-   background-color: ${props => props.open ? '#020202' : 'transparent'};
+   background-color: ${props => props.open ? '#020202' : '#0a0a0a'};
    z-index: 499;
 
    overflow: hidden;
@@ -21,7 +21,7 @@ export const DropdownMenuWrapper = styled.nav`
 
 export const DropdownMenuContainer = styled.div`
    width: 100%;
-   max-width: 1100px;
+   max-width: 956px;
    height: max-content;
    min-height: 200px;
    display: flex;

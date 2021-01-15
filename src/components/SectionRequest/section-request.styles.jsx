@@ -9,7 +9,7 @@ export const InputFieldsWrapper = styled.form`
 
 export const InputFieldsRowPosition = styled.div`
     display: flex;
-    ${props => props.width>600 ? 'flex-direction: row' : 'flex-direction: column'};
+    ${props => props.width > 600 ? 'flex-direction: row' : 'flex-direction: column'};
     width: 100%;
     justify-content: space-between;
 `
@@ -18,7 +18,7 @@ export const InputFieldsColumn = styled.div`
     display: flex;
     height: 100%;
     flex-direction: column;
-    margin: 5px 0px;    
+    margin: 5px 0px;
 `
 
 export const InputWrapper = styled.div`
@@ -48,7 +48,7 @@ export const InputField = styled(InputMask)`
         border: 1px solid ${props => props.color ? props.color : '#3FB755'};
         outline: none;
         + label{
-            color: ${props => props.color ? props.color : '#3FB755'}; 
+            color: ${props => props.color ? props.color : '#3FB755'};
             font-size: 12px;
             transform: translateY(-16px);
             transition: 0.5s;
@@ -93,7 +93,7 @@ export const ExtraInfo = styled.textarea`
         border: 1px solid ${props => props.color ? props.color : '#3FB755'};
         outline: none;
         +label {
-            color: ${props => props.color ? props.color : '#3FB755'}; 
+            color: ${props => props.color ? props.color : '#3FB755'};
             font-size: 12px;
             transform: translateY(-16px);
             transition: 0.5s;
@@ -176,7 +176,7 @@ export const Icon = styled.img`
 export const PersonalDataAgreement = styled.div`
     align-self: center;
     display: flex;
-    width: ${props => props.width>600 ? '40%' : '85%'};
+    width: ${props => props.width > 600 ? '40%' : '85%'};
     margin-top: 24px;
     border: 10px #fff;
 
@@ -185,14 +185,14 @@ export const PersonalDataAgreement = styled.div`
         font-size: 14px;
         line-height: 19px;
         text-align: center;
-    
+
         color: #707070;
 
         >a {
             font-weight: 200;
             font-size: 14px;
             line-height: 19px;
-        
+
             color: #707070;
             transition-duration: 0.2s;
 

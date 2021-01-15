@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -27,48 +27,50 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import Send from '../../assets/post.png';
 import Attach from '../../assets/attach.png';
 import Delete from '../../assets/delete.png';
-import {API_URL} from '../../config';
+import { API_URL } from '../../config';
 
 const validationSchema = yup.object().shape({
     email: yup.string()
-       .email('Введите корректный email')
-       .required('Введите email'),
+        .email('Введите корректный email')
+        .required('Введите email'),
     phone: yup.string()
-       .min(12, 'Введите корректный телефон')
-       .max(12, 'Введите корректный телефон')
-       .required('Введите корректный телефон'),
+        .min(12, 'Введите корректный телефон')
+        .max(12, 'Введите корректный телефон')
+        .required('Введите корректный телефон'),
     name: yup.string()
-       .trim()
-       .required('Обязательное поле'),
+        .trim()
+        .required('Обязательное поле'),
     text: yup.string()
-       .trim()
-       .required('Обязательное поле'),
- })
+        .trim()
+        .required('Обязательное поле'),
+})
 
-const SectionRequest = () => {
+const SectionRequest = ({ refApplication }) => {
     const themeColor = useSelector(colorSelectors.color);
-    const {width} = useWindowDimensions();
+    const { width } = useWindowDimensions();
 
     const [filesArray, setFilesArray] = useState([]);
 
     const sendRequest = async (values) => {
         axios.interceptors.request.use(function (config) {
             return config;
-          }, function (error) {
+        }, function (error) {
             return Promise.reject(error);
-          });
+        });
         try {
-            const resp = await axios.post(`${API_URL}application`, {json: values,
-            file: filesArray});
+            const resp = await axios.post(`${API_URL}application`, {
+                json: values,
+                file: filesArray
+            });
             return resp;
-        } 
+        }
         catch (err) {
             console.log(err);
         }
     }
 
     const addFile = (file) => {
-        if (file && file.lastModified){
+        if (file && file.lastModified) {
             setFilesArray([...filesArray, file]);
         }
     }
@@ -83,19 +85,20 @@ const SectionRequest = () => {
 
     return (
         <Section
-        title='Оставить заявку'
-        description='
-        Вы можете задать нам вопрос по разработке сайта или 
-        приложения и получить ответ удобным способом. 
-        Также мы можем назвать предварительную стоимость вашего проекта 
+            title='Оставить заявку'
+            description='
+        Вы можете задать нам вопрос по разработке сайта или
+        приложения и получить ответ удобным способом.
+        Также мы можем назвать предварительную стоимость вашего проекта
         и примерные сроки.
         Расскажите о нём и вместе мы воплотим его в жизнь.
         '
-        index={7}
-        headerContainerStyles={{
-            marginBottom: '50px'
-         }}
-         descriptionWidth={'390px'}
+            index={7}
+            headerContainerStyles={{
+                marginBottom: '50px'
+            }}
+            descriptionWidth={'390px'}
+            reff={refApplication}
         >
             <Formik
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
@@ -104,107 +107,107 @@ const SectionRequest = () => {
                 validateOnChange={false}
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
-                <InputFieldsWrapper onSubmit={handleSubmit} >
-                    <InputFieldsRowPosition width={width}>
-                        <InputFieldsColumn>
-                        <InputWrapper>
-                            <InputField
-                                placeholder=' '
-                                value={values.name}
-                                color={themeColor} 
-                                name='name'
-                                id='name' 
-                                onChange={handleChange('name')}
-                                />
-                            <LabelWrapper htmlFor='name'>Ваше имя:</LabelWrapper>
-                            <Error>{errors.name}</Error>
-                        </InputWrapper>
-                            <InputWrapper>
-                                <InputField
-                                placeholder=' '
-                                mask='+79999999999'
-                                value={values.phone}
-                                type='tel'
-                                id='tel' 
-                                color={themeColor} 
-                                name='phone' 
-                                onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
-                                />
-                                <LabelWrapper htmlFor='tel'>Номер телефона:</LabelWrapper>
-                                <Error>{errors.phone}</Error>
-                            </InputWrapper>
-                            <InputWrapper>
-                                <InputField
-                                placeholder=' '
-                                value={values.email}
-                                type='email' 
-                                color={themeColor} 
-                                name='email'
-                                id='email' 
-                                onChange={handleChange('email')} 
-                                />
-                                <LabelWrapper htmlFor='email'>E-mail:</LabelWrapper>
-                                <Error>{errors.email}</Error>
-                            </InputWrapper>
-                        </InputFieldsColumn>
-                        <InputFieldsColumn>
-                            <ExtraInfoWrapper>
-                                <ExtraInfo
-                                placeholder=' '
-                                value={values.text}
-                                name='text' 
-                                id='text'
-                                onChange={handleChange('text')}
-                                color={themeColor}
-                                />
-                                <LabelWrapper htmlFor='text'>Сообщение</LabelWrapper>
-                                <Error>{errors.text}</Error>
-                            </ExtraInfoWrapper>
-                            <FileInput
-                            onChange={(event) => addFile(event.target.files[0])}
-                            multiple
-                            id='file'
-                            type='file'
-                            >
-                            </FileInput>
-                            <FileInputLabel htmlFor='file'>
-                                Прикрепить файл
+                    <InputFieldsWrapper onSubmit={handleSubmit} >
+                        <InputFieldsRowPosition width={width}>
+                            <InputFieldsColumn>
+                                <InputWrapper>
+                                    <InputField
+                                        placeholder=' '
+                                        value={values.name}
+                                        color={themeColor}
+                                        name='name'
+                                        id='name'
+                                        onChange={handleChange('name')}
+                                    />
+                                    <LabelWrapper htmlFor='name'>Ваше имя:</LabelWrapper>
+                                    <Error>{errors.name}</Error>
+                                </InputWrapper>
+                                <InputWrapper>
+                                    <InputField
+                                        placeholder=' '
+                                        mask='+79999999999'
+                                        value={values.phone}
+                                        type='tel'
+                                        id='tel'
+                                        color={themeColor}
+                                        name='phone'
+                                        onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
+                                    />
+                                    <LabelWrapper htmlFor='tel'>Номер телефона:</LabelWrapper>
+                                    <Error>{errors.phone}</Error>
+                                </InputWrapper>
+                                <InputWrapper>
+                                    <InputField
+                                        placeholder=' '
+                                        value={values.email}
+                                        type='email'
+                                        color={themeColor}
+                                        name='email'
+                                        id='email'
+                                        onChange={handleChange('email')}
+                                    />
+                                    <LabelWrapper htmlFor='email'>E-mail:</LabelWrapper>
+                                    <Error>{errors.email}</Error>
+                                </InputWrapper>
+                            </InputFieldsColumn>
+                            <InputFieldsColumn>
+                                <ExtraInfoWrapper>
+                                    <ExtraInfo
+                                        placeholder=' '
+                                        value={values.text}
+                                        name='text'
+                                        id='text'
+                                        onChange={handleChange('text')}
+                                        color={themeColor}
+                                    />
+                                    <LabelWrapper htmlFor='text'>Сообщение</LabelWrapper>
+                                    <Error>{errors.text}</Error>
+                                </ExtraInfoWrapper>
+                                <FileInput
+                                    onChange={(event) => addFile(event.target.files[0])}
+                                    multiple
+                                    id='file'
+                                    type='file'
+                                >
+                                </FileInput>
+                                <FileInputLabel htmlFor='file'>
+                                    Прикрепить файл
                                 <Icon src={Attach} />
-                            </FileInputLabel>
-                            <FilesList>
-                                {filesArray.map((item) => {
-                                    return (
-                                        
-                                        item ? 
-                                        <li key={item.lastModified}
-                                        >
-                                        <div>
-                                        <img src={Attach} alt='' />
-                                        <span>{item.name}</span>
-                                        <img src={Delete} alt='' 
-                                        onClick={() => removeFile(item.lastModified)} />
-                                        </div>
-                                        </li>
-                                        :
-                                        null
-                                        
-                                    )
-                                })}
-                            </FilesList>
-                        </InputFieldsColumn>
-                    </InputFieldsRowPosition>
-                    <Button
-                    type='submit'
-                    >
-                        Отправить заявку
+                                </FileInputLabel>
+                                <FilesList>
+                                    {filesArray.map((item) => {
+                                        return (
+
+                                            item ?
+                                                <li key={item.lastModified}
+                                                >
+                                                    <div>
+                                                        <img src={Attach} alt='' />
+                                                        <span>{item.name}</span>
+                                                        <img src={Delete} alt=''
+                                                            onClick={() => removeFile(item.lastModified)} />
+                                                    </div>
+                                                </li>
+                                                :
+                                                null
+
+                                        )
+                                    })}
+                                </FilesList>
+                            </InputFieldsColumn>
+                        </InputFieldsRowPosition>
+                        <Button
+                            type='submit'
+                        >
+                            Отправить заявку
                         <Icon src={Send} />
-                    </Button>
-                </InputFieldsWrapper>
+                        </Button>
+                    </InputFieldsWrapper>
                 )}
             </Formik>
             <PersonalDataAgreement width={width}>
                 <span>
-                Нажимая “Отправить заявку” вы соглашаетесь с порядком 
+                    Нажимая “Отправить заявку” вы соглашаетесь с порядком
                 обработки <a href=''>персональных данных.</a>
                 </span>
             </PersonalDataAgreement>

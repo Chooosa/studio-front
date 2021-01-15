@@ -5,10 +5,17 @@ import {
    PlanWrapper,
    Button,
    PlanContainer,
-   LeftContainer,
-   RightContainer,
+   DescriptionWrapper,
+   SchemeWrapper,
    Heading,
-   Text
+   Text,
+   LineWrapper,
+   Line,
+   StepButton,
+   Dash,
+   ProgressLine,
+   ProgressDot,
+   LineLabel
 } from './plan.styles';
 import { colorSelectors } from '../../redux/color/color.selectors';
 
@@ -19,9 +26,9 @@ const Plan = ({ refApplication }) => {
    const [currentStep, setCurrentStep] = useState(1)
 
    const handleScroll = () => {
-      // refApplication.current.scrollIntoView({ behavior: 'smooth' })
+      refApplication.current.scrollIntoView({ behavior: 'smooth' })
    }
-   const ShowCurrentStep = () => {
+   const ShowCurrentDescription = () => {
       switch (currentStep) {
          case 1:
             return (
@@ -142,7 +149,6 @@ const Plan = ({ refApplication }) => {
                      Все стадии работы проходят в тесном контакте с клиентом
                      и при необходимости вносятся корректировки. Одобренный
                      дизайн поступает в дальнейшую работу.
-
                   </Text>
                </Fragment>
             );
@@ -187,7 +193,16 @@ const Plan = ({ refApplication }) => {
                      Сопровождение
                   </Heading>
                   <Text>
-                     22222222222222222222222222222222
+                     Даже после сдачи готового проекта некоторое
+                     время он нуждается в сопровождении. В это
+                     время наши клиенты получают всестороннюю
+                     помощь от нашей команды, учатся обращаться
+                     со своим новым сайтом или приложением,
+                     узнают, как его можно продвигать в будущем.
+                     На этом этапе вы не оказываетесь брошены на
+                     произвол судьбы наедине со своим проектом и
+                     всегда можете рассчитывать на нашу помощь
+                     даже по простым вопросам.
                   </Text>
                </Fragment>
             );
@@ -196,21 +211,118 @@ const Plan = ({ refApplication }) => {
       }
    }
 
+   const handlePaintingOver = () => {
+      switch (currentStep) {
+         case 1:
+            return '0%'
+         case 2:
+            return '34%'
+         case 3:
+            return '64%'
+         case 4:
+            return '89%'
+         case 5:
+            return '100%'
+         default:
+            return '100%'
+      }
+   }
+
    return (
       <PlanWrapper>
          <PlanContainer>
-            <LeftContainer>
-               <ShowCurrentStep />
-            </LeftContainer>
-            <RightContainer>
-               <button onClick={() => currentStep < 10 ? setCurrentStep(currentStep + 1) : setCurrentStep(1)}>5464654</button>
-            </RightContainer>
+            <DescriptionWrapper>
+               <ShowCurrentDescription />
+            </DescriptionWrapper>
+            <SchemeWrapper>
+               <LineWrapper>
+                  <Line lineWidth='calc(100% - 40px)'>
+                     <LineLabel
+                        left={'0%'}
+                     >
+                        Этап 1
+                  </LineLabel>
+                     <ProgressLine
+                        width={() => handlePaintingOver}
+                        color={color}
+                     />
+                     <ProgressDot
+                        left={handlePaintingOver}
+                        color={color}
+                        currentStep={currentStep}
+                     />
+
+                     <Dash
+                        color={color}
+                        active
+                     />
+                     <StepButton
+                        color={color}
+                        left={'0'}
+                        onClick={() => setCurrentStep(1)}
+                        dashLeft={'0'}
+                        active={currentStep === 1}
+                     >
+                        Интервью
+                     </StepButton>
+
+                     <Dash
+                        left={'34%'}
+                        color={color}
+                        active={currentStep >= 2}
+                     />
+                     <StepButton
+                        color={color}
+                        left={'25%'}
+                        onClick={() => setCurrentStep(2)}
+                        active={currentStep === 2}
+                     >
+                        Аналитика
+                     </StepButton>
+
+                     <Dash
+                        left={'64%'}
+                        color={color}
+                        active={currentStep >= 3}
+                     />
+                     <StepButton
+                        color={color}
+                        left={'52%'}
+                        onClick={() => setCurrentStep(3)}
+                        active={currentStep === 3}
+                     >
+                        Брифирование
+                     </StepButton>
+
+                     <Dash
+                        left={'89%'}
+                        color={color}
+                        active={currentStep >= 4}
+                     />
+                     <StepButton
+                        color={color}
+                        left={'84%'}
+                        onClick={() => setCurrentStep(4)}
+                        active={currentStep === 4}
+                     >
+                        Смета
+                     </StepButton>
+                  </Line>
+               </LineWrapper>
+               <LineWrapper>
+                  <Line >
+
+                  </Line>
+               </LineWrapper>
+            </SchemeWrapper>
          </PlanContainer>
+         <button onClick={() => currentStep < 10 ? setCurrentStep(currentStep + 1) : setCurrentStep(1)}>5464654</button>
+
          <Button onClick={handleScroll} color={color}>
-            Отправить заявку
-   <img src={postIco} alt='post' />
+            Записаться
+            <img src={postIco} alt='post' />
          </Button>
-      </PlanWrapper>
+      </PlanWrapper >
    );
 }
 
