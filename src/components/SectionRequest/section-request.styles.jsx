@@ -11,7 +11,7 @@ export const InputFieldsRowPosition = styled.div`
     display: flex;
     ${props => props.width > 800 ? 'flex-direction: row' : 'flex-direction: column'};
     width: 100%;
-    justify-content: space-between;
+    height: 100%;
     ${props => props.width < 800 ? 'align-items: center' : ''};
 `
 
@@ -21,7 +21,7 @@ export const InputFieldsColumn = styled.div`
     width: 100%;
     flex-direction: column;
     margin: 5px ${props => props.width > 800 ? '10px' : '0px'};
-    ${props => props.width > 800 ? '' : 'align-items: center;'}
+    ${props => props.width > 800 ? 'align-items: space-between' : 'align-items: center;'}
 `
 
 export const InputWrapper = styled.div`
@@ -45,7 +45,7 @@ export const InputField = styled(InputMask)`
     border-width: 0px;
     padding: 0px 25px;
 
-    font-size: 14px;
+    font-size: 16px;
 
     :focus {
         border: 1px solid ${props => props.color ? props.color : '#3FB755'};
@@ -67,7 +67,6 @@ export const InputField = styled(InputMask)`
 
 export const ExtraInfoWrapper = styled.div`
     height: 100%;
-    /* width: 100%; */
     position: relative;
     margin-bottom: 25px;
     margin-top: ${props => props.width < 800 ? '20px' : '0px'};
@@ -85,7 +84,20 @@ export const ExtraInfo = styled.textarea`
     border: 0px;
 
     font-family: Manrope;
-    font-size: 14px;
+    font-size: 16px;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
 
     :placeholder-shown {
         + label {
@@ -240,7 +252,6 @@ export const FilesList = styled.ul`
 
                 >p {
                     display: inline;
-                    width: 30px;
                     color: #707070;
                 }
 

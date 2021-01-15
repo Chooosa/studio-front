@@ -75,10 +75,10 @@ const SectionRequest = ({ refApplication, index }) => {
         }
     }
 
-    const removeFile = (id) => {
+    const removeFile = (name) => {
         let files = filesArray;
         setFilesArray(
-            () => files.filter((item) => item.lastModified !== id)
+            () => files.filter((item) => item.name !== name)
         )
 
     }
@@ -140,7 +140,6 @@ const SectionRequest = ({ refApplication, index }) => {
                                     <InputField
                                         placeholder=' '
                                         value={values.email}
-                                        type='email'
                                         color={themeColor}
                                         name='email'
                                         id='email'
@@ -189,7 +188,7 @@ const SectionRequest = ({ refApplication, index }) => {
                                                         <img src={Delete}
                                                         style={{cursor:'pointer'}} 
                                                         alt=''
-                                                        onClick={() => removeFile(item.lastModified)} />
+                                                        onClick={() => removeFile(item.name)} />
                                                     </div>
                                                 </li>
                                                 :

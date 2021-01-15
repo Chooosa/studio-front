@@ -7,9 +7,11 @@ export const GuaranteesWrapper = styled.div`
 `
 
 export const GuaranteesSections = styled.div`
+    /* min-height: 400px; */
     display: flex;
     flex-direction: column;
     background-color: #111111;
+    height: 100%;
     padding: ${props => props.width > 600 ? '50px' : '0px'} 0px;
 `
 
@@ -39,7 +41,7 @@ export const GuaranteeSectionWrapper = styled.div`
 
 export const ListTextWrapper = styled.div`
     >ul {
-        padding: 15px;
+        padding: 20px;
     }
     
 `
@@ -53,6 +55,7 @@ export const DropDownSectionDiv = styled.div`
     border-bottom: 1px solid #2C2C2C;
 
     flex-direction: column;
+    justify-content: flex-start;
 
     >span {
         overflow: hidden;
