@@ -8,6 +8,7 @@ import SectionWe from '../../components/SectionWe/section-we.component';
 import SectionAbout from '../../components/SectionAbout/section-about.component';
 import SectionPlan from '../../components/SectionPlan/section-plan.component';
 import SectionCases from '../../components/SectionCases/section-cases.component';
+import SectionRequest from '../../components/SectionRequest/section-request.component';
 
 const Main = () => {
    const refCases = useRef();
@@ -22,6 +23,7 @@ const Main = () => {
          <SectionCases refCases={refCases} />
          <SectionAbout />
          <SectionPlan refApplication={refApplication} />
+         <SectionRequest refApplication={refApplication} />
       </MainWrapper>
    );
 }

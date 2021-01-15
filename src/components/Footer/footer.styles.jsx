@@ -16,7 +16,7 @@ export const FooterWrapper = styled.footer`
 export const FooterContainer = styled.div`
    width: 100%;
    height: 100%;
-   max-width: 1100px;
+   max-width: 956px;
    display: flex;
    align-items: center;
    position: relative;

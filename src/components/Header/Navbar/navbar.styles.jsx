@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const NavbarContainer = styled.div`
    width: 100%;
-   max-width: 1100px;
+   max-width: 956px;
    height: 70px;
    padding-top: 20px;
    padding-bottom: 5px;
