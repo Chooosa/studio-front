@@ -7,6 +7,9 @@ import Header from './components/Header/header.component';
 import Footer from './components/Footer/footer.component';
 import Main from './pages/Main/main.component';
 import WorksPage from './pages/Works/works.component';
+import Cooperation from './pages/Cooperation/cooperation.component';
+import Guarantees from './pages/Guarantees/guarantees.component';
+
 import { AnimatePresence } from 'framer-motion';
 
 
@@ -27,6 +30,8 @@ function App() {
             <Route exact path='/' component={Main} />
             <Route exact path='/works/:section/:itemId' component={WorksPage} />
             {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
+            <Route exact path='/cooperation' component={Cooperation} />
+            <Route exact path='/guarantees' component={Guarantees} />
           </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>

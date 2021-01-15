@@ -9,16 +9,19 @@ export const InputFieldsWrapper = styled.form`
 
 export const InputFieldsRowPosition = styled.div`
     display: flex;
-    ${props => props.width > 600 ? 'flex-direction: row' : 'flex-direction: column'};
+    ${props => props.width > 800 ? 'flex-direction: row' : 'flex-direction: column'};
     width: 100%;
     justify-content: space-between;
+    ${props => props.width < 800 ? 'align-items: center' : ''};
 `
 
 export const InputFieldsColumn = styled.div`
     display: flex;
     height: 100%;
+    width: 100%;
     flex-direction: column;
-    margin: 5px 0px;
+    margin: 5px ${props => props.width > 800 ? '10px' : '0px'};
+    ${props => props.width > 800 ? '' : 'align-items: center;'}
 `
 
 export const InputWrapper = styled.div`
@@ -64,9 +67,10 @@ export const InputField = styled(InputMask)`
 
 export const ExtraInfoWrapper = styled.div`
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     position: relative;
     margin-bottom: 25px;
+    margin-top: ${props => props.width < 800 ? '20px' : '0px'};
     display: flex;
     flex-direction: column;
 `
@@ -157,15 +161,18 @@ export const Error = styled.span`
     font-weight: 200;
     font-size: 14px;
     line-height: 19px;
+
+    margin-left: 10px;
 `
 
 export const Button = styled(CustomButton)`
     align-self: center;
-    margin-top: 50px;
-    background-color: #3FB755;
+    margin-top: ${props => props.width > 800 ? '50px' : '0px'};
+    background-color: ${props => props.color ? props.color : '#3FB755'};
     border-width: 0px;
 
-    color: #0A0A0A;
+    color: #FFFFFF;
+    font-family: Manrope;
 `
 
 export const Icon = styled.img`
@@ -213,17 +220,35 @@ export const FilesList = styled.ul`
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    width: ${props => props.width > 800 ? 'calc(100% - 40px)' : props.width > 600 ? '55%' : '100%'};
+    align-self: ${props => props.width > 800 || props.width < 600 ? 'flex-start' : 'center'};
+
     >li {
         color: transparent;
+        
         >div {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
 
-        >span {
-            color: #707070;
-            width: 80%;
+            >div {
+                display: flex;
+                align-items: center;
+                width: 80%;
+
+                >p {
+                    display: inline;
+                    width: 30px;
+                    color: #707070;
+                }
+
+                >img {
+                    height: 18px;
+                    width: 18px;
+                    margin-right: 6px;
+                }
         }
 
         >img {

@@ -109,7 +109,7 @@ const SectionRequest = ({ refApplication, index }) => {
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                     <InputFieldsWrapper onSubmit={handleSubmit} >
                         <InputFieldsRowPosition width={width}>
-                            <InputFieldsColumn>
+                            <InputFieldsColumn width={width}>
                                 <InputWrapper>
                                     <InputField
                                         placeholder=' '
@@ -151,7 +151,7 @@ const SectionRequest = ({ refApplication, index }) => {
                                 </InputWrapper>
                             </InputFieldsColumn>
                             <InputFieldsColumn>
-                                <ExtraInfoWrapper>
+                                <ExtraInfoWrapper width={width}>
                                     <ExtraInfo
                                         placeholder=' '
                                         value={values.text}
@@ -174,7 +174,7 @@ const SectionRequest = ({ refApplication, index }) => {
                                     Прикрепить файл
                                 <Icon src={Attach} />
                                 </FileInputLabel>
-                                <FilesList>
+                                <FilesList width={width}>
                                     {filesArray.map((item) => {
                                         return (
 
@@ -182,10 +182,14 @@ const SectionRequest = ({ refApplication, index }) => {
                                                 <li key={item.lastModified}
                                                 >
                                                     <div>
-                                                        <img src={Attach} alt='' />
-                                                        <span>{item.name}</span>
-                                                        <img src={Delete} alt=''
-                                                            onClick={() => removeFile(item.lastModified)} />
+                                                        <div>
+                                                            <img src={Attach} alt='' />
+                                                            <p>{item.name}</p>
+                                                        </div>
+                                                        <img src={Delete}
+                                                        style={{cursor:'pointer'}} 
+                                                        alt=''
+                                                        onClick={() => removeFile(item.lastModified)} />
                                                     </div>
                                                 </li>
                                                 :
@@ -197,6 +201,7 @@ const SectionRequest = ({ refApplication, index }) => {
                             </InputFieldsColumn>
                         </InputFieldsRowPosition>
                         <Button
+                        color={themeColor}
                             type='submit'
                         >
                             Отправить заявку
