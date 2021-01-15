@@ -68,11 +68,13 @@ const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
 
     return (
         <BottomTabContainer
-        initial={{y: 0 }}
-        animate={{y: scrollDown? 80: 0}}
-        transition={{
-            duration: 0.5
-        }}
+        // initial={{y: 0 }}
+        // animate={{y: scrollDown? 80: 0}}
+        // transition={{
+        //     duration: 0.5
+        // }}
+
+        hide={scrollDown}
         >
             <BottomTabBarContainer
             color={color}

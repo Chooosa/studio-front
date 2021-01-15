@@ -16,6 +16,7 @@ import { CMS_URL } from '../../config';
 import AnimatedNumbers from '../../components/Common/AnimatedNumbers/animated-numbers.component';
 import { useInView } from 'react-intersection-observer';
 import { useWindowDimensions } from '../../hooks/dimensions';
+import SectionRequest from '../../components/SectionRequest/section-request.component';
 
 const WorksPage = () => {
     const [works, setWorks] = useState({apps: [], websites: []})
@@ -106,6 +107,7 @@ const WorksPage = () => {
                 works={works.websites}
                 />
             </Tabs>
+            <SectionRequest index={2}/>
         </PageContainer>
     )
 }

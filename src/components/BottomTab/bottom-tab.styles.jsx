@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 
-export const BottomTabContainer = styled(motion.div)`
+export const BottomTabContainer = styled.div`
 width: 100%;
 position: fixed;
 bottom: 0;
@@ -9,6 +9,8 @@ left: 0;
 display: flex;
 justify-content: center;
 z-index: 1112;
+transition-duration: 0.5s;
+transform: ${props => `translateY(${props.hide? 80: 0}px)`};
 `
 
 

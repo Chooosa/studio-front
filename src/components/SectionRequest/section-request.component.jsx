@@ -45,7 +45,7 @@ const validationSchema = yup.object().shape({
         .required('Обязательное поле'),
 })
 
-const SectionRequest = ({ refApplication }) => {
+const SectionRequest = ({ refApplication, index }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
 
@@ -93,7 +93,7 @@ const SectionRequest = ({ refApplication }) => {
         и примерные сроки.
         Расскажите о нём и вместе мы воплотим его в жизнь.
         '
-            index={7}
+            index={index}
             headerContainerStyles={{
                 marginBottom: '50px'
             }}
