@@ -34,8 +34,8 @@ const DropdownMenu = () => {
                   <a href='#'>Доп. услуги</a>
                </LinksCell>
                <LinksCell color={color}>
-                  <a href='#'>Гарантии</a>
-                  <a href='#'>Сотрудничество</a>
+                  <a href='guarantees'>Гарантии</a>
+                  <a href='cooperation'>Сотрудничество</a>
                </LinksCell>
             </LinksWrapper>
             <LinksCell color={color}>

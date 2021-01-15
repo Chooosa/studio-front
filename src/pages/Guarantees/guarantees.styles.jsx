@@ -7,10 +7,12 @@ export const GuaranteesWrapper = styled.div`
 `
 
 export const GuaranteesSections = styled.div`
+    /* min-height: 400px; */
     display: flex;
     flex-direction: column;
     background-color: #111111;
-    padding: 50px 0px;
+    height: 100%;
+    padding: ${props => props.width > 600 ? '50px' : '0px'} 0px;
 `
 
 export const GuaranteeSectionWrapper = styled.div`
@@ -39,24 +41,25 @@ export const GuaranteeSectionWrapper = styled.div`
 
 export const ListTextWrapper = styled.div`
     >ul {
-        padding: 15px;
+        padding: 20px;
     }
     
 `
 
 export const DropDownSectionDiv = styled.div`
     display: flex;
-    ${props => props.open ? 'max-height: 300px' : `max-height: 0px`};
-    height: 300px;
+    min-height: 80px;
+    ${props => props.open ? 'max-height: 900px' : `max-height: 0px`};
     transition: all .6s ease;
-    padding: 0px 15px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #2C2C2C;
+
+    flex-direction: column;
+    justify-content: flex-start;
 
     >span {
-        ${props => props.open ? 'max-height: 300px' : `max-height: 0px`};
         overflow: hidden;
-        >p {
-            display: flex;
-        }
+        margin-bottom: 20px;
     }
 
 `
@@ -66,7 +69,7 @@ export const DropDownSectionHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0px 15px;
+    margin-bottom: 20px;
 
     >h2 {
         margin: 0px;

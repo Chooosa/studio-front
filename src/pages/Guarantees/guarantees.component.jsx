@@ -19,10 +19,95 @@ import {
     CustomText
 } from '../../styles/common'
 
+const MobileSectionRenderer = ({item}) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <DropDownSectionDiv open={isOpen}>
+            <DropDownSectionHeader onClick={()=>setIsOpen(!isOpen)}>
+            <CustomHeading>{item.title}</CustomHeading>
+                <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 5.00012L4.46967 5.53045L5 6.06078L5.53033 5.53045L5 5.00012ZM0.46967 1.53045L4.46967 5.53045L5.53033 4.46979L1.53033 0.469792L0.46967 1.53045ZM5.53033 5.53045L9.53033 1.53045L8.46967 0.469792L4.46967 4.46979L5.53033 5.53045Z" 
+                    fill="white" />
+                </svg>
+            </DropDownSectionHeader>
+            {item.body}
+        </DropDownSectionDiv>
+    )
+}
+
 const Guarantees = () => {
     const themeColor = useSelector(colorSelectors.color);
     const {width} = useWindowDimensions();
-    const [isOpen, setIsOpen] = useState(false);
+    
+    const guaranteesList = [
+        {title: 'Юридические:',
+        body: (
+            <CustomText>
+                <p>
+                После детального изучения проекта и перед тем как начать им заниматься, мы документируем все этапы работы и составляем договор.
+                </p>
+                <p>
+                В нём прописаны все сроки и стоимость работ, как по этапам, так и общая.
+                </p>
+                <p>
+                Этим мы гарантируем нашим клиентам получение выполненного проекта в срок.
+                </p>
+                <p>
+                Для нас же это стимул обозначенные сроки строго соблюдать. Также в договоре прописана наша ответственность в случае нарушения нами сроков.
+                </p>
+            </CustomText>
+        )
+        },
+        {title: 'Технические:',
+        body: (
+            <CustomText>
+                <ListTextWrapper>
+                    <span>Мы обеспечиваем качество готового проекта:</span>
+                    <span></span>
+                    <ul>
+                        <li>При составлении ТЗ учитываем получение наилучших результатов.</li>
+                        <li>В работе используем только самые современные и надёжные технологии.</li>
+                        <li>Перед сдачей проводим разностороннее тестирование и устраняем все найденные проблемы.</li>
+                    </ul>
+                    <span></span>
+                    <span>Передача проекта происходит только после того, как он полностью готов и прошёл многократную проверку.</span>
+                </ListTextWrapper>
+            </CustomText>
+        )
+        },
+        {title: 'Организационные:',
+        body: (
+            <CustomText>
+                <ListTextWrapper>
+                    <span>Процесс разработки у нас полностью прозрачен для клиента:</span>
+                    <span></span>
+                    <ul>
+                        <li>Мы регулярно высылаем отчёты по проделанной работе.</li>
+                        <li>Даём возможность посмотреть, что сделано на данный момент и попробовать готовый функционал.</li>
+                    </ul>
+                    <span></span>
+                    <span>Вы всегда будете в курсе продвижения работы по вашему заказу и сможете сами видеть процесс, и даже участвовать в нём.</span>
+                </ListTextWrapper>
+            </CustomText>
+        )
+        },
+        {title: 'Вспомогательные:',
+        body: (
+            <CustomText>
+                <ListTextWrapper>
+                    <span>Даже когда ваш проект готов, и вы его приняли, мы не оставим вас с ним наедине:</span>
+                    <span></span>
+                    <ul>
+                        <li>Составим план развития или продвижения на ближайшее время.</li>
+                        <li>Будем устранять найденные недостатки в течении года в рамках гарантийного обслуживания.</li>
+                    </ul>
+                    <span></span>
+                    <span>В будущем при необходимости по вашему запросу мы сможем быстро добавлять или изменять функционал – как авторам, нам это будет сделать гораздо проще, чем сторонним программистам.</span>
+                </ListTextWrapper>
+            </CustomText>
+        )
+        },
+    ];
 
     return (
         <GuaranteesWrapper>
@@ -39,13 +124,12 @@ const Guarantees = () => {
             descriptionWidth={'610px'}
             headerContainerStyles={{
                 marginTop: '110px',
-                // marginBottom: '-120px',
              }}
             >
             
             {
                 width > 600 ?
-                <GuaranteesSections>
+                <GuaranteesSections width={width}>
                 <GuaranteeSectionWrapper>
                 <div>
                     <CustomHeading>
@@ -75,9 +159,9 @@ const Guarantees = () => {
             </GuaranteeSectionWrapper>
             <GuaranteeSectionWrapper>
             <svg width="407" height="408" viewBox="0 0 407 408" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle style={{transitionDuration: '0.7s'}} cx="51.5005" cy="355.5" r="339.5" stroke={themeColor} stroke-width="31"/>
-                <circle style={{transitionDuration: '0.6s'}} cx="51.4991" cy="355.5" r="276.276" stroke={themeColor} stroke-width="31"/>
-                <circle style={{transitionDuration: '0.5s'}} cx="51.5016" cy="355.5" r="213.052" stroke={themeColor} stroke-width="31"/>
+                <circle style={{transitionDuration: '1s'}} cx="51.5005" cy="355.5" r="339.5" stroke={themeColor} stroke-width="31"/>
+                <circle style={{transitionDuration: '0.8s'}} cx="51.4991" cy="355.5" r="276.276" stroke={themeColor} stroke-width="31"/>
+                <circle style={{transitionDuration: '0.6s'}} cx="51.5016" cy="355.5" r="213.052" stroke={themeColor} stroke-width="31"/>
                 <circle style={{transitionDuration: '0.4s'}} cx="51.5" cy="355.5" r="149.828" stroke={themeColor} stroke-width="31"/>
             </svg>
                 <div>
@@ -147,37 +231,14 @@ const Guarantees = () => {
             </GuaranteeSectionWrapper>
             </GuaranteesSections>
             :
-            <GuaranteesSections>
-                <div>
-                <DropDownSectionHeader onClick={()=>setIsOpen(!isOpen)} >
-                    <CustomHeading>
-                    Юридические:
-                    </CustomHeading>
-                    <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 5.00012L4.46967 5.53045L5 6.06078L5.53033 5.53045L5 5.00012ZM0.46967 1.53045L4.46967 5.53045L5.53033 4.46979L1.53033 0.469792L0.46967 1.53045ZM5.53033 5.53045L9.53033 1.53045L8.46967 0.469792L4.46967 4.46979L5.53033 5.53045Z" 
-                        fill="white" />
-                    </svg>
-                </DropDownSectionHeader>
-                <DropDownSectionDiv open={isOpen}>
-                    <CustomText>
-                        <p>
-                        После детального изучения проекта и перед тем как начать им заниматься, мы документируем все этапы работы и составляем договор.
-                        </p>
-                        <p>
-                        В нём прописаны все сроки и стоимость работ, как по этапам, так и общая.
-                        </p>
-                        <p>
-                        Этим мы гарантируем нашим клиентам получение выполненного проекта в срок.
-                        </p>
-                        <p>
-                        Для нас же это стимул обозначенные сроки строго соблюдать. Также в договоре прописана наша ответственность в случае нарушения нами сроков.
-                        </p>
-                    </CustomText>
-                </DropDownSectionDiv>
-                </div>
+            <GuaranteesSections width={width}>
+                {
+                    guaranteesList.map((item) => {
+                        return <MobileSectionRenderer item={item} />
+                    })
+                }
             </GuaranteesSections>
             }
-            
             </Section>
             <SectionRequest index={2} />
         </GuaranteesWrapper>
