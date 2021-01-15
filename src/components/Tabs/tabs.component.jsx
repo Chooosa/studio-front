@@ -97,7 +97,9 @@ const Tabs = ({children, tabNames, tabOverride}) => {
                 {
                     children.map((child, index) => {
                         return (
-                            <Fragment>
+                            <Fragment
+                            key={index}
+                            >
                                 {
                                     currentTab===index?
                                     child

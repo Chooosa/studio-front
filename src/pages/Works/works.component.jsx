@@ -36,9 +36,8 @@ const WorksPage = () => {
 
 
     useEffect(() => {
-    
+        window.scrollTo(0,0)
         if (itemId==='all') {
-            console.log(111)
             window.scrollTo(0,0)
         }
         return () => {

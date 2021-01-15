@@ -24,6 +24,7 @@ const Case = ({caseToDisplay}) => {
 
     const handleNavigation = (id) => {
         history.push(`/works/${caseToDisplay.Type}/${id}`)
+        
     }
 
     return (
