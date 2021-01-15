@@ -44,7 +44,7 @@ const WorksPage = () => {
         return () => {
             localStorage.setItem('scroll', 'false')
         }
-    }, [])
+    }, [itemId])
 
 
     useEffect(() => {

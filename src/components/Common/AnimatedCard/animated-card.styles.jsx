@@ -38,6 +38,7 @@ flex: 1 1 100%;
 @media(max-width: 600px) {
     padding-top: 50px;
     padding-bottom: 50px;
+    min-height: 164px;
 }
 `
 

@@ -1,4 +1,3 @@
-import { AnimatePresence, useAnimation } from 'framer-motion';
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useWindowDimensions } from '../../hooks/dimensions';

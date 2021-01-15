@@ -5,11 +5,17 @@ import useOnClickOutside from '../../hooks/onClickOutside';
 import { MenuContext } from '../../context/menu-state';
 import Navbar from './Navbar/navbar.component';
 import DropdownMenu from './DropdownMenu/dropdown-menu.component';
+import { useWindowDimensions } from '../../hooks/dimensions';
+import MobileNavbar from './MobileNavbar/mobile-navbar.component';
+import MobileMenu from './MobileMenu/mobile-menu.component';
 
 
 const Header = () => {
    const headerRef = useRef();
    const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
+   const {width} = useWindowDimensions()
+
+
    useOnClickOutside(headerRef, () => {
       if (isMenuOpen) {
          toggleMenuMode();
@@ -18,8 +24,17 @@ const Header = () => {
 
    return (
       <HeaderWrapper ref={headerRef} open={isMenuOpen}>
-         <Navbar />
-         <DropdownMenu />
+         {
+            width>720?
+            <Navbar />
+            : <MobileNavbar/>
+         }
+         {
+            width> 720?
+            <DropdownMenu />
+            :
+            <MobileMenu/>
+         }
       </HeaderWrapper>
    );
 }

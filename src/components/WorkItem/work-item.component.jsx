@@ -23,8 +23,15 @@ const WorkItem = ({work}) => {
     const [animating, setAnimating] = useState(false)
     const {section, itemId} = useParams()
     const containerRef = useRef()
+    
+    const reverseFullScreen = () => {
+        fullscreenImage.el.addEventListener('transitionend', removeNode)
+        const {width, top, left} = fullscreenImage.target.getBoundingClientRect()
 
-
+        fullscreenImage.el.style.left = `${left}px`
+        fullscreenImage.el.style.top = `${top}px`
+        fullscreenImage.el.style.width = `${width}px`
+    }
 
     useEffect(() => {
         
@@ -39,37 +46,35 @@ const WorkItem = ({work}) => {
                 } 
             }, 300)
         }
-    }, [])
+    }, [work,itemId, section])
 
-    const getImageDimension = (w, h) => {
-
-        let left, top, hh, ww;
-        if (w>width){
-            ww=`${width*0.8}px`;
-            const newHeight = width*0.8*h/w
-            left=`${(width-width*0.8)/2}px`;
-            top= `${(height-newHeight)/2}px`;
-            hh=`${newHeight}px`;
-        } else {
-            left=`${(width-w)/2}px`;
-            top= `${(height-h)/2}px`;
-            ww=`${w}px`;
-            hh=`${h}px`;
-        }
+    useEffect(() => {
+        if (fullscreenImage) {
+            fullscreenImage.el.addEventListener('click',() => {
+                fullscreenImage.el.addEventListener('transitionend', () => {
+                    setTimeout(() => {
+                        fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+                        setFullScreenImage(undefined)
+                    }, 100)
+                })
+                const {width, top, left} = fullscreenImage.target.getBoundingClientRect()
         
-        return {ww, hh, left, top}
-    }
+                fullscreenImage.el.style.left = `${left}px`
+                fullscreenImage.el.style.top = `${top}px`
+                fullscreenImage.el.style.width = `${width}px`
+            })
+        }
+    }, [fullscreenImage])
 
 
     const handleFullScreen = (e, w, h, currentWidth, index) => {
         if (!animating) {
-            console.log('eve')
             setAnimating(true)
             const fly = e.target
             let disLeft= fly.getBoundingClientRect().left;
             let disTop= fly.getBoundingClientRect().top;
             const flyCopy = fly.cloneNode(true)
-            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1)`;
+            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1); outline: none;`;
             const el = document.body.appendChild(flyCopy);
             setTimeout(() => {
                 if(w > width) {
@@ -84,18 +89,15 @@ const WorkItem = ({work}) => {
                 }
             }, 300)
             flyCopy.addEventListener('transitionend', () => {
-                setFullScreenImage({index, el})
+                setFullScreenImage({index, el, target: fly})
                 setAnimating(false)
             })
         }
     }
 
-    const removeNode = () => {
-        fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
-    }
+
 
     const getSliderHeight = () => {
-        console.log(work.Gallery[0])
         if (work.Gallery.length>1) {
             return width>600? work.Gallery[0].height*0.8: width*0.7*work.Gallery[0].height/work.Gallery[0].width> work.Gallery[0].height*0.7?work.Gallery[0].height*0.7:width*0.7*work.Gallery[0].height/work.Gallery[0].width
         } else {
@@ -115,6 +117,15 @@ const WorkItem = ({work}) => {
             clearTimeout(callback)
         }
     }
+
+    const removeNode = () => {
+        setTimeout(() => {
+            fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+            setFullScreenImage(undefined)
+        }, 100)
+    }
+
+
 
 
     return (
@@ -183,12 +194,9 @@ const WorkItem = ({work}) => {
                     backgroundColor: 'rgba(0,0,0,0.2)',
                     zIndex: 1110
                 }}
-                onClick={() => {
-                    removeNode()
-                    setFullScreenImage(undefined)
-                }}
+                onClick={reverseFullScreen}
                 >
-                    <div 
+                    {/* <div 
                     style={{
                         position: 'relative',
                         width: '100%',
@@ -209,7 +217,7 @@ const WorkItem = ({work}) => {
                         }}
                         
                         />
-                    </div>
+                    </div> */}
                 </div>
                 :null
             }

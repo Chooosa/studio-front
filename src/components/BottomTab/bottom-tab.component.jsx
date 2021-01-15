@@ -41,18 +41,27 @@ const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
 
     const handleScroll = () => {
         const pageOffset = window.pageYOffset
-        if (pageOffset - lastOffset.current> 0) {
-            if (direction!==-1) {
+        const height = window.innerHeight
+        const fullHeight = document.body.offsetHeight
+        if (fullHeight-(pageOffset+height)<100) {
+            if (!scrollDown)
+            {
                 setScrollDown(true)
-            } 
-            direction.current = -1
+            }
         } else {
-            if (direction!==1) {
-                setScrollDown(false)
-            } 
-            direction.current = 1
+            if (pageOffset - lastOffset.current> 0) {
+                if (direction!==-1) {
+                    setScrollDown(true)
+                } 
+                direction.current = -1
+            } else {
+                if (direction!==1) {
+                    setScrollDown(false)
+                } 
+                direction.current = 1
+            }
+            lastOffset.current = pageOffset
         }
-        lastOffset.current = pageOffset
     }
 
 
