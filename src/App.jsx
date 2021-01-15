@@ -6,6 +6,8 @@ import MenuState from './context/menu-state';
 import Header from './components/Header/header.component';
 import Footer from './components/Footer/footer.component';
 import Main from './pages/Main/main.component';
+import WorksPage from './pages/Works/works.component';
+
 
 function App() {
   return (
@@ -17,9 +19,10 @@ function App() {
       <AppContainer>
         <Switch>
           <Route exact path='/' component={Main} />
+          <Route exact path='/works/:section' component={WorksPage} />
+          <Route exact path='/works/:section/:itemId' component={WorksPage} />
         </Switch>
       </AppContainer>
-
       <Footer />
     </AppWrapper>
   );

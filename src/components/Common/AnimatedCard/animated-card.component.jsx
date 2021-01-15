@@ -89,13 +89,14 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                 >
                     <CardBody
                     >
-                        <CardHeader>
+                        <CardHeader
+                        onClick={toggleOverlay}
+                        >
                             <Title
                             >
                                 {title}
                             </Title>
                             <CardIcon
-                            onClick={toggleOverlay}
                             animate={{
                                 rotate: showOverlay? 90: 0
                             }}
