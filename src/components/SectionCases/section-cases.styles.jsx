@@ -34,7 +34,7 @@ overflow: hidden;
 `
 
 export const SliderContainer = styled.div`
-perspective: 2000px;
+perspective: 1000px;
 position: relative;
 height:860px;
 z-index: 1;
