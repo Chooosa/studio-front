@@ -113,6 +113,9 @@ outline: none;
 `
 
 export const CardIcon = styled(motion.div)`
+display: flex;
+justify-content: center;
+align-items: center;
 cursor: pointer;
 transition-duration: 0.3s;
 -webkit-tap-highlight-color:transparent;

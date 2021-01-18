@@ -26,7 +26,8 @@ export const InputFieldsColumn = styled.div`
 
 export const InputWrapper = styled.div`
     height: 60px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     position: relative;
     :first-child {
         margin-bottom: 24px;
@@ -67,6 +68,8 @@ export const InputField = styled(InputMask)`
 
 export const ExtraInfoWrapper = styled.div`
     height: 100%;
+    width: 100%;
+    max-width: 400px;
     position: relative;
     margin-bottom: 25px;
     margin-top: ${props => props.width < 800 ? '20px' : '0px'};
@@ -76,24 +79,26 @@ export const ExtraInfoWrapper = styled.div`
 
 export const ExtraInfo = styled.textarea`
     height: 144px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     background-color: #111111;
     color: #707070;
     padding: 25px 25px;
     resize: none;
     border: 0px;
+    align-self: center;
 
     font-family: Manrope;
     font-size: 16px;
 
     ::-webkit-scrollbar {
-        width: 5px;
+        width: 6px;
     }
 
     ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background-color: darkgrey;
         outline: 1px solid slategrey;
@@ -184,7 +189,6 @@ export const Button = styled(CustomButton)`
     border-width: 0px;
 
     color: #FFFFFF;
-    font-family: Manrope;
 `
 
 export const Icon = styled.img`
@@ -232,12 +236,14 @@ export const FilesList = styled.ul`
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    width: ${props => props.width > 800 ? 'calc(100% - 40px)' : props.width > 600 ? '55%' : '100%'};
+    padding: 0px 8%;
+    /* width: 100%; */
+    width: ${props => props.width > 800 ? '100%' : props.width > 600 ? '70%' : '100%'};
     align-self: ${props => props.width > 800 || props.width < 600 ? 'flex-start' : 'center'};
 
     >li {
         color: transparent;
-        
+
         >div {
             display: flex;
             flex-direction: row;
@@ -250,8 +256,10 @@ export const FilesList = styled.ul`
                 align-items: center;
                 width: 80%;
 
-                >p {
-                    display: inline;
+                >span {
+                    display: block;
+                    width: 100%;
+                    word-wrap: break-word;
                     color: #707070;
                 }
 
@@ -265,7 +273,6 @@ export const FilesList = styled.ul`
         >img {
             height: 18px;
             width: 18px;
-            margin-right: 6px;
         }
     }
     }

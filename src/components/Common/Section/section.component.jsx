@@ -15,7 +15,8 @@ const Section = ({
     threshold,
     headerContainerStyles,
     headerDescriptionStyles,
-    reff
+    reff,
+    padding
 }) => {
     const [animate, setAnimate] = useState(false)
 
@@ -52,6 +53,7 @@ const Section = ({
                     width={descriptionWidth}
                     headerContainerStyles={headerContainerStyles}
                     headerDescriptionStyles={headerDescriptionStyles}
+                    padding={padding}
                 />
                 {children}
             </Container>

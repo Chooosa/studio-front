@@ -43,7 +43,7 @@ export const LinksCell = styled.div`
    width: 100%;
    max-width: 120px;
 
-   >a {
+   >a,span {
       font-weight: 200;
       font-size: 14px;
       line-height: 19px;
@@ -51,7 +51,7 @@ export const LinksCell = styled.div`
       color: #f9f9f9;
       margin-bottom: 16px;
       position: relative;
-
+      cursor: pointer;
       ::before {
          content: "";
          position: absolute;

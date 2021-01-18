@@ -45,7 +45,7 @@ const validationSchema = yup.object().shape({
         .required('Обязательное поле'),
 })
 
-const SectionRequest = ({ refApplication, index }) => {
+const SectionRequest = ({ refApplication, index, padding }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
 
@@ -97,8 +97,10 @@ const SectionRequest = ({ refApplication, index }) => {
             headerContainerStyles={{
                 marginBottom: '50px'
             }}
+            threshold={0.3}
             descriptionWidth={'390px'}
             reff={refApplication}
+            padding={padding}
         >
             <Formik
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
@@ -183,12 +185,12 @@ const SectionRequest = ({ refApplication, index }) => {
                                                     <div>
                                                         <div>
                                                             <img src={Attach} alt='' />
-                                                            <p>{item.name}</p>
+                                                            <span>{item.name}</span>
                                                         </div>
                                                         <img src={Delete}
-                                                        style={{cursor:'pointer'}} 
-                                                        alt=''
-                                                        onClick={() => removeFile(item.name)} />
+                                                            style={{ cursor: 'pointer' }}
+                                                            alt=''
+                                                            onClick={() => removeFile(item.name)} />
                                                     </div>
                                                 </li>
                                                 :
@@ -200,7 +202,7 @@ const SectionRequest = ({ refApplication, index }) => {
                             </InputFieldsColumn>
                         </InputFieldsRowPosition>
                         <Button
-                        color={themeColor}
+                            color={themeColor}
                             type='submit'
                         >
                             Отправить заявку

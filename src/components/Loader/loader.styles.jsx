@@ -1,8 +1,8 @@
-import styled, {keyframes, css} from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 
 
-export const  LoaderContainer = styled.div`
+export const LoaderContainer = styled.div`
 width: 100%;
 height: 100%;
 background-color: #0a0a0a;
@@ -12,6 +12,7 @@ align-items: center;
 position: fixed;
 z-index: 1500;
 flex-direction: column;
+transition-duration: 0.6s;
 `
 
 const dash = (color) => keyframes`
@@ -35,7 +36,7 @@ export const Logo = styled.div`
       fill:#0a0a0a;
       stroke: ${props => props.color ? props.color : '#F9F9F9'};
       /* transition-duration: 2s; */
-      animation: ${props => css`${dash(props.color)} 1s linear forwards`}; 
+      animation: ${props => css`${dash(props.color)} 1.5s linear forwards`};
    }
 
 `

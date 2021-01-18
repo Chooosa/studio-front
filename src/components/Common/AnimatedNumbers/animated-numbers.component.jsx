@@ -86,6 +86,11 @@ const AnimatedNumbers = ({index, duration, show}) => {
                 setReverse(false)
             })
         }
+        return () => {
+            firstControls.stop()
+            secondControls.stop()
+            thirdControls.stop()
+        }
     }, [show, duration, color, firstControls, secondControls, thirdControls])
 
     return (

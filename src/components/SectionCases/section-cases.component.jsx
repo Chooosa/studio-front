@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import { CMS_URL } from '../../config';
@@ -17,34 +17,49 @@ import {
 } from './section-cases.styles';
 import Case from './Case/case.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
+import { setScroll } from '../../redux/scroll/scroll.actions';
 
 
 
 
-const SectionCases = ({ refCases }) => {
+const SectionCases = () => {
     const [works, setWorks] = useState({ apps: [], websites: [] })
     const [currentIndex, setCurrentIndex] = useState(0)
     const color = useSelector(colorSelectors.color)
+    const scroll = useSelector(scrollSelectors.to)
+    const dispatch = useDispatch()
     const { width } = useWindowDimensions()
     const history = useHistory()
-
+    const ref= useRef()
 
     const handleNavigation = () => {
         history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}/all`)
     }
 
 
+    useEffect(() => {
+        if (scroll==='cases') {
+            ref.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            })
+            dispatch(setScroll(undefined))
+        }
+    }, [scroll, dispatch])
+
 
     useEffect(() => {
+        console.log(ref)
         axios(`${CMS_URL}/main-cases`)
             .then((response) => {
                 let tempWorks = { apps: [], websites: [] }
                 response.data.forEach((cases) => {
                     if (cases.Type === 'Application') {
-                        tempWorks.apps = cases.cases
+                        tempWorks.apps = cases.cases.slice(0,2)
                     } else if (cases.Type === 'Website') {
-                        tempWorks.websites = cases.cases
+                        tempWorks.websites = cases.cases.slice(0,2)
                     }
                 })
                 setWorks(tempWorks)
@@ -61,6 +76,7 @@ const SectionCases = ({ refCases }) => {
         }
     }
 
+    
 
     return (
         <Section
@@ -70,7 +86,9 @@ const SectionCases = ({ refCases }) => {
             index={4}
             threshold={0.2}
         >
-            <ControlsContainer>
+            <ControlsContainer 
+            ref={ref}
+            >
                 <Button
                     onClick={() => setCurrentPage(0)}
                     active={currentIndex === 0}

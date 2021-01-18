@@ -8,9 +8,9 @@ import {
     BottomTabIcon,
     BottomTabTitle
 } from './bottom-tab.styles';
-import {ReactComponent as WWWSVg} from '../../assets/sites.svg';
-import {ReactComponent as ServicesSVG} from '../../assets/services.svg';
-import {ReactComponent as AppsSVg} from '../../assets/apps.svg';
+import { ReactComponent as WWWSVg } from '../../assets/sites.svg';
+import { ReactComponent as ServicesSVG } from '../../assets/services.svg';
+import { ReactComponent as AppsSVg } from '../../assets/apps.svg';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import { useRef } from 'react';
@@ -19,53 +19,52 @@ import { useRef } from 'react';
 
 const assets = {
     'Мобильные приложения': {
-        icon: <AppsSVg/>,
+        icon: <AppsSVg />,
         name: 'Приложения'
     },
     'Сайты': {
-        icon: <WWWSVg/>,
+        icon: <WWWSVg />,
         name: 'Сайты'
     },
     'Доп.услуги': {
-        icon: <ServicesSVG/>,
+        icon: <ServicesSVG />,
         name: 'Услуги'
     }
 }
 
 
-const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
+const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
     const color = useSelector(colorSelectors.color)
     const lastOffset = useRef(0)
     const direction = useRef(0)
     const [scrollDown, setScrollDown] = useState(false)
 
-    const handleScroll = () => {
-        const pageOffset = window.pageYOffset
-        const height = window.innerHeight
-        const fullHeight = document.body.offsetHeight
-        if (fullHeight-(pageOffset+height)<100) {
-            if (!scrollDown)
-            {
-                setScrollDown(true)
-            }
-        } else {
-            if (pageOffset - lastOffset.current> 0) {
-                if (direction!==-1) {
-                    setScrollDown(true)
-                } 
-                direction.current = -1
-            } else {
-                if (direction!==1) {
-                    setScrollDown(false)
-                } 
-                direction.current = 1
-            }
-            lastOffset.current = pageOffset
-        }
-    }
 
 
     useEffect(() => {
+        const handleScroll = () => {
+            const pageOffset = window.pageYOffset
+            const height = window.innerHeight
+            const fullHeight = document.body.offsetHeight
+            if (fullHeight - (pageOffset + height) < 100) {
+                if (!scrollDown) {
+                    setScrollDown(true)
+                }
+            } else {
+                if (pageOffset - lastOffset.current > 0) {
+                    if (direction !== -1) {
+                        setScrollDown(true)
+                    }
+                    direction.current = -1
+                } else {
+                    if (direction !== 1) {
+                        setScrollDown(false)
+                    }
+                    direction.current = 1
+                }
+                lastOffset.current = pageOffset
+            }
+        }
         setTimeout(() => {
             lastOffset.current = window.pageYOffset
             document.addEventListener('scroll', handleScroll)
@@ -73,47 +72,47 @@ const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
                 document.removeEventListener('scroll', handleScroll)
             }
         }, 2000)
-    }, [])
+    }, [scrollDown])
 
     return (
         <BottomTabContainer
-        // initial={{y: 0 }}
-        // animate={{y: scrollDown? 80: 0}}
-        // transition={{
-        //     duration: 0.5
-        // }}
+            // initial={{y: 0 }}
+            // animate={{y: scrollDown? 80: 0}}
+            // transition={{
+            //     duration: 0.5
+            // }}
 
-        hide={scrollDown}
+            hide={scrollDown}
         >
             <BottomTabBarContainer
-            color={color}
+                color={color}
             >
                 <BottomTabBarInnerContainer>
-                {
-                    tabNames.map((name, index) => {
-                        return (
-                            <BottomTab 
-                            key={index}
-                            onClick={() => onTabClick(index)}
-                            >
-                                <BottomTabIcon
-                                active={index===currentTab}
+                    {
+                        tabNames.map((name, index) => {
+                            return (
+                                <BottomTab
+                                    key={index}
+                                    onClick={() => onTabClick(index)}
                                 >
-                                    {
-                                        assets[name].icon
-                                    }
-                                </BottomTabIcon>
-                                <BottomTabTitle
-                                active={index===currentTab}
-                                >
-                                    {
-                                        assets[name].name
-                                    }
-                                </BottomTabTitle>
-                            </BottomTab>
-                        )
-                    })
-                }
+                                    <BottomTabIcon
+                                        active={index === currentTab}
+                                    >
+                                        {
+                                            assets[name].icon
+                                        }
+                                    </BottomTabIcon>
+                                    <BottomTabTitle
+                                        active={index === currentTab}
+                                    >
+                                        {
+                                            assets[name].name
+                                        }
+                                    </BottomTabTitle>
+                                </BottomTab>
+                            )
+                        })
+                    }
                 </BottomTabBarInnerContainer>
             </BottomTabBarContainer>
         </BottomTabContainer>

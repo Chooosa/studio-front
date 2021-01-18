@@ -10,10 +10,11 @@ import {
 } from './section-header.styles';
 
 
-const SectionHeader = ({title, description, index, show, width, headerDescriptionStyles, headerContainerStyles}) => {
+const SectionHeader = ({title, description, index, show, width, headerDescriptionStyles, headerContainerStyles, padding}) => {
     return (
     <Content
     style={{...headerContainerStyles}}
+    padding={padding}
     >
         <Header>
             <Title>
