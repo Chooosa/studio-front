@@ -1,25 +1,25 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
-import {motion, useAnimation, useMotionValue} from 'framer-motion';
 
 import {
     LoaderContainer,
     Logo
 } from './loader.styles';
-import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Loader = () => {
     const color = useSelector(colorSelectors.color);
-    const animation = useAnimation()
     const [show, setShow] = useState(true)
+    const [translate, setTranslate] = useState(0)
 
     const finishAnimation = () => {
         setTimeout(() => {
-            setShow(false)
-        }, 300)
+            setTranslate(-100)
+        },300)
     }
+
+
 
 
 
@@ -27,7 +27,15 @@ const Loader = () => {
         <Fragment>
             {
                 show?
-                <LoaderContainer>
+                <LoaderContainer 
+                style={{
+                    transform: `translateX(${translate}%)`
+                }}
+                onTransitionEnd={() => {
+                    console.log('end')
+                    setShow(false)
+                }}
+                >
                     <Logo color={color}>
                         <svg width="100" height="100" viewBox="0 0 39 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path

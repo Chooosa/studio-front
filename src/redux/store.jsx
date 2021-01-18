@@ -12,7 +12,8 @@ const middlewares = [thunk]
 const persistConfig = {
    key: 'root',
    storage: storage,
-   stateReconciler: autoMergeLevel1
+   stateReconciler: autoMergeLevel1,
+   blacklist: ['content']
 }
 
 

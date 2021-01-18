@@ -34,7 +34,6 @@ const WorkItem = ({work}) => {
     }
 
     useEffect(() => {
-        
         if (section===work.Type&&itemId.toString()===work.id.toString()) {
             setTimeout(() => {
                 if (localStorage.getItem('scroll')==='false') {
@@ -44,7 +43,7 @@ const WorkItem = ({work}) => {
                         top: containerRef.current?.offsetTop-60
                     })
                 } 
-            }, 300)
+            }, 500)
         }
     }, [work,itemId, section])
 
@@ -105,16 +104,13 @@ const WorkItem = ({work}) => {
         }
     }
 
-    const registerCallBack = (e, w, h, currentWidth, index) => {
-        callback = setTimeout(() => {
-            console.log(e)
-            handleFullScreen(e, w, h, currentWidth, index)
-        }, 50)
+    const registerCallBack = () => {
+        callback = true
     }
 
     const cancelCallback = (e) => {
         if (callback) {
-            clearTimeout(callback)
+            callback=false
         }
     }
 
@@ -125,6 +121,11 @@ const WorkItem = ({work}) => {
         }, 100)
     }
 
+    const handleMouseUp = (e, w, h, currentWidth, index) => {
+        if (callback) {
+            handleFullScreen(e, w, h, currentWidth, index)
+        }
+    }
 
 
 
@@ -168,8 +169,9 @@ const WorkItem = ({work}) => {
                                     src={CMS_URL+img.url} 
                                     alt='example' 
                                     style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} 
-                                    onMouseDown={(e) => registerCallBack(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                                    onMouseDown={registerCallBack}
                                     onMouseMove={cancelCallback}
+                                    onMouseUp={(e) => handleMouseUp(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
                                     />
                                 )
                             })

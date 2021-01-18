@@ -39,33 +39,33 @@ const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
     const direction = useRef(0)
     const [scrollDown, setScrollDown] = useState(false)
 
-    const handleScroll = () => {
-        const pageOffset = window.pageYOffset
-        const height = window.innerHeight
-        const fullHeight = document.body.offsetHeight
-        if (fullHeight-(pageOffset+height)<100) {
-            if (!scrollDown)
-            {
-                setScrollDown(true)
-            }
-        } else {
-            if (pageOffset - lastOffset.current> 0) {
-                if (direction!==-1) {
-                    setScrollDown(true)
-                } 
-                direction.current = -1
-            } else {
-                if (direction!==1) {
-                    setScrollDown(false)
-                } 
-                direction.current = 1
-            }
-            lastOffset.current = pageOffset
-        }
-    }
-
-
+    
+    
     useEffect(() => {
+        const handleScroll = () => {
+            const pageOffset = window.pageYOffset
+            const height = window.innerHeight
+            const fullHeight = document.body.offsetHeight
+            if (fullHeight-(pageOffset+height)<100) {
+                if (!scrollDown)
+                {
+                    setScrollDown(true)
+                }
+            } else {
+                if (pageOffset - lastOffset.current> 0) {
+                    if (direction!==-1) {
+                        setScrollDown(true)
+                    } 
+                    direction.current = -1
+                } else {
+                    if (direction!==1) {
+                        setScrollDown(false)
+                    } 
+                    direction.current = 1
+                }
+                lastOffset.current = pageOffset
+            }
+        }
         setTimeout(() => {
             lastOffset.current = window.pageYOffset
             document.addEventListener('scroll', handleScroll)
@@ -73,7 +73,7 @@ const BottomTabBar = ({tabNames, onTabClick, currentTab}) => {
                 document.removeEventListener('scroll', handleScroll)
             }
         }, 2000)
-    }, [])
+    }, [scrollDown])
 
     return (
         <BottomTabContainer

@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, useLocation } from "react-router-dom";
-import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
 
 import { AppWrapper, AppContainer } from './App.styles';
 import MenuState from './context/menu-state';
@@ -12,12 +10,25 @@ import WorksPage from './pages/Works/works.component';
 import Cooperation from './pages/Cooperation/cooperation.component';
 import Guarantees from './pages/Guarantees/guarantees.component';
 import Loader from './components/Loader/loader.component';
+import { useDispatch } from 'react-redux';
+import { fetchContent } from './redux/content/content.actions';
+import ServicesPage from './pages/Services/services.component';
 
 
 
 function App() {
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
   const location = useLocation()
+  const dispatch = useDispatch()
+
+useEffect(() => {
+  localStorage.setItem('scroll', false)
+}, [])
+
+
+  useEffect(() => {
+    dispatch(fetchContent())
+  }, [dispatch])
 
 
   return (
@@ -32,13 +43,14 @@ function App() {
             <Route exact path='/' component={Main} />
             <Route exact path='/works/:section/:itemId' component={WorksPage} />
             {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
+            <Route exact path='/services/:section' component={ServicesPage} />
             <Route exact path='/cooperation' component={Cooperation} />
             <Route exact path='/guarantees' component={Guarantees} />
           </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
       <Footer />
-      {/* <Loader/> */}
+      <Loader/>
     </AppWrapper>
   );
 }

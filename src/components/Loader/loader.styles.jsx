@@ -12,6 +12,7 @@ align-items: center;
 position: fixed;
 z-index: 1500;
 flex-direction: column;
+transition-duration: 0.6s;
 `
 
 const dash = (color) => keyframes`

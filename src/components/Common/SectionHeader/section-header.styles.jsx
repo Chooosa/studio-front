@@ -9,8 +9,8 @@ margin-bottom: 60px;
 display: flex;
 flex-direction: column;
 @media(max-width: 1056px) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: ${props => props.padding? props.padding: '20px'};
+    padding-right: ${props => props.padding? props.padding: '20px'};
 }
 `
 

@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import {useSelector} from 'react-redux'
 
 import Tabs from '../../components/Tabs/tabs.component';
-import WorksTab from '../../components/WorksTab/works-tab.component';
 
 
 import {
     PageContainer,
     PageHeader,
     PageTitle
-} from './works.styles';
+} from './services.styles';
 import AnimatedNumbers from '../../components/Common/AnimatedNumbers/animated-numbers.component';
 import { useInView } from 'react-intersection-observer';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
-import { useSelector } from 'react-redux';
 import { contentSelectors } from '../../redux/content/content.selectors';
+import ServiceTab from '../../components/ServiceTab/service-tab.component';
 
-const WorksPage = () => {
-    const works = useSelector(contentSelectors.cases)
+
+const ServicesPage = () => {
     const {itemId, section} = useParams()
     const {inView, ref} = useInView()
     const [animate, setAnimate] = useState(false)
     const {width} = useWindowDimensions()
+    const services = useSelector(contentSelectors.services)
+
+    console.log(services)
 
 
     useEffect(() => {
@@ -58,7 +60,7 @@ const WorksPage = () => {
             ref={ref}
             >
                 <PageTitle>
-                Портфолио:
+                Услуги:
                 </PageTitle>
                 {
                     width< 612?
@@ -70,23 +72,25 @@ const WorksPage = () => {
                     :null
                 }
             </PageHeader>
-            <Tabs
-            tabNames={['Мобильные приложения', 'Сайты', 'Доп.услуги']}
-            tabOverride={section==='Website'?  1: undefined}
-            >
-                <WorksTab
-                description='Разработаем мобильное приложение под платформы Android или IOS с соблюдением современных стандартов и требований. Все этапы – от создания дизайна до готового продукта.'
-                works={works.apps}
-                />
-                <WorksTab
-                description='Создание стильных и быстрых сайтов – одно из наших основных направлений. От идеи до публикации готового проекта, со строгим соблюдением сроков. Под разный бюджет.'
-                works={works.websites}
-                />
-            </Tabs>
-            <SectionRequest index={2}/>
+                {
+                    services?
+                    <Tabs
+                    tabNames={['Мобильные приложения', 'Сайты', 'Доп.услуги']}
+                    tabOverride={section==='Website'?  1: section==='Service'? 2: undefined}
+                    >
+                        {services.map((service, index) => {
+                        return <ServiceTab
+                                key={index}
+                                service={service}
+                                />
+                            })}
+                    </Tabs>
+                    :null
+                }
+            <SectionRequest index={2} padding={'0px'}/>
         </PageContainer>
     )
 }
 
 
-export default WorksPage
+export default ServicesPage;

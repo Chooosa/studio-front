@@ -45,7 +45,7 @@ const validationSchema = yup.object().shape({
         .required('Обязательное поле'),
 })
 
-const SectionRequest = ({ refApplication, index }) => {
+const SectionRequest = ({ refApplication, index, padding }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
 
@@ -99,6 +99,7 @@ const SectionRequest = ({ refApplication, index }) => {
             }}
             descriptionWidth={'390px'}
             reff={refApplication}
+            padding={padding}
         >
             <Formik
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
