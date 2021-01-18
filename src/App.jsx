@@ -13,6 +13,7 @@ import Loader from './components/Loader/loader.component';
 import { useDispatch } from 'react-redux';
 import { fetchContent } from './redux/content/content.actions';
 import ServicesPage from './pages/Services/services.component';
+import AnimatedBackground from './components/AnimatedBackground/animated-background.component';
 
 
 
@@ -49,6 +50,7 @@ useEffect(() => {
           </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
+      <AnimatedBackground/>
       <Footer />
       <Loader/>
     </AppWrapper>

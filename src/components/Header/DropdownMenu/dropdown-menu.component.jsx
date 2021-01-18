@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
    DropdownMenuWrapper,
@@ -10,10 +10,28 @@ import {
 } from './dropdown-menu.styles';
 import { MenuContext } from '../../../context/menu-state';
 import { colorSelectors } from '../../../redux/color/color.selectors';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { setScroll } from '../../../redux/scroll/scroll.actions';
 
 const DropdownMenu = () => {
-   const { isMenuOpen } = useContext(MenuContext);
+   const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
    const color = useSelector(colorSelectors.color);
+
+   const {pathname} = useLocation()
+   const dispatch = useDispatch()
+   const history = useHistory()
+
+   const handleCasesNavigation = () => {
+       if (pathname==='/') {
+           dispatch(setScroll('cases'))
+       } else {
+           dispatch(setScroll('cases'))
+           history.push('/')
+       }
+       toggleMenuMode()
+   }
+
+
 
    return (
       <DropdownMenuWrapper open={isMenuOpen}>
@@ -21,29 +39,53 @@ const DropdownMenu = () => {
             <WhiteSpace />
             <LinksWrapper>
                <LinksCell color={color}>
-                  <a href='#'>Главная</a>
-                  <a href='#'>Кейсы</a>
-                  <a href='#'>Приложения</a>
-                  <a href='#'>Порталы</a>
-                  <a href='#'>Сайты</a>
+                  <Link to='/' onClick={toggleMenuMode}>
+                     Главная
+                  </Link>
+                  <span onClick={handleCasesNavigation}>Кейсы </span>
+                  <Link to='/works/Website/all' onClick={toggleMenuMode}>
+                     Приложения</Link>
+                  <Link to='/works/Application/all' onClick={toggleMenuMode}>
+                     Сайты</Link>
                </LinksCell>
                <LinksCell color={color}>
-                  <a href='#'>Приложения</a>
-                  <a href='#'>Порталы</a>
-                  <a href='#'>Сайты</a>
-                  <a href='#'>Доп. услуги</a>
+                  <Link to='/services/Application' onClick={toggleMenuMode}>
+                     Приложения</Link>
+                  <Link to='/services/Website' onClick={toggleMenuMode}>
+                     Сайты</Link>
+                  <Link to='/services/Service' onClick={toggleMenuMode}>
+                     Доп. услуги</Link>
                </LinksCell>
                <LinksCell color={color}>
-                  <a href='guarantees'>Гарантии</a>
-                  <a href='cooperation'>Сотрудничество</a>
+                  <Link to='/guarantees' onClick={toggleMenuMode}>
+                     Гарантии</Link>
+                  <Link to='/cooperation' onClick={toggleMenuMode}>
+                     Сотрудничество</Link>
                </LinksCell>
             </LinksWrapper>
             <LinksCell color={color}>
-               <a href='tel:89995357879'>8 999 535 78 79</a>
-               <a href='#'>Email</a>
-               <a href='#'>Telegram</a>
-               <a href='#'>WhatsApp</a>
-               <a href='#'>Viber</a>
+               <a href='tel:+79995357879'>
+                  8 999 535 78 79
+               </a>
+               <a href='mailto:evgeny@lilekov-studio.com'>
+                  Email
+               </a>
+
+
+               <a href='tg://resolve?domain=@lilekov_evgeniy'>
+                  Telegram
+               </a>
+
+
+               <a href="https://wa.me/79995357879" target='_blank'>
+                  WhatsApp
+               </a>
+
+
+               <a href='viber://add?number=79995357879' target="_blank">
+                  Viber
+               </a>
+
             </LinksCell>
          </DropdownMenuContainer>
       </DropdownMenuWrapper>

@@ -15,4 +15,5 @@ export const AppContainer = styled.div`
    width: 100%;
    max-width: 956px;
    margin: 70px auto 0 auto;
+   z-index:1;
 `

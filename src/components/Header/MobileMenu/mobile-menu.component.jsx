@@ -137,19 +137,30 @@ const MobileMenu = () => {
                     keepOpen={true}
                     >
                         <BodyItem>
-                        8 999 535 78 79
+                            <a href='tel:+79995357879'>
+                                8 999 535 78 79
+                            </a>
+                        </BodyItem>
+                        
+                        <BodyItem>
+                            <a href='mailto:evgeny@lilekov-studio.com'>
+                                evgeny@lilekov-studio.com
+                            </a>
                         </BodyItem>
                         <BodyItem>
-                        Email
+                            <a href='tg://resolve?domain=@lilekov_evgeniy'>
+                                Telegram
+                            </a>
                         </BodyItem>
                         <BodyItem>
-                        Telegram
+                            <a href="https://wa.me/79995357879">
+                                WhatsApp
+                            </a>
                         </BodyItem>
                         <BodyItem>
-                        WhatsApp
-                        </BodyItem>
-                        <BodyItem>
-                        Viber
+                            <a href='viber://add?number=79995357879' target="_blank">
+                                Viber
+                            </a>
                         </BodyItem>
                     </MenuSection>
                 </Container>

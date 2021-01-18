@@ -36,7 +36,7 @@ export const Logo = styled.div`
       fill:#0a0a0a;
       stroke: ${props => props.color ? props.color : '#F9F9F9'};
       /* transition-duration: 2s; */
-      animation: ${props => css`${dash(props.color)} 1s linear forwards`}; 
+      animation: ${props => css`${dash(props.color)} 1.5s linear forwards`}; 
    }
 
 `
