@@ -14,7 +14,7 @@ import {
     ThirdStop
 } from './animated-numbers.styles';
 import { useAnimation } from 'framer-motion';
-import {useInView} from 'react-intersection-observer';
+
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 
@@ -30,7 +30,7 @@ const AnimatedNumbers = ({index, duration, show}) => {
     const secondControls = useAnimation()
     const thirdControls = useAnimation()
     const [reverse, setReverse] = useState(false)
-    const {inView, ref} = useInView()
+    
     const color = useSelector(colorSelectors.color)
 
 
@@ -90,7 +90,6 @@ const AnimatedNumbers = ({index, duration, show}) => {
 
     return (
         <AnimatedNumber
-        ref={ref}
         index={index}
         >
                     <svg width="95" height="54" viewBox="0 0 95 54" fill="none" xmlns="http://www.w3.org/2000/svg">

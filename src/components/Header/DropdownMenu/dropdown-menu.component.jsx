@@ -16,7 +16,7 @@ const DropdownMenu = () => {
    const color = useSelector(colorSelectors.color);
 
    return (
-      <DropdownMenuWrapper open={isMenuOpen}>
+      <DropdownMenuWrapper open={isMenuOpen} color={color}>
          <DropdownMenuContainer>
             <WhiteSpace />
             <LinksWrapper>
@@ -24,18 +24,16 @@ const DropdownMenu = () => {
                   <a href='#'>Главная</a>
                   <a href='#'>Кейсы</a>
                   <a href='#'>Приложения</a>
-                  <a href='#'>Порталы</a>
                   <a href='#'>Сайты</a>
                </LinksCell>
                <LinksCell color={color}>
                   <a href='#'>Приложения</a>
-                  <a href='#'>Порталы</a>
                   <a href='#'>Сайты</a>
                   <a href='#'>Доп. услуги</a>
                </LinksCell>
                <LinksCell color={color}>
-                  <a href='#'>Гарантии</a>
-                  <a href='#'>Сотрудничество</a>
+                  <a href='guarantees'>Гарантии</a>
+                  <a href='cooperation'>Сотрудничество</a>
                </LinksCell>
             </LinksWrapper>
             <LinksCell color={color}>

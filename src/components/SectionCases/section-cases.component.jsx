@@ -31,7 +31,7 @@ const SectionCases = ({ refCases }) => {
 
 
     const handleNavigation = () => {
-        history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}`)
+        history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}/all`)
     }
 
 
@@ -91,15 +91,15 @@ const SectionCases = ({ refCases }) => {
                     <Slider rotation={currentIndex === 0 ? 0 : -90} >
                         <CasesContainer front={true} z={width > 956 ? 956 / 2 : width / 2}>
                             {
-                                works.apps.map((app) => {
-                                    return <Case caseToDisplay={app} />
+                                works.apps.map((app, index) => {
+                                    return <Case key={index} caseToDisplay={app} />
                                 })
                             }
                         </CasesContainer>
                         <CasesContainer z={width > 956 ? 956 / 2 : width / 2}>
                             {
-                                works.websites.map((app) => {
-                                    return <Case caseToDisplay={app} />
+                                works.websites.map((app, index) => {
+                                    return <Case key={index} caseToDisplay={app} />
                                 })
                             }
                         </CasesContainer>

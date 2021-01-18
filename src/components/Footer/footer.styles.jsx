@@ -9,7 +9,7 @@ export const FooterWrapper = styled.footer`
    background-color: #fff;
    display: flex;
    justify-content: center;
-
+   z-index: 0;
    background: linear-gradient(to right,#111 71%,rgba(17,17,17,0) 100%);
 `
 
@@ -120,6 +120,9 @@ export const MapButton = styled(CustomButton)`
    color: #0a0a0a;
    :hover {
       opacity: 0.8;
+   }
+   @media(max-width: 612px) {
+      margin: 0;
    }
 `
 

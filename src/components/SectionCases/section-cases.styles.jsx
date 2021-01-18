@@ -34,7 +34,7 @@ overflow: hidden;
 `
 
 export const SliderContainer = styled.div`
-perspective: 2000px;
+perspective: 1000px;
 position: relative;
 height:860px;
 z-index: 1;
@@ -44,7 +44,7 @@ z-index: 1;
 }
 
 @media(max-width: 600px) {
-    height: 1144px;
+    height: 1264px;
 }
 /* overflow: hidden; */
 `
@@ -69,10 +69,17 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-top: 50px;
+@media(max-width:600px) {
+    margin-top: 12px;
+}
 `
 
 export const AllCasesButton = styled(CustomButton)`
 width: 100%;
 border: none;
 background-color: ${props => props.color};
+@media(max-width: 600px) {
+    background-color: initial;
+    border: ${props => `1px solid ${props.color}`};
+}
 `

@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import { useWindowDimensions } from '../../hooks/dimensions';
@@ -13,31 +15,56 @@ import {
     SlideImage
 } from './work-item.styles';
 
+let callback;
 
 const WorkItem = ({work}) => {
     const {width, height} = useWindowDimensions()
     const [fullscreenImage, setFullScreenImage] = useState(undefined)
     const [animating, setAnimating] = useState(false)
+    const {section, itemId} = useParams()
+    const containerRef = useRef()
+    
+    const reverseFullScreen = () => {
+        fullscreenImage.el.addEventListener('transitionend', removeNode)
+        const {width, top, left} = fullscreenImage.target.getBoundingClientRect()
 
-
-    const getImageDimension = (w, h) => {
-
-        let left, top, hh, ww;
-        if (w>width){
-            ww=`${width*0.8}px`;
-            const newHeight = width*0.8*h/w
-            left=`${(width-width*0.8)/2}px`;
-            top= `${(height-newHeight)/2}px`;
-            hh=`${newHeight}px`;
-        } else {
-            left=`${(width-w)/2}px`;
-            top= `${(height-h)/2}px`;
-            ww=`${w}px`;
-            hh=`${h}px`;
-        }
-        
-        return {ww, hh, left, top}
+        fullscreenImage.el.style.left = `${left}px`
+        fullscreenImage.el.style.top = `${top}px`
+        fullscreenImage.el.style.width = `${width}px`
     }
+
+    useEffect(() => {
+        
+        if (section===work.Type&&itemId.toString()===work.id.toString()) {
+            setTimeout(() => {
+                if (localStorage.getItem('scroll')==='false') {
+                    localStorage.setItem('scroll', 'true')
+                    window.scrollTo({
+                        behavior: 'smooth',
+                        top: containerRef.current?.offsetTop-60
+                    })
+                } 
+            }, 300)
+        }
+    }, [work,itemId, section])
+
+    useEffect(() => {
+        if (fullscreenImage) {
+            fullscreenImage.el.addEventListener('click',() => {
+                fullscreenImage.el.addEventListener('transitionend', () => {
+                    setTimeout(() => {
+                        fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+                        setFullScreenImage(undefined)
+                    }, 100)
+                })
+                const {width, top, left} = fullscreenImage.target.getBoundingClientRect()
+        
+                fullscreenImage.el.style.left = `${left}px`
+                fullscreenImage.el.style.top = `${top}px`
+                fullscreenImage.el.style.width = `${width}px`
+            })
+        }
+    }, [fullscreenImage])
 
 
     const handleFullScreen = (e, w, h, currentWidth, index) => {
@@ -47,7 +74,7 @@ const WorkItem = ({work}) => {
             let disLeft= fly.getBoundingClientRect().left;
             let disTop= fly.getBoundingClientRect().top;
             const flyCopy = fly.cloneNode(true)
-            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1)`;
+            flyCopy.style =`z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1); outline: none;`;
             const el = document.body.appendChild(flyCopy);
             setTimeout(() => {
                 if(w > width) {
@@ -62,18 +89,49 @@ const WorkItem = ({work}) => {
                 }
             }, 300)
             flyCopy.addEventListener('transitionend', () => {
-                setFullScreenImage({index, el})
+                setFullScreenImage({index, el, target: fly})
                 setAnimating(false)
             })
         }
     }
 
-    const removeNode = () => {
-        fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+
+
+    const getSliderHeight = () => {
+        if (work.Gallery.length>1) {
+            return width>600? work.Gallery[0].height*0.8: width*0.7*work.Gallery[0].height/work.Gallery[0].width> work.Gallery[0].height*0.7?work.Gallery[0].height*0.7:width*0.7*work.Gallery[0].height/work.Gallery[0].width
+        } else {
+            return (width>996?956-40: width-80)*work.Gallery[0].height/work.Gallery[0].width
+        }
     }
 
+    const registerCallBack = (e, w, h, currentWidth, index) => {
+        callback = setTimeout(() => {
+            console.log(e)
+            handleFullScreen(e, w, h, currentWidth, index)
+        }, 50)
+    }
+
+    const cancelCallback = (e) => {
+        if (callback) {
+            clearTimeout(callback)
+        }
+    }
+
+    const removeNode = () => {
+        setTimeout(() => {
+            fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
+            setFullScreenImage(undefined)
+        }, 100)
+    }
+
+
+
+
     return (
-        <Container>
+        <Container
+        ref={containerRef}
+        >
             <Title>
                 {work.Title}
             </Title>
@@ -85,7 +143,11 @@ const WorkItem = ({work}) => {
                     {work.SecondDescriptionBlock}
                 </TextSection>
             </TextContent>
-            <SliderContainer>
+            <SliderContainer
+            style={{
+                height: `${getSliderHeight()}px`
+            }}
+            >
                 {
                     work.Gallery.length>1?
                     <Slider
@@ -94,12 +156,21 @@ const WorkItem = ({work}) => {
                     initialSlide={0}
                     infinite={false}
                     rows={1}
+                    arrows={false}
                     >
                         {
                             work.Gallery.map((img, index) => {
                                 
                                 return (
-                                    <SlideImage key={index} src={CMS_URL+img.url} alt='example' style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}/>
+                                    // onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                                    <SlideImage 
+                                    key={index} 
+                                    src={CMS_URL+img.url} 
+                                    alt='example' 
+                                    style={{width: width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7 }} 
+                                    onMouseDown={(e) => registerCallBack(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                                    onMouseMove={cancelCallback}
+                                    />
                                 )
                             })
                         }
@@ -123,12 +194,9 @@ const WorkItem = ({work}) => {
                     backgroundColor: 'rgba(0,0,0,0.2)',
                     zIndex: 1110
                 }}
-                onClick={() => {
-                    removeNode()
-                    setFullScreenImage(undefined)
-                }}
+                onClick={reverseFullScreen}
                 >
-                    <div 
+                    {/* <div 
                     style={{
                         position: 'relative',
                         width: '100%',
@@ -149,7 +217,7 @@ const WorkItem = ({work}) => {
                         }}
                         
                         />
-                    </div>
+                    </div> */}
                 </div>
                 :null
             }

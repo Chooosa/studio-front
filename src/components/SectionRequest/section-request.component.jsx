@@ -45,7 +45,7 @@ const validationSchema = yup.object().shape({
         .required('Обязательное поле'),
 })
 
-const SectionRequest = ({ refApplication }) => {
+const SectionRequest = ({ refApplication, index }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
 
@@ -75,10 +75,10 @@ const SectionRequest = ({ refApplication }) => {
         }
     }
 
-    const removeFile = (id) => {
+    const removeFile = (name) => {
         let files = filesArray;
         setFilesArray(
-            () => files.filter((item) => item.lastModified !== id)
+            () => files.filter((item) => item.name !== name)
         )
 
     }
@@ -93,7 +93,7 @@ const SectionRequest = ({ refApplication }) => {
         и примерные сроки.
         Расскажите о нём и вместе мы воплотим его в жизнь.
         '
-            index={7}
+            index={index}
             headerContainerStyles={{
                 marginBottom: '50px'
             }}
@@ -109,7 +109,7 @@ const SectionRequest = ({ refApplication }) => {
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                     <InputFieldsWrapper onSubmit={handleSubmit} >
                         <InputFieldsRowPosition width={width}>
-                            <InputFieldsColumn>
+                            <InputFieldsColumn width={width}>
                                 <InputWrapper>
                                     <InputField
                                         placeholder=' '
@@ -140,7 +140,6 @@ const SectionRequest = ({ refApplication }) => {
                                     <InputField
                                         placeholder=' '
                                         value={values.email}
-                                        type='email'
                                         color={themeColor}
                                         name='email'
                                         id='email'
@@ -151,7 +150,7 @@ const SectionRequest = ({ refApplication }) => {
                                 </InputWrapper>
                             </InputFieldsColumn>
                             <InputFieldsColumn>
-                                <ExtraInfoWrapper>
+                                <ExtraInfoWrapper width={width}>
                                     <ExtraInfo
                                         placeholder=' '
                                         value={values.text}
@@ -174,7 +173,7 @@ const SectionRequest = ({ refApplication }) => {
                                     Прикрепить файл
                                 <Icon src={Attach} />
                                 </FileInputLabel>
-                                <FilesList>
+                                <FilesList width={width}>
                                     {filesArray.map((item) => {
                                         return (
 
@@ -182,10 +181,14 @@ const SectionRequest = ({ refApplication }) => {
                                                 <li key={item.lastModified}
                                                 >
                                                     <div>
-                                                        <img src={Attach} alt='' />
-                                                        <span>{item.name}</span>
-                                                        <img src={Delete} alt=''
-                                                            onClick={() => removeFile(item.lastModified)} />
+                                                        <div>
+                                                            <img src={Attach} alt='' />
+                                                            <p>{item.name}</p>
+                                                        </div>
+                                                        <img src={Delete}
+                                                        style={{cursor:'pointer'}} 
+                                                        alt=''
+                                                        onClick={() => removeFile(item.name)} />
                                                     </div>
                                                 </li>
                                                 :
@@ -197,6 +200,7 @@ const SectionRequest = ({ refApplication }) => {
                             </InputFieldsColumn>
                         </InputFieldsRowPosition>
                         <Button
+                        color={themeColor}
                             type='submit'
                         >
                             Отправить заявку

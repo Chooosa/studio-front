@@ -13,6 +13,7 @@ export const PageHeader = styled.div`
 width: 100%;
 display: flex;
 justify-content: space-between;
+align-items: center;
 `
 
 export const PageTitle = styled.h2`
@@ -25,4 +26,7 @@ letter-spacing: 0.06em;
 color: #F9F9F9;
 margin-top: 80px;
 margin-bottom: 48px;
+@media(max-width: 612px) {
+    margin-top: 50px;
+}
 `
