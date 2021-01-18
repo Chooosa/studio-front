@@ -97,6 +97,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             headerContainerStyles={{
                 marginBottom: '50px'
             }}
+            threshold={0.3}
             descriptionWidth={'390px'}
             reff={refApplication}
             padding={padding}
@@ -184,7 +185,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                                     <div>
                                                         <div>
                                                             <img src={Attach} alt='' />
-                                                            <p>{item.name}</p>
+                                                            <span>{item.name}</span>
                                                         </div>
                                                         <img src={Delete}
                                                         style={{cursor:'pointer'}} 

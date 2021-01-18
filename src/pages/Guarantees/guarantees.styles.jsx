@@ -22,19 +22,17 @@ export const GuaranteeSectionWrapper = styled.div`
     >div {
         display: flex;
         flex-direction: column;
-        width: 50%;
         margin: 0px 30px;
         align-items: center;
 
 
         >h2 {
-            margin-left: 30px;
+            /* margin-left: 30px; */
             align-self: flex-start;
         }
 
         >svg {
             margin: 0px 0px;
-            transition: 4s;
         }  
     }
 `
@@ -50,7 +48,7 @@ export const DropDownSectionDiv = styled.div`
     display: flex;
     min-height: 80px;
     ${props => props.open ? 'max-height: 900px' : `max-height: 0px`};
-    transition: all .6s ease;
+    transition: all .9s ease-in-out;
     padding: 10px 15px;
     border-bottom: 1px solid #2C2C2C;
 
@@ -60,6 +58,10 @@ export const DropDownSectionDiv = styled.div`
     >span {
         overflow: hidden;
         margin-bottom: 20px;
+        transition-duration: 0.5s;
+        transition-delay: 0.3s;
+        
+        opacity: ${props => props.open ? 1 : 0};
     }
 
 `
@@ -73,5 +75,10 @@ export const DropDownSectionHeader = styled.div`
 
     >h2 {
         margin: 0px;
+    }
+
+    >svg {
+        transition-duration: 0.6s;
+        ${props => !props.open ? '' : 'transform: rotateZ(180deg);'}
     }
 `
