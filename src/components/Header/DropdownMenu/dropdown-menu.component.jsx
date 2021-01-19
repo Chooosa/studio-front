@@ -17,24 +17,24 @@ const DropdownMenu = () => {
    const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
    const color = useSelector(colorSelectors.color);
 
-   const {pathname} = useLocation()
+   const { pathname } = useLocation()
    const dispatch = useDispatch()
    const history = useHistory()
 
    const handleCasesNavigation = () => {
-       if (pathname==='/') {
-           dispatch(setScroll('cases'))
-       } else {
-           dispatch(setScroll('cases'))
-           history.push('/')
-       }
-       toggleMenuMode()
+      if (pathname === '/') {
+         dispatch(setScroll('cases'))
+      } else {
+         dispatch(setScroll('cases'))
+         history.push('/')
+      }
+      toggleMenuMode()
    }
 
 
 
    return (
-      <DropdownMenuWrapper open={isMenuOpen}>
+      <DropdownMenuWrapper open={isMenuOpen} color={color}>
          <DropdownMenuContainer>
             <WhiteSpace />
             <LinksWrapper>

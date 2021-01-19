@@ -17,8 +17,8 @@ export const GuaranteesSections = styled.div`
 
 export const GuaranteeSectionWrapper = styled.div`
     display: flex;
-    padding: 30px 0px;    
-    
+    padding: 30px 0px;
+
     >div {
         display: flex;
         flex-direction: column;
@@ -33,7 +33,7 @@ export const GuaranteeSectionWrapper = styled.div`
 
         >svg {
             margin: 0px 0px;
-        }  
+        }
     }
 `
 
@@ -41,7 +41,7 @@ export const ListTextWrapper = styled.div`
     >ul {
         padding: 20px;
     }
-    
+
 `
 
 export const DropDownSectionDiv = styled.div`
@@ -60,7 +60,7 @@ export const DropDownSectionDiv = styled.div`
         margin-bottom: 20px;
         transition-duration: 0.5s;
         transition-delay: 0.3s;
-        
+
         opacity: ${props => props.open ? 1 : 0};
     }
 

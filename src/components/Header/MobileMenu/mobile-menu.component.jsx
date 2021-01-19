@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, useHistory, useLocation} from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 
 import { MenuContext } from '../../../context/menu-state';
@@ -37,12 +37,12 @@ const variants = {
 const MobileMenu = () => {
     const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
     const color = useSelector(colorSelectors.color)
-    const {pathname} = useLocation()
+    const { pathname } = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
 
     const handleCasesNavigation = () => {
-        if (pathname==='/') {
+        if (pathname === '/') {
             dispatch(setScroll('cases'))
         } else {
             dispatch(setScroll('cases'))
@@ -54,117 +54,117 @@ const MobileMenu = () => {
     return (
         <AnimatePresence>
             {
-                isMenuOpen?
-                <Container
-                variants={variants}
-                exit='hidden'
-                initial='hidden'
-                animate='shown'
-                >
-                    <MenuSection
-                    title={'Меню'}
+                isMenuOpen ?
+                    <Container
+                        variants={variants}
+                        exit='hidden'
+                        initial='hidden'
+                        animate='shown'
                     >
-                        <BodyItem>
-                        <Link to='/' onClick={toggleMenuMode}>
-                                Главная
+                        <MenuSection
+                            title={'Меню'}
+                        >
+                            <BodyItem>
+                                <Link to='/' onClick={toggleMenuMode}>
+                                    Главная
                         </Link>
                             </BodyItem>
                             <BodyItem
-                            onClick={handleCasesNavigation}
+                                onClick={handleCasesNavigation}
                             >
                                 Кейсы
                             </BodyItem>
                             <BodyItem>
-                        <Link to='/works/Application/all' onClick={toggleMenuMode}>
-                                Приложения
+                                <Link to='/works/Application/all' onClick={toggleMenuMode}>
+                                    Приложения
                         </Link>
                             </BodyItem>
-                        <BodyItem>
-                        <Link to='/works/Website/all' onClick={toggleMenuMode}>
-                            Сайты
+                            <BodyItem>
+                                <Link to='/works/Website/all' onClick={toggleMenuMode}>
+                                    Сайты
                         </Link>
-                        </BodyItem>
-                    </MenuSection>
-                    <MenuSection
-                    title={'Услуги'}
-                    >
+                            </BodyItem>
+                        </MenuSection>
+                        <MenuSection
+                            title={'Услуги'}
+                        >
                             <BodyItem
                             >
-                            <Link to='/services/Application' onClick={toggleMenuMode}>
-                            Приложения
+                                <Link to='/services/Application' onClick={toggleMenuMode}>
+                                    Приложения
                         </Link>
                             </BodyItem>
                             <BodyItem>
-                        <Link to='/services/Website' onClick={toggleMenuMode}>
-                            Сайты
+                                <Link to='/services/Website' onClick={toggleMenuMode}>
+                                    Сайты
                         </Link>
                             </BodyItem>
                             <BodyItem>
-                        <Link to='/services/Service' onClick={toggleMenuMode}>
-                            Доп.услуги
+                                <Link to='/services/Service' onClick={toggleMenuMode}>
+                                    Доп.услуги
                         </Link>
                             </BodyItem>
-                    </MenuSection>
-                    <MenuSection
-                    title={'Разное'}
-                    >
+                        </MenuSection>
+                        <MenuSection
+                            title={'Разное'}
+                        >
                             <BodyItem>
-                        <Link to='/guarantees' onClick={toggleMenuMode}>
-                            Гарантии
+                                <Link to='/guarantees' onClick={toggleMenuMode}>
+                                    Гарантии
                         </Link>
                             </BodyItem>
                             <BodyItem>
-                        <Link to='/cooperation' onClick={toggleMenuMode}>
-                            Сотрудничество
+                                <Link to='/cooperation' onClick={toggleMenuMode}>
+                                    Сотрудничество
                         </Link>
                             </BodyItem>
-                    </MenuSection>
-                    <Divider 
-                    color={color}
-                    initial={{
-                        width: '0%'
-                    }}
-                    animate={{
-                        width: '100%',
-                        transition: {
-                            duration: 1.5
-                        }
-                    }}
-                    />
-                    <MenuSection
-                    title={'Контакты'}
-                    color={color}
-                    keepOpen={true}
-                    >
-                        <BodyItem>
-                            <a href='tel:+79995357879'>
-                                8 999 535 78 79
+                        </MenuSection>
+                        <Divider
+                            color={color}
+                            initial={{
+                                width: '0%'
+                            }}
+                            animate={{
+                                width: '100%',
+                                transition: {
+                                    duration: 1.5
+                                }
+                            }}
+                        />
+                        <MenuSection
+                            title={'Контакты'}
+                            color={color}
+                            keepOpen={true}
+                        >
+                            <BodyItem>
+                                <a href='tel:+79995357879'>
+                                    8 999 535 78 79
                             </a>
-                        </BodyItem>
-                        
-                        <BodyItem>
-                            <a href='mailto:evgeny@lilekov-studio.com'>
-                                evgeny@lilekov-studio.com
+                            </BodyItem>
+
+                            <BodyItem>
+                                <a href='mailto:evgeny@lilekov-studio.com'>
+                                    evgeny@lilekov-studio.com
                             </a>
-                        </BodyItem>
-                        <BodyItem>
-                            <a href='tg://resolve?domain=@lilekov_evgeniy'>
-                                Telegram
+                            </BodyItem>
+                            <BodyItem>
+                                <a href='tg://resolve?domain=@lilekov_evgeniy'>
+                                    Telegram
                             </a>
-                        </BodyItem>
-                        <BodyItem>
-                            <a href="https://wa.me/79995357879">
-                                WhatsApp
+                            </BodyItem>
+                            <BodyItem>
+                                <a href="https://wa.me/79995357879">
+                                    WhatsApp
                             </a>
-                        </BodyItem>
-                        <BodyItem>
-                            <a href='viber://add?number=79995357879' target="_blank">
-                                Viber
+                            </BodyItem>
+                            <BodyItem>
+                                <a href='viber://add?number=79995357879' target="_blank">
+                                    Viber
                             </a>
-                        </BodyItem>
-                    </MenuSection>
-                </Container>
-                :null
+                            </BodyItem>
+                        </MenuSection>
+                    </Container>
+                    : null
             }
         </AnimatePresence>
     )

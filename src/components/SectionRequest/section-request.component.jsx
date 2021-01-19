@@ -52,16 +52,23 @@ const SectionRequest = ({ refApplication, index, padding }) => {
     const [filesArray, setFilesArray] = useState([]);
 
     const sendRequest = async (values) => {
-        axios.interceptors.request.use(function (config) {
-            return config;
-        }, function (error) {
-            return Promise.reject(error);
-        });
+        // axios.interceptors.request.use(function (config) {
+        //     return config;
+        // }, function (error) {
+        //     return Promise.reject(error);
+        // });
+        const formData = new FormData();
+        formData.append('name', values.name);
+        formData.append('email', values.email);
+        formData.append('phone', values.phone);
+        formData.append('text', values.text);
+
+        for (let i = 0; i < filesArray.length; i++) {
+            formData.append('file[]', filesArray[i]);
+        }
+             
         try {
-            const resp = await axios.post(`${API_URL}application`, {
-                json: values,
-                file: filesArray
-            });
+            const resp = await axios.post(`${API_URL}application`, formData);
             return resp;
         }
         catch (err) {
@@ -71,7 +78,9 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
     const addFile = (file) => {
         if (file && file.lastModified) {
-            setFilesArray([...filesArray, file]);
+            if(filesArray.find((item) => item.name === file.name) === undefined){
+                setFilesArray([...filesArray, file]);
+            }
         }
     }
 
@@ -80,7 +89,6 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         setFilesArray(
             () => files.filter((item) => item.name !== name)
         )
-
     }
 
     return (
@@ -188,9 +196,9 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                                             <span>{item.name}</span>
                                                         </div>
                                                         <img src={Delete}
-                                                        style={{cursor:'pointer'}} 
-                                                        alt=''
-                                                        onClick={() => removeFile(item.name)} />
+                                                            style={{ cursor: 'pointer' }}
+                                                            alt=''
+                                                            onClick={() => removeFile(item.name)} />
                                                     </div>
                                                 </li>
                                                 :
@@ -202,7 +210,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                             </InputFieldsColumn>
                         </InputFieldsRowPosition>
                         <Button
-                        color={themeColor}
+                            color={themeColor}
                             type='submit'
                         >
                             Отправить заявку

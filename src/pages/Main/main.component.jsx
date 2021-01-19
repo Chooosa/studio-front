@@ -30,8 +30,8 @@ const Main = () => {
             <SectionCases refCases={refCases} />
             <SectionAbout />
             <SectionPlan refApplication={refApplication} />
-            <SectionRequest refApplication={refApplication} index={7}/>
-            
+            <SectionRequest refApplication={refApplication} index={7} />
+
          </MainWrapper>
       </Fragment>
    );

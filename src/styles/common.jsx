@@ -30,18 +30,19 @@ export const CustomButton = styled(motion.button)`
    }
 `
 
-export const CustomHeading = styled.h2`
+export const CustomHeading = styled(motion.h2)`
    font-weight: 800;
    font-size: 42px;
-   line-height: 57px;
+   line-height: 50px;
    color: #F9F9F9;
    margin-bottom: 12px;
    @media (max-width: 600px) {
       font-size: 28px;
+      line-height: 32px;
    }
 `
 
-export const CustomText = styled.span`
+export const CustomText = styled(motion.span)`
    font-weight: 200;
    font-size: 14px;
    line-height: 20px;

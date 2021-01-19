@@ -8,24 +8,44 @@ export const PlanWrapper = styled.div`
    flex-direction: column;
    justify-content: space-between;
    background-color: #111;
-
+   overflow: hidden;
    padding: 77px 0 60px 56px;
-   height: 670px;
    margin-bottom: 10px;
+   /* height: 670px; */
+
+   @media(max-width: 790px) {
+      padding: 50px 10px;
+   }
+   @media(max-width: 410px) {
+      padding: 40px 0;
+   }
 `
 
 export const Button = styled(CustomButton)`
    align-self: center;
    border-color: ${props => props.color};
+   margin-top: 40px;
+   margin-right: 56px;
+
+   @media(max-width: 790px) {
+      margin-right: 0;
+   }
    /* background-color: ${props => props.color}; */
 `
 
 export const Heading = styled(CustomHeading)`
    margin-top: 0;
+   font-size: 24px;
+   line-height: 32px;
 `
 
 export const Text = styled(CustomText)`
-
+   >ul, ol {
+      padding-left: 18px;
+      >li {
+         line-height: 22px;
+      }
+   }
 `
 
 export const PlanContainer = styled.div`
@@ -33,31 +53,56 @@ export const PlanContainer = styled.div`
    display: flex;
    justify-content: space-between;
 
+   @media(max-width: 790px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      /* padding-top: 60px; */
+   }
 `
 
-export const DescriptionWrapper = styled.div`
+export const DescriptionWrapper = styled(motion.div)`
    display: flex;
    flex-direction: column;
+   max-width: 370px;
+   min-width: 300px;
+   margin-right: 40px;
+   min-height: 450px;
+   overflow: hidden;
+
+   @media(max-width: 790px) {
+      margin-right: 0;
+   }
+   @media(max-width: 410px) {
+      margin-left: 10px;
+      margin-right: 10px;
+   }
 `
 
 export const SchemeWrapper = styled.div`
-   width: 450px;
+   width: 100%;
+   max-width: 480px;
    /* width: 50%; */
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   /* justify-content: space-between; */
    height: 100%;
    /* align-items: flex-end; */
 `
 
 export const LineWrapper = styled.div`
    width: 100%;
-   height: 100%;
+   height: 50px;
    display: flex;
    flex-direction: column;
    /* justify-content: space-between; */
-   align-items: flex-end;
+   align-items: ${props => props.alignLeft ? 'flex-start' : 'flex-end'};
    position: relative;
+   margin-top: 40px;
+   margin-bottom: 50px;
+
+   @media(max-width: 410px) {
+      margin-bottom: 30px;
+   }
 `
 
 export const Line = styled.div`
@@ -107,6 +152,10 @@ export const StepButton = styled.button`
       transition-duration: 0.2s;
    }
 
+   @media(max-width: 410px) {
+      font-size: 12px;
+      line-height: 16px;
+   }
 `
 
 export const ProgressLine = styled.div`
@@ -127,21 +176,63 @@ export const Dash = styled.div`
    z-index: 0;
 `
 
+const visibilityDot = (props) => {
+   if (props.first && props.transitionProgress === 1) {
+      return 'visible'
+   } else if (props.first) {
+      return 'hidden'
+   }
+   if (props.two && props.transitionProgress === 2) {
+      return 'visible'
+   } else if (props.two) {
+      return 'hidden'
+   }
+   if (props.three && props.transitionProgress === 3) {
+      return 'visible'
+   } else if (props.three) {
+      return 'hidden'
+   }
+   // if (props.first && props.currentStep < 5) {
+   //    return 'visible'
+   // }
+   // if (props.first && props.currentStep >= 5) {
+   //    return 'hidden'
+   // }
+   // if (props.two && props.currentStep > 4 && props.currentStep < 9) {
+   //    return 'visible'
+   // }
+   // if (props.two && props.currentStep >= 9) {
+   //    return 'hidden'
+   // }
+   // if (props.three && props.currentStep > 8) {
+   //    return 'visible'
+   // } else {
+   //    return 'hidden'
+   // }
+}
+
 export const ProgressDot = styled.div`
-   width: 15px;
-   height: 15px;
+   width: 10px;
+   height: 10px;
    background-color: ${props => props.color};
    position: absolute;
-   top: -7px;
+   top: -4px;
    border-radius: 50%;
-   left: calc(${props => props.left} - 7px);
-   transition: all 0.5s ease;
-   display: ${props => props.currentStep >= 5 ? 'none' : 'block'};
+   left: calc(${props => props.left} - 4px);
+   transition: left 0.5s ease;
+   visibility: ${props => visibilityDot(props)};
 `
+// visibility: ${props => props.currentStep >= 5 ? 'hidden' : 'visible'};
 
 export const LineLabel = styled.span`
-   color: #fff;
+   color: #f9f9f9;
+   font-weight: 500;
+   font-size: 14px;
+   line-height: 20px;
+   letter-spacing: 0.05em;
    position: absolute;
    left: ${props => props.left};
-   top: -35px;
+   top: -36px;
+
+   width: max-content;
 `

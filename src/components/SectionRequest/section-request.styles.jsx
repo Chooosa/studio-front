@@ -88,7 +88,6 @@ export const ExtraInfo = styled.textarea`
     border: 0px;
     align-self: center;
 
-    font-family: Manrope;
     font-size: 16px;
 
     ::-webkit-scrollbar {
@@ -98,7 +97,7 @@ export const ExtraInfo = styled.textarea`
     ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background-color: darkgrey;
         outline: 1px solid slategrey;
@@ -170,6 +169,10 @@ export const FileInputLabel = styled.label`
         position: absolute;
         right: 30px;
     }
+
+    :hover {
+        opacity: 0.8;
+    }
 `
 
 export const Error = styled.span`
@@ -189,6 +192,10 @@ export const Button = styled(CustomButton)`
     border-width: 0px;
 
     color: #FFFFFF;
+
+    :hover {
+        opacity: 0.8;
+    }
 `
 
 export const Icon = styled.img`
@@ -243,7 +250,7 @@ export const FilesList = styled.ul`
 
     >li {
         color: transparent;
-        
+
         >div {
             display: flex;
             flex-direction: row;

@@ -172,7 +172,7 @@ export const FooterWrapperMobile = styled.footer`
    height: 732px;
    max-height: 1000px;
    width: 100%;
-   z-index: 1;
+   z-index: 0;
 `
 
 export const FooterContainerMobile = styled.div`

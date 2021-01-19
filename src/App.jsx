@@ -15,16 +15,14 @@ import { fetchContent } from './redux/content/content.actions';
 import ServicesPage from './pages/Services/services.component';
 import AnimatedBackground from './components/AnimatedBackground/animated-background.component';
 
-
-
 function App() {
   // const [loading, setLoading] = useState(true)
   const location = useLocation()
   const dispatch = useDispatch()
 
-useEffect(() => {
-  localStorage.setItem('scroll', false)
-}, [])
+  useEffect(() => {
+    localStorage.setItem('scroll', false)
+  }, [])
 
 
   useEffect(() => {
@@ -40,14 +38,14 @@ useEffect(() => {
 
       <AppContainer>
         {/* <AnimatePresence > */}
-          <Switch location={location} key={location.pathname}>
-            <Route exact path='/' component={Main} />
-            <Route exact path='/works/:section/:itemId' component={WorksPage} />
-            {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
-            <Route exact path='/services/:section' component={ServicesPage} />
-            <Route exact path='/cooperation' component={Cooperation} />
-            <Route exact path='/guarantees' component={Guarantees} />
-          </Switch>
+        <Switch location={location} key={location.pathname}>
+          <Route exact path='/' component={Main} />
+          <Route exact path='/works/:section/:itemId' component={WorksPage} />
+          {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
+          <Route exact path='/services/:section' component={ServicesPage} />
+          <Route exact path='/cooperation' component={Cooperation} />
+          <Route exact path='/guarantees' component={Guarantees} />
+        </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
       {
@@ -56,7 +54,7 @@ useEffect(() => {
         :null
       }
       <Footer />
-      <Loader/>
+      <Loader />
     </AppWrapper>
   );
 }

@@ -16,7 +16,7 @@ z-index: 1200;
 `
 
 export const BodyItem = styled.span`
-font-weight: ${props => props.active? 500: 200};
+font-weight: ${props => props.active ? 500 : 200};
 font-size: 16px;
 line-height: 21px;
 letter-spacing: 0.05em;
@@ -24,7 +24,7 @@ color: #F9F9F9;
 margin-left: 10px;
 margin-top: 12px;
 >a {
-    font-weight: ${props => props.active? 500: 200};
+    font-weight: ${props => props.active ? 500 : 200};
 font-size: 16px;
 line-height: 21px;
 letter-spacing: 0.05em;

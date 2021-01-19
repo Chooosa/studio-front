@@ -25,4 +25,8 @@ export const LogoButton = styled.button`
 export const LogoWrapper = styled.div`
    display: flex;
    align-items: center;
+
+   >img {
+      cursor: pointer;
+   }
 `

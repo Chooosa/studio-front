@@ -10,7 +10,7 @@ export const DropdownMenuWrapper = styled.nav`
    position: absolute;
    top: 70px;
    left: 0;
-   border-bottom: 1px solid ${props => props.open ? '#f9f9f9' : 'transparent'};
+   border-bottom: 1px solid ${props => props.open ? props.color : 'transparent'};
    background-color: ${props => props.open ? '#020202' : '#0a0a0a'};
    z-index: 499;
 
