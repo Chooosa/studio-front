@@ -20,8 +20,7 @@ const Logo = ({ color, changeColor, themeColor }) => {
       } else if (color >= 7 || color < 0) {
          changeColor(0)
       }
-      // console.log('color: ', color)
-      // console.log('themeColor: ', themeColor)
+
    }
 
    const handleNavigation = () => {

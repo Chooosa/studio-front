@@ -23,10 +23,10 @@ const Section = ({
 
     const handleViewportChange = (e, entry) => {
 
-        // console.log(e, entry)
+
 
         if (e && entry && (threshold ? entry.intersectionRatio >= threshold : entry.intersectionRatio >= 0.5)) {
-            // console.log(entry.intersectionRatio)
+
             if (!animate) {
                 setAnimate(true)
             }

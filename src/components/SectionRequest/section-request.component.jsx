@@ -56,27 +56,44 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
     const [filesArray, setFilesArray] = useState([]);
 
-    const sendRequest = async (values) => {
-        axios.interceptors.request.use(function (config) {
-            return config;
-        }, function (error) {
-            return Promise.reject(error);
-        });
+    const sendRequest = async (values, {resetForm}) => {
+        // axios.interceptors.request.use(function (config) {
+        //     return config;
+        // }, function (error) {
+        //     return Promise.reject(error);
+        // });
+        const formData = new FormData();
+        formData.append('name', values.name);
+        formData.append('email', values.email);
+        formData.append('phone', values.phone);
+        formData.append('text', values.text);
+
+        filesArray.forEach((file) => {
+            formData.append('file', file);
+        }) 
+             
         try {
-            const resp = await axios.post(`${API_URL}application`, {
-                json: values,
-                file: filesArray
-            });
+            const resp = await axios.post(`${API_URL}application`, formData);
+            resetForm();
+            setFilesArray([]);
             return resp;
         }
         catch (err) {
-            console.log(err);
+            
         }
     }
 
     const addFile = (file) => {
+        let filesSize = 0;
         if (file && file.lastModified) {
-            setFilesArray([...filesArray, file]);
+            filesArray.forEach((file) => {
+                filesSize += file.size
+            })
+            if(filesSize < 30000000) {
+                if(filesArray.find((item) => item.name === file.name) === undefined){
+                    setFilesArray([...filesArray, file]);
+                }
+            }
         }
     }
 
@@ -85,7 +102,6 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         setFilesArray(
             () => files.filter((item) => item.name !== name)
         )
-
     }
 
     useEffect(() => {
@@ -119,7 +135,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         >
             <Formik
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
-                onSubmit={(values) => sendRequest(values)}
+                onSubmit={sendRequest}
                 validationSchema={validationSchema}
                 validateOnChange={false}
             >

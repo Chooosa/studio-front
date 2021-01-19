@@ -43,9 +43,9 @@ const DropdownMenu = () => {
                      Главная
                   </Link>
                   <span onClick={handleCasesNavigation}>Кейсы </span>
-                  <Link to='/works/Website/all' onClick={toggleMenuMode}>
-                     Приложения</Link>
                   <Link to='/works/Application/all' onClick={toggleMenuMode}>
+                     Приложения</Link>
+                  <Link to='/works/Website/all' onClick={toggleMenuMode}>
                      Сайты</Link>
                </LinksCell>
                <LinksCell color={color}>
@@ -72,7 +72,7 @@ const DropdownMenu = () => {
                </a>
 
 
-               <a href='tg://resolve?domain=@lilekov_evgeniy'>
+               <a href='tg://msg?to=79995357879'>
                   Telegram
                </a>
 

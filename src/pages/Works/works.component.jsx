@@ -83,7 +83,7 @@ const WorksPage = () => {
                     works={works.websites}
                 />
             </Tabs>
-            <SectionRequest index={2} />
+            <SectionRequest index={2} padding={'0px'}/>
         </PageContainer>
     )
 }

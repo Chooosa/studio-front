@@ -21,6 +21,7 @@ export const FooterContainer = styled.div`
    display: flex;
    align-items: center;
    position: relative;
+   padding-right: 30px;
    /* z-index: 2; */
 `
 
@@ -169,10 +170,10 @@ export const SocialNetworks = styled.a`
 
 export const FooterWrapperMobile = styled.footer`
    display: flex;
-   height: 732px;
+   min-height: 632px;
    max-height: 1000px;
    width: 100%;
-   z-index: 1;
+   z-index: 0;
 `
 
 export const FooterContainerMobile = styled.div`

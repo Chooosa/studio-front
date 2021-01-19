@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import InView from 'react-intersection-observer';
 import ReactMarkdown from 'react-markdown';
+import { CMS_URL } from '../../config';
 import AnimatedNumbers from '../Common/AnimatedNumbers/animated-numbers.component';
+import ServicesItemWrapper from '../ServicesItemWrapper/services-item-wrapper.component';
 
 import {
     TabContainer,
@@ -10,7 +12,7 @@ import {
     TabHeader
 } from './service-tab.styles';
 
-const ServiceTab = ({service}) => {
+const ServiceTab = ({service, content}) => {
     const [animate, setAnimate] = useState(false)
 
 
@@ -23,6 +25,7 @@ const ServiceTab = ({service}) => {
             setAnimate(false)
         }
     }
+
 
 
     return (
@@ -47,6 +50,18 @@ const ServiceTab = ({service}) => {
                     </NumberContainer>
                 </TabHeader>
                 </InView>
+                {
+                    content?content.map((item, index) => {
+                        return (
+                            <ServicesItemWrapper
+                            key={index}
+                            title={item.Title}
+                            image={CMS_URL + item.Image.url}
+                            />
+                        )
+                    })
+                    :null
+                }
         </TabContainer>
     )
 }

@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, useLocation } from "react-router-dom";
+import useErrorBoundary from "use-error-boundary";
 
 import { AppWrapper, AppContainer } from './App.styles';
 import MenuState from './context/menu-state';
 import Header from './components/Header/header.component';
 import Footer from './components/Footer/footer.component';
+import ErrorFallback from './components/ErrorFallback/error-fallback.component';
 import Main from './pages/Main/main.component';
 import WorksPage from './pages/Works/works.component';
 import Cooperation from './pages/Cooperation/cooperation.component';
@@ -14,8 +16,6 @@ import { useDispatch } from 'react-redux';
 import { fetchContent } from './redux/content/content.actions';
 import ServicesPage from './pages/Services/services.component';
 import AnimatedBackground from './components/AnimatedBackground/animated-background.component';
-
-
 
 function App() {
   // const [loading, setLoading] = useState(true)
@@ -31,10 +31,14 @@ function App() {
     dispatch(fetchContent())
   }, [dispatch])
 
+  const { ErrorBoundary, didCatch, error } = useErrorBoundary();
 
   return (
     <AppWrapper>
-      <MenuState>
+      {
+        didCatch ? <ErrorFallback error={error} /> :
+        <ErrorBoundary>
+          <MenuState>
         <Header />
       </MenuState>
 
@@ -50,8 +54,11 @@ function App() {
         </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
-      <AnimatedBackground />
+  
+        <AnimatedBackground/>
       <Footer />
+        </ErrorBoundary>
+      }
       <Loader />
     </AppWrapper>
   );

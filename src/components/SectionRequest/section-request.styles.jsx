@@ -88,7 +88,6 @@ export const ExtraInfo = styled.textarea`
     border: 0px;
     align-self: center;
 
-    font-family: Manrope;
     font-size: 16px;
 
     ::-webkit-scrollbar {
@@ -170,6 +169,10 @@ export const FileInputLabel = styled.label`
         position: absolute;
         right: 30px;
     }
+
+    :hover {
+        opacity: 0.8;
+    }
 `
 
 export const Error = styled.span`
@@ -189,6 +192,10 @@ export const Button = styled(CustomButton)`
     border-width: 0px;
 
     color: #FFFFFF;
+
+    :hover {
+        opacity: 0.8;
+    }
 `
 
 export const Icon = styled.img`

@@ -107,7 +107,7 @@ const Footer = () => {
                      <a href='tel:89995357879'>8 999 535 78 79</a>
                      <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
                      <a href='#'>Политика конфиденциальности</a>
-                  </InfoContainerRight>
+               </InfoContainerRight>
             <MapWrapperMobile color={themeColor}>
                <img src={mapMobilePNG} alt='map-mobile' />
                <SocialNetworksWrapperMobile>

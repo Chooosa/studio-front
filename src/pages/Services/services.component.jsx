@@ -17,6 +17,43 @@ import SectionRequest from '../../components/SectionRequest/section-request.comp
 import { contentSelectors } from '../../redux/content/content.selectors';
 import ServiceTab from '../../components/ServiceTab/service-tab.component';
 
+import BusinessPNG from '../../assets/business.png'
+import SupremePNG from '../../assets/supreme.png'
+import GesturePNG from '../../assets/gesture.png'
+import DepoPNG from '../../assets/depo.png'
+
+
+const apps = [
+    {
+        Title: 'Башкирский деловой язык',
+        Image: BusinessPNG 
+    },
+    {
+        Title: 'Фудмолл “Депо”',
+        Image: DepoPNG 
+    },
+    {
+        Title: 'Башкирский жестовый язык',
+        Image: GesturePNG 
+    },
+]
+
+
+const websites = [
+    {
+        Title: 'Supreme cheese',
+        Image: SupremePNG 
+    },
+    {
+        Title: 'Supreme cheese',
+        Image: SupremePNG 
+    },
+    {
+        Title: 'Supreme cheese',
+        Image: SupremePNG 
+    },
+]
+
 
 const ServicesPage = () => {
     const {itemId, section} = useParams()
@@ -25,7 +62,7 @@ const ServicesPage = () => {
     const {width} = useWindowDimensions()
     const services = useSelector(contentSelectors.services)
 
-    console.log(services)
+  
 
 
     useEffect(() => {
@@ -82,6 +119,7 @@ const ServicesPage = () => {
                         return <ServiceTab
                                 key={index}
                                 service={service}
+                                content={service.service_items}
                                 />
                             })}
                     </Tabs>

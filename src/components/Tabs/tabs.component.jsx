@@ -41,6 +41,11 @@ const Tabs = ({children, tabNames, tabOverride}) => {
     const handleTabChange = (index) => {
 
         setCurrentTab(index)
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
     }
 
     return (
