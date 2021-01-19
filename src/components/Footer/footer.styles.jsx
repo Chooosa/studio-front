@@ -9,10 +9,7 @@ export const FooterWrapper = styled.footer`
    background-color: #fff;
    display: flex;
    justify-content: center;
-<<<<<<< HEAD
-=======
    padding-left: 5%;
->>>>>>> 28dacc8aaed604011cf1d35db664f53a18d032d0
    z-index: 0;
    background: linear-gradient(to right,#111 71%,rgba(17,17,17,0) 100%);
 `
@@ -175,7 +172,7 @@ export const FooterWrapperMobile = styled.footer`
    height: 732px;
    max-height: 1000px;
    width: 100%;
-   z-index: 1;
+   z-index: 0;
 `
 
 export const FooterContainerMobile = styled.div`
