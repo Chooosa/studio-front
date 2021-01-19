@@ -51,7 +51,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
     const [filesArray, setFilesArray] = useState([]);
 
-    const sendRequest = async (values) => {
+    const sendRequest = async (values, {resetForm}) => {
         // axios.interceptors.request.use(function (config) {
         //     return config;
         // }, function (error) {
@@ -63,12 +63,14 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         formData.append('phone', values.phone);
         formData.append('text', values.text);
 
-        for (let i = 0; i < filesArray.length; i++) {
-            formData.append('file[]', filesArray[i]);
-        }
+        filesArray.forEach((file) => {
+            formData.append('file', file);
+        }) 
              
         try {
             const resp = await axios.post(`${API_URL}application`, formData);
+            resetForm();
+            setFilesArray([]);
             return resp;
         }
         catch (err) {
@@ -77,9 +79,15 @@ const SectionRequest = ({ refApplication, index, padding }) => {
     }
 
     const addFile = (file) => {
+        let filesSize = 0;
         if (file && file.lastModified) {
-            if(filesArray.find((item) => item.name === file.name) === undefined){
-                setFilesArray([...filesArray, file]);
+            filesArray.forEach((file) => {
+                filesSize += file.size
+            })
+            if(filesSize < 30000000) {
+                if(filesArray.find((item) => item.name === file.name) === undefined){
+                    setFilesArray([...filesArray, file]);
+                }
             }
         }
     }
@@ -112,7 +120,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         >
             <Formik
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
-                onSubmit={(values) => sendRequest(values)}
+                onSubmit={sendRequest}
                 validationSchema={validationSchema}
                 validateOnChange={false}
             >

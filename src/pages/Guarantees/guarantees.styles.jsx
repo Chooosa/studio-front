@@ -48,7 +48,7 @@ export const DropDownSectionDiv = styled.div`
     display: flex;
     min-height: 80px;
     ${props => props.open ? 'max-height: 900px' : `max-height: 0px`};
-    transition: all .9s ease-in-out;
+    transition: all .6s cubic-bezier(.12,.4,.9,.69);
     padding: 10px 15px;
     border-bottom: 1px solid #2C2C2C;
 
@@ -59,7 +59,7 @@ export const DropDownSectionDiv = styled.div`
         overflow: hidden;
         margin-bottom: 20px;
         transition-duration: 0.5s;
-        transition-delay: 0.3s;
+        transition-delay: 0.1s;
 
         opacity: ${props => props.open ? 1 : 0};
     }
