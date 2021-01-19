@@ -17,7 +17,7 @@ export const Button = styled(CustomButton)`
 width: 100%;
 max-width: 600px;
 border: 1px solid #1C1C1C;
-background-color: ${props => props.active? props.color: '#111111'};
+background-color: ${props => props.active ? props.color : '#111111'};
 height: 70px;
 @media (max-width: 600px) {
     height: 60px;
@@ -28,8 +28,8 @@ height: 70px;
 export const CasesContainer = styled.div`
 position: absolute;
 width: 100%;
-transform: ${props => props.front? `translateZ(${props.z}px)` : `translateX(${props.z}px)  rotateY(90deg) `}  ;
-/* transform-origin: ${props => props.front? '' : 'top right'}; */
+transform: ${props => props.front ? `translateZ(${props.z}px)` : `translateX(${props.z}px)  rotateY(90deg) `}  ;
+/* transform-origin: ${props => props.front ? '' : 'top right'}; */
 overflow: hidden;
 `
 
@@ -81,5 +81,6 @@ background-color: ${props => props.color};
 @media(max-width: 600px) {
     background-color: initial;
     border: ${props => `1px solid ${props.color}`};
+    min-width: 100%;
 }
 `

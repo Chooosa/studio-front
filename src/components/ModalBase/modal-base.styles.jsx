@@ -8,7 +8,8 @@ export const ModalContainer = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: flex-end;
-   background: transparent;
+   /* background: transparent; */
+   /* background-color: red; */
    border-radius: 8px;
    position: relative;
    padding: 10%;
@@ -24,19 +25,21 @@ export const ModalContainer = styled.div`
       width: 100%;
       height: 100%;
    }
+
+
    @media(max-width: 575px) {
       width: 400px;
    }
    @media(max-width: 465px) {
       width: 330px;
-      height: 280px;
+      height: 400px;
    }
    @media(max-width: 399px) {
       width: 300px;
    }
    @media(max-width: 370px) {
       width: 280px;
-      height: 300px;
+      /* height: 300px; */
    }
    @media(max-width: 345px) {
       width: 260px;

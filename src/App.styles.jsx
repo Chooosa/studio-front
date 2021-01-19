@@ -9,6 +9,8 @@ export const AppWrapper = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
+
+
 `
 
 export const AppContainer = styled.div`
@@ -16,4 +18,6 @@ export const AppContainer = styled.div`
    max-width: 956px;
    margin: 70px auto 0 auto;
    z-index:1;
+
+
 `
