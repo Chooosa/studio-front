@@ -51,7 +51,7 @@ const SectionCases = () => {
 
 
     useEffect(() => {
-        console.log(ref)
+
         axios(`${CMS_URL}/main-cases`)
             .then((response) => {
                 let tempWorks = { apps: [], websites: [] }
@@ -65,7 +65,7 @@ const SectionCases = () => {
                 setWorks(tempWorks)
             })
             .catch((err) => {
-                console.log(err)
+                
             })
     }, [])
 

@@ -72,7 +72,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             return resp;
         }
         catch (err) {
-            console.log(err);
+            
         }
     }
 

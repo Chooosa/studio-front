@@ -32,7 +32,7 @@ const Loader = () => {
                             transform: `translateX(${translate}%)`
                         }}
                         onTransitionEnd={() => {
-                            console.log('end')
+     
                             setShow(false)
                         }}
                     >

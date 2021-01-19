@@ -48,11 +48,8 @@ function App() {
         </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
-      {
-        location.pathname==='/'?
+  
         <AnimatedBackground/>
-        :null
-      }
       <Footer />
       <Loader />
     </AppWrapper>

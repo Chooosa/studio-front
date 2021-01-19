@@ -89,7 +89,7 @@ const lines = keyframes`
 
 export const Container = styled.div`
 width: 100%;
-display: flex;
+display: ${props => props.hide? 'none': 'flex'};
 flex-direction: column;
 z-index: 0;
 position: absolute;
@@ -157,7 +157,7 @@ export const Horizontal = styled.svg`
 margin-top: 48px;
 animation: ${props => css`${horizontalMove(props.w)} 30s linear infinite`};
 animation-delay: ${props => props.index*0.5}s;
-transform: ${`translateX(${props => props.w}px)`};
+transform: ${props => `translateX(${props.w}px)`};
 @media(max-width: 800px) {
     margin-top: 24px;
     animation: ${props => css`${horizontalMove(props.w)} 26s linear infinite`};
@@ -174,7 +174,7 @@ export const Vertical = styled.svg`
 margin-right: 48px;  
 animation: ${props => css`${verticalMove(props.h)} 15s linear infinite`};
 animation-delay: ${props => props.index*0.5}s;
-transform: ${`translateY(-${props => props.h}px)`};
+transform: ${props => `translateY(-${props.h}px)`};
 @media(max-width: 800px) {
     margin-right: 24px;
     animation: ${props => css`${verticalMove(props.h)} 13s linear infinite`};
@@ -190,16 +190,3 @@ transform: ${`translateY(-${props => props.h}px)`};
 
 
 
-
-// export const Logo = styled.div`
-//     height: auto;
-//    >svg > path {
-//     stroke-dasharray: 100;
-//     stroke-dashoffset: 100;
-//       fill:#0a0a0a;
-//       stroke: ${props => props.color ? props.color : '#F9F9F9'};
-//       /* transition-duration: 2s; */
-//       animation: ${props => css`${dash(props.color)} 1.5s linear forwards`}; 
-//    }
-
-// `

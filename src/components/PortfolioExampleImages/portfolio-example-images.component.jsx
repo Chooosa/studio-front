@@ -49,7 +49,7 @@ const PortfolioExampleImages = () => {
         else if (divObj.webkitRequestFullscreen) {
         divObj.webkitRequestFullscreen();       
         } else {
-        console.log("Fullscreen API is not supported");
+        
         } 
    }
 
