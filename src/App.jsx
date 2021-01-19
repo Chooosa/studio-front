@@ -50,7 +50,11 @@ useEffect(() => {
           </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
-      <AnimatedBackground/>
+      {
+        location.pathname==='/'?
+        <AnimatedBackground/>
+        :null
+      }
       <Footer />
       <Loader/>
     </AppWrapper>
