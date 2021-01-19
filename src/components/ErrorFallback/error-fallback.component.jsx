@@ -56,7 +56,7 @@ const ErrorBoundary = ({error}) => {
        <ErrorBoundaryContainer>
            <p>Произошла ошибка</p>
            <p>Мы работаем над решением проблемы</p>
-           <a href={'lekov-studio.com'}>Вернуться на главную</a>
+           <a href={'lilekov-studio.com'}>Вернуться на главную</a>
        </ErrorBoundaryContainer>
     )
 }

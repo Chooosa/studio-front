@@ -25,8 +25,12 @@ export const ModalContainer = styled.div`
       width: 100%;
       height: 100%;
    }
-
-
+   @media(max-width: 660px) {
+      width: 550px;
+   }
+   @media(max-width: 610px) {
+      width: 460px;
+   }
    @media(max-width: 575px) {
       width: 400px;
    }
@@ -63,5 +67,10 @@ export const CloseButton = styled.button`
    z-index: 10000;
    >img {
       width: 30px;
+   }
+
+   @media(max-width: 460px) {
+      top: 0;
+      right: 0;
    }
 `
