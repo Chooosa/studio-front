@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Section from '../../components/Common/Section/section.component';
@@ -21,6 +21,11 @@ import {
 
 const MobileSectionRenderer = ({ item }) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    
     return (
         <DropDownSectionDiv open={isOpen}>
             <DropDownSectionHeader open={isOpen} onClick={() => setIsOpen(!isOpen)}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Section from '../../components/Common/Section/section.component';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
@@ -8,6 +8,9 @@ import {
 } from './cooperation.styles';
 
 const Cooperation = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <CooperationWrapper>
