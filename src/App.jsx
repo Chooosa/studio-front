@@ -15,8 +15,6 @@ import { fetchContent } from './redux/content/content.actions';
 import ServicesPage from './pages/Services/services.component';
 import AnimatedBackground from './components/AnimatedBackground/animated-background.component';
 
-
-
 function App() {
   // const [loading, setLoading] = useState(true)
   const location = useLocation()
