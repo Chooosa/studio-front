@@ -71,7 +71,7 @@ const WorksPage = () => {
                 }
             </PageHeader>
             <Tabs
-                tabNames={['Мобильные приложения', 'Сайты', 'Доп.услуги']}
+                tabNames={['Мобильные приложения', 'Сайты']}
                 tabOverride={section === 'Website' ? 1 : undefined}
             >
                 <WorksTab
