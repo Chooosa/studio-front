@@ -16,11 +16,13 @@ import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 import { useHistory } from 'react-router-dom';
 import BoltSVG from '../../../assets/bolt.svg';
+import {useTranslation} from '../../../hooks/translation';
 
 
 const Case = ({ caseToDisplay }) => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
+    const {t} = useTranslation()
 
 
     const handleNavigation = (id) => {
@@ -45,7 +47,7 @@ const Case = ({ caseToDisplay }) => {
                     color={color}
                     onClick={() => handleNavigation(caseToDisplay.id)}
                 >
-                    Смотреть всю работу
+                    {t('whole_work')}
                     <img src={BoltSVG} alt='bolt' />
                 </ActionButton>
             </ContentContainer>

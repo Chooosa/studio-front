@@ -12,7 +12,7 @@ export const en = {
     guarantees: 'Guarantees',
     collaboration: 'Collaboration',
 
-    we_develop: 'We develop :',
+    we_develop: 'We create :',
     mobile_apps: 'Mobile apps',
     website: 'Websites',
     interfaces: 'Interfaces',
@@ -20,204 +20,181 @@ export const en = {
     web_interfaces: 'Web-interfaces',
 
     your_goals: 'What are your goals?',
-    your_goals_desc: `As soon as you contact us, we tackle the main problem - 
-    how to ensure maximum benefit from our product for the client. 
+    your_goals_desc: `As soon as you contact us, we adress the main challenge - 
+    how to ensure the maximum benefit from our product for the client. 
     You'll get the best possible solution.`,
     go_to_portfolio: 'Go to portfolio',
 
     about_us: 'Who are we?',
     about_us_desc: `We are a team of experienced developers ready to 
-    create an app or a website of any complexity for you. Fast, competent, safe.`,
+    create an app or website of any complexity for you. Speed and quality are guaranteed.`,
 
     services_desc: `Our company offers a wide range of services in development and 
     promotion of websites, mobile apps and web-interfaces.`,
-    mobile_apps_desc: `We develop mobile apps for Android and IOS meeitng cutting-edge standarts and requirements. 
+    mobile_apps_desc: `We develop mobile apps for Android and IOS, meeting cutting-edge standarts and requirements. 
     All stages - from design to final product`,
-    websites_desc: `Development of stylish and fast websites is one of our focuses. 
-    From an idea to final product in assigned time. For different budget.`,
+    websites_desc: `Development of stylish and fast websites is one of our key focuses. 
+    From an idea to the final product in assigned timeline. For different budget.`,
 
-    more_button: 'More',
+    more_button: 'Learn more',
 
-    cases_desc: `Our studio's most recent projects with detailed description of the project's 
-    goal and our solution.`,
+    cases_desc: `Our studio's most recent projects with detailed description of 
+    the objective and our solution.`,
     whole_work: 'Go to project',
     all_works: 'All projects',
 
     about_team: 'Our team',
     about_team_desc: `
     Development of websites and apps is a difficult and complex work, that is why 
-    there are specialists from various fields in our family-like team.
-    We have front-end and back-end developers, designers, copywriters and a manager.
+    there are specialists from various fields in our family-like team.`,
+    about_team_desc_second: `We have front-end and back-end developers, designers, copywriters and a manager.
     Therefore we can work on the project without outsourcing during the 
-    full development process, avoiding unnecessary delays. All our specialists have 
-    proper education, extensive experience in their fields and works on 
+    full development process and avoid setbacks. All our specialists have 
+    proper education, extensive experience in their field of knowledge and worked on 
     multiple projects. That is why we can assure you that we'll complete 
-    your comission swiftly and with quality in mind.`,
+    your commission quickly and with quality in mind.`,
 
     work_plan: 'Work plan',
     work_plan_desc: `In our years of work we have developed a clear and simple work plan.
-    It has several stages, each `, //TODO: left here
+    At each stage we engage different specialists from the team. It guarantees high quality and tempo of development.`,
     first_stage: 'Stage 1',
     second_stage: 'Stage 2',
     third_stage: 'Stage 3',
     fourth_stage: 'Stage 4',
 
     interview: 'Interview',
-    interview_desc_intro: `Вы рассказываете нам, что хотите получить, и мы обсуждаем все детали вашего проекта. На этом этапе он приобретает чёткие объёмы, и мы сможем:`,
-    interview_desc_list_first: 'Предоставить полную смету по всему проекту.',
-    interview_desc_list_second: 'Оценить длительность работ по каждому этапу.',
-    interview_desc_list_third: 'Предложить вам некоторые полезные бонусы.',
-    interview_desc_outro: `На этом этапе вы получаете полное представление, как будет идти работа и сколько это будет стоить. А мы разрабатываем прозрачный план реализации проекта.`,
+    interview_desc_intro: `You tell us what you want to achieve and we discuss the specifics of you project. It takes shape at this stage 
+    and we are able to:`,
+    interview_desc_list_first: 'provide you with full cost estimate.',
+    interview_desc_list_second: 'estimate how much time each stage requires.',
+    interview_desc_list_third: 'offer you additional benefits.',
+    interview_desc_outro: `At this stage you get an understanding of how long the development will take and how much it will cost. Meanwhile we 
+    work out a transparent development schedule.`,
 
-    analysis: 'Аналитика',
-    analysis_desc_intro: `На этом этапе мы проводим анализ вашего будущего проекта:`,
-    analysis_desc_list_first: 'Оцениваем нишу.',
-    analysis_desc_list_second: 'Смотрим и анализируем основных конкурентов.',
-    analysis_desc_list_third: 'Решаем, какими методами лучше всего будет достичь результата.',
-    analysis_desc_outro: `Конечно, это только предварительный этап работы, который вас ни к чему не обязывает. Но здесь уже формируются пути и этапы работы. Появляется набросок плана, на основе которого можно построить дальнейший процесс разработки.`,
+    analysis: 'Analytics',
+    analysis_desc_intro: `At this stage we analyze your project: `,
+    analysis_desc_list_first: 'We assess the market.',
+    analysis_desc_list_second: 'We analyze the competition.',
+    analysis_desc_list_third: 'We find the best possible way of achieving your goal.',
+    analysis_desc_outro: `Of course, it's only the first step and in no way binding. However, here methods and stages of future work are shaped. 
+    We draw out a plan we can follow in the future development.`,
 
-    briefing: 'Брифирование',
-    briefing_desc_intro: `Этап создания брифа – один из важнейших. Он позволяет больше узнать о целях создания сайта или приложения, а также о результатах, которые должны быть достигнуты. Здесь мы с вашей помощью:`,
-    briefing_desc_list_first: 'Узнаём ваши пожелания по дизайну и реализации проекта.',
-    briefing_desc_second: 'Получаем информацию о вашем бизнесе для использования в работе.',
-    briefing_desc_outro: `Всё это нужно, чтобы готовый продукт был адаптирован именно под ваш бизнес, полностью соответствовал вашим ожиданиям и выполнял свою работу на отлично.`,
+    briefing: 'Briefing',
+    briefing_desc_intro: `Briefing is one of the main steps. It allows us to get a clearer picture of what the website or the app is for and 
+    what goals should be achieved. At this stage we `,
+    briefing_desc_list_first: 'listen to your preferences on the design and realization of the project.',
+    briefing_desc_second: 'learn about your business for future reference during development.',
+    briefing_desc_outro: `It guarantees that the final product will be adapted for your business, meet your expectations and 
+    perfectly perform its functions.`,
 
-    budget: 'Смета',
-    budget_desc: `На основе полученной информации мы уже имеем
-    полное представление, какой именно проект вы
-    хотите получить и какого результата достичь.
-    И мы можем составить полный план по его
-    реализации – рассчитать, сколько времени это
-    займёт у разных специалистов команды и какие
-    средства нужно будет использовать.<br />
-    <br />
-    На этом этапе мы уже можем предоставить вам
-    расчёт стоимости работы. Вы получите смету и
-    будете точно знать, сколь будет стоить ваш проект.`,
+    budget: 'Budget',
+    budget_desc: `Given the data we've received, we already have a complete understanding of what kind of product 
+    you want and what aims you pursue. And we're able to develop a plan to achieve this: to assess how 
+    much time it takes for our team to develop the product and what it will require.`,
+    budget_desc_second: `At this stage we can assess the budget. It will tell you how much your project costs.`,
 
-    contract: 'Договор',
-    contract_desc: `Заключение договора – важный этап нашего
-    сотрудничества.<br />
-    Он подписывается после того, как
-    проект прошёл обсуждение и был утверждён.
-    После этого мы приступаем к работе над ним.<br />
-    <br />
-    Договор – официальный документ, который
-    закрепляет обязательства всех сторон. Так
-    как мы работаем официально, то составление
-    этого документа является обязательным. И мы
-    всегда выполняем все указанные в нём пункты.
-    Для каждого проекта он отличается, так как
-    объём работ и сроки бывают разными.`,
+    contract: 'Contract',
+    contract_desc: `Signing a contract is an important step in our cooperation.`,
+    contract_desc_second: `The contract is signed after the project has been discussed and approved. Then we start the development.`,
+    contract_desc_third: `The contract is a legally binding document which formalizes both sides' obligations. 
+    As our work is oficial it's an obligatory step. We always fulfill all our obligations. 
+    They vary from project to project due to differences in workload and established deadlines.`,
 
-    design_specification: 'Тех.задание',
-    design_specification_desc: `Разработка технического задания – основа
-    всей дальнейшей работы. Это план, по которому
-    будет проходить разработка, которая содержит
-    в себе много этапов. Чем подробнее задание,
-    тем меньше возникает задержек и прочих
-    непредвиденных ситуаций.<br />
-    <br />
-    На этапе проработки технического задания
-    становится понятно, какие именно специалисты
-    будут привлекаться и будет отведено
-    определённое время на их работу. Каждому
-    из них будет поставлена конкретная задача.`,
+    design_specification: 'Specifications',
+    design_specification_desc: `Developing specifications is the basis of the whole project. 
+    It is the step-by-step development plan. The more detailed these specifications are, the fewer setbacks 
+    and unexpected situations there will be.`,
+    design_specification_desc_second: `At this stage we assess which specialists will be engaged in the development and how much time they will need. 
+    Each specialist will receive a spicific task.`,
 
-    design: 'Дизайн',
-    design_desc: `От дизайнера зависит, как будет выглядеть сайт
-    или приложение, понравится ли будущим пользователям.<br />
-    Этот важный этап является одним из ключевых – лишь
-    после него к работе подключаются разработчики. И здесь
-    наши клиенты уже могут увидеть, как будет выглядеть
-    их проект в итоге.<br />
-    <br />
-    Все стадии работы проходят в тесном контакте с клиентом
-    и при необходимости вносятся корректировки. Одобренный
-    дизайн поступает в дальнейшую работу.`,
+    design: 'Design',
+    design_desc: `It depends on the designer what the website or the app will look like and whether 
+    users will like it.`,
+    design_desc_second: `This is one of the main steps in development - only after it our front-end developers get to work. 
+    At this stage our clients can see what the end product will look like.`,
+    design_desc_third: `We maintain close contact with our client at every step of design and introduce changes to it if needed. 
+    We proceed to the next step only after the design is approved.`,
 
-    development: 'Разработка',
-    development_desc: `Этот этап отличается для каждого проекта и
-    представляет собственно его создание. В это
-    время все привлечённые специалисты работают
-    над своей частью технического задания.
-    В итоге получается завершённый продукт – сайт
-    или приложение, с полным функционалом, который
-    требовался клиенту.<br />
-    <br />
-    Вы, как заказчик, получаете отчёты о ходе работы
-    над вашим проектом и всегда знаете, на каком
-    этапе она находится.`,
+    development: 'Development',
+    development_desc: `
+    This step is different for every project and includes basically the creation of the product. 
+    During this stage every specialist works on their specific task. As a result we get the final product - 
+    be it a website or an app - which meets our client's every requirement.`,
+    development_desc_second: `The client receives regular reports on the development and always knows at what stage we currently are.`,
 
-    testing: 'Тестирование',
-    testing_desc: `Создать сайт или приложение – ещё не всё и
-    просто передавать его клиентам сразу после
-    разработки опрометчиво. Поэтому мы сначала
-    проводим тестирование – проверяем готовый
-    продукт на разных устройствах, в разных
-    условиях, и отыскиваем все моменты, когда
-    сайт или приложение могут работать неправильно.
-    Все найденные проблемы устраняются.<br />
-    <br />
-    Вы получаете свой проект всесторонне
-    проверенным – мы гарантируем качество.`,
+    testing: 'Testing',
+    testing_desc: `
+    Our work doesn't end at creating a website or app; it is ill-advised to 
+    hand over the product to the client as soon as we finish development. 
+    That is why we first test the product on different devices and in different conditions and 
+    figure out every way your product may not work properly. We solve every issue we find.`,
+    testing_desc_second: `You receive a thoroughly tested product and we can guarantee its high quality. `,
+    support: 'Support',
+    support_desc: `
+    Even after the project is completed it requires support. At this stage our clients receive 
+    comprehensive help from our team, make themselves familiar with their website or app and learn how 
+    they can promote it in the future.`,
+    support_desc_second: `You are not left to deal with you project on your own and can count on our help in solving even simplest issues.`,
 
-    support: 'Сопровождение',
-    support_desc: `Даже после сдачи готового проекта некоторое
-    время он нуждается в сопровождении. В это
-    время наши клиенты получают всестороннюю
-    помощь от нашей команды, учатся обращаться
-    со своим новым сайтом или приложением,
-    узнают, как его можно продвигать в будущем.<br />
-    <br />
-    На этом этапе вы не оказываетесь брошены на
-    произвол судьбы наедине со своим проектом и
-    всегда можете рассчитывать на нашу помощь
-    даже по простым вопросам.`,
+    scedule_button: 'Scedule a meeting',
 
-    scedule_button: 'Записаться',
-
-    leave_request: 'Оставить заявку',
-    leave_request_desc: `Вы можете задать нам вопрос по разработке сайта или приложения и получить ответ удобным способом. Также мы можем назвать предварительную стоимость вашего проекта и примерные сроки. Расскажите о нём и вместе мы воплотим его в жизнь.`,
-    your_name: 'Ваше имя:',
-    your_phone: 'Номер телефона:',
+    leave_request: 'Submit request',
+    leave_request_desc: `
+    You can ask us about website or app development and receive an answer in a way that suits you. 
+    We can also tell you how much you project approximately costs and how long its development will take. 
+    Tell us about it and we'll help you make it happen.
+    `,
+    your_name: 'Name:',
+    your_phone: 'Phone:',
     your_email: 'E-mail:',
-    message: 'Сообщение',
-    attatch_file_button: 'Прикрепить файл',
+    message: 'Message',
+    attatch_file_button: 'Attach file',
 
-    personal_data_agreement: `Нажимая “Отправить заявку” вы соглашаетесь с порядком обработки `,
-    personal_data_agreement_ref: 'персональных данных.',
+    personal_data_agreement: `By submitting a request you agree to `,
+    personal_data_agreement_ref: 'the privacy policy.',
 
-    adress_first: '127015, Москва,',
-    adress_second: 'Большая Новодмитровская улица, 23с6',
-    privacy_policy: 'Политика конфиденциальности',
-    go_to_map_button: 'Перейти к карте',
+    adress_first: '127015, Moscow,',
+    adress_second: `Bol'shaya Novodmitrovskaya street, 23/6`,
+    privacy_policy: 'Privacy policy',
+    go_to_map_button: 'Show map',
 
-    portfolio: 'Портфолио',
+    portfolio: 'Portfolio',
 
-    cooperation_desc: `Мы открыты для сотрудничества с другими организациями или специалистами, связанными с разработкой сайтов или программного обеспечения для мобильных устройств. Если вы заинтересованы в этом, то можете оставить здесь свою заявку или связаться с нашим менеджером. Мы рассмотрим ваше предложение в короткие сроки и ответим вам по указанным контактам.`,
+    cooperation_desc: `
+    We are open to collaboration with other companies and specialist in the field of website and 
+    mobile software development. If you are interested, you can submit a request or contact our manager. 
+    We will consider you proposal as soon as possible and contact you.`,
 
-    guarantees_desc: `Мы работаем официально и предоставляем своим клиентам различные виды гарантий. Поэтому вы можете быть спокойны насчёт того, что ваш проект будет выполнен строго по заданию, в указанные сроки, и переплачивать ничего сверх договора не придётся. Если мы берёмся за работу, то относимся к ней с полной ответственностью.`,
+    guarantees_desc: `Our work is official and we provide various assurances. 
+    You can be sure that the project will be completed to the letter and in the specified timeframe and 
+    that you won't have to pay anything on top of the contract. 
+    We take our work very seriously.`,
 
-    guarantees_law: 'Юридические:',
-    guarantees_law_desc: `После детального изучения проекта и перед тем как начать им заниматься, мы документируем все этапы работы и составляем договор.
-    В нём прописаны все сроки и стоимость работ, как по этапам, так и общая.
-    Этим мы гарантируем нашим клиентам получение выполненного проекта в срок.
-    Для нас же это стимул обозначенные сроки строго соблюдать. Также в договоре прописана наша ответственность в случае нарушения нами сроков.`,
-    guarantees_tech: 'Технические:',
-    guarantees_tech_desc_intro: 'Мы обеспечиваем качество готового проекта:',
-    guarantees_tech_desc_list_first: 'При составлении ТЗ учитываем получение наилучших результатов.',
-    guarantees_tech_desc_list_second: 'В работе используем только самые современные и надёжные технологии.',
-    guarantees_tech_desc_list_third: 'Перед сдачей проводим разностороннее тестирование и устраняем все найденные проблемы.',
-    guarantees_tech_desc_outro: 'Передача проекта происходит только после того, как он полностью готов и прошёл многократную проверку.',
-    guarantees_manage: 'Организационные:',
-    guarantees_manage_desc_intro: 'Процесс разработки у нас полностью прозрачен для клиента:',
-    guarantees_manage_desc_list_first: 'Мы регулярно высылаем отчёты по проделанной работе.',
-    guarantees_manage_desc_list_second: 'Даём возможность посмотреть, что сделано на данный момент и попробовать готовый функционал.',
-    guarantees_manage_desc_outro: 'Вы всегда будете в курсе продвижения работы по вашему заказу и сможете сами видеть процесс, и даже участвовать в нём.',
-    guarantees_support: 'Вспомогательные:',
-    guarantees_support_desc_intro: 'Даже когда ваш проект готов, и вы его приняли, мы не оставим вас с ним наедине:',
-    guarantees_support_desc_list_first: 'Составим план развития или продвижения на ближайшее время.',
-    guarantees_support_desc_list_second: 'Будем устранять найденные недостатки в течении года в рамках гарантийного обслуживания.',
-    guarantees_support_desc_outro: 'В будущем при необходимости по вашему запросу мы сможем быстро добавлять или изменять функционал – как авторам, нам это будет сделать гораздо проще, чем сторонним программистам.'
+    guarantees_law: 'Legal:',
+    guarantees_law_desc_first: `
+    After closely examining the project and before starting our work we document every 
+    stage of development and draw up a contract.`,
+    guarantees_law_desc_second: `The contract describes the timeframe and costs of the work split by development steps.`,
+    guarantees_law_desc_third: `This guarantees that our client will receive the end product on time.`,
+    guarantees_law_desc_fourth: `This also motivates us to fit into the timeframe. In addition, the contract outlines our responsibilities should 
+    we miss the deadline.`,
+    guarantees_tech: 'Technical:',
+    guarantees_tech_desc_intro: 'We ensure high quality of the final product:',
+    guarantees_tech_desc_list_first: `The project's specifications should lead to the best results.`,
+    guarantees_tech_desc_list_second: 'We employ only cutting-edge and well-trusted technologies.',
+    guarantees_tech_desc_list_third: 'Before we hand in the product we thoroughly test it and fix all the issues we find.',
+    guarantees_tech_desc_outro: 'You receive the product only after it is all ready and has passed multiple tests.',
+    guarantees_manage: 'Organisational:',
+    guarantees_manage_desc_intro: 'Our working progress is transparent:',
+    guarantees_manage_desc_list_first: 'We provide regular reports.',
+    guarantees_manage_desc_list_second: 'You can see what we already have on hand at any given moment and test the product.',
+    guarantees_manage_desc_outro: `You will always be in touch with the development process and aware of what stage it is currently on and even 
+    participate in the development yourself.`,
+    guarantees_support: 'Supporting:',
+    guarantees_support_desc_intro: `Even after the product is ready and you have accepted it 
+    we won't leave you to face it on your own:`,
+    guarantees_support_desc_list_first: 'We will draw up a development and promotion plan for the near future.',
+    guarantees_support_desc_list_second: 'We will fix drawbacks in the product for a year under the warranty.',
+    guarantees_support_desc_outro: `In the future we'll be able to adjust or add functions on your request - 
+    it will be easier for us that for an outside team.`
 }

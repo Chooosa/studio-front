@@ -20,7 +20,7 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import { useHistory } from 'react-router-dom';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
-
+import { useTranslation } from '../../hooks/translation';
 
 
 
@@ -34,6 +34,7 @@ const SectionCases = () => {
     const { width } = useWindowDimensions()
     const history = useHistory()
     const ref = useRef()
+    const {t} = useTranslation();
 
     const handleNavigation = () => {
         history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}/all`)
@@ -81,8 +82,8 @@ const SectionCases = () => {
 
     return (
         <Section
-            title='Кейсы'
-            description='Самые свежие работы нашей студии с подробным описанием задачи и её решением.'
+            title={t('cases')}
+            description={t('cases_desc')}
             descriptionWidth={'332px'}
             index={4}
             threshold={0.2}
@@ -95,14 +96,14 @@ const SectionCases = () => {
                     active={currentIndex === 0}
                     color={color}
                 >
-                    Мобильные приложения
+                    {t('mobile_apps')}
                 </Button>
                 <Button
                     onClick={() => setCurrentPage(1)}
                     active={currentIndex === 1}
                     color={color}
                 >
-                    Сайты
+                    {t('sites')}
                 </Button>
             </ControlsContainer>
             <SliderContainer >
@@ -130,7 +131,7 @@ const SectionCases = () => {
                     color={color}
                     onClick={handleNavigation}
                 >
-                    Все работы
+                    {t('all_works')}
                         </AllCasesButton>
             </AllCasesButtonContainer>
         </Section>

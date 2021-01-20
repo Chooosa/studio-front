@@ -27,28 +27,28 @@ const ErrorBoundary = ({error}) => {
             },
         }
         console.log(data);
-        axios({
-            method: 'post',
-            url: `${API_URL}fronterror`,
-            data: {
-                route: location.pathname,
-                device: deviceDetect(),
-                error: error,
-                data: moment().format('DD-MM-YYYY'),
-                time: moment().format('HH:mm:ss'),
-                browser: {
-                    name: browserName,
-                    version: browserVersion
-                },
-                projectName: 'LilekovStudio'
-            }
-        })
-        .then(() => {
-            console.log('success')
-        })
-        .catch((e) => {
-            console.log('error: ', e)
-        })
+        // axios({
+        //     method: 'post',
+        //     url: `${API_URL}fronterror`,
+        //     data: {
+        //         route: location.pathname,
+        //         device: deviceDetect(),
+        //         error: error,
+        //         data: moment().format('DD-MM-YYYY'),
+        //         time: moment().format('HH:mm:ss'),
+        //         browser: {
+        //             name: browserName,
+        //             version: browserVersion
+        //         },
+        //         projectName: 'LilekovStudio'
+        //     }
+        // })
+        // .then(() => {
+        //     console.log('success')
+        // })
+        // .catch((e) => {
+        //     console.log('error: ', e)
+        // })
     }, [error, location]);
 
 

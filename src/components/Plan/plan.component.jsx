@@ -25,6 +25,8 @@ import { setScroll } from '../../redux/scroll/scroll.actions'
 import { useWindowDimensions } from '../../hooks/dimensions'
 import Slider from './Slider/slider.component'
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
+import DraggableTabs from './DraggableTabs/draggable-tabs.component'
+import { useTranslation } from '../../hooks/translation'
 
 const Plan = () => {
    const color = useSelector(colorSelectors.color);
@@ -42,6 +44,10 @@ const Plan = () => {
    const line2 = useRef();
    const progressLine3 = useRef();
    const line3 = useRef();
+   const dispatch = useDispatch();
+   const { width } = useWindowDimensions();
+   const refSheme = useRef();
+   const {t} = useTranslation();
 
    useEffect(() => {
       if (scroll === 'plan') {
@@ -68,26 +74,22 @@ const Plan = () => {
 
       >
          <Heading>
-            Интервью
+            {t('interview')}
          </Heading>
          <Text>
-            Вы рассказываете нам, что хотите получить,
-            и мы обсуждаем все детали вашего проекта. На этом
-            этапе он приобретает чёткие объёмы, и мы сможем:
+            {t('interview_desc_intro')}
             <ul>
                <li>
-                  Предоставить полную смету по всему проекту.
+                  {t('interview_desc_list_first')}
                </li>
                <li>
-                  Оценить длительность работ по каждому этапу.
+               {t('interview_desc_list_second')}
                </li>
                <li>
-                  Предложить вам некоторые полезные бонусы.
+               {t('interview_desc_list_third')}
                </li>
             </ul>
-            На этом этапе вы получаете полное представление,
-            как будет идти работа и сколько это будет стоить.
-            А мы разрабатываем прозрачный план реализации проекта.
+            {t('interview_desc_outro')}
          </Text>
       </motion.div>,
 
@@ -100,28 +102,22 @@ const Plan = () => {
 
       >
          <Heading>
-            Аналитика
+            {t('analysis')}
          </Heading>
          <Text>
-            На этом этапе мы проводим анализ
-               вашего будущего проекта:<br />
-            <ol>
+            {t('analysis_desc_intro')}
+            <ul>
                <li>
-                  Оцениваем нишу.
+                  {t('analysis_desc_list_first')}
                </li>
                <li>
-                  Смотрим и анализируем основных конкурентов.
+               {t('analysis_desc_list_second')}
                </li>
                <li>
-                  Решаем, какими методами лучше всего будет
-                  достичь результата.
+               {t('analysis_desc_list_third')}
                </li>
-            </ol>
-            Конечно, это только предварительный этап работы,
-            который вас ни к чему не обязывает. Но здесь
-            уже формируются пути и этапы работы. Появляется
-            набросок плана, на основе которого можно построить
-            дальнейший процесс разработки.
+            </ul>
+            {t('analysis_desc_outro')}
          </Text>
       </motion.div>,
 
@@ -134,26 +130,19 @@ const Plan = () => {
 
       >
          <Heading>
-            Брифирование
+            {t('briefing')}
          </Heading>
          <Text>
-            Этап создания брифа – один из важнейших.
-            Он позволяет больше узнать о целях создания
-            сайта или приложения, а также о результатах,
-            которые должны быть достигнуты. Здесь мы с
-            вашей помощью:
+            {t('briefing_desc_intro')}
             <ul>
                <li>
-                  Узнаём ваши пожелания по дизайну и реализации проекта.
+                  {t('briefing_desc_list_first')}
                </li>
                <li>
-                  Получаем информацию о вашем бизнесе для использования
-                  в работе.
+                  {t('briefing_desc_second')}
                </li>
             </ul>
-            Всё это нужно, чтобы готовый продукт был адаптирован
-            именно под ваш бизнес, полностью соответствовал вашим
-            ожиданиям и выполнял свою работу на отлично.
+            {t('briefing_desc_outro')}
          </Text>
       </motion.div>,
 
@@ -166,20 +155,12 @@ const Plan = () => {
 
       >
          <Heading>
-            Смета
+            {t('budget')}
          </Heading>
          <Text>
-            На основе полученной информации мы уже имеем
-            полное представление, какой именно проект вы
-            хотите получить и какого результата достичь.
-            И мы можем составить полный план по его
-            реализации – рассчитать, сколько времени это
-            займёт у разных специалистов команды и какие
-            средства нужно будет использовать.<br />
+            <p> {t('budget_desc')} </p>
             <br />
-            На этом этапе мы уже можем предоставить вам
-            расчёт стоимости работы. Вы получите смету и
-            будете точно знать, сколь будет стоить ваш проект.
+            <p> {t('budget_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -192,22 +173,15 @@ const Plan = () => {
 
       >
          <Heading>
-            Договор
+            {t('contract')}
          </Heading>
          <Text>
-            Заключение договора – важный этап нашего
-            сотрудничества.<br />
-            Он подписывается после того, как
-            проект прошёл обсуждение и был утверждён.
-            После этого мы приступаем к работе над ним.<br />
+            <p> {t('contract_desc')} </p>
             <br />
-            Договор – официальный документ, который
-            закрепляет обязательства всех сторон. Так
-            как мы работаем официально, то составление
-            этого документа является обязательным. И мы
-            всегда выполняем все указанные в нём пункты.
-            Для каждого проекта он отличается, так как
-            объём работ и сроки бывают разными.
+            <p> {t('contract_desc_second')} </p>
+            <br />
+            <p> {t('contract_desc_third')} </p>
+            <br />
          </Text>
       </motion.div>,
 
@@ -220,21 +194,12 @@ const Plan = () => {
 
       >
          <Heading>
-            Тех.задание
+            {t('design_specification')}
          </Heading>
          <Text>
-            Разработка технического задания – основа
-            всей дальнейшей работы. Это план, по которому
-            будет проходить разработка, которая содержит
-            в себе много этапов. Чем подробнее задание,
-            тем меньше возникает задержек и прочих
-            непредвиденных ситуаций.<br />
+            <p> {t('design_specification_desc')} </p>
             <br />
-            На этапе проработки технического задания
-            становится понятно, какие именно специалисты
-            будут привлекаться и будет отведено
-            определённое время на их работу. Каждому
-            из них будет поставлена конкретная задача.
+            <p> {t('design_specification_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -247,19 +212,14 @@ const Plan = () => {
 
       >
          <Heading>
-            Дизайн
+            {t('design')}
          </Heading>
          <Text>
-            От дизайнера зависит, как будет выглядеть сайт
-            или приложение, понравится ли будущим пользователям.<br />
-            Этот важный этап является одним из ключевых – лишь
-            после него к работе подключаются разработчики. И здесь
-            наши клиенты уже могут увидеть, как будет выглядеть
-            их проект в итоге.<br />
+            <p> {t('design_desc')} </p>
             <br />
-            Все стадии работы проходят в тесном контакте с клиентом
-            и при необходимости вносятся корректировки. Одобренный
-            дизайн поступает в дальнейшую работу.
+            <p>{t('design_desc_second')}</p>
+            <br />
+            <p>{t('design_desc_third')}</p>
          </Text>
       </motion.div>,
 
@@ -272,20 +232,12 @@ const Plan = () => {
 
       >
          <Heading>
-            Разработка
+            {t('development')}
          </Heading>
          <Text>
-            Этот этап отличается для каждого проекта и
-            представляет собственно его создание. В это
-            время все привлечённые специалисты работают
-            над своей частью технического задания.
-            В итоге получается завершённый продукт – сайт
-            или приложение, с полным функционалом, который
-            требовался клиенту.<br />
+            <p> {t('development_desc')} </p>
             <br />
-            Вы, как заказчик, получаете отчёты о ходе работы
-            над вашим проектом и всегда знаете, на каком
-            этапе он находится.
+            <p> {t('development_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -298,20 +250,12 @@ const Plan = () => {
 
       >
          <Heading>
-            Тестирование
+            {t('testing')}
          </Heading>
          <Text>
-            Создать сайт или приложение – ещё не всё и
-            просто передавать его клиентам сразу после
-            разработки опрометчиво. Поэтому мы сначала
-            проводим тестирование – проверяем готовый
-            продукт на разных устройствах, в разных
-            условиях, и отыскиваем все моменты, когда
-            сайт или приложение могут работать неправильно.
-            Все найденные проблемы устраняются.<br />
+            <p> {t('testing_desc')} </p>
             <br />
-            Вы получаете свой проект всесторонне
-            проверенным – мы гарантируем качество.
+            <p> {t('testing_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -324,20 +268,12 @@ const Plan = () => {
 
       >
          <Heading>
-            Сопровождение
+            {t('support')}
          </Heading>
          <Text>
-            Даже после сдачи готового проекта некоторое
-            время он нуждается в сопровождении. В это
-            время наши клиенты получают всестороннюю
-            помощь от нашей команды, учатся обращаться
-            со своим новым сайтом или приложением,
-            узнают, как его можно продвигать в будущем.<br />
+            <p> {t('support_desc')} </p>
             <br />
-            На этом этапе вы не оказываетесь брошены на
-            произвол судьбы наедине со своим проектом и
-            всегда можете рассчитывать на нашу помощь
-            даже по простым вопросам.
+            <p> {t('support_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -461,7 +397,7 @@ const Plan = () => {
                      <LineLabel
                         left={'0%'}
                      >
-                        Этап 1
+                        {t('first_stage')}
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine1}
@@ -488,7 +424,7 @@ const Plan = () => {
                            dashLeft={'0'}
                            active={currentStep === 1}
                         >
-                           Интервью
+                           {t('interview')}
                      </StepButton>
                      </Dash>
 
@@ -503,7 +439,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(2)}
                            active={currentStep === 2}
                         >
-                           Аналитика
+                           {t('analysis')}
                      </StepButton>
                      </Dash>
 
@@ -518,7 +454,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(3)}
                            active={currentStep === 3}
                         >
-                           Брифирование
+                           {t('briefing')}
                      </StepButton>
                      </Dash>
 
@@ -533,7 +469,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(4)}
                            active={currentStep === 4}
                         >
-                           Смета
+                           {t('budget')}
                      </StepButton>
                      </Dash>
                   </Line>
@@ -546,12 +482,12 @@ const Plan = () => {
                      <LineLabel
                         left={'6%'}
                      >
-                        Этап 2
+                        {t('second_stage')}
                      </LineLabel>
                      <LineLabel
                         left={'60%'}
                      >
-                        Этап 3
+                        {t('third_stage')}
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine2}
@@ -580,7 +516,7 @@ const Plan = () => {
                            dashLeft={'0'}
                            active={currentStep === 5}
                         >
-                           Договор
+                           {t('contract')}
                         </StepButton>
                      </Dash>
 
@@ -595,7 +531,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(6)}
                            active={currentStep === 6}
                         >
-                           Тех.задание
+                           {t('design_specification')}
                         </StepButton>
                      </Dash>
 
@@ -610,7 +546,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(7)}
                            active={currentStep === 7}
                         >
-                           Дизайн
+                           {t('design')}
                         </StepButton>
                      </Dash>
 
@@ -625,7 +561,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(8)}
                            active={currentStep === 8}
                         >
-                           Разработка
+                           {t('development')}
                         </StepButton>
                      </Dash>
                   </Line>
@@ -638,7 +574,7 @@ const Plan = () => {
                      <LineLabel
                         left={'100%'}
                      >
-                        Этап 4
+                        {t('fourth_stage')}
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine3}
@@ -666,7 +602,7 @@ const Plan = () => {
                            dashLeft={'0'}
                            active={currentStep === 9}
                         >
-                           Тестирование
+                           {t('testing')}
                         </StepButton>
                      </Dash>
 
@@ -681,7 +617,7 @@ const Plan = () => {
                            onClick={() => setCurrentStep(10)}
                            active={currentStep === 10}
                         >
-                           Сопровождение
+                           {t('support')}
                         </StepButton>
                      </Dash>
                   </Line>
@@ -697,7 +633,7 @@ const Plan = () => {
             }
          </PlanContainer>
          <Button onClick={handleScroll} color={color}>
-            Записаться
+            {t('scedule_button')}
             <img src={postIco} alt='post' />
          </Button>
       </PlanWrapper >

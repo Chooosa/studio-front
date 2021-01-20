@@ -7,7 +7,7 @@ import { colorSelectors } from '../../redux/color/color.selectors';
 import Section from '../Common/Section/section.component';
 import { setScroll } from '../../redux/scroll/scroll.actions'
 // import AnimatedNumbers from '../Common/AnimatedNumbers/animated-numbers.component';
-
+import { useTranslation } from '../../hooks/translation';
 
 import {
    // GoalsWrapper,
@@ -20,6 +20,7 @@ const SectionGoals = ({ refCases }) => {
    // const history = useHistory();
    const color = useSelector(colorSelectors.color);
    const dispatch = useDispatch()
+   const {t} = useTranslation()
 
    const handleScroll = () => {
       dispatch(setScroll('cases'))
@@ -28,14 +29,8 @@ const SectionGoals = ({ refCases }) => {
 
    return (
       <Section
-         title='Каких целей вы хотите достичь?'
-         description='
-         Сразу после обращения мы решаем главную
-            проблему – как обеспечить максимальную
-            пользу от нашего продукта для клиента.
-            Вы получите самое оптимальное решение
-            из всех возможных.
-         '
+         title={t('your_goals')}
+         description={t('your_goals_desc')}
          index={1}
          headerContainerStyles={{
             marginBottom: '50px'
@@ -43,7 +38,7 @@ const SectionGoals = ({ refCases }) => {
          descriptionWidth={'370px'}
       >
          <Button onClick={handleScroll} color={color}>
-            Перейти к портфолио
+            {t('go_to_portfolio')}
             <img src={fireIco} alt='fire' />
          </Button>
       </Section>
