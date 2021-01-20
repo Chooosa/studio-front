@@ -21,13 +21,76 @@ const DropdownMenu = () => {
    const dispatch = useDispatch()
    const history = useHistory()
 
-   const handleCasesNavigation = () => {
-      if (pathname === '/') {
-         dispatch(setScroll('cases'))
-      } else {
-         dispatch(setScroll('cases'))
-         history.push('/')
+   const handleNavigation = (link) => {
+      switch (link) {
+         case 'typing':
+            if (pathname === '/') {
+               dispatch(setScroll('typing'))
+            } else {
+               dispatch(setScroll('typing'))
+               history.push('/')
+            }
+            break;
+
+         case 'services':
+            if (pathname === '/') {
+               dispatch(setScroll('services'))
+            } else {
+               dispatch(setScroll('services'))
+               history.push('/')
+            }
+            break;
+
+         case 'cases':
+            if (pathname === '/') {
+               dispatch(setScroll('cases'))
+            } else {
+               dispatch(setScroll('cases'))
+               history.push('/')
+            }
+            break;
+
+         case 'plan':
+            if (pathname === '/') {
+               dispatch(setScroll('plan'))
+            } else {
+               dispatch(setScroll('plan'))
+               history.push('/')
+            }
+            break;
+
+         case 'applicationAll':
+            history.push('/works/Application/all')
+            break;
+
+         case 'websiteAll':
+            history.push('/works/Website/all')
+            break;
+
+         case 'application':
+            history.push('/services/Application')
+            break;
+
+         case 'website':
+            history.push('/services/Website')
+            break;
+
+         case 'service':
+            history.push('/services/Service')
+            break;
+
+         case 'guarantees':
+            history.push('/guarantees')
+            break;
+
+         case 'cooperation':
+            history.push('/cooperation')
+            break;
+
+         default:
+            break;
       }
+
       toggleMenuMode()
    }
 
@@ -39,28 +102,45 @@ const DropdownMenu = () => {
             <WhiteSpace />
             <LinksWrapper>
                <LinksCell color={color}>
-                  <Link to='/' onClick={toggleMenuMode}>
+                  <span to='/' onClick={() => handleNavigation('typing')}>
                      Главная
-                  </Link>
-                  <span onClick={handleCasesNavigation}>Кейсы </span>
-                  <Link to='/works/Application/all' onClick={toggleMenuMode}>
-                     Приложения</Link>
-                  <Link to='/works/Website/all' onClick={toggleMenuMode}>
-                     Сайты</Link>
+                  </span>
+                  <span onClick={() => handleNavigation('services')}>
+                     Услуги
+                  </span>
+                  <span onClick={() => handleNavigation('cases')}>
+                     Кейсы
+                  </span>
+                  <span onClick={() => handleNavigation('plan')}>
+                     План работы
+                  </span>
                </LinksCell>
                <LinksCell color={color}>
-                  <Link to='/services/Application' onClick={toggleMenuMode}>
-                     Приложения</Link>
-                  <Link to='/services/Website' onClick={toggleMenuMode}>
-                     Сайты</Link>
-                  <Link to='/services/Service' onClick={toggleMenuMode}>
-                     Доп. услуги</Link>
+                  <span onClick={() => handleNavigation('applicationAll')}>
+                     Приложения
+                  </span>
+                  <span onClick={() => handleNavigation('websiteAll')}>
+                     Сайты
+                  </span>
                </LinksCell>
                <LinksCell color={color}>
-                  <Link to='/guarantees' onClick={toggleMenuMode}>
-                     Гарантии</Link>
-                  <Link to='/cooperation' onClick={toggleMenuMode}>
-                     Сотрудничество</Link>
+                  <span onClick={() => handleNavigation('application')}>
+                     Приложения
+                  </span>
+                  <span onClick={() => handleNavigation('website')}>
+                     Сайты
+                  </span>
+                  <span onClick={() => handleNavigation('service')}>
+                     Доп. услуги
+                  </span>
+               </LinksCell>
+               <LinksCell color={color}>
+                  <span onClick={() => handleNavigation('guarantees')}>
+                     Гарантии
+                  </span>
+                  <span onClick={() => handleNavigation('cooperation')}>
+                     Сотрудничество
+                  </span>
                </LinksCell>
             </LinksWrapper>
             <LinksCell color={color}>

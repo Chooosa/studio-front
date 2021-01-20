@@ -7,9 +7,7 @@ const mapData = {
    zoom: 14,
 };
 
-const coordinates = [
-   [55.802796, 37.584640]
-];
+const coordinate = [55.802796, 37.584640]
 
 const CustomMap = () => (
    <MapContainer>
@@ -19,7 +17,7 @@ const CustomMap = () => (
             className='mapContainer'
             style={{ width: '480px', height: '300px' }}
          >
-            {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
+            <Placemark geometry={coordinate} />
          </Map>
       </YMaps>
    </MapContainer>

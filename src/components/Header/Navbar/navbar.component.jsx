@@ -20,6 +20,7 @@ const Navbar = () => {
 
          <ButtonsWrapper>
             <MenuButton>Меню</MenuButton>
+            <MenuButton>Портфолио</MenuButton>
             <MenuButton>Услуги</MenuButton>
             <MenuButton>Разное</MenuButton>
          </ButtonsWrapper>

@@ -13,7 +13,7 @@ import MobileMenu from './MobileMenu/mobile-menu.component';
 const Header = () => {
    const headerRef = useRef();
    const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
-   const {width} = useWindowDimensions()
+   const { width } = useWindowDimensions()
 
 
    useOnClickOutside(headerRef, () => {
@@ -25,15 +25,15 @@ const Header = () => {
    return (
       <HeaderWrapper ref={headerRef} open={isMenuOpen}>
          {
-            width>720?
-            <Navbar />
-            : <MobileNavbar/>
+            width > 850 ?
+               <Navbar />
+               : <MobileNavbar />
          }
          {
-            width> 720?
-            <DropdownMenu />
-            :
-            <MobileMenu/>
+            width > 850 ?
+               <DropdownMenu />
+               :
+               <MobileMenu />
          }
       </HeaderWrapper>
    );

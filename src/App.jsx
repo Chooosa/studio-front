@@ -35,10 +35,10 @@ function App() {
 
   return (
     <AppWrapper>
-      {
-        didCatch ? <ErrorFallback error={error} /> :
-        <ErrorBoundary>
-          <MenuState>
+
+      {/* didCatch ? <ErrorFallback error={error} /> :
+        <ErrorBoundary> */}
+      <MenuState>
         <Header />
       </MenuState>
 
@@ -54,14 +54,44 @@ function App() {
         </Switch>
         {/* </AnimatePresence> */}
       </AppContainer>
-  
-        <AnimatedBackground/>
+
+      <AnimatedBackground />
       <Footer />
-        </ErrorBoundary>
-      }
+      {/* </ErrorBoundary> */}
+
       <Loader />
     </AppWrapper>
   );
 }
 
 export default App;
+
+// return (
+//   <AppWrapper>
+//     {
+//       didCatch ? <ErrorFallback error={error} /> :
+//       <ErrorBoundary>
+//         <MenuState>
+//       <Header />
+//     </MenuState>
+
+//     <AppContainer>
+//       {/* <AnimatePresence > */}
+//       <Switch location={location} key={location.pathname}>
+//         <Route exact path='/' component={Main} />
+//         <Route exact path='/works/:section/:itemId' component={WorksPage} />
+//         {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
+//         <Route exact path='/services/:section' component={ServicesPage} />
+//         <Route exact path='/cooperation' component={Cooperation} />
+//         <Route exact path='/guarantees' component={Guarantees} />
+//       </Switch>
+//       {/* </AnimatePresence> */}
+//     </AppContainer>
+
+//       <AnimatedBackground/>
+//     <Footer />
+//       </ErrorBoundary>
+//     }
+//     <Loader />
+//   </AppWrapper>
+// );

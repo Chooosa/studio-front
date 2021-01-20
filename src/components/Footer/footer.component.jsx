@@ -22,7 +22,7 @@ import {
 } from './footer.styles';
 import Logo from '../Logo/logo.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
-import {useWindowDimensions} from '../../hooks/dimensions';
+import { useWindowDimensions } from '../../hooks/dimensions';
 import ModalBase from '../ModalBase/modal-base.component';
 import CustomMap from '../Map/custom-map.component';
 
@@ -36,7 +36,7 @@ import flagIcon from '../../assets/flag.png'
 
 const Footer = () => {
    const themeColor = useSelector(colorSelectors.color);
-   const {width} = useWindowDimensions();
+   const { width } = useWindowDimensions();
    const [openModal, setOpenModal] = useState(false);
 
    const handleOpenModal = () => {
@@ -49,98 +49,98 @@ const Footer = () => {
 
    return (
       width > 500 ?
-      <FooterWrapper width={width}>
-         <FooterContainer>
-            <InfoWrapper>
-               <InfoContainerTop>
-                  <InfoContainerLeft>
-                     <Logo />
-                  </InfoContainerLeft>
-                  <InfoContainerRight>
-                     <span>127015, Москва,</span>
-                     <span>Большая Новодмитровская улица, 23с6</span>
-                     <a href='tel:89995357879'>8 999 535 78 79</a>
-                     <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                     <a href='#'>Политика конфиденциальности</a>
-                  </InfoContainerRight>
-               </InfoContainerTop>
-               <InfoContainerBottom width={width}>
-                  <SocialNetworks href='tg://resolve?domain=lilekov_evgeniy'>
-                     <img src={telegramSVG} alt='Telegram' />
+         <FooterWrapper customWidth={width}>
+            <FooterContainer>
+               <InfoWrapper>
+                  <InfoContainerTop>
+                     <InfoContainerLeft>
+                        <Logo />
+                     </InfoContainerLeft>
+                     <InfoContainerRight>
+                        <span>127015, Москва,</span>
+                        <span>Большая Новодмитровская улица, 23с6</span>
+                        <a href='tel:89995357879'>8 999 535 78 79</a>
+                        <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
+                        <a href='#'>Политика конфиденциальности</a>
+                     </InfoContainerRight>
+                  </InfoContainerTop>
+                  <InfoContainerBottom customWidth={width}>
+                     <SocialNetworks href='tg://resolve?domain=lilekov_evgeniy'>
+                        <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                  <SocialNetworks href='#'>
-                     <img src={instagramSVG} alt='Instagram' />
+                     <SocialNetworks href='#'>
+                        <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                  <SocialNetworks href='#'>
-                     <img src={facebookSVG} alt='Facebook' />
+                     <SocialNetworks href='#'>
+                        <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>
-               </InfoContainerBottom>
-            </InfoWrapper>
-         </FooterContainer>
-         <MapWrapper>
-            <img src={mapPNG} alt='map' />
-            <MapContainer color={themeColor}>
-               <Marker />
-               <MapButton onClick={handleOpenModal}>
-                  Перейти к карте
+                  </InfoContainerBottom>
+               </InfoWrapper>
+            </FooterContainer>
+            <MapWrapper>
+               <img src={mapPNG} alt='map' />
+               <MapContainer color={themeColor}>
+                  <Marker />
+                  <MapButton onClick={handleOpenModal}>
+                     Перейти к карте
                   <img src={flagIcon} alt='flag' />
-               </MapButton>
-            </MapContainer>
-         </MapWrapper>
+                  </MapButton>
+               </MapContainer>
+            </MapWrapper>
 
-         <ModalBase
-            open={openModal}
-            onClose={handleCloseModal}
-         >
-            <CustomMap />
-         </ModalBase>
-      </FooterWrapper>
-      :
-      <FooterWrapperMobile>
+            <ModalBase
+               open={openModal}
+               onClose={handleCloseModal}
+            >
+               <CustomMap />
+            </ModalBase>
+         </FooterWrapper>
+         :
+         <FooterWrapperMobile>
             <FooterContainerMobile>
-            <InfoContainerRight style={{paddingLeft: '5%'}}>
-                     <span>127015, Москва,</span>
-                     <span>Большая Новодмитровская улица, 23с6</span>
-                     <a href='tel:89995357879'>8 999 535 78 79</a>
-                     <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                     <a href='#'>Политика конфиденциальности</a>
+               <InfoContainerRight style={{ paddingLeft: '5%' }}>
+                  <span>127015, Москва,</span>
+                  <span>Большая Новодмитровская улица, 23с6</span>
+                  <a href='tel:89995357879'>8 999 535 78 79</a>
+                  <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
+                  <a href='#'>Политика конфиденциальности</a>
                </InfoContainerRight>
-            <MapWrapperMobile color={themeColor}>
-               <img src={mapMobilePNG} alt='map-mobile' />
-               <SocialNetworksWrapperMobile>
-                  <SocialNetworks href='https://teleg.run/lilekov_evgeniy'>
-                     <img src={telegramSVG} alt='Telegram' />
+               <MapWrapperMobile color={themeColor}>
+                  <img src={mapMobilePNG} alt='map-mobile' />
+                  <SocialNetworksWrapperMobile>
+                     <SocialNetworks href='https://teleg.run/lilekov_evgeniy'>
+                        <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                  <SocialNetworks href='#'>
-                     <img src={instagramSVG} alt='Instagram' />
+                     <SocialNetworks href='#'>
+                        <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                  <SocialNetworks href='#'>
-                     <img src={facebookSVG} alt='Facebook' />
+                     <SocialNetworks href='#'>
+                        <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>
-               </SocialNetworksWrapperMobile>
-               <Marker />
-               <MapButtonMobileContainer>
-               <MapButtonMobile width={width} onClick={handleOpenModal}>
-                  Перейти к карте
+                  </SocialNetworksWrapperMobile>
+                  <Marker />
+                  <MapButtonMobileContainer>
+                     <MapButtonMobile customWidth={width} onClick={handleOpenModal}>
+                        Перейти к карте
                   <img src={flagIcon} alt='flag' />
-               </MapButtonMobile>
-               </MapButtonMobileContainer>
-            </MapWrapperMobile>
+                     </MapButtonMobile>
+                  </MapButtonMobileContainer>
+               </MapWrapperMobile>
             </FooterContainerMobile>
 
-         <ModalBase
-         open={openModal}
-         onClose={handleCloseModal}
-         >
-            <CustomMap />
-         </ModalBase>
-      </FooterWrapperMobile>
+            <ModalBase
+               open={openModal}
+               onClose={handleCloseModal}
+            >
+               <CustomMap />
+            </ModalBase>
+         </FooterWrapperMobile>
    );
 }
 

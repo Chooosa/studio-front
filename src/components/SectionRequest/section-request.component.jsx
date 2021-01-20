@@ -56,7 +56,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
     const [filesArray, setFilesArray] = useState([]);
 
-    const sendRequest = async (values, {resetForm}) => {
+    const sendRequest = async (values, { resetForm }) => {
         // axios.interceptors.request.use(function (config) {
         //     return config;
         // }, function (error) {
@@ -70,8 +70,8 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
         filesArray.forEach((file) => {
             formData.append('file', file);
-        }) 
-             
+        })
+
         try {
             const resp = await axios.post(`${API_URL}application`, formData);
             resetForm();
@@ -79,7 +79,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             return resp;
         }
         catch (err) {
-            
+
         }
     }
 
@@ -89,8 +89,8 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             filesArray.forEach((file) => {
                 filesSize += file.size
             })
-            if(filesSize < 30000000) {
-                if(filesArray.find((item) => item.name === file.name) === undefined){
+            if (filesSize < 30000000) {
+                if (filesArray.find((item) => item.name === file.name) === undefined) {
                     setFilesArray([...filesArray, file]);
                 }
             }
@@ -141,8 +141,8 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                     <InputFieldsWrapper onSubmit={handleSubmit} ref={ref}>
-                        <InputFieldsRowPosition width={width}>
-                            <InputFieldsColumn width={width}>
+                        <InputFieldsRowPosition customWidth={width}>
+                            <InputFieldsColumn customWidth={width}>
                                 <InputWrapper>
                                     <InputField
                                         placeholder=' '
@@ -183,7 +183,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                 </InputWrapper>
                             </InputFieldsColumn>
                             <InputFieldsColumn>
-                                <ExtraInfoWrapper width={width}>
+                                <ExtraInfoWrapper customWidth={width}>
                                     <ExtraInfo
                                         placeholder=' '
                                         value={values.text}
@@ -206,7 +206,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                     Прикрепить файл
                                 <Icon src={Attach} />
                                 </FileInputLabel>
-                                <FilesList width={width}>
+                                <FilesList customWidth={width}>
                                     {filesArray.map((item) => {
                                         return (
 
@@ -242,7 +242,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                     </InputFieldsWrapper>
                 )}
             </Formik>
-            <PersonalDataAgreement width={width}>
+            <PersonalDataAgreement customWidth={width}>
                 <span>
                     Нажимая “Отправить заявку” вы соглашаетесь с порядком
                 обработки <a href=''>персональных данных.</a>

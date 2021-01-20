@@ -1,10 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
 import Section from '../Common/Section/section.component';
 // import SectionHeader from '../Common/SectionHeader/section-header.component';
+import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
+import { setScroll } from '../../redux/scroll/scroll.actions';
 
 
 import {
@@ -15,6 +17,19 @@ import {
 const ServicesSection = () => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
+    const dispatch = useDispatch()
+    const scroll = useSelector(scrollSelectors.to)
+    const ref = useRef()
+
+    useEffect(() => {
+        if (scroll === 'services') {
+            ref.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            })
+            dispatch(setScroll(undefined))
+        }
+    }, [scroll, dispatch])
 
     return (
         <Section
@@ -24,7 +39,7 @@ const ServicesSection = () => {
             index={3}
             descriptionWidth={'380px'}
         >
-            <CardContainer >
+            <CardContainer ref={ref}>
                 <AnimatedCard
                     description='Разработаем мобильное приложение под платформы Android или IOS с соблюдением современных стандартов и требований. Все этапы – от создания дизайна до готового продукта.'
                     title='Мобильные

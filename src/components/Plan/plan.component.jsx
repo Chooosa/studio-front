@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 
 import {
@@ -23,22 +23,35 @@ import postIco from '../../assets/post.png';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { setScroll } from '../../redux/scroll/scroll.actions'
 import { useWindowDimensions } from '../../hooks/dimensions'
-import DraggableTabs from './DraggableTabs/draggable-tabs.component'
+import Slider from './Slider/slider.component'
+import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 
 const Plan = () => {
    const color = useSelector(colorSelectors.color);
    const [currentStep, setCurrentStep] = useState(1);
+   const [transitionProgress, setTransitionProgress] = useState(1);
+
+   const refSheme = useRef();
+   const dispatch = useDispatch();
+   const { width } = useWindowDimensions();
+   const scroll = useSelector(scrollSelectors.to)
+
    const progressLine1 = useRef();
    const line1 = useRef();
    const progressLine2 = useRef();
    const line2 = useRef();
    const progressLine3 = useRef();
    const line3 = useRef();
-   const dispatch = useDispatch();
-   const { width } = useWindowDimensions();
-   const refSheme = useRef();
 
-   const [transitionProgress, setTransitionProgress] = useState(1);
+   useEffect(() => {
+      if (scroll === 'plan') {
+         refSheme.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+         })
+         dispatch(setScroll(undefined))
+      }
+   }, [scroll, dispatch])
 
    const handleScroll = () => {
       // refApplication.current.scrollIntoView({ behavior: 'smooth' })
@@ -452,7 +465,7 @@ const Plan = () => {
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine1}
-                        width={handlePaintingOver}
+                        cusstomWidth={handlePaintingOver}
                         color={color}
                         onTransitionEnd={handleTransitionEnd}
                      />
@@ -542,7 +555,7 @@ const Plan = () => {
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine2}
-                        width={() => handlePaintingOver2}
+                        cusstomWidth={() => handlePaintingOver2}
                         color={color}
                         onTransitionEnd={handleTransitionEnd2}
                      />
@@ -629,7 +642,7 @@ const Plan = () => {
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine3}
-                        width={() => handlePaintingOver3}
+                        cusstomWidth={() => handlePaintingOver3}
                         color={color}
                         onTransitionEnd={handleTransitionEnd3}
                      />
@@ -674,10 +687,14 @@ const Plan = () => {
                   </Line>
                </LineWrapper>
             </SchemeWrapper>
-            {/* {
+            {
                width < 850 &&
-               <DraggableTabs refSheme={refSheme} />
-            } */}
+               <Slider
+                  refSheme={refSheme}
+                  currentStep={currentStep}
+                  setCurrentStep={setCurrentStep}
+               />
+            }
          </PlanContainer>
          <Button onClick={handleScroll} color={color}>
             Записаться
