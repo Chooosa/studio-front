@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 
 import {
    LogoButton,
@@ -8,11 +8,11 @@ import {
 import logoTextSVG from '../../assets/logo-text.svg';
 import { changeColor } from '../../redux/color/color.actions';
 import { useHistory } from 'react-router-dom';
+import { setScroll } from '../../redux/scroll/scroll.actions'
 
 const Logo = ({ color, changeColor, themeColor }) => {
    const history = useHistory()
-
-
+   const dispatch = useDispatch()
 
    const onChangeColor = () => {
       if (color < 7) {
@@ -25,6 +25,7 @@ const Logo = ({ color, changeColor, themeColor }) => {
 
    const handleNavigation = () => {
       history.push('/')
+      dispatch(setScroll('typing'))
    }
 
    return (

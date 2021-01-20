@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -28,6 +28,8 @@ import Send from '../../assets/post.png';
 import Attach from '../../assets/attach.png';
 import Delete from '../../assets/delete.png';
 import { API_URL } from '../../config';
+import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
+import { setScroll } from '../../redux/scroll/scroll.actions';
 
 const validationSchema = yup.object().shape({
     email: yup.string()
@@ -48,6 +50,9 @@ const validationSchema = yup.object().shape({
 const SectionRequest = ({ refApplication, index, padding }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
+    const dispatch = useDispatch()
+    const scroll = useSelector(scrollSelectors.to)
+    const ref = useRef()
 
     const [filesArray, setFilesArray] = useState([]);
 
@@ -99,6 +104,16 @@ const SectionRequest = ({ refApplication, index, padding }) => {
         )
     }
 
+    useEffect(() => {
+        if (scroll === 'request') {
+            ref.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            })
+            dispatch(setScroll(undefined))
+        }
+    }, [scroll, dispatch])
+
     return (
         <Section
             title='Оставить заявку'
@@ -125,7 +140,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                 validateOnChange={false}
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
-                    <InputFieldsWrapper onSubmit={handleSubmit} >
+                    <InputFieldsWrapper onSubmit={handleSubmit} ref={ref}>
                         <InputFieldsRowPosition width={width}>
                             <InputFieldsColumn width={width}>
                                 <InputWrapper>

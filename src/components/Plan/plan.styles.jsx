@@ -13,11 +13,11 @@ export const PlanWrapper = styled.div`
    margin-bottom: 10px;
    /* height: 670px; */
 
-   @media(max-width: 790px) {
-      padding: 50px 10px;
+   @media(max-width: 850px) {
+      padding: 0px 10px 50px 10px;
    }
    @media(max-width: 410px) {
-      padding: 40px 0;
+      padding: 0 0 40px 0;
    }
 `
 
@@ -26,8 +26,36 @@ export const Button = styled(CustomButton)`
    border-color: ${props => props.color};
    margin-top: 40px;
    margin-right: 56px;
+   /* transition-duration: 0.4s; */
 
-   @media(max-width: 790px) {
+   z-index: 1;
+   overflow: hidden;
+
+   ::after {
+      content: "";
+      background-color: ${props => props.color};
+      position: absolute;
+      z-index: -1;
+      padding: 0.85em 0.75em;
+      display: block;
+
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(0, 1);
+      transition: all 0.4s ease;
+   }
+
+   :hover {
+      /* transition-duration: 0.4s; */
+      transition: all 0.4s ease-out;
+      ::after {
+         transform: skewX(-45deg) scale(1, 1);
+      }
+   }
+
+   @media(max-width: 850px) {
       margin-right: 0;
    }
    /* background-color: ${props => props.color}; */
@@ -37,6 +65,10 @@ export const Heading = styled(CustomHeading)`
    margin-top: 0;
    font-size: 24px;
    line-height: 32px;
+
+   /* @media(max-width: 850px) {
+      display: none;
+   } */
 `
 
 export const Text = styled(CustomText)`
@@ -53,7 +85,7 @@ export const PlanContainer = styled.div`
    display: flex;
    justify-content: space-between;
 
-   @media(max-width: 790px) {
+   @media(max-width: 850px) {
       flex-direction: column-reverse;
       align-items: center;
       /* padding-top: 60px; */
@@ -69,8 +101,9 @@ export const DescriptionWrapper = styled(motion.div)`
    min-height: 450px;
    overflow: hidden;
 
-   @media(max-width: 790px) {
+   @media(max-width: 850px) {
       margin-right: 0;
+      min-height: 380px;
    }
    @media(max-width: 410px) {
       margin-left: 10px;
@@ -79,6 +112,7 @@ export const DescriptionWrapper = styled(motion.div)`
 `
 
 export const SchemeWrapper = styled.div`
+   margin-top: 40px;
    width: 100%;
    max-width: 480px;
    /* width: 50%; */

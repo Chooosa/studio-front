@@ -9,8 +9,8 @@ margin-bottom: 60px;
 display: flex;
 flex-direction: column;
 @media(max-width: 1056px) {
-    padding-left: ${props => props.padding? props.padding: '20px'};
-    padding-right: ${props => props.padding? props.padding: '20px'};
+    padding-left: ${props => props.padding ? props.padding : '20px'};
+    padding-right: ${props => props.padding ? props.padding : '20px'};
 }
 `
 
@@ -21,8 +21,34 @@ align-items: center;
 
 `
 export const Title = styled(CustomHeading)`
-margin: 0;
-/* text-transform: capitalize; */
+    margin: 0;
+    /* text-transform: capitalize; */
+    @media (max-width: 700px) {
+        font-size: 36px;
+        line-height: 44px;
+    }
+    @media (max-width: 600px) {
+        font-size: 32px;
+        line-height: 40px;
+    }
+    @media (max-width: 500px) {
+        font-size: 26px;
+        line-height: 34px;
+    }
+    @media (max-width: 430px) {
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0;
+    }
+    @media (max-width: 400px) {
+        font-size: 22px;
+        line-height: 28px;
+        margin-right: 5px;
+    }
+    @media (max-width: 370px) {
+        font-size: 20px;
+        line-height: 26px;
+    }
 `
 
 export const DescriptionContainer = styled.div`

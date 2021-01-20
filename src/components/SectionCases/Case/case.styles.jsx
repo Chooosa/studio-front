@@ -58,7 +58,7 @@ color: #F9F9F9;
 @media(max-width: 500px) {
     font-size: 14px;
     line-height: 18px;
-    
+
 }
 
 `
@@ -83,6 +83,45 @@ export const ActionButton = styled(CustomButton)`
 border-color: ${props => props.color};
 width: 100%;
 max-width: 100%;
+
+z-index: 1;
+overflow: hidden;
+
+@media (min-width: 600px) {
+    ::after {
+        content: "";
+        background-color: ${props => props.color};
+        position: absolute;
+        z-index: -1;
+        padding: 0.85em 0.75em;
+        display: block;
+
+        left: -20%;
+        right: -20%;
+        top: 0;
+        bottom: 0;
+        transform: skewX(-45deg) scale(0, 1);
+        transition: all 0.4s ease;
+    }
+
+    :hover {
+        /* transition-duration: 0.4s; */
+        transition: all 0.4s ease-out;
+        ::after {
+            transform: skewX(-45deg) scale(1, 1);
+        }
+        >img {
+            transition-duration: 0.2s;
+            transform: scale(1)
+        }
+    }
+}
+
+>img {
+    transition-duration: 0.2s;
+    transform: scale(0)
+}
+
 @media(max-width: 600px) {
     background-color: ${props => props.color};
 }

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
    PlanWrapper,
@@ -21,8 +21,11 @@ import { colorSelectors } from '../../redux/color/color.selectors';
 
 import postIco from '../../assets/post.png';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { setScroll } from '../../redux/scroll/scroll.actions'
+import { useWindowDimensions } from '../../hooks/dimensions'
+import DraggableTabs from './DraggableTabs/draggable-tabs.component'
 
-const Plan = ({ refApplication }) => {
+const Plan = () => {
    const color = useSelector(colorSelectors.color);
    const [currentStep, setCurrentStep] = useState(1);
    const progressLine1 = useRef();
@@ -31,11 +34,15 @@ const Plan = ({ refApplication }) => {
    const line2 = useRef();
    const progressLine3 = useRef();
    const line3 = useRef();
+   const dispatch = useDispatch();
+   const { width } = useWindowDimensions();
+   const refSheme = useRef();
 
    const [transitionProgress, setTransitionProgress] = useState(1);
 
    const handleScroll = () => {
-      refApplication.current.scrollIntoView({ behavior: 'smooth' })
+      // refApplication.current.scrollIntoView({ behavior: 'smooth' })
+      dispatch(setScroll('request'))
    }
 
    const descriptionTexts = [
@@ -131,7 +138,6 @@ const Plan = ({ refApplication }) => {
                   в работе.
                </li>
             </ul>
-            в работе.
             Всё это нужно, чтобы готовый продукт был адаптирован
             именно под ваш бизнес, полностью соответствовал вашим
             ожиданиям и выполнял свою работу на отлично.
@@ -266,7 +272,7 @@ const Plan = ({ refApplication }) => {
             <br />
             Вы, как заказчик, получаете отчёты о ходе работы
             над вашим проектом и всегда знаете, на каком
-            этапе она находится.
+            этапе он находится.
          </Text>
       </motion.div>,
 
@@ -412,8 +418,10 @@ const Plan = ({ refApplication }) => {
    }
 
    const handleTransitionEnd3 = () => {
-      if (progressLine3.current?.offsetWidth === 0) {
-         setTransitionProgress(2)
+      if (transitionProgress > 1) {
+         if (progressLine3.current?.offsetWidth === 0) {
+            setTransitionProgress(2)
+         }
       }
    }
 
@@ -431,7 +439,8 @@ const Plan = ({ refApplication }) => {
                   </AnimatePresence>
                </DescriptionWrapper>
             </AnimateSharedLayout>
-            <SchemeWrapper >
+
+            <SchemeWrapper ref={refSheme}>
                <LineWrapper>
                   <Line
                      ref={line1}
@@ -443,7 +452,7 @@ const Plan = ({ refApplication }) => {
                      </LineLabel>
                      <ProgressLine
                         ref={progressLine1}
-                        width={() => handlePaintingOver}
+                        width={handlePaintingOver}
                         color={color}
                         onTransitionEnd={handleTransitionEnd}
                      />
@@ -665,6 +674,10 @@ const Plan = ({ refApplication }) => {
                   </Line>
                </LineWrapper>
             </SchemeWrapper>
+            {/* {
+               width < 850 &&
+               <DraggableTabs refSheme={refSheme} />
+            } */}
          </PlanContainer>
          <Button onClick={handleScroll} color={color}>
             Записаться

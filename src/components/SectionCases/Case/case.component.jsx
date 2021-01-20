@@ -11,20 +11,21 @@ import {
     ContentBody,
     PreviewImage
 } from './case.styles';
-import {CMS_URL} from '../../../config';
+import { CMS_URL } from '../../../config';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 import { useHistory } from 'react-router-dom';
+import BoltSVG from '../../../assets/bolt.svg';
 
 
-const Case = ({caseToDisplay}) => {
+const Case = ({ caseToDisplay }) => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
 
 
     const handleNavigation = (id) => {
         history.push(`/works/${caseToDisplay.Type}/${id}`)
-        
+
     }
 
     return (
@@ -40,16 +41,17 @@ const Case = ({caseToDisplay}) => {
                         </ReactMarkdown>
                     </ContentDescription>
                 </ContentBody>
-                <ActionButton 
-                color={color}
-                onClick={() => handleNavigation(caseToDisplay.id)}
+                <ActionButton
+                    color={color}
+                    onClick={() => handleNavigation(caseToDisplay.id)}
                 >
                     Смотреть всю работу
+                    <img src={BoltSVG} alt='bolt' />
                 </ActionButton>
             </ContentContainer>
             <PreviewImage
             >
-                <img  src={CMS_URL +caseToDisplay.MainImage.url} alt='title'/>
+                <img src={CMS_URL + caseToDisplay.MainImage.url} alt='title' />
             </PreviewImage>
         </CaseContainer>
     )

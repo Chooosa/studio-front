@@ -17,9 +17,10 @@ import {
 } from './section-cases.styles';
 import Case from './Case/case.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
+
 
 
 
@@ -32,7 +33,7 @@ const SectionCases = () => {
     const dispatch = useDispatch()
     const { width } = useWindowDimensions()
     const history = useHistory()
-    const ref= useRef()
+    const ref = useRef()
 
     const handleNavigation = () => {
         history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}/all`)
@@ -40,7 +41,7 @@ const SectionCases = () => {
 
 
     useEffect(() => {
-        if (scroll==='cases') {
+        if (scroll === 'cases') {
             ref.current?.scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
@@ -57,9 +58,9 @@ const SectionCases = () => {
                 let tempWorks = { apps: [], websites: [] }
                 response.data.forEach((cases) => {
                     if (cases.Type === 'Application') {
-                        tempWorks.apps = cases.cases.slice(0,2)
+                        tempWorks.apps = cases.cases.slice(0, 2)
                     } else if (cases.Type === 'Website') {
-                        tempWorks.websites = cases.cases.slice(0,2)
+                        tempWorks.websites = cases.cases.slice(0, 2)
                     }
                 })
                 setWorks(tempWorks)
@@ -76,7 +77,7 @@ const SectionCases = () => {
         }
     }
 
-    
+
 
     return (
         <Section
@@ -86,8 +87,8 @@ const SectionCases = () => {
             index={4}
             threshold={0.2}
         >
-            <ControlsContainer 
-            ref={ref}
+            <ControlsContainer
+                ref={ref}
             >
                 <Button
                     onClick={() => setCurrentPage(0)}
