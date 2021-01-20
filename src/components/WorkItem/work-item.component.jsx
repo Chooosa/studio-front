@@ -3,7 +3,12 @@ import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
+import {colorSelectors} from '../../redux/color/color.selectors';
+
+
 import { useWindowDimensions } from '../../hooks/dimensions';
+import {ReactComponent as ArrowRight} from '../../assets/arrow-right.svg';
+import {ReactComponent as ArrowLeft} from '../../assets/arrow-left.svg';
 
 
 import {
@@ -12,8 +17,10 @@ import {
     TextContent,
     TextSection,
     Title,
-    SlideImage
+    SlideImage,
+    ArrowContainer
 } from './work-item.styles';
+import { useSelector } from 'react-redux';
 
 let callback;
 
@@ -23,6 +30,8 @@ const WorkItem = ({ work }) => {
     const [animating, setAnimating] = useState(false)
     const { section, itemId } = useParams()
     const containerRef = useRef()
+    const sliderRef = useRef()
+    const color = useSelector(colorSelectors.color)
 
     const reverseFullScreen = () => {
         fullscreenImage.el.addEventListener('transitionend', removeNode)
@@ -127,7 +136,17 @@ const WorkItem = ({ work }) => {
         }
     }
 
+    const NextArrow = () => {
+        return <ArrowContainer onClick={() =>  sliderRef.current.slickNext()} color={color} right={true}>
+            <ArrowRight/>
+        </ArrowContainer>
+    }
 
+    const PrevArrow = () => {
+        return <ArrowContainer onClick={() =>  sliderRef.current.slickPrev()} color={color} right={false}>
+            <ArrowLeft/>
+        </ArrowContainer>
+    }
 
     return (
         <Container
@@ -152,12 +171,15 @@ const WorkItem = ({ work }) => {
                 {
                     work.Gallery.length > 1 ?
                         <Slider
+                            ref={sliderRef}
                             variableWidth={true}
                             swipeToSlide={true}
                             initialSlide={0}
                             infinite={false}
                             rows={1}
-                            arrows={false}
+                            arrows={width> 612? true: false}
+                            nextArrow={<NextArrow/>}
+                            prevArrow={<PrevArrow/>}
                         >
                             {
                                 work.Gallery.map((img, index) => {
@@ -198,28 +220,6 @@ const WorkItem = ({ work }) => {
                         }}
                         onClick={reverseFullScreen}
                     >
-                        {/* <div
-                    style={{
-                        position: 'relative',
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}
-                    >
-                        <SlideImage
-                        src={CMS_URL+work.Gallery[fullscreenImage.index].url}
-                        alt='example-fullscreen' onLoad={removeNode}
-                        style={{
-                            width: getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).ww,
-                            position: 'absolute',
-                            left:getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).left,
-                            top: getImageDimension(work.Gallery[fullscreenImage.index].width, work.Gallery[fullscreenImage.index].height).top
-                        }}
-
-                        />
-                    </div> */}
                     </div>
                     : null
             }
