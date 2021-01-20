@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
 import Section from '../Common/Section/section.component';
-// import SectionHeader from '../Common/SectionHeader/section-header.component';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 

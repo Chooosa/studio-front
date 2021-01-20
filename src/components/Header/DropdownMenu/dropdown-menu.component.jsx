@@ -12,10 +12,12 @@ import { MenuContext } from '../../../context/menu-state';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { setScroll } from '../../../redux/scroll/scroll.actions';
+import { useTranslation } from '../../../hooks/translation';
 
 const DropdownMenu = () => {
    const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
    const color = useSelector(colorSelectors.color);
+   const {t} = useTranslation();
 
    const { pathname } = useLocation()
    const dispatch = useDispatch()
@@ -103,43 +105,43 @@ const DropdownMenu = () => {
             <LinksWrapper>
                <LinksCell color={color}>
                   <span to='/' onClick={() => handleNavigation('typing')}>
-                     Главная
+                     {t('main_page')}
                   </span>
                   <span onClick={() => handleNavigation('services')}>
-                     Услуги
+                     {t('services')}
                   </span>
                   <span onClick={() => handleNavigation('cases')}>
-                     Кейсы
+                     {t('cases')}
                   </span>
                   <span onClick={() => handleNavigation('plan')}>
-                     План работы
+                     {t('work_plan')}
                   </span>
                </LinksCell>
                <LinksCell color={color}>
                   <span onClick={() => handleNavigation('applicationAll')}>
-                     Приложения
+                     {t('apps')}
                   </span>
                   <span onClick={() => handleNavigation('websiteAll')}>
-                     Сайты
+                     {t('sites')}
                   </span>
                </LinksCell>
                <LinksCell color={color}>
                   <span onClick={() => handleNavigation('application')}>
-                     Приложения
+                     {t('apps')}
                   </span>
                   <span onClick={() => handleNavigation('website')}>
-                     Сайты
+                     {t('sites')}
                   </span>
                   <span onClick={() => handleNavigation('service')}>
-                     Доп. услуги
+                     {t('other_services')}
                   </span>
                </LinksCell>
                <LinksCell color={color}>
                   <span onClick={() => handleNavigation('guarantees')}>
-                     Гарантии
+                     {t('guarantees')}
                   </span>
                   <span onClick={() => handleNavigation('cooperation')}>
-                     Сотрудничество
+                     {t('collaboration')}
                   </span>
                </LinksCell>
             </LinksWrapper>

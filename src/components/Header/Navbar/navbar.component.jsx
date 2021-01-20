@@ -9,22 +9,24 @@ import MenuButton from '../MenuButton/menu-button.component';
 import { MenuContext } from '../../../context/menu-state';
 import Logo from '../../Logo/logo.component';
 import { colorSelectors } from '../../../redux/color/color.selectors';
+import { useTranslation } from '../../../hooks/translation';
 
 const Navbar = () => {
    const themeColor = useSelector(colorSelectors.color);
    const { isMenuOpen } = useContext(MenuContext);
+   const {t} = useTranslation();
 
    return (
       <NavbarContainer open={isMenuOpen}>
          <Logo />
 
          <ButtonsWrapper>
-            <MenuButton>Меню</MenuButton>
-            <MenuButton>Портфолио</MenuButton>
-            <MenuButton>Услуги</MenuButton>
-            <MenuButton>Разное</MenuButton>
+            <MenuButton> {t('menu')} </MenuButton>
+            <MenuButton> {t('portfolio')} </MenuButton>
+            <MenuButton> {t('services')} </MenuButton>
+            <MenuButton> {t('other')} </MenuButton>
          </ButtonsWrapper>
-         <MenuButton color={themeColor}>Контакты</MenuButton>
+         <MenuButton color={themeColor}> {t('contacts')} </MenuButton>
       </NavbarContainer>
    );
 }

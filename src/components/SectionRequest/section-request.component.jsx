@@ -81,11 +81,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             return resp;
         }
         catch (err) {
-
-            ref.current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            })
+           
         }
     }
 
@@ -138,6 +134,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                 onSubmit={sendRequest}
                 validationSchema={validationSchema}
                 validateOnChange={false}
+                
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                     <InputFieldsWrapper onSubmit={handleSubmit} ref={ref}>

@@ -25,7 +25,7 @@ import { setScroll } from '../../redux/scroll/scroll.actions'
 import { useWindowDimensions } from '../../hooks/dimensions'
 import Slider from './Slider/slider.component'
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
-import DraggableTabs from './DraggableTabs/draggable-tabs.component'
+// import DraggableTabs from './DraggableTabs/draggable-tabs.component'
 import { useTranslation } from '../../hooks/translation'
 
 const Plan = () => {
@@ -44,9 +44,6 @@ const Plan = () => {
    const line2 = useRef();
    const progressLine3 = useRef();
    const line3 = useRef();
-   const dispatch = useDispatch();
-   const { width } = useWindowDimensions();
-   const refSheme = useRef();
    const {t} = useTranslation();
 
    useEffect(() => {
