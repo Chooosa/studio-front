@@ -148,7 +148,7 @@ const MobileMenu = () => {
                             </a>
                             </BodyItem>
                             <BodyItem>
-                                <a href='tg://resolve?domain=@lilekov_evgeniy'>
+                                <a href='tg://resolve?domain=lilekov_evgeniy'>
                                     Telegram
                             </a>
                             </BodyItem>

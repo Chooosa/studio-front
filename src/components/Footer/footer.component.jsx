@@ -65,7 +65,7 @@ const Footer = () => {
                   </InfoContainerRight>
                </InfoContainerTop>
                <InfoContainerBottom width={width}>
-                  <SocialNetworks href='https://teleg.run/lilekov_evgeniy'>
+                  <SocialNetworks href='tg://resolve?domain=lilekov_evgeniy'>
                      <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>

@@ -72,7 +72,7 @@ const DropdownMenu = () => {
                </a>
 
 
-               <a href='tg://msg?to=79995357879'>
+               <a href='tg://resolve?domain=lilekov_evgeniy'>
                   Telegram
                </a>
 
