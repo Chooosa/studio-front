@@ -23,6 +23,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+
     localStorage.setItem('scroll', false)
   }, [])
 
@@ -42,7 +43,9 @@ function App() {
         <Header />
       </MenuState>
 
-      <AppContainer>
+      <AppContainer
+      onTouchMove={(e) => {e.stopPropagation()}}
+      >
         {/* <AnimatePresence > */}
         <Switch location={location} key={location.pathname}>
           <Route exact path='/' component={Main} />

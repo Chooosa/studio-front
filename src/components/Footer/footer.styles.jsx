@@ -170,8 +170,6 @@ export const SocialNetworks = styled.a`
 
 export const FooterWrapperMobile = styled.footer`
    display: flex;
-   min-height: 632px;
-   max-height: 1000px;
    width: 100%;
    z-index: 0;
 `
@@ -180,7 +178,8 @@ export const FooterContainerMobile = styled.div`
    display: flex;
    flex-direction: column;
    position: relative;
-
+   min-height: 632px;
+   max-height: 1000px;
    width: 100%;
    height: 100%;
 `
@@ -235,4 +234,16 @@ export const MapButtonMobile = styled(CustomButton)`
    @media(max-width: 410px) {
       left: 0;
    }
+`
+
+
+export const Container = styled.div`
+max-height: 1000px;
+width:100%;
+min-height: 632px;
+display: flex;
+   min-height: 632px;
+    
+   width: 100%;
+   z-index: 2;
 `

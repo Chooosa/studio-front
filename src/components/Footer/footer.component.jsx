@@ -18,7 +18,8 @@ import {
    MapWrapperMobile,
    SocialNetworksWrapperMobile,
    MapButtonMobileContainer,
-   MapButtonMobile
+   MapButtonMobile,
+   Container
 } from './footer.styles';
 import Logo from '../Logo/logo.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
@@ -100,6 +101,7 @@ const Footer = () => {
       </FooterWrapper>
       :
       <FooterWrapperMobile>
+
             <FooterContainerMobile>
             <InfoContainerRight style={{paddingLeft: '5%'}}>
                      <span>127015, Москва,</span>
@@ -133,7 +135,6 @@ const Footer = () => {
                </MapButtonMobileContainer>
             </MapWrapperMobile>
             </FooterContainerMobile>
-
          <ModalBase
          open={openModal}
          onClose={handleCloseModal}
