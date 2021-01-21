@@ -18,7 +18,7 @@ import {
 
 const variants = {
     hidden: {
-        x: -725,
+        x: -855,
         transition: {
             duration: 0.5,
         }
@@ -41,13 +41,77 @@ const MobileMenu = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const handleCasesNavigation = () => {
-        if (pathname === '/') {
-            dispatch(setScroll('cases'))
-        } else {
-            dispatch(setScroll('cases'))
-            history.push('/')
+
+    const handleNavigation = (link) => {
+        switch (link) {
+            case 'typing':
+                if (pathname === '/') {
+                    dispatch(setScroll('typing'))
+                } else {
+                    dispatch(setScroll('typing'))
+                    history.push('/')
+                }
+                break;
+
+            case 'services':
+                if (pathname === '/') {
+                    dispatch(setScroll('services'))
+                } else {
+                    dispatch(setScroll('services'))
+                    history.push('/')
+                }
+                break;
+
+            case 'cases':
+                if (pathname === '/') {
+                    dispatch(setScroll('cases'))
+                } else {
+                    dispatch(setScroll('cases'))
+                    history.push('/')
+                }
+                break;
+
+            case 'plan':
+                if (pathname === '/') {
+                    dispatch(setScroll('plan'))
+                } else {
+                    dispatch(setScroll('plan'))
+                    history.push('/')
+                }
+                break;
+
+            case 'applicationAll':
+                history.push('/works/Application/all')
+                break;
+
+            case 'websiteAll':
+                history.push('/works/Website/all')
+                break;
+
+            case 'application':
+                history.push('/services/Application')
+                break;
+
+            case 'website':
+                history.push('/services/Website')
+                break;
+
+            case 'service':
+                history.push('/services/Service')
+                break;
+
+            case 'guarantees':
+                history.push('/guarantees')
+                break;
+
+            case 'cooperation':
+                history.push('/cooperation')
+                break;
+
+            default:
+                break;
         }
+
         toggleMenuMode()
     }
 
@@ -65,24 +129,40 @@ const MobileMenu = () => {
                             title={'Меню'}
                         >
                             <BodyItem>
-                                <Link to='/' onClick={toggleMenuMode}>
+                                <span to='/' onClick={() => handleNavigation('typing')}>
                                     Главная
-                        </Link>
+                                </span>
                             </BodyItem>
                             <BodyItem
-                                onClick={handleCasesNavigation}
                             >
-                                Кейсы
+                                <span onClick={() => handleNavigation('services')}>
+                                    Услуги
+                                </span>
                             </BodyItem>
                             <BodyItem>
-                                <Link to='/works/Application/all' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('cases')}>
+                                    Кейсы
+                                </span>
+                            </BodyItem>
+                            <BodyItem>
+                                <span onClick={() => handleNavigation('plan')}>
+                                    План работы
+                                </span>
+                            </BodyItem>
+                        </MenuSection>
+                        <MenuSection
+                            title={'Портфолио'}
+                        >
+                            <BodyItem
+                            >
+                                <span onClick={() => handleNavigation('applicationAll')}>
                                     Приложения
-                        </Link>
+                                </span>
                             </BodyItem>
                             <BodyItem>
-                                <Link to='/works/Website/all' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('websiteAll')}>
                                     Сайты
-                        </Link>
+                                </span>
                             </BodyItem>
                         </MenuSection>
                         <MenuSection
@@ -90,33 +170,33 @@ const MobileMenu = () => {
                         >
                             <BodyItem
                             >
-                                <Link to='/services/Application' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('application')}>
                                     Приложения
-                        </Link>
+                                </span>
                             </BodyItem>
                             <BodyItem>
-                                <Link to='/services/Website' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('website')}>
                                     Сайты
-                        </Link>
+                                </span>
                             </BodyItem>
                             <BodyItem>
-                                <Link to='/services/Service' onClick={toggleMenuMode}>
-                                    Доп.услуги
-                        </Link>
+                                <span onClick={() => handleNavigation('service')}>
+                                    Доп. услуги
+                                </span>
                             </BodyItem>
                         </MenuSection>
                         <MenuSection
                             title={'Разное'}
                         >
                             <BodyItem>
-                                <Link to='/guarantees' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('guarantees')}>
                                     Гарантии
-                        </Link>
+                                </span>
                             </BodyItem>
                             <BodyItem>
-                                <Link to='/cooperation' onClick={toggleMenuMode}>
+                                <span onClick={() => handleNavigation('cooperation')}>
                                     Сотрудничество
-                        </Link>
+                                </span>
                             </BodyItem>
                         </MenuSection>
                         <Divider
@@ -139,28 +219,28 @@ const MobileMenu = () => {
                             <BodyItem>
                                 <a href='tel:+79995357879'>
                                     8 999 535 78 79
-                            </a>
+                                </a>
                             </BodyItem>
 
                             <BodyItem>
                                 <a href='mailto:evgeny@lilekov-studio.com'>
                                     evgeny@lilekov-studio.com
-                            </a>
+                                </a>
                             </BodyItem>
                             <BodyItem>
                                 <a href='tg://resolve?domain=lilekov_evgeniy'>
                                     Telegram
-                            </a>
+                                </a>
                             </BodyItem>
                             <BodyItem>
                                 <a href="https://wa.me/79995357879">
                                     WhatsApp
-                            </a>
+                                </a>
                             </BodyItem>
                             <BodyItem>
                                 <a href='viber://add?number=79995357879' target="_blank">
                                     Viber
-                            </a>
+                                </a>
                             </BodyItem>
                         </MenuSection>
                     </Container>

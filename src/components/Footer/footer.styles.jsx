@@ -44,10 +44,10 @@ export const InfoContainerBottom = styled.div`
    height: 40px;
    max-width: 480px;
    display: flex;
-   align-items: ${props => props.width > 1000 ? 'center' : 'flex-start'};
-   justify-content: ${props => props.width > 1000 ? 'space-between' : 'center'};
-   flex-direction: ${props => props.width > 1000 ? 'row' : 'column'};
-   position: ${props => props.width > 1000 ? 'static' : 'absolute'};
+   align-items: ${props => props.customWidth > 1000 ? 'center' : 'flex-start'};
+   justify-content: ${props => props.customWidth > 1000 ? 'space-between' : 'center'};
+   flex-direction: ${props => props.customWidth > 1000 ? 'row' : 'column'};
+   position: ${props => props.customWidth > 1000 ? 'static' : 'absolute'};
    top: 50%;
 `
 

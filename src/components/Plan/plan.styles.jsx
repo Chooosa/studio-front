@@ -112,7 +112,7 @@ export const DescriptionWrapper = styled(motion.div)`
 `
 
 export const SchemeWrapper = styled.div`
-   margin-top: 40px;
+   /* margin-top: 40px; */
    width: 100%;
    max-width: 480px;
    /* width: 50%; */
@@ -194,7 +194,7 @@ export const StepButton = styled.button`
 
 export const ProgressLine = styled.div`
    position: absolute;
-   width: ${props => props.width};
+   width: ${props => props.cusstomWidth};
    height: 100%;
    background-color: ${props => props.color};
    transition: all 0.5s ease;

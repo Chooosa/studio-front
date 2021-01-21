@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Section from '../Common/Section/section.component';
+import {useTranslation} from '../../hooks/translation';
 
 // import {
 //    WeWrapper,
@@ -10,16 +11,11 @@ import Section from '../Common/Section/section.component';
 
 
 const SectionWe = () => {
+   const {t} = useTranslation();
    return (
       <Section
-         title='Кто мы?'
-         description='
-            Мы – команда опытных разработчиков,
-            которые готовы создать для Вас готовый
-            продукт любой сложности, будь то сайт
-            или мобильное приложение под разные платформы.
-            Быстро, качественно, надёжно.
-         '
+         title={t('about_us')}
+         description={t('about_us_desc')}
          index={2}
          // headerDescriptionStyles={{
          //    maxWidth: '410px'

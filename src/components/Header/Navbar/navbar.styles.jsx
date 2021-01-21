@@ -22,5 +22,12 @@ export const ButtonsWrapper = styled.div`
    justify-content: space-between;
    /* width: 400px; */
    width: 100%;
-   max-width: 400px;
+   max-width: 500px;
+
+   >button {
+      :nth-of-type(2) {
+      margin-right: 25px;
+      }
+   }
+
 `

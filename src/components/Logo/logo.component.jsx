@@ -17,8 +17,8 @@ const Logo = ({ color, changeColor, themeColor }) => {
    const onChangeColor = () => {
       if (color < 7) {
          changeColor(color + 1)
-      } else if (color >= 7 || color < 0) {
-         changeColor(0)
+      } else if (color >= 7 || color < 1) {
+         changeColor(1)
       }
 
    }

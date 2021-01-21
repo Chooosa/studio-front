@@ -1,23 +1,23 @@
 import { CHANGE_COLOR } from './color.consts';
 
-const color0 = '#68D87A';
-const color1 = '#EE2A4E';
+// const color0 = '#68D87A';
+const color1 = '#3FB755';
 const color2 = '#FF8A00';
-const color3 = '#3FB755';
+const color3 = '#EE2A4E';
 const color4 = '#2EBEF5';
 const color5 = '#2A66F5';
 const color6 = '#D92AF5';
 const color7 = '#772AF5';
 
 const INITIAL_STATE = {
-   color: 0,
-   themeColor: color0
+   color: 1,
+   themeColor: color1
 }
 
 const returnColor = (color) => {
    switch (color) {
-      case 0:
-         return color0;
+      // case 0:
+      //    return color0;
       case 1:
          return color1;
       case 2:
@@ -33,7 +33,7 @@ const returnColor = (color) => {
       case 7:
          return color7;
       default:
-         return color0;
+         return color1;
    }
 }
 

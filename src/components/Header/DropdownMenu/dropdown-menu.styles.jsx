@@ -11,7 +11,7 @@ export const DropdownMenuWrapper = styled.nav`
    top: 70px;
    left: 0;
    border-bottom: 1px solid ${props => props.open ? props.color : 'transparent'};
-   background-color: ${props => props.open ? '#020202' : '#0a0a0a'};
+   background-color: #0a0a0a;
    z-index: 499;
 
    overflow: hidden;
@@ -42,6 +42,10 @@ export const LinksCell = styled.div`
    flex-direction: column;
    width: 100%;
    max-width: 120px;
+
+   :nth-of-type(2) {
+      margin-right: 25px;
+   }
 
    >a,span {
       font-weight: 200;

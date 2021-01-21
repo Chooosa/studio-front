@@ -20,7 +20,7 @@ import {ReactComponent as BoltSVG} from '../../../assets/bolt.svg';
 import { useWindowDimensions } from '../../../hooks/dimensions';
 import {ReactComponent as ArrowRightSVG} from '../../../assets/ArrowRight.svg';
 
-const AnimatedCard = ({title, description, onClick, color}) => {
+const AnimatedCard = ({title, description, onClick, color, t}) => {
     const [showOverlay, setShowOverlay] = useState(false)
     const {width} = useWindowDimensions()
 
@@ -73,7 +73,7 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                                 onClick={onClick}
                                 color={color}
                                 >
-                                    Подробнее
+                                    {t('more_button')}
                                     <Icon>
                                         <BoltSVG/>
                                     </Icon>
@@ -138,7 +138,7 @@ const AnimatedCard = ({title, description, onClick, color}) => {
                                     onClick={onClick}
                                     color={color}
                                     >
-                                        Подробнее
+                                        {t('more_button')}
                                         <Icon>
                                             <BoltSVG/>
                                         </Icon>

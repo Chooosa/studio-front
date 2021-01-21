@@ -23,6 +23,7 @@ export const ItemImage = styled.div`
     margin: 15px 0px;
 
     >img {
+        height: 100%;
         width: 100%;
     }
 `

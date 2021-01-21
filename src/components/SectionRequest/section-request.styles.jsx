@@ -9,10 +9,10 @@ export const InputFieldsWrapper = styled.form`
 
 export const InputFieldsRowPosition = styled.div`
     display: flex;
-    ${props => props.width > 800 ? 'flex-direction: row' : 'flex-direction: column'};
+    ${props => props.customWidth > 800 ? 'flex-direction: row' : 'flex-direction: column'};
     width: 100%;
     height: 100%;
-    ${props => props.width < 800 ? 'align-items: center' : ''};
+    ${props => props.customWidth < 800 ? 'align-items: center' : ''};
 `
 
 export const InputFieldsColumn = styled.div`
@@ -20,8 +20,8 @@ export const InputFieldsColumn = styled.div`
     height: 100%;
     width: 100%;
     flex-direction: column;
-    margin: 5px ${props => props.width > 800 ? '10px' : '0px'};
-    ${props => props.width > 800 ? 'align-items: space-between' : 'align-items: center;'}
+    margin: 5px ${props => props.customWidth > 800 ? '10px' : '0px'};
+    ${props => props.customWidth > 800 ? 'align-items: space-between' : 'align-items: center;'}
 `
 
 export const InputWrapper = styled.div`
@@ -72,7 +72,7 @@ export const ExtraInfoWrapper = styled.div`
     max-width: 400px;
     position: relative;
     margin-bottom: 25px;
-    margin-top: ${props => props.width < 800 ? '20px' : '0px'};
+    margin-top: ${props => props.customWidth < 800 ? '20px' : '0px'};
     display: flex;
     flex-direction: column;
 `
@@ -206,7 +206,7 @@ export const Icon = styled.img`
 export const PersonalDataAgreement = styled.div`
     align-self: center;
     display: flex;
-    width: ${props => props.width > 600 ? '40%' : '85%'};
+    width: ${props => props.customWidth > 600 ? '40%' : '85%'};
     margin-top: 24px;
     border: 10px #fff;
 
@@ -245,8 +245,8 @@ export const FilesList = styled.ul`
     margin-top: 10px;
     padding: 0px 8%;
     /* width: 100%; */
-    width: ${props => props.width > 800 ? '100%' : props.width > 600 ? '70%' : '100%'};
-    align-self: ${props => props.width > 800 || props.width < 600 ? 'flex-start' : 'center'};
+    width: ${props => props.customWidth > 800 ? '100%' : props.customWidth > 600 ? '70%' : '100%'};
+    align-self: ${props => props.customWidth > 800 || props.customWidth < 600 ? 'flex-start' : 'center'};
 
     >li {
         color: transparent;

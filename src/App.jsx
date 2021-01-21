@@ -38,29 +38,27 @@ function App() {
     <AppWrapper>
       {
         didCatch ? <ErrorFallback error={error} /> :
-        <ErrorBoundary>
-          <MenuState>
-        <Header />
-      </MenuState>
+          <ErrorBoundary>
+            <MenuState>
+              <Header />
+            </MenuState>
 
-      <AppContainer
-      onTouchMove={(e) => {e.stopPropagation()}}
-      >
-        {/* <AnimatePresence > */}
-        <Switch location={location} key={location.pathname}>
-          <Route exact path='/' component={Main} />
-          <Route exact path='/works/:section/:itemId' component={WorksPage} />
-          {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
-          <Route exact path='/services/:section' component={ServicesPage} />
-          <Route exact path='/cooperation' component={Cooperation} />
-          <Route exact path='/guarantees' component={Guarantees} />
-        </Switch>
-        {/* </AnimatePresence> */}
-      </AppContainer>
-  
-        <AnimatedBackground/>
-      <Footer />
-        </ErrorBoundary>
+            <AppContainer>
+              {/* <AnimatePresence > */}
+              <Switch location={location} key={location.pathname}>
+                <Route exact path='/' component={Main} />
+                <Route exact path='/works/:section/:itemId' component={WorksPage} />
+                {/* <Route exact path='/works/:section/:itemId' component={WorksPage} /> */}
+                <Route exact path='/services/:section' component={ServicesPage} />
+                <Route exact path='/cooperation' component={Cooperation} />
+                <Route exact path='/guarantees' component={Guarantees} />
+              </Switch>
+              {/* </AnimatePresence> */}
+            </AppContainer>
+
+            <AnimatedBackground />
+            <Footer />
+          </ErrorBoundary>
       }
       <Loader />
     </AppWrapper>

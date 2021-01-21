@@ -12,7 +12,7 @@ export const GuaranteesSections = styled.div`
     flex-direction: column;
     background-color: #111111;
     height: 100%;
-    padding: ${props => props.width > 600 ? '50px' : '0px'} 0px;
+    padding: ${props => props.customWidth > 600 ? '50px' : '0px'} 0px;
 `
 
 export const GuaranteeSectionWrapper = styled.div`
