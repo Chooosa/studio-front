@@ -37,9 +37,8 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
     const color = useSelector(colorSelectors.color)
     const lastOffset = useRef(0)
     const direction = useRef(0)
-    const [scrollDown, setScrollDown] = useState(false)
-
-
+    const scrollDown = useRef(false)
+    const [scrollD, setScrollD] = useState(false) 
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,18 +46,21 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
             const height = window.innerHeight
             const fullHeight = document.body.offsetHeight
             if (fullHeight - (pageOffset + height) < 100) {
-                if (!scrollDown) {
-                    setScrollDown(true)
+                if (!scrollDown.current) {
+                    scrollDown.current=true
+                    setScrollD(true)
                 }
             } else {
                 if (pageOffset - lastOffset.current > 0) {
                     if (direction !== -1) {
-                        setScrollDown(true)
+                        scrollDown.current=true
+                        setScrollD(true)
                     }
                     direction.current = -1
                 } else {
                     if (direction !== 1) {
-                        setScrollDown(false)
+                        scrollDown.current=false
+                        setScrollD(false)
                     }
                     direction.current = 1
                 }
@@ -72,7 +74,10 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
                 document.removeEventListener('scroll', handleScroll)
             }
         }, 2000)
-    }, [scrollDown])
+    }, [])
+
+
+
 
     return (
         <BottomTabContainer
@@ -82,7 +87,7 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
             //     duration: 0.5
             // }}
 
-            hide={scrollDown}
+            hide={scrollD}
         >
             <BottomTabBarContainer
                 color={color}
