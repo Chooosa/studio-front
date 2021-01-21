@@ -5,12 +5,19 @@ import { useSelector } from 'react-redux';
 import { SliderWrapper } from './slider.styles';
 import { useWindowDimensions } from '../../../hooks/dimensions';
 import { colorSelectors } from '../../../redux/color/color.selectors';
+import { useTranslation } from '../../../hooks/translation'
 
 const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
    const { width } = useWindowDimensions()
    const [sliderWidth, setSliderWidth] = useState()
    const [currentTab, setCurrentTab] = useState(1)
    const color = useSelector(colorSelectors.color);
+   const { t } = useTranslation();
+   const [showSlider, setShowSlider] = useState(false);
+
+   useEffect(() => {
+      setShowSlider(true)
+   }, [])
 
    useEffect(() => {
       if (currentStep) {
@@ -66,35 +73,39 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
       <SliderWrapper
          sliderWidth={sliderWidth}
       >
-         <SwipeableTabs
-            // noFirstLeftPadding={false}
-            // noLastRightPadding={false}
-            safeMargin={500}
-            // fitItems={false}
-            alignCenter={true}
-            borderWidthRatio={0.75}
-            activeItemIndex={currentTab}
-            onItemClick={(item, index) => handleClickTab(index)}
-            items={[
-               <Tab>Интервью</Tab>,
-               <Tab>Договор</Tab>,
-               <Tab>Дизайн</Tab>,
-               <Tab>Сопровождение</Tab>
-            ]}
-            borderPosition="top"
-            resistanceCoeffiecent={0.3}
-            // // borderThickness={2}
-            borderColor={color}
-            itemStyle={{
-               fontSize: '18px',
-               fontWeight: '200',
-               lineHeight: '25px',
-               color: '#F9F9F9'
-            }}
-            activeStyle={{
-               fontWeight: '600',
-            }}
-         />
+         {
+            showSlider ?
+               <SwipeableTabs
+                  // noFirstLeftPadding={false}
+                  // noLastRightPadding={false}
+                  safeMargin={500}
+                  // fitItems={false}
+                  alignCenter={true}
+                  borderWidthRatio={0.75}
+                  activeItemIndex={currentTab}
+                  onItemClick={(item, index) => handleClickTab(index)}
+                  items={[
+                     <span>{t('interview')}</span>,
+                     <span>{t('contract')}</span>,
+                     <span>{t('design')}</span>,
+                     <span>{t('support')}</span>
+                  ]}
+                  borderPosition="top"
+                  resistanceCoeffiecent={0.3}
+                  // // borderThickness={2}
+                  borderColor={color}
+                  itemStyle={{
+                     fontSize: '18px',
+                     fontWeight: '200',
+                     lineHeight: '25px',
+                     color: '#F9F9F9'
+                  }}
+                  activeStyle={{
+                     fontWeight: '600',
+                  }}
+               />
+               : null
+         }
       </SliderWrapper>
    );
 }

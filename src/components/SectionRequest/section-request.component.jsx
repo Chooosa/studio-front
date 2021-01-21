@@ -30,6 +30,7 @@ import Delete from '../../assets/delete.png';
 import { API_URL } from '../../config';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
+import { useTranslation } from '../../hooks/translation';
 
 const validationSchema = yup.object().shape({
     email: yup.string()
@@ -53,6 +54,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
     const dispatch = useDispatch()
     const scroll = useSelector(scrollSelectors.to)
     const ref = useRef()
+    const {t} = useTranslation();
 
     const [filesArray, setFilesArray] = useState([]);
 
@@ -79,7 +81,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             return resp;
         }
         catch (err) {
-
+           
         }
     }
 
@@ -116,14 +118,8 @@ const SectionRequest = ({ refApplication, index, padding }) => {
 
     return (
         <Section
-            title='Оставить заявку'
-            description='
-        Вы можете задать нам вопрос по разработке сайта или
-        приложения и получить ответ удобным способом.
-        Также мы можем назвать предварительную стоимость вашего проекта
-        и примерные сроки.
-        Расскажите о нём и вместе мы воплотим его в жизнь.
-        '
+            title={t('leave_request')}
+            description={t('leave_request_desc')}
             index={index}
             headerContainerStyles={{
                 marginBottom: '50px'
@@ -138,6 +134,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                 onSubmit={sendRequest}
                 validationSchema={validationSchema}
                 validateOnChange={false}
+                
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
                     <InputFieldsWrapper onSubmit={handleSubmit} ref={ref}>
@@ -152,7 +149,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         id='name'
                                         onChange={handleChange('name')}
                                     />
-                                    <LabelWrapper htmlFor='name'>Ваше имя:</LabelWrapper>
+                                    <LabelWrapper htmlFor='name'> {t('your_name')} </LabelWrapper>
                                     <Error>{errors.name}</Error>
                                 </InputWrapper>
                                 <InputWrapper>
@@ -166,7 +163,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         name='phone'
                                         onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
                                     />
-                                    <LabelWrapper htmlFor='tel'>Номер телефона:</LabelWrapper>
+                                    <LabelWrapper htmlFor='tel'>{t('your_phone')}</LabelWrapper>
                                     <Error>{errors.phone}</Error>
                                 </InputWrapper>
                                 <InputWrapper>
@@ -178,7 +175,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         id='email'
                                         onChange={handleChange('email')}
                                     />
-                                    <LabelWrapper htmlFor='email'>E-mail:</LabelWrapper>
+                                    <LabelWrapper htmlFor='email'>{t('your_email')}</LabelWrapper>
                                     <Error>{errors.email}</Error>
                                 </InputWrapper>
                             </InputFieldsColumn>
@@ -192,7 +189,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         onChange={handleChange('text')}
                                         color={themeColor}
                                     />
-                                    <LabelWrapper htmlFor='text'>Сообщение</LabelWrapper>
+                                    <LabelWrapper htmlFor='text'>{t('message')}</LabelWrapper>
                                     <Error>{errors.text}</Error>
                                 </ExtraInfoWrapper>
                                 <FileInput
@@ -203,7 +200,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                 >
                                 </FileInput>
                                 <FileInputLabel htmlFor='file'>
-                                    Прикрепить файл
+                                    {t('attatch_file_button')}
                                 <Icon src={Attach} />
                                 </FileInputLabel>
                                 <FilesList customWidth={width}>
@@ -236,7 +233,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                             color={themeColor}
                             type='submit'
                         >
-                            Отправить заявку
+                            {t('leave_request')}
                         <Icon src={Send} />
                         </Button>
                     </InputFieldsWrapper>
@@ -244,8 +241,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             </Formik>
             <PersonalDataAgreement customWidth={width}>
                 <span>
-                    Нажимая “Отправить заявку” вы соглашаетесь с порядком
-                обработки <a href=''>персональных данных.</a>
+                    {t('personal_data_agreement')} <a href=''> {t('personal_data_agreement_ref')} </a>
                 </span>
             </PersonalDataAgreement>
         </Section>

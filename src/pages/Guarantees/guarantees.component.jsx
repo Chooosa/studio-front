@@ -5,6 +5,7 @@ import Section from '../../components/Common/Section/section.component';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import { useWindowDimensions } from '../../hooks/dimensions';
+import { useTranslation } from '../../hooks/translation';
 
 import {
     GuaranteesWrapper,
@@ -43,75 +44,76 @@ const MobileSectionRenderer = ({ item }) => {
 const Guarantees = () => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
+    const {t} = useTranslation();
 
     const guaranteesList = [
         {
-            title: 'Юридические:',
+            title: t('guarantees_law'),
             body: (
                 <CustomText>
                     <p>
-                        После детального изучения проекта и перед тем как начать им заниматься, мы документируем все этапы работы и составляем договор.
+                    {t('guarantees_law_desc_first')}
                 </p>
                     <p>
-                        В нём прописаны все сроки и стоимость работ, как по этапам, так и общая.
+                    {t('guarantees_law_desc_second')}
                 </p>
                     <p>
-                        Этим мы гарантируем нашим клиентам получение выполненного проекта в срок.
+                    {t('guarantees_law_desc_third')}
                 </p>
                     <p>
-                        Для нас же это стимул обозначенные сроки строго соблюдать. Также в договоре прописана наша ответственность в случае нарушения нами сроков.
+                    {t('guarantees_law_desc_fourth')}
                 </p>
                 </CustomText>
             )
         },
         {
-            title: 'Технические:',
+            title: t('guarantees_tech'),
             body: (
                 <CustomText>
                     <ListTextWrapper>
-                        <span>Мы обеспечиваем качество готового проекта:</span>
+                        <span> {t('guarantees_tech_desc_intro')} </span>
                         <span></span>
                         <ul>
-                            <li>При составлении ТЗ учитываем получение наилучших результатов.</li>
-                            <li>В работе используем только самые современные и надёжные технологии.</li>
-                            <li>Перед сдачей проводим разностороннее тестирование и устраняем все найденные проблемы.</li>
+                            <li> {t('guarantees_tech_desc_list_first')} </li>
+                            <li> {t('guarantees_tech_desc_list_second')} </li>
+                            <li> {t('guarantees_tech_desc_list_third')} </li>
                         </ul>
                         <span></span>
-                        <span>Передача проекта происходит только после того, как он полностью готов и прошёл многократную проверку.</span>
+                        <span> {t('guarantees_tech_desc_outro')} </span>
                     </ListTextWrapper>
                 </CustomText>
             )
         },
         {
-            title: 'Организационные:',
+            title: t('guarantees_manage'),
             body: (
                 <CustomText>
                     <ListTextWrapper>
-                        <span>Процесс разработки у нас полностью прозрачен для клиента:</span>
+                        <span>{t('guarantees_manage_desc_intro')}</span>
                         <span></span>
                         <ul>
-                            <li>Мы регулярно высылаем отчёты по проделанной работе.</li>
-                            <li>Даём возможность посмотреть, что сделано на данный момент и попробовать готовый функционал.</li>
+                            <li> {t('guarantees_manage_desc_list_first')} </li>
+                            <li> {t('guarantees_manage_desc_list_second')} </li>
                         </ul>
                         <span></span>
-                        <span>Вы всегда будете в курсе продвижения работы по вашему заказу и сможете сами видеть процесс, и даже участвовать в нём.</span>
+                        <span> {t('guarantees_manage_desc_outro')} </span>
                     </ListTextWrapper>
                 </CustomText>
             )
         },
         {
-            title: 'Вспомогательные:',
+            title: t('guarantees_support'),
             body: (
                 <CustomText>
                     <ListTextWrapper>
-                        <span>Даже когда ваш проект готов, и вы его приняли, мы не оставим вас с ним наедине:</span>
+                        <span> {t('guarantees_support_desc_intro')} </span>
                         <span></span>
                         <ul>
-                            <li>Составим план развития или продвижения на ближайшее время.</li>
-                            <li>Будем устранять найденные недостатки в течении года в рамках гарантийного обслуживания.</li>
+                            <li>{t('guarantees_support_desc_list_first')}</li>
+                            <li>{t('guarantees_support_desc_list_second')}</li>
                         </ul>
                         <span></span>
-                        <span>В будущем при необходимости по вашему запросу мы сможем быстро добавлять или изменять функционал – как авторам, нам это будет сделать гораздо проще, чем сторонним программистам.</span>
+                        <span>{t('guarantees_support_desc_outro')}</span>
                     </ListTextWrapper>
                 </CustomText>
             )
@@ -123,13 +125,8 @@ const Guarantees = () => {
             <Section
                 threshold={0.2}
                 index={1}
-                title='Гарантии'
-                description='
-            Мы работаем официально и предоставляем своим клиентам различные виды гарантий.
-            Поэтому вы можете быть спокойны насчёт того, что ваш проект будет выполнен строго по заданию,
-            в указанные сроки, и переплачивать ничего сверх договора не придётся. Если мы берёмся за работу,
-            то относимся к ней с полной ответственностью.
-            '
+                title={t('guarantees')}
+                description={t('guarantees_desc')}
                 descriptionWidth={'610px'}
                 headerContainerStyles={{
                     marginTop: '110px',
@@ -142,8 +139,8 @@ const Guarantees = () => {
                             <GuaranteeSectionWrapper>
                                 <div>
                                     <CustomHeading>
-                                        Юридические:
-                    </CustomHeading>
+                                        {t('guarantees_law')}
+                                    </CustomHeading>
                                     {guaranteesList[0].body}
                                 </div>
                                 <svg width="477" height="416" viewBox="0 0 477 416" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,16 +159,16 @@ const Guarantees = () => {
                                 </svg>
                                 <div>
                                     <CustomHeading>
-                                        Технические:
-                    </CustomHeading>
+                                        {t('guarantees_tech')}
+                                    </CustomHeading>
                                     {guaranteesList[1].body}
                                 </div>
                             </GuaranteeSectionWrapper>
                             <GuaranteeSectionWrapper>
                                 <div>
                                     <CustomHeading>
-                                        Организационные:
-                    </CustomHeading>
+                                        {t('guarantees_manage')}
+                                    </CustomHeading>
                                     {guaranteesList[2].body}
                                 </div>
                                 <svg width="399" height="416" viewBox="0 0 399 416" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -186,8 +183,8 @@ const Guarantees = () => {
                                 </svg>
                                 <div>
                                     <CustomHeading>
-                                        Вспомогательные:
-                    </CustomHeading>
+                                        {t('guarantees_support')}
+                                    </CustomHeading>
                                     {guaranteesList[3].body}
                                 </div>
                             </GuaranteeSectionWrapper>

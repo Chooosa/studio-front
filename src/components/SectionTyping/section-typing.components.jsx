@@ -5,11 +5,13 @@ import { TypingWrapper, Text } from './section-typing.styles';
 import TypingText from '../TypingText/typing-text.component';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
+import { useTranslation } from '../../hooks/translation';
 
 const SectionTyping = () => {
    const dispatch = useDispatch()
    const scroll = useSelector(scrollSelectors.to)
    const ref = useRef()
+   const {t} = useTranslation();
 
    useEffect(() => {
       if (scroll === 'typing') {
@@ -23,13 +25,13 @@ const SectionTyping = () => {
 
    return (
       <TypingWrapper ref={ref}>
-         <Text>Мы разрабатываем :</Text>
+         <Text> {t('we_develop')} </Text>
          <TypingText textsArray={[
-            "Мобильные приложения",
-            "Веб-сайты",
-            "Интерфейсы",
-            "Стратегии продвижения",
-            "Веб-интерфейсы"
+            t('mobile_apps'),
+            t('website'),
+            t('interfaces'),
+            t('promotion_strategies'),
+            t('web_interfaces')
          ]} />
       </TypingWrapper>
    );
