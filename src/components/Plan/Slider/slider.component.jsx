@@ -92,6 +92,8 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
                   ]}
                   borderPosition="top"
                   resistanceCoeffiecent={0.3}
+                  stiffness={120}
+                  damping={10}
                   // // borderThickness={2}
                   borderColor={color}
                   itemStyle={{
