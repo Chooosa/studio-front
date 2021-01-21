@@ -25,5 +25,23 @@ cursor: pointer;
 }
 `
 
+export const LangToggleButton = styled.button`
+background-color: transparent;
+border-color: transparent;
+border-width: 0px;
+outline-width: 0px;
+position: absolute;
+right: 15%;
+top: 50%;
+opacity: ${props => props.open ? 1 : 0};
+transition-duration: 0.6s;
+
+:hover {
+    cursor: ${props => props.open ? 'pointer' : 'regular'};
+}
+
+color: white;
+text-transform: uppercase;
+`
 
 
