@@ -4,7 +4,7 @@ export const en = {
     other: 'Other',
     contacts: 'Contacts',
 
-    main_page: 'Main',
+    main_page: 'Home',
     apps: 'Apps',
     sites: 'Websites',
     other_services: 'Other services',
@@ -149,6 +149,13 @@ export const en = {
     your_email: 'E-mail:',
     message: 'Message',
     attatch_file_button: 'Attach file',
+    request_sent: 'Request is submitted',
+
+    error_name: 'Enter your name',
+    error_phone: 'Enter your phone number',
+    error_no_email: 'Enter your email',
+    error_invalid_email: 'Enter correct email adress',
+    error_text: 'Enter your request',
 
     personal_data_agreement: `By submitting a request you agree to `,
     personal_data_agreement_ref: 'the privacy policy.',
@@ -196,5 +203,9 @@ export const en = {
     guarantees_support_desc_list_first: 'We will draw up a development and promotion plan for the near future.',
     guarantees_support_desc_list_second: 'We will fix drawbacks in the product for a year under the warranty.',
     guarantees_support_desc_outro: `In the future we'll be able to adjust or add functions on your request - 
-    it will be easier for us that for an outside team.`
+    it will be easier for us that for an outside team.`,
+
+    error_happened: `An error happened`,
+    error_beign_fixed: `We are working on this problem`,
+    error_to_main_page: `Go back to home page`,
 }

@@ -16,6 +16,7 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
 import { contentSelectors } from '../../redux/content/content.selectors';
 import ServiceTab from '../../components/ServiceTab/service-tab.component';
+import { useTranslation } from '../../hooks/translation';
 
 import BusinessPNG from '../../assets/business.png'
 import SupremePNG from '../../assets/supreme.png'
@@ -61,6 +62,7 @@ const ServicesPage = () => {
     const [animate, setAnimate] = useState(false)
     const {width} = useWindowDimensions()
     const services = useSelector(contentSelectors.services)
+    const {t, language} = useTranslation()
 
   
 
@@ -97,7 +99,7 @@ const ServicesPage = () => {
             ref={ref}
             >
                 <PageTitle>
-                Услуги:
+                {t('services')+':'}
                 </PageTitle>
                 {
                     width< 612?
@@ -113,6 +115,8 @@ const ServicesPage = () => {
                     services?
                     <Tabs
                     tabNames={['Мобильные приложения', 'Сайты', 'Доп.услуги']}
+                    tabNamesEng={['Mobile apps', 'Websites', 'Other services']}
+                    language={language}
                     tabOverride={section==='Website'?  1: section==='Service'? 2: undefined}
                     >
                         {services.map((service, index) => {

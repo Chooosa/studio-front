@@ -14,21 +14,25 @@ import { ReactComponent as AppsSVg } from '../../assets/apps.svg';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import { useRef } from 'react';
+import { useTranslation } from '../../hooks/translation';
 
 
 
 const assets = {
     'Мобильные приложения': {
         icon: <AppsSVg />,
-        name: 'Приложения'
+        name: 'Приложения',
+        nameEng: 'Apps'
     },
     'Сайты': {
         icon: <WWWSVg />,
-        name: 'Сайты'
+        name: 'Сайты',
+        nameEng: 'Websites'
     },
     'Доп.услуги': {
         icon: <ServicesSVG />,
-        name: 'Услуги'
+        name: 'Услуги',
+        nameEng: 'Services'
     }
 }
 
@@ -39,7 +43,8 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
     const direction = useRef(0)
     const scrollDown = useRef(false)
     const [scrollD, setScrollD] = useState(false) 
-
+    const {language} = useTranslation()
+    
     useEffect(() => {
         const handleScroll = () => {
             const pageOffset = window.pageYOffset
@@ -111,7 +116,7 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
                                         active={index === currentTab}
                                     >
                                         {
-                                            assets[name].name
+                                            language === 'ru' ? assets[name].name : assets[name].nameEng
                                         }
                                     </BottomTabTitle>
                                 </BottomTab>

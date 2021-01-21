@@ -9,6 +9,7 @@ import { MenuContext } from '../../../context/menu-state';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 import { setScroll } from '../../../redux/scroll/scroll.actions';
 import MenuSection from './MenuSection/menu-section.component';
+import { useTranslation } from '../../../hooks/translation';
 
 import {
     BodyItem,
@@ -40,6 +41,7 @@ const MobileMenu = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
+    const {t} = useTranslation()
 
 
     const handleNavigation = (link) => {
@@ -126,76 +128,76 @@ const MobileMenu = () => {
                         animate='shown'
                     >
                         <MenuSection
-                            title={'Меню'}
+                            title={t('menu')}
                         >
                             <BodyItem>
                                 <span to='/' onClick={() => handleNavigation('typing')}>
-                                    Главная
+                                    {t('main_page')}
                                 </span>
                             </BodyItem>
                             <BodyItem
                             >
                                 <span onClick={() => handleNavigation('services')}>
-                                    Услуги
+                                    {t('services')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('cases')}>
-                                    Кейсы
+                                    {t('cases')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('plan')}>
-                                    План работы
+                                    {t('work_plan')}
                                 </span>
                             </BodyItem>
                         </MenuSection>
                         <MenuSection
-                            title={'Портфолио'}
+                            title={t('portfolio')}
                         >
                             <BodyItem
                             >
                                 <span onClick={() => handleNavigation('applicationAll')}>
-                                    Приложения
+                                    {t('apps')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('websiteAll')}>
-                                    Сайты
+                                    {t('sites')}
                                 </span>
                             </BodyItem>
                         </MenuSection>
                         <MenuSection
-                            title={'Услуги'}
+                            title={t('services')}
                         >
                             <BodyItem
                             >
                                 <span onClick={() => handleNavigation('application')}>
-                                    Приложения
+                                    {t('apps')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('website')}>
-                                    Сайты
+                                    {t('sites')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('service')}>
-                                    Доп. услуги
+                                    {t('other_services')}
                                 </span>
                             </BodyItem>
                         </MenuSection>
                         <MenuSection
-                            title={'Разное'}
+                            title={t('other')}
                         >
                             <BodyItem>
                                 <span onClick={() => handleNavigation('guarantees')}>
-                                    Гарантии
+                                    {t('guarantees')}
                                 </span>
                             </BodyItem>
                             <BodyItem>
                                 <span onClick={() => handleNavigation('cooperation')}>
-                                    Сотрудничество
+                                    {t('collaboration')}
                                 </span>
                             </BodyItem>
                         </MenuSection>
@@ -212,7 +214,7 @@ const MobileMenu = () => {
                             }}
                         />
                         <MenuSection
-                            title={'Контакты'}
+                            title={t('contacts')}
                             color={color}
                             keepOpen={true}
                         >

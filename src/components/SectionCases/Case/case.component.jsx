@@ -22,7 +22,7 @@ import {useTranslation} from '../../../hooks/translation';
 const Case = ({ caseToDisplay }) => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
-    const {t} = useTranslation()
+    const {t, language} = useTranslation()
 
 
     const handleNavigation = (id) => {
@@ -35,11 +35,11 @@ const Case = ({ caseToDisplay }) => {
             <ContentContainer>
                 <ContentBody>
                     <ContentTitle>
-                        {caseToDisplay.Title}
+                        {language === 'ru' ? caseToDisplay.Title : caseToDisplay.TitleEng}
                     </ContentTitle>
                     <ContentDescription>
                         <ReactMarkdown>
-                            {caseToDisplay.ShortDescription}
+                            {language === 'ru' ? caseToDisplay.ShortDescription : caseToDisplay.ShortDescriptionEng}
                         </ReactMarkdown>
                     </ContentDescription>
                 </ContentBody>

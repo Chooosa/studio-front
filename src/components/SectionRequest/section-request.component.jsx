@@ -32,21 +32,7 @@ import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 import { useTranslation } from '../../hooks/translation';
 
-const validationSchema = yup.object().shape({
-    email: yup.string()
-        .email('Введите корректный email')
-        .required('Введите email'),
-    phone: yup.string()
-        .min(12, 'Введите корректный телефон')
-        .max(12, 'Введите корректный телефон')
-        .required('Введите корректный телефон'),
-    name: yup.string()
-        .trim()
-        .required('Обязательное поле'),
-    text: yup.string()
-        .trim()
-        .required('Обязательное поле'),
-})
+
 
 const SectionRequest = ({ refApplication, index, padding }) => {
     const themeColor = useSelector(colorSelectors.color);
@@ -55,6 +41,23 @@ const SectionRequest = ({ refApplication, index, padding }) => {
     const scroll = useSelector(scrollSelectors.to)
     const ref = useRef()
     const {t} = useTranslation();
+    const [isRequestSent, setIsRequestSent] = useState(false);
+
+    const validationSchema = yup.object().shape({
+        email: yup.string()
+            .email(t('error_invalid_email'))
+            .required(t('error_no_email')),
+        phone: yup.string()
+            .min(12, t('error_phone'))
+            .max(12, t('error_phone'))
+            .required(t('error_phone')),
+        name: yup.string()
+            .trim()
+            .required(t('error_name')),
+        text: yup.string()
+            .trim()
+            .required(t('error_text')),
+    })
 
     const [filesArray, setFilesArray] = useState([]);
 
@@ -78,6 +81,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             const resp = await axios.post(`${API_URL}application`, formData);
             resetForm();
             setFilesArray([]);
+            setIsRequestSent(true);
             return resp;
         }
         catch (err) {
@@ -134,10 +138,9 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                 onSubmit={sendRequest}
                 validationSchema={validationSchema}
                 validateOnChange={false}
-                
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
-                    <InputFieldsWrapper onSubmit={handleSubmit} ref={ref}>
+                    <InputFieldsWrapper onSubmit={handleSubmit} ref={ref} >
                         <InputFieldsRowPosition customWidth={width}>
                             <InputFieldsColumn customWidth={width}>
                                 <InputWrapper>
@@ -150,7 +153,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         onChange={handleChange('name')}
                                     />
                                     <LabelWrapper htmlFor='name'> {t('your_name')} </LabelWrapper>
-                                    <Error>{errors.name}</Error>
+                                    {/* <Error>{errors.name}</Error> */}
                                 </InputWrapper>
                                 <InputWrapper>
                                     <InputField
@@ -164,7 +167,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         onChange={event => setFieldValue('phone', event.target.value.replace(/_/g, ''))}
                                     />
                                     <LabelWrapper htmlFor='tel'>{t('your_phone')}</LabelWrapper>
-                                    <Error>{errors.phone}</Error>
+                                    {/* <Error>{errors.phone}</Error> */}
                                 </InputWrapper>
                                 <InputWrapper>
                                     <InputField
@@ -176,7 +179,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         onChange={handleChange('email')}
                                     />
                                     <LabelWrapper htmlFor='email'>{t('your_email')}</LabelWrapper>
-                                    <Error>{errors.email}</Error>
+                                    {/* <Error>{errors.email}</Error> */}
                                 </InputWrapper>
                             </InputFieldsColumn>
                             <InputFieldsColumn>
@@ -190,7 +193,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                         color={themeColor}
                                     />
                                     <LabelWrapper htmlFor='text'>{t('message')}</LabelWrapper>
-                                    <Error>{errors.text}</Error>
+                                    {/* <Error>{errors.text}</Error> */}
                                 </ExtraInfoWrapper>
                                 <FileInput
                                     onChange={(event) => addFile(event.target.files[0])}
@@ -232,10 +235,17 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                         <Button
                             color={themeColor}
                             type='submit'
+                            disabled={isRequestSent}
                         >
-                            {t('leave_request')}
+                            {isRequestSent ? t('request_sent') : t('leave_request')}
                         <Icon src={Send} />
                         </Button>
+                        <Error>
+                            <p>{errors.name}</p> 
+                            <p>{errors.phone}</p> 
+                            <p>{errors.email}</p> 
+                            <p>{errors.text}</p> 
+                        </Error>
                     </InputFieldsWrapper>
                 )}
             </Formik>

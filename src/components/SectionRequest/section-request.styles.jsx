@@ -177,12 +177,12 @@ export const FileInputLabel = styled.label`
 
 export const Error = styled.span`
     width: '100%';
-    color: #5f0505;
+    color: #771212;
     font-weight: 200;
     font-size: 14px;
     line-height: 19px;
-
-    margin-left: 10px;
+    margin-top: 13px;
+    align-self: center;    
 `
 
 export const Button = styled(CustomButton)`
@@ -194,7 +194,7 @@ export const Button = styled(CustomButton)`
     color: #FFFFFF;
 
     :hover {
-        opacity: 0.8;
+        opacity: ${props => props.disabled ? '1' : '0.8'};
     }
 `
 
@@ -213,7 +213,7 @@ export const PersonalDataAgreement = styled.div`
     >span {
         font-weight: 200;
         font-size: 14px;
-        line-height: 19px;
+        line-height: 22px;
         text-align: center;
 
         color: #707070;
@@ -221,7 +221,7 @@ export const PersonalDataAgreement = styled.div`
         >a {
             font-weight: 200;
             font-size: 14px;
-            line-height: 19px;
+            line-height: 22px;
 
             color: #707070;
             transition-duration: 0.2s;
@@ -244,7 +244,6 @@ export const FilesList = styled.ul`
     flex-direction: column;
     margin-top: 10px;
     padding: 0px 8%;
-    /* width: 100%; */
     width: ${props => props.customWidth > 800 ? '100%' : props.customWidth > 600 ? '70%' : '100%'};
     align-self: ${props => props.customWidth > 800 || props.customWidth < 600 ? 'flex-start' : 'center'};
 
