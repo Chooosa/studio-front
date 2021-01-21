@@ -52,6 +52,16 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
       setSliderWidth(refSheme.current.offsetLeft)
    }, [width])
 
+   const Tab = ({ children }) => {
+      return (
+         <span>
+            {
+               children
+            }
+         </span>
+      );
+   }
+
    return (
       <SliderWrapper
          sliderWidth={sliderWidth}
@@ -66,12 +76,13 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
             activeItemIndex={currentTab}
             onItemClick={(item, index) => handleClickTab(index)}
             items={[
-               "Интервью",
-               "Договор",
-               "Дизайн",
-               "Сопровождение"
+               <Tab>Интервью</Tab>,
+               <Tab>Договор</Tab>,
+               <Tab>Дизайн</Tab>,
+               <Tab>Сопровождение</Tab>
             ]}
             borderPosition="top"
+            resistanceCoeffiecent={0.3}
             // // borderThickness={2}
             borderColor={color}
             itemStyle={{
