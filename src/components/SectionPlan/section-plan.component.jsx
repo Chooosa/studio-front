@@ -2,6 +2,7 @@ import React from 'react';
 
 import Section from '../Common/Section/section.component';
 import Plan from '../Plan/plan.component';
+import {useTranslation} from '../../hooks/translation';
 // import {
 //    PlanWrapper,
 //    Heading,
@@ -10,18 +11,13 @@ import Plan from '../Plan/plan.component';
 
 
 const SectionPlan = ({ refApplication }) => {
+   const {t} = useTranslation()
+
    return (
       <Section
          // reff={refPlan}
-         title='План работы'
-         description='
-         За много лет у нас сложился вполне ясный
-            и несложный план работы над проектами.
-            Он состоит из нескольких этапов, на каждом
-            из которых привлекаются разные специалисты
-            нашей команды. Это обеспечивает высокое
-            качество и скорость разработки.
-         '
+         title={t('work_plan')}
+         description={t('work_plan_desc')}
          index={6}
          descriptionWidth={'480px'}
       >
