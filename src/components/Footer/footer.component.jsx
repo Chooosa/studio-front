@@ -40,7 +40,7 @@ const Footer = () => {
    const themeColor = useSelector(colorSelectors.color);
    const { width } = useWindowDimensions();
    const [openModal, setOpenModal] = useState(false);
-   const {t} = useTranslation();
+   const { t } = useTranslation();
 
    const handleOpenModal = () => {
       setOpenModal(true)
@@ -52,44 +52,44 @@ const Footer = () => {
 
    return (
       width > 500 ?
-      <FooterWrapper customWidth={width}>
-         <FooterContainer>
-            <InfoWrapper>
-               <InfoContainerTop>
-                  <InfoContainerLeft>
-                     <Logo />
-                  </InfoContainerLeft>
-                  <InfoContainerRight>
-                     <span> {t('adress_first')} </span>
-                     <span> {t('adress_second')} </span>
-                     <a href='tel:89995357879'>8 999 535 78 79</a>
-                     <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                     <a href='#'> {t('privacy_policy')} </a>
-                  </InfoContainerRight>
-               </InfoContainerTop>
-               <InfoContainerBottom customWidth={width}>
-                  <SocialNetworks href='tg://resolve?domain=lilekov_evgeniy'>
-                     <img src={telegramSVG} alt='Telegram' />
+         <FooterWrapper customWidth={width}>
+            <FooterContainer>
+               <InfoWrapper>
+                  <InfoContainerTop>
+                     <InfoContainerLeft>
+                        <Logo />
+                     </InfoContainerLeft>
+                     <InfoContainerRight>
+                        <span> {t('adress_first')} </span>
+                        <span> {t('adress_second')} </span>
+                        <a href='tel:89995357879'>8 999 535 78 79</a>
+                        <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
+                        <a href='#'> {t('privacy_policy')} </a>
+                     </InfoContainerRight>
+                  </InfoContainerTop>
+                  <InfoContainerBottom customWidth={width}>
+                     <SocialNetworks target='_blank' href='tg://resolve?domain=lilekov_evgeniy'>
+                        <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks href='#'>
+                     <SocialNetworks target='_blank' href='#'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                     <SocialNetworks href='#'>
+                     <SocialNetworks target='_blank' href='https://www.facebook.com/lilekovstudio'>
                         <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>
-               </InfoContainerBottom>
-            </InfoWrapper>
-         </FooterContainer>
-         <MapWrapper>
-            <img src={mapPNG} alt='map' />
-            <MapContainer color={themeColor}>
-               <Marker />
-               <MapButton onClick={handleOpenModal}>
-               {t('go_to_map_button')}
-                  <img src={flagIcon} alt='flag' />
+                  </InfoContainerBottom>
+               </InfoWrapper>
+            </FooterContainer>
+            <MapWrapper>
+               <img src={mapPNG} alt='map' />
+               <MapContainer color={themeColor}>
+                  <Marker />
+                  <MapButton onClick={handleOpenModal}>
+                     {t('go_to_map_button')}
+                     <img src={flagIcon} alt='flag' />
                   </MapButton>
                </MapContainer>
             </MapWrapper>
@@ -104,34 +104,34 @@ const Footer = () => {
          :
          <FooterWrapperMobile>
             <FooterContainerMobile>
-            <InfoContainerRight style={{paddingLeft: '5%'}}>
-                     <span>{t('adress_first')}</span>
-                     <span>{t('adress_second')}</span>
-                     <a href='tel:89995357879'>8 999 535 78 79</a>
-                     <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                     <a href='#'>{t('privacy_policy')}</a>
+               <InfoContainerRight style={{ paddingLeft: '5%' }}>
+                  <span>{t('adress_first')}</span>
+                  <span>{t('adress_second')}</span>
+                  <a href='tel:89995357879'>8 999 535 78 79</a>
+                  <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
+                  <a href='#'>{t('privacy_policy')}</a>
                </InfoContainerRight>
                <MapWrapperMobile color={themeColor}>
                   <img src={mapMobilePNG} alt='map-mobile' />
                   <SocialNetworksWrapperMobile>
-                     <SocialNetworks href='https://teleg.run/lilekov_evgeniy'>
+                     <SocialNetworks target='_blank' href='https://teleg.run/lilekov_evgeniy'>
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks href='#'>
+                     <SocialNetworks target='_blank' href='#'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                     <SocialNetworks href='#'>
+                     <SocialNetworks target='_blank' href='https://www.facebook.com/lilekovstudio'>
                         <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>
-               </SocialNetworksWrapperMobile>
-               <Marker />
-               <MapButtonMobileContainer>
-               <MapButtonMobile customWidth={width} onClick={handleOpenModal}>
-                  {t('go_to_map_button')}
-                  <img src={flagIcon} alt='flag' />
+                  </SocialNetworksWrapperMobile>
+                  <Marker />
+                  <MapButtonMobileContainer>
+                     <MapButtonMobile customWidth={width} onClick={handleOpenModal}>
+                        {t('go_to_map_button')}
+                        <img src={flagIcon} alt='flag' />
                      </MapButtonMobile>
                   </MapButtonMobileContainer>
                </MapWrapperMobile>
