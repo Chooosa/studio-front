@@ -4,18 +4,18 @@ const INITIAL_STATE = {
     language: 'ru'
 }
 
-export const languageReducer = (state=INITIAL_STATE, action) => {
+export const languageReducer = (state = INITIAL_STATE, action) => {
 
     switch(action.type) {
-        case constants.SET_LANGUAGE :
+        case constants.SET_LANGUAGE:
             return {
                 ...state,
-                language: action.payload
+                language: action.payload.lang
             }
 
-        default: {
-            return state;
-        }
+        default: 
+            return state
+        
     }
 
 }

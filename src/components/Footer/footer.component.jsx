@@ -18,7 +18,8 @@ import {
    MapWrapperMobile,
    SocialNetworksWrapperMobile,
    MapButtonMobileContainer,
-   MapButtonMobile
+   MapButtonMobile,
+   Container
 } from './footer.styles';
 import Logo from '../Logo/logo.component';
 import { colorSelectors } from '../../redux/color/color.selectors';

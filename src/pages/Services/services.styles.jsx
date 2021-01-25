@@ -5,6 +5,7 @@ export const PageContainer = styled(motion.div)`
 width:100%;
 display: flex;
 flex-direction: column;
+-webkit-overflow-scrolling: auto;
 @media(max-width: 996px) {
     padding: 0px 20px 0px 20px;
 }

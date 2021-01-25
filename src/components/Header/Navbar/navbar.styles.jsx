@@ -31,3 +31,19 @@ export const ButtonsWrapper = styled.div`
    }
 
 `
+
+export const LangToggleButton = styled.button`
+   background-color: transparent;
+   border-color: transparent;
+   border-width: 0px;
+   outline-width: 0px;
+   position: absolute;
+   right: 15%;
+
+   :hover {
+      cursor: pointer;
+   }
+
+   color: white;
+   text-transform: uppercase;
+`

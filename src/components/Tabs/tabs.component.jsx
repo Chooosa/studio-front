@@ -18,7 +18,7 @@ import {
 
 
 
-const Tabs = ({children, tabNames, tabOverride}) => {
+const Tabs = ({children, tabNames, tabOverride, tabNamesEng, language}) => {
     const [currentTab, setCurrentTab] = useState(tabOverride? tabOverride: 0)
     const color = useSelector(colorSelectors.color)
     const headerRef = useRef()
@@ -73,7 +73,7 @@ const Tabs = ({children, tabNames, tabOverride}) => {
                                     duration: 0.3
                                 }}
                                 >
-                                    {name}
+                                    {language === 'ru' ? name : tabNamesEng[index]}
                                 </TabHeader>
                             })
                         }

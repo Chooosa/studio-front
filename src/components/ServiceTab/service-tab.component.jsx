@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { CMS_URL } from '../../config';
 import AnimatedNumbers from '../Common/AnimatedNumbers/animated-numbers.component';
 import ServicesItemWrapper from '../ServicesItemWrapper/services-item-wrapper.component';
+import { useTranslation } from '../../hooks/translation';
 
 import {
     TabContainer,
@@ -14,6 +15,7 @@ import {
 
 const ServiceTab = ({service, content}) => {
     const [animate, setAnimate] = useState(false)
+    const {language} = useTranslation();
 
 
     const handleViewportChange = (e, entry) => {
@@ -38,7 +40,7 @@ const ServiceTab = ({service, content}) => {
                 <TabHeader>
                     <Description>
                         <ReactMarkdown>
-                            {service.Description}
+                            {language === 'ru' ? service.Description : service.DescriptionEng}
                         </ReactMarkdown>
                     </Description>
                     <NumberContainer>
@@ -55,7 +57,7 @@ const ServiceTab = ({service, content}) => {
                         return (
                             <ServicesItemWrapper
                             key={index}
-                            title={item.Title}
+                            title={language === 'ru' ? item.Title : item.TitleEng}
                             image={CMS_URL + item.Image.url}
                             />
                         )

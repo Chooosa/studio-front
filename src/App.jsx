@@ -23,6 +23,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
+
     localStorage.setItem('scroll', false)
   }, [])
 

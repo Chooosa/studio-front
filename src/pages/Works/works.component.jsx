@@ -17,6 +17,7 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
 import { useSelector } from 'react-redux';
 import { contentSelectors } from '../../redux/content/content.selectors';
+import { useTranslation } from '../../hooks/translation';
 
 const WorksPage = () => {
     const works = useSelector(contentSelectors.cases)
@@ -24,6 +25,7 @@ const WorksPage = () => {
     const { inView, ref } = useInView()
     const [animate, setAnimate] = useState(false)
     const { width } = useWindowDimensions()
+    const {t, language} = useTranslation()
 
 
     useEffect(() => {
@@ -58,7 +60,7 @@ const WorksPage = () => {
                 ref={ref}
             >
                 <PageTitle>
-                    Портфолио:
+                    {t('portfolio')}:
                 </PageTitle>
                 {
                     width < 612 ?
@@ -73,13 +75,15 @@ const WorksPage = () => {
             <Tabs
                 tabNames={['Мобильные приложения', 'Сайты']}
                 tabOverride={section === 'Website' ? 1 : undefined}
+                language={language}
+                tabNamesEng={['Mobile apps', 'Websites']}
             >
                 <WorksTab
-                    description='Разработаем мобильное приложение под платформы Android или IOS с соблюдением современных стандартов и требований. Все этапы – от создания дизайна до готового продукта.'
+                    description={t('mobile_apps_desc')}
                     works={works.apps}
                 />
                 <WorksTab
-                    description='Создание стильных и быстрых сайтов – одно из наших основных направлений. От идеи до публикации готового проекта, со строгим соблюдением сроков. Под разный бюджет.'
+                    description={t('websites_desc')}
                     works={works.websites}
                 />
             </Tabs>

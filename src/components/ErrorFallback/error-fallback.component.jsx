@@ -8,8 +8,10 @@ import {
     ErrorBoundaryContainer
 } from './error-fallback.styles';
 import { API_URL } from '../../config';
+import { useTranslation } from '../../hooks/translation';
 
 const ErrorBoundary = ({error}) => {
+    const {t} = useTranslation();
 
     const location = useLocation();
     console.log(error);
@@ -54,9 +56,9 @@ const ErrorBoundary = ({error}) => {
 
     return (
        <ErrorBoundaryContainer>
-           <p>Произошла ошибка</p>
-           <p>Мы работаем над решением проблемы</p>
-           <a href={'lilekov-studio.com'}>Вернуться на главную</a>
+           <p> {t('error_happened')} </p>
+           <p> {t('error_beign_fixed')} </p>
+           <a href={'lilekov-studio.com'}> {t('error_to_main_page')} </a>
        </ErrorBoundaryContainer>
     )
 }

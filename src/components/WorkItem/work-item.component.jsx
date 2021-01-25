@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import {colorSelectors} from '../../redux/color/color.selectors';
+import { useTranslation } from '../../hooks/translation';
 
 
 import { useWindowDimensions } from '../../hooks/dimensions';
@@ -32,6 +33,7 @@ const WorkItem = ({ work }) => {
     const containerRef = useRef()
     const sliderRef = useRef()
     const color = useSelector(colorSelectors.color)
+    const {language} = useTranslation()
 
     const reverseFullScreen = () => {
         fullscreenImage.el.addEventListener('transitionend', removeNode)
@@ -153,14 +155,14 @@ const WorkItem = ({ work }) => {
             ref={containerRef}
         >
             <Title>
-                {work.Title}
+                {language === 'ru' ? work.Title : work.TitleEng}
             </Title>
             <TextContent>
                 <TextSection>
-                    {work.FirstDescriptionBlock}
+                    {language === 'ru' ? work.FirstDescriptionBlock : work.FirstDescriptionBlockEng}
                 </TextSection>
                 <TextSection>
-                    {work.SecondDescriptionBlock}
+                    {language === 'ru' ? work.SecondDescriptionBlock : work.SecondDescriptionBlockEng}
                 </TextSection>
             </TextContent>
             <SliderContainer
