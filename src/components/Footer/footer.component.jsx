@@ -35,6 +35,7 @@ import mapPNG from '../../assets/map.png';
 import mapMobilePNG from '../../assets/map-mobile.png';
 import { ReactComponent as Marker } from '../../assets/pin.svg';
 import flagIcon from '../../assets/flag.png'
+import privacyPolicy from '../../assets/privacyPolicy.pdf'
 
 const Footer = () => {
    const themeColor = useSelector(colorSelectors.color);
@@ -64,7 +65,7 @@ const Footer = () => {
                         <span> {t('adress_second')} </span>
                         <a href='tel:89995357879'>8 999 535 78 79</a>
                         <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                        <a href='#'> {t('privacy_policy')} </a>
+                        <a href={privacyPolicy} target='_blank' rel='noreferrer'> {t('privacy_policy')} </a>
                      </InfoContainerRight>
                   </InfoContainerTop>
                   <InfoContainerBottom customWidth={width}>
@@ -72,7 +73,7 @@ const Footer = () => {
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='#'>
+                     <SocialNetworks target='_blank' href='https://www.instagram.com/lilekovstudio/'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
@@ -109,7 +110,7 @@ const Footer = () => {
                   <span>{t('adress_second')}</span>
                   <a href='tel:89995357879'>8 999 535 78 79</a>
                   <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                  <a href='#'>{t('privacy_policy')}</a>
+                  <a href={privacyPolicy} target='_blank' rel='noreferrer'>{t('privacy_policy')}</a>
                </InfoContainerRight>
                <MapWrapperMobile color={themeColor}>
                   <img src={mapMobilePNG} alt='map-mobile' />
@@ -118,7 +119,7 @@ const Footer = () => {
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='#'>
+                     <SocialNetworks target='_blank' href='https://www.instagram.com/lilekovstudio/'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
