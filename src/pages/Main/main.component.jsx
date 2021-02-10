@@ -1,4 +1,5 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useRef, useEffect, useState } from 'react';
+import { useInView, InView } from 'react-intersection-observer';
 
 import { MainWrapper } from './main.styles';
 import SectionTyping from '../../components/SectionTyping/section-typing.components';
@@ -31,7 +32,6 @@ const Main = () => {
             <SectionAbout />
             <SectionPlan refApplication={refApplication} />
             <SectionRequest refApplication={refApplication} index={7} />
-
          </MainWrapper>
       </Fragment>
    );

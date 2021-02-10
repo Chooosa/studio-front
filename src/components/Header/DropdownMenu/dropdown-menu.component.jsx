@@ -17,7 +17,7 @@ import { useTranslation } from '../../../hooks/translation';
 const DropdownMenu = () => {
    const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
    const color = useSelector(colorSelectors.color);
-   const {t} = useTranslation();
+   const { t } = useTranslation();
 
    const { pathname } = useLocation()
    const dispatch = useDispatch()
@@ -159,12 +159,12 @@ const DropdownMenu = () => {
                </a>
 
 
-               <a href="https://wa.me/79995357879" target='_blank'>
+               <a href="https://wa.me/79995357879" target='_blank' rel='nofollow noopener noreferrer'>
                   WhatsApp
                </a>
 
 
-               <a href='viber://add?number=79995357879' target="_blank">
+               <a href='viber://add?number=79995357879' target="_blank" rel='nofollow noopener noreferrer'>
                   Viber
                </a>
 

@@ -65,19 +65,19 @@ const Footer = () => {
                         <span> {t('adress_second')} </span>
                         <a href='tel:89995357879'>8 999 535 78 79</a>
                         <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                        <a href={privacyPolicy} target='_blank' rel='noreferrer'> {t('privacy_policy')} </a>
+                        <a href={privacyPolicy} target='_blank' rel='nofollow noopener noreferrer'> {t('privacy_policy')} </a>
                      </InfoContainerRight>
                   </InfoContainerTop>
                   <InfoContainerBottom customWidth={width}>
-                     <SocialNetworks target='_blank' href='tg://resolve?domain=lilekov_evgeniy'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='tg://resolve?domain=lilekov_evgeniy'>
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='https://www.instagram.com/lilekovstudio/'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekovstudio/'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='https://www.facebook.com/lilekovstudio'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.facebook.com/lilekovstudio'>
                         <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>
@@ -110,20 +110,20 @@ const Footer = () => {
                   <span>{t('adress_second')}</span>
                   <a href='tel:89995357879'>8 999 535 78 79</a>
                   <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
-                  <a href={privacyPolicy} target='_blank' rel='noreferrer'>{t('privacy_policy')}</a>
+                  <a href={privacyPolicy} target='_blank' rel='nofollow noopener noreferrer'>{t('privacy_policy')}</a>
                </InfoContainerRight>
                <MapWrapperMobile color={themeColor}>
                   <img src={mapMobilePNG} alt='map-mobile' />
                   <SocialNetworksWrapperMobile>
-                     <SocialNetworks target='_blank' href='https://teleg.run/lilekov_evgeniy'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://teleg.run/lilekov_evgeniy'>
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='https://www.instagram.com/lilekovstudio/'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekovstudio/'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' href='https://www.facebook.com/lilekovstudio'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.facebook.com/lilekovstudio'>
                         <img src={facebookSVG} alt='Facebook' />
                      Facebook
                   </SocialNetworks>

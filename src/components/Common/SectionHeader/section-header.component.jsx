@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AnimatedNumbers from '../AnimatedNumbers/animated-numbers.component';
+import { useInView } from 'react-intersection-observer';
 
 import {
     Description,
@@ -8,30 +9,106 @@ import {
     Header,
     Title
 } from './section-header.styles';
+import { Fragment } from 'react';
 
 
-const SectionHeader = ({ title, description, index, show, descriptionWidth, headerDescriptionStyles, headerContainerStyles, padding }) => {
+const SectionHeader = ({
+    title,
+    description,
+    index,
+    show,
+    descriptionWidth,
+    headerDescriptionStyles,
+    headerContainerStyles,
+    padding,
+    nonAnimation = false
+}) => {
+    const [showSection, setShowSection] = useState(false)
+    const { ref, inView } = useInView({
+        threshold: 1,
+    })
+
+    useEffect(() => {
+        if (inView) {
+            setShowSection(true)
+        }
+    }, [inView])
+
     return (
         <Content
             style={{ ...headerContainerStyles }}
             padding={padding}
+            ref={ref}
         >
-            <Header>
-                <Title>
-                    {title}
-                </Title>
-                <AnimatedNumbers
-                    index={index}
-                    show={show}
-                />
-            </Header>
-            <DescriptionContainer
-                style={{ ...headerDescriptionStyles }}
-            >
-                <Description customWidth={descriptionWidth}>
-                    {description}
-                </Description>
-            </DescriptionContainer>
+            {
+                nonAnimation ?
+                    <Fragment>
+                        <Header>
+                            <Title>
+                                {title}
+                            </Title>
+                            <AnimatedNumbers
+                                index={index}
+                                show={show}
+                            />
+                        </Header>
+                        <DescriptionContainer
+                            style={{ ...headerDescriptionStyles }}
+                        >
+                            <Description customWidth={descriptionWidth}>
+                                {description}
+                            </Description>
+                        </DescriptionContainer>
+                    </Fragment>
+                    :
+                    // <div
+                    //     style={{
+                    //         transform: `translate(${showSection ? '0' : index % 2 === 0 ? '100vw' : '-100vw'})`,
+                    //         opacity: showSection ? 1 : 0,
+                    //         transitionDuration: '1s'
+                    //     }}
+                    // >
+                    <Fragment>
+                        <Header>
+                            <Title
+                                style={{
+                                    transform: `translate(${showSection ? '0' : '-100vw'})`,
+                                    opacity: showSection ? 1 : 0,
+                                    transitionDuration: '1s'
+                                }}
+                            >
+                                {title}
+                            </Title>
+                            <div
+                                style={{
+                                    transform: `translate(${showSection ? '0' : '100vw'})`,
+                                    opacity: showSection ? 1 : 0,
+                                    transitionDuration: '1s'
+                                }}
+                            >
+                                <AnimatedNumbers
+                                    index={index}
+                                    show={show}
+                                />
+                            </div>
+
+                        </Header>
+                        <DescriptionContainer
+                            style={{
+                                ...headerDescriptionStyles,
+                                transform: `translate(${showSection ? '0' : '-100vw'})`,
+                                opacity: showSection ? 1 : 0,
+                                transitionDuration: '1s'
+                            }}
+
+                        >
+                            <Description customWidth={descriptionWidth}>
+                                {description}
+                            </Description>
+                        </DescriptionContainer>
+                    </Fragment>
+
+            }
         </Content>
     )
 }

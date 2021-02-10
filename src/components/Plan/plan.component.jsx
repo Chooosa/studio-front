@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
+import smoothscroll from 'smoothscroll-polyfill';
 
 import {
    PlanWrapper,
@@ -44,7 +45,7 @@ const Plan = () => {
    const line2 = useRef();
    const progressLine3 = useRef();
    const line3 = useRef();
-   const {t} = useTranslation();
+   const { t } = useTranslation();
 
    useEffect(() => {
       if (scroll === 'plan') {
@@ -80,10 +81,10 @@ const Plan = () => {
                   {t('interview_desc_list_first')}
                </li>
                <li>
-               {t('interview_desc_list_second')}
+                  {t('interview_desc_list_second')}
                </li>
                <li>
-               {t('interview_desc_list_third')}
+                  {t('interview_desc_list_third')}
                </li>
             </ul>
             {t('interview_desc_outro')}
@@ -108,10 +109,10 @@ const Plan = () => {
                   {t('analysis_desc_list_first')}
                </li>
                <li>
-               {t('analysis_desc_list_second')}
+                  {t('analysis_desc_list_second')}
                </li>
                <li>
-               {t('analysis_desc_list_third')}
+                  {t('analysis_desc_list_third')}
                </li>
             </ul>
             {t('analysis_desc_outro')}
@@ -422,7 +423,7 @@ const Plan = () => {
                            active={currentStep === 1}
                         >
                            {t('interview')}
-                     </StepButton>
+                        </StepButton>
                      </Dash>
 
                      <Dash
@@ -437,7 +438,7 @@ const Plan = () => {
                            active={currentStep === 2}
                         >
                            {t('analysis')}
-                     </StepButton>
+                        </StepButton>
                      </Dash>
 
                      <Dash
@@ -452,7 +453,7 @@ const Plan = () => {
                            active={currentStep === 3}
                         >
                            {t('briefing')}
-                     </StepButton>
+                        </StepButton>
                      </Dash>
 
                      <Dash
@@ -467,7 +468,7 @@ const Plan = () => {
                            active={currentStep === 4}
                         >
                            {t('budget')}
-                     </StepButton>
+                        </StepButton>
                      </Dash>
                   </Line>
                </LineWrapper>

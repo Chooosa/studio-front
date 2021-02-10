@@ -7,14 +7,14 @@ import Section from '../Common/Section/section.component';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 
-import {useTranslation} from '../../hooks/translation';
+import { useTranslation } from '../../hooks/translation';
 
 import {
     CardContainer,
 } from './services-section.styles';
 
 
-const ServicesSection = () => {
+const ServicesSection = ({ reff }) => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
     const dispatch = useDispatch()
@@ -30,7 +30,7 @@ const ServicesSection = () => {
             dispatch(setScroll(undefined))
         }
     }, [scroll, dispatch])
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <Section
@@ -38,6 +38,7 @@ const ServicesSection = () => {
             description={t('services_desc')}
             index={3}
             descriptionWidth={'380px'}
+            reff={reff}
         >
             <CardContainer ref={ref}>
                 <AnimatedCard

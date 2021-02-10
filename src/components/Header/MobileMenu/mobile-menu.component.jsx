@@ -41,7 +41,7 @@ const MobileMenu = () => {
     const { pathname } = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
 
     const handleNavigation = (link) => {
@@ -240,7 +240,7 @@ const MobileMenu = () => {
                                 </a>
                             </BodyItem>
                             <BodyItem>
-                                <a href='viber://add?number=79995357879' target="_blank">
+                                <a href='viber://add?number=79995357879' target="_blank" rel='nofollow noopener noreferrer'>
                                     Viber
                                 </a>
                             </BodyItem>

@@ -16,7 +16,8 @@ const Section = ({
     headerContainerStyles,
     headerDescriptionStyles,
     reff,
-    padding
+    padding,
+    nonAnimation
 }) => {
     const [animate, setAnimate] = useState(false)
 
@@ -54,6 +55,7 @@ const Section = ({
                     headerContainerStyles={headerContainerStyles}
                     headerDescriptionStyles={headerDescriptionStyles}
                     padding={padding}
+                    nonAnimation={nonAnimation}
                 />
                 {children}
             </Container>
