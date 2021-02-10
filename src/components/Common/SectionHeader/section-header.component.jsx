@@ -61,20 +61,13 @@ const SectionHeader = ({
                         </DescriptionContainer>
                     </Fragment>
                     :
-                    // <div
-                    //     style={{
-                    //         transform: `translate(${showSection ? '0' : index % 2 === 0 ? '100vw' : '-100vw'})`,
-                    //         opacity: showSection ? 1 : 0,
-                    //         transitionDuration: '1s'
-                    //     }}
-                    // >
                     <Fragment>
                         <Header>
                             <Title
                                 style={{
                                     transform: `translate(${showSection ? '0' : '-100vw'})`,
                                     opacity: showSection ? 1 : 0,
-                                    transitionDuration: '1s'
+                                    transitionDuration: '0.5s'
                                 }}
                             >
                                 {title}
@@ -83,7 +76,7 @@ const SectionHeader = ({
                                 style={{
                                     transform: `translate(${showSection ? '0' : '100vw'})`,
                                     opacity: showSection ? 1 : 0,
-                                    transitionDuration: '1s'
+                                    transitionDuration: '0.5s'
                                 }}
                             >
                                 <AnimatedNumbers
@@ -98,7 +91,7 @@ const SectionHeader = ({
                                 ...headerDescriptionStyles,
                                 transform: `translate(${showSection ? '0' : '-100vw'})`,
                                 opacity: showSection ? 1 : 0,
-                                transitionDuration: '1s'
+                                transitionDuration: '0.5s'
                             }}
 
                         >
