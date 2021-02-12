@@ -74,7 +74,7 @@ function App() {
                 <Route exact path='/guarantees' component={Guarantees} />
                 <Route exact path={`/contacts`} component={Contacts} />
                 <Route path='/' >
-                  <NotFound endLoader={endLoader} />
+                  <NotFound endLoader={endLoader} error={error} />
                 </Route>
               </Switch>
               {/* </AnimatePresence> */}
