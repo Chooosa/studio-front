@@ -220,4 +220,7 @@ export const ru = {
     error_beign_fixed: `Мы работаем над решением проблемы`,
     error_to_main_page: `Вернуться на главную`,
 
+    notfound_desc_first: 'ОООООПС! Страницы, которую вы ищите не существует',
+    notfound_desc_second: 'Перейдите на главную страницу, пожалуйста',
+    notfound_button_label: 'Вернуться на главную',
 }

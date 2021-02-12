@@ -34,6 +34,8 @@ function App() {
   const addr = window.localStorage.getItem('address')
   const [websites, setWebsites] = useState(addr ? addr : 'contacts')
 
+  const [endLoader, setEndLoader] = useState(false)
+
   const setAddr = () => {
     setWebsites('kontakty')
     window.localStorage.setItem('address', 'kontakty')
@@ -70,8 +72,10 @@ function App() {
                 <Route exact path='/services/:section' component={ServicesPage} />
                 <Route exact path='/cooperation' component={Cooperation} />
                 <Route exact path='/guarantees' component={Guarantees} />
-                <Route exact path={`/${websites}`} component={Contacts} />
-                <Route path='/' component={NotFound} />
+                <Route exact path={`/contacts`} component={Contacts} />
+                <Route path='/' >
+                  <NotFound endLoader={endLoader} />
+                </Route>
               </Switch>
               {/* </AnimatePresence> */}
               {/* <button onClick={() => setAddr()}>change</button> */}
@@ -80,7 +84,7 @@ function App() {
             <Footer />
           </ErrorBoundary>
       }
-      <Loader />
+      <Loader setEndLoader={setEndLoader} />
     </AppWrapper>
   );
 }

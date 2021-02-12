@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import {
    DropdownMenuWrapper,
@@ -10,7 +11,6 @@ import {
 } from './dropdown-menu.styles';
 import { MenuContext } from '../../../context/menu-state';
 import { colorSelectors } from '../../../redux/color/color.selectors';
-import { Link, useHistory, useLocation } from 'react-router-dom';
 import { setScroll } from '../../../redux/scroll/scroll.actions';
 import { useTranslation } from '../../../hooks/translation';
 
@@ -144,9 +144,12 @@ const DropdownMenu = () => {
                      {t('collaboration')}
                   </span>
                </LinksCell>
+               {/* <LinksCell color={color}>
+
+               </LinksCell> */}
             </LinksWrapper>
             <LinksCell color={color}>
-               <a href='tel:+79995357879'>
+               {/* <a href='tel:+79995357879'>
                   8 999 535 78 79
                </a>
                <a href='mailto:evgeny@lilekov-studio.com'>
@@ -158,7 +161,6 @@ const DropdownMenu = () => {
                   Telegram
                </a>
 
-
                <a href="https://wa.me/79995357879" target='_blank' rel='nofollow noopener noreferrer'>
                   WhatsApp
                </a>
@@ -166,8 +168,7 @@ const DropdownMenu = () => {
 
                <a href='viber://add?number=79995357879' target="_blank" rel='nofollow noopener noreferrer'>
                   Viber
-               </a>
-
+               </a> */}
             </LinksCell>
          </DropdownMenuContainer>
       </DropdownMenuWrapper>

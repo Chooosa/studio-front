@@ -21,7 +21,7 @@ export const DropdownMenuWrapper = styled.nav`
 
 export const DropdownMenuContainer = styled.div`
    width: 100%;
-   max-width: 956px;
+   max-width: 1015px;
    height: max-content;
    min-height: 200px;
    display: flex;
@@ -34,7 +34,7 @@ export const WhiteSpace = styled.div`
 `
 
 export const LinksWrapper = styled(ButtonsWrapper)`
-
+   padding-right: 65px;
 `
 
 export const LinksCell = styled.div`

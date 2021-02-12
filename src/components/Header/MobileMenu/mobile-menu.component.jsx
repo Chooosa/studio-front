@@ -14,7 +14,8 @@ import { useTranslation } from '../../../hooks/translation';
 import {
     BodyItem,
     Container,
-    Divider
+    Divider,
+    CustomLink
 } from './mobile-menu.styles';
 
 const variants = {
@@ -201,6 +202,7 @@ const MobileMenu = () => {
                                 </span>
                             </BodyItem>
                         </MenuSection>
+                        <CustomLink>Контакты</CustomLink>
                         <Divider
                             color={color}
                             initial={{
@@ -213,7 +215,12 @@ const MobileMenu = () => {
                                 }
                             }}
                         />
-                        <MenuSection
+                        <CustomLink color={color}>
+                            <a href='tel:+79995357879'>
+                                8 999 535 78 79
+                            </a>
+                        </CustomLink>
+                        {/* <MenuSection
                             title={t('contacts')}
                             color={color}
                             keepOpen={true}
@@ -244,7 +251,7 @@ const MobileMenu = () => {
                                     Viber
                                 </a>
                             </BodyItem>
-                        </MenuSection>
+                        </MenuSection> */}
                     </Container>
                     : null
             }

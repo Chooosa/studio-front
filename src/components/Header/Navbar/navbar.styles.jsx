@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const NavbarContainer = styled.div`
    width: 100%;
-   max-width: 956px;
+   max-width: 1015px;
    height: 70px;
    padding-top: 20px;
    padding-bottom: 5px;
@@ -22,7 +22,7 @@ export const ButtonsWrapper = styled.div`
    justify-content: space-between;
    /* width: 400px; */
    width: 100%;
-   max-width: 500px;
+   max-width: 550px;
 
    >button {
       :nth-of-type(2) {
@@ -40,10 +40,29 @@ export const LangToggleButton = styled.button`
    position: absolute;
    right: 15%;
 
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 22px;
+
    :hover {
       cursor: pointer;
    }
 
-   color: white;
+   color: #F9F9F9;
    text-transform: uppercase;
+`
+
+export const CustomLink = styled.span`
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 22px;
+   color: ${props => props.color ? props.color : '#F9F9F9'};
+
+   opacity: 1;
+   transition-duration: 0.2s;
+   cursor: pointer;
+   :hover {
+      opacity: 0.8;
+      transition-duration: 0.2s;
+   }
 `

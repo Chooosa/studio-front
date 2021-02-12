@@ -8,7 +8,7 @@ import {
 } from './loader.styles';
 import { useState } from 'react';
 
-const Loader = () => {
+const Loader = ({ setEndLoader }) => {
     const color = useSelector(colorSelectors.color);
     const [show, setShow] = useState(true)
     const [translate, setTranslate] = useState(0)
@@ -16,11 +16,9 @@ const Loader = () => {
     const finishAnimation = () => {
         setTimeout(() => {
             setTranslate(-100)
+            setEndLoader(true)
         }, 300)
     }
-
-
-
 
 
     return (
@@ -32,7 +30,7 @@ const Loader = () => {
                             transform: `translateX(${translate}%)`
                         }}
                         onTransitionEnd={() => {
-     
+
                             setShow(false)
                         }}
                     >

@@ -40,3 +40,18 @@ width: 100%;
 height: 2px;
 margin-top: 20px;
 `
+
+export const CustomLink = styled.span`
+    width: 100%;
+    cursor: pointer;
+    padding: 0 9%;
+    /* margin-right: 12px; */
+    margin-top: 23px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: ${props => props.color ? props.color : '#F9F9F9'};
+    >a {
+        color: ${props => props.color ? props.color : '#F9F9F9'};
+    }
+`

@@ -25,12 +25,12 @@ const Header = () => {
    return (
       <HeaderWrapper ref={headerRef} open={isMenuOpen}>
          {
-            width > 850 ?
+            width > 960 ?
                <Navbar />
                : <MobileNavbar />
          }
          {
-            width > 850 ?
+            width > 960 ?
                <DropdownMenu />
                :
                <MobileMenu />
