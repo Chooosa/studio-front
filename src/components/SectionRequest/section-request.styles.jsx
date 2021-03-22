@@ -5,6 +5,7 @@ import InputMask from 'react-input-mask';
 export const InputFieldsWrapper = styled.form`
     display: flex;
     flex-direction: column;
+
 `
 
 export const InputFieldsRowPosition = styled.div`
@@ -12,13 +13,17 @@ export const InputFieldsRowPosition = styled.div`
     ${props => props.customWidth > 800 ? 'flex-direction: row' : 'flex-direction: column'};
     width: 100%;
     height: 100%;
+    justify-content: center;
+    margin-bottom: 40px;
     ${props => props.customWidth < 800 ? 'align-items: center' : ''};
 `
 
 export const InputFieldsColumn = styled.div`
     display: flex;
     height: 100%;
+    max-height: 220px;
     width: 100%;
+    max-width: 460px;
     flex-direction: column;
     margin: 5px ${props => props.customWidth > 800 ? '10px' : '0px'};
     ${props => props.customWidth > 800 ? 'align-items: space-between' : 'align-items: center;'}
@@ -27,14 +32,14 @@ export const InputFieldsColumn = styled.div`
 export const InputWrapper = styled.div`
     height: 60px;
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     position: relative;
     :first-child {
-        margin-bottom: 24px;
+        margin-bottom: 20px;
     }
 
     :last-child {
-        margin-top: 24px;
+        margin-top: 20px;
     }
 `
 
@@ -69,18 +74,18 @@ export const InputField = styled(InputMask)`
 export const ExtraInfoWrapper = styled.div`
     height: 100%;
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     margin-top: ${props => props.customWidth < 800 ? '20px' : '0px'};
     display: flex;
     flex-direction: column;
 `
 
 export const ExtraInfo = styled.textarea`
-    height: 144px;
+    height: 140px;
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     background-color: #111111;
     color: #707070;
     padding: 25px 25px;
@@ -152,7 +157,7 @@ export const FileInputLabel = styled.label`
     align-items: center;
     padding: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 460px;
     min-height: 60px;
     background-color: white;
     cursor: pointer;
@@ -182,7 +187,7 @@ export const Error = styled.span`
     font-size: 14px;
     line-height: 19px;
     margin-top: 13px;
-    align-self: center;    
+    align-self: center;
 `
 
 export const Button = styled(CustomButton)`
@@ -190,7 +195,7 @@ export const Button = styled(CustomButton)`
     margin-top: ${props => props.width > 800 ? '50px' : '0px'};
     background-color: ${props => props.color ? props.color : '#3FB755'};
     border-width: 0px;
-
+    max-width: 460px;
     color: #FFFFFF;
 
     :hover {
@@ -235,7 +240,7 @@ export const PersonalDataAgreement = styled.div`
             opacity: 0.8;
             color: #fff;
             border-color: #fff;
-         }
+        }
     }
 `
 

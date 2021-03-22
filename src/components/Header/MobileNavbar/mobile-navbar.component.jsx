@@ -15,16 +15,16 @@ import { MenuContext } from '../../../context/menu-state';
 import { useTranslation } from '../../../hooks/translation';
 import { setLanguage } from '../../../redux/language/language.actions';
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ setOpenMenu }) => {
     const color = useSelector(colorSelectors.color)
     const { isMenuOpen, toggleMenuMode } = useContext(MenuContext)
-    const {language} = useTranslation()
+    const { language } = useTranslation()
     const dispatch = useDispatch()
 
     const toggleLang = (bName) => {
         let lang = bName === 'ru' ? 'en' : 'ru';
         dispatch(setLanguage(lang))
-     }
+    }
 
     return (
         <Container>
@@ -35,10 +35,10 @@ const MobileNavbar = () => {
             >
                 <BurgerSVG />
             </IconButton>
-            <Logo />
+            <Logo setOpenMenu={setOpenMenu} />
             <LangToggleButton
-            onClick={(e)=>toggleLang(e.nativeEvent.target.name)} name={language} 
-            open={isMenuOpen}>
+                onClick={(e) => toggleLang(e.nativeEvent.target.name)} name={language}
+                open={isMenuOpen}>
                 {language}
             </LangToggleButton>
             <IconButton>

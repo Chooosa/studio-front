@@ -34,13 +34,18 @@ import { useTranslation } from '../../hooks/translation';
 
 
 
-const SectionRequest = ({ refApplication, index, padding }) => {
+const SectionRequest = ({
+    refApplication,
+    index,
+    padding,
+    nonNumber
+}) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
     const dispatch = useDispatch()
     const scroll = useSelector(scrollSelectors.to)
     const ref = useRef()
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const [isRequestSent, setIsRequestSent] = useState(false);
 
     const validationSchema = yup.object().shape({
@@ -85,7 +90,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             return resp;
         }
         catch (err) {
-           
+
         }
     }
 
@@ -125,6 +130,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
             title={t('leave_request')}
             description={t('leave_request_desc')}
             index={index}
+            nonNumber={nonNumber}
             headerContainerStyles={{
                 marginBottom: '50px'
             }}
@@ -204,7 +210,7 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                                 </FileInput>
                                 <FileInputLabel htmlFor='file'>
                                     {t('attatch_file_button')}
-                                <Icon src={Attach} />
+                                    <Icon src={Attach} />
                                 </FileInputLabel>
                                 <FilesList customWidth={width}>
                                     {filesArray.map((item) => {
@@ -238,13 +244,13 @@ const SectionRequest = ({ refApplication, index, padding }) => {
                             disabled={isRequestSent}
                         >
                             {isRequestSent ? t('request_sent') : t('leave_request')}
-                        <Icon src={Send} />
+                            <Icon src={Send} />
                         </Button>
                         <Error>
-                            <p>{errors.name}</p> 
-                            <p>{errors.phone}</p> 
-                            <p>{errors.email}</p> 
-                            <p>{errors.text}</p> 
+                            <p>{errors.name}</p>
+                            <p>{errors.phone}</p>
+                            <p>{errors.email}</p>
+                            <p>{errors.text}</p>
                         </Error>
                     </InputFieldsWrapper>
                 )}

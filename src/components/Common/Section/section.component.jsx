@@ -17,7 +17,8 @@ const Section = ({
     headerDescriptionStyles,
     reff,
     padding,
-    nonAnimation
+    nonAnimation,
+    nonNumber
 }) => {
     const [animate, setAnimate] = useState(false)
 
@@ -56,6 +57,7 @@ const Section = ({
                     headerDescriptionStyles={headerDescriptionStyles}
                     padding={padding}
                     nonAnimation={nonAnimation}
+                    nonNumber={nonNumber}
                 />
                 {children}
             </Container>

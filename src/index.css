@@ -41,14 +41,30 @@ p {
 
 .MuiDialog-paper {
   overflow: hidden;
+  margin: 0px!important;
 }
 
+@media(max-width: 768px) {
+  .MuiDialog-paperScrollPaper {
+    max-height: none!important;
+    min-height: 100vh;
+  }
+}
+.MuiDialog-paperWidthXl.MuiDialog-paperScrollBody {
+  max-width: none!important;
+}
 
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
   width: 8px; /* ширина для вертикального скролла */
   height: 8px; /* высота для горизонтального скролла */
   background-color: transparent;
+}
+
+@media(max-width: 768px) {
+  ::-webkit-scrollbar {
+    background-color: #0a0a0a;
+  }
 }
 
 /* ползунок скроллбара */

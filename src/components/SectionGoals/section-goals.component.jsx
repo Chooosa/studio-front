@@ -15,6 +15,7 @@ import {
    // Text,
    Button
 } from './section-goals.styles';
+import ModalRequest from '../ModalRequest/modal-request.component';
 
 const SectionGoals = ({ refCases }) => {
    // const history = useHistory();
@@ -49,6 +50,10 @@ const SectionGoals = ({ refCases }) => {
          <Button onClick={onOpenModal} color={color}>
             {t('leave_request')}
          </Button>
+         <ModalRequest
+            open={openModal}
+            onClose={onCloseModal}
+         />
       </Section>
    );
 }

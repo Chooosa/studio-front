@@ -34,9 +34,11 @@ const Header = () => {
    return (
       <HeaderWrapper ref={headerRef} background={isMenuOpen}>
          {
-            width < 960 || !isMenuOpen ?
+            width < 960 && !isMenuOpen ?
                <Background backgroundWidth={backgroundWidth} />
-               : null
+               : width > 960 ?
+                  <Background backgroundWidth={backgroundWidth} />
+                  : null
          }
          {
             width > 960 ?
@@ -46,7 +48,7 @@ const Header = () => {
                   setBackgroundWidth={setBackgroundWidth}
                   backgroundWidth={backgroundWidth}
                />
-               : <MobileNavbar />
+               : <MobileNavbar setOpenMenu={setOpenMenu} />
          }
          {
             width > 960 ?

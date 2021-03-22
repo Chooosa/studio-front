@@ -21,7 +21,8 @@ const SectionHeader = ({
     headerDescriptionStyles,
     headerContainerStyles,
     padding,
-    nonAnimation = true
+    nonAnimation = true,
+    nonNumber = false
 }) => {
     const [showSection, setShowSection] = useState(false)
     const { ref, inView } = useInView({
@@ -33,6 +34,10 @@ const SectionHeader = ({
             setShowSection(true)
         }
     }, [inView])
+
+    useEffect(() => {
+        console.log('nonNumber', nonNumber)
+    }, [nonNumber])
 
     return (
         <Content
@@ -47,10 +52,14 @@ const SectionHeader = ({
                             <Title>
                                 {title}
                             </Title>
-                            <AnimatedNumbers
-                                index={index}
-                                show={show}
-                            />
+                            {
+                                !nonNumber &&
+                                <AnimatedNumbers
+                                    index={index}
+                                    show={show}
+                                />
+                            }
+
                         </Header>
                         <DescriptionContainer
                             style={{ ...headerDescriptionStyles }}
@@ -79,10 +88,13 @@ const SectionHeader = ({
                                     transitionDuration: '0.5s'
                                 }}
                             >
-                                <AnimatedNumbers
-                                    index={index}
-                                    show={show}
-                                />
+                                {
+                                    !nonNumber &&
+                                    <AnimatedNumbers
+                                        index={index}
+                                        show={show}
+                                    />
+                                }
                             </div>
 
                         </Header>
