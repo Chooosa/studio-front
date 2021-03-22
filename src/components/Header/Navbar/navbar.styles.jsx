@@ -80,13 +80,13 @@ export const DropdownMenuWrapper = styled.div`
 `
 
 export const DropDownContainer = styled.div`
-   display: ${props => props.visible ? 'block' : 'none'};
+   /* display: ${props => props.visible ? 'block' : 'none'}; */
    /* visibility: ${props => props.visible ? 'visible' : 'hidden'}; */
    position: absolute;
    width: 120px;
    margin-top: 20px;
    transition-duration: 0.2s;
-   z-index: 1;
+   z-index: ${props => props.visible ? '1' : '-1'};
 `
 
 export const LinksCell = styled.div`
