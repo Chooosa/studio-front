@@ -103,7 +103,7 @@ const DropdownMenu = () => {
          <DropdownMenuContainer>
             <WhiteSpace />
             <LinksWrapper>
-               <LinksCell color={color}>
+               {/* <LinksCell color={color}>
                   <span to='/' onClick={() => handleNavigation('typing')}>
                      {t('main_page')}
                   </span>
@@ -116,7 +116,7 @@ const DropdownMenu = () => {
                   <span onClick={() => handleNavigation('plan')}>
                      {t('work_plan')}
                   </span>
-               </LinksCell>
+               </LinksCell> */}
                <LinksCell color={color}>
                   <span onClick={() => handleNavigation('applicationAll')}>
                      {t('apps')}
@@ -136,14 +136,14 @@ const DropdownMenu = () => {
                      {t('other_services')}
                   </span>
                </LinksCell>
-               <LinksCell color={color}>
+               {/* <LinksCell color={color}>
                   <span onClick={() => handleNavigation('guarantees')}>
                      {t('guarantees')}
                   </span>
                   <span onClick={() => handleNavigation('cooperation')}>
                      {t('collaboration')}
                   </span>
-               </LinksCell>
+               </LinksCell> */}
                {/* <LinksCell color={color}>
 
                </LinksCell> */}

@@ -8,7 +8,7 @@ width: 100%;
 margin-bottom: 60px;
 display: flex;
 flex-direction: column;
-@media(max-width: 1056px) {
+@media(max-width: 1240px) {
     padding-left: ${props => props.padding ? props.padding : '20px'};
     padding-right: ${props => props.padding ? props.padding : '20px'};
 }

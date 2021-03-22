@@ -11,7 +11,7 @@ const SectionTyping = () => {
    const dispatch = useDispatch()
    const scroll = useSelector(scrollSelectors.to)
    const ref = useRef()
-   const {t} = useTranslation();
+   const { t } = useTranslation();
 
    useEffect(() => {
       if (scroll === 'typing') {
@@ -30,8 +30,7 @@ const SectionTyping = () => {
             t('mobile_apps'),
             t('website'),
             t('interfaces'),
-            t('promotion_strategies'),
-            t('web_interfaces')
+            t('promotion_strategies')
          ]} />
       </TypingWrapper>
    );

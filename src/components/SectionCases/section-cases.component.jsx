@@ -34,7 +34,7 @@ const SectionCases = () => {
     const { width } = useWindowDimensions()
     const history = useHistory()
     const ref = useRef()
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const handleNavigation = () => {
         history.push(`/works/${currentIndex === 0 ? 'Application' : 'Website'}/all`)
@@ -67,7 +67,7 @@ const SectionCases = () => {
                 setWorks(tempWorks)
             })
             .catch((err) => {
-                
+
             })
     }, [])
 
@@ -107,16 +107,16 @@ const SectionCases = () => {
                 </Button>
             </ControlsContainer>
             <SliderContainer >
-                <SLiderInnerContainer z={width > 956 ? 956 / 2 : width / 2}>
+                <SLiderInnerContainer z={width > 1200 ? 1200 / 2 : width / 2}>
                     <Slider rotation={currentIndex === 0 ? 0 : -90} >
-                        <CasesContainer front={true} z={width > 956 ? 956 / 2 : width / 2}>
+                        <CasesContainer front={true} z={width > 1200 ? 1200 / 2 : width / 2}>
                             {
                                 works.apps.map((app, index) => {
                                     return <Case key={index} caseToDisplay={app} />
                                 })
                             }
                         </CasesContainer>
-                        <CasesContainer z={width > 956 ? 956 / 2 : width / 2}>
+                        <CasesContainer z={width > 1200 ? 1200 / 2 : width / 2}>
                             {
                                 works.websites.map((app, index) => {
                                     return <Case key={index} caseToDisplay={app} />
@@ -132,7 +132,7 @@ const SectionCases = () => {
                     onClick={handleNavigation}
                 >
                     {t('all_works')}
-                        </AllCasesButton>
+                </AllCasesButton>
             </AllCasesButtonContainer>
         </Section>
     )

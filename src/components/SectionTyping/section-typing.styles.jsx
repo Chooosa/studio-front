@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const TypingWrapper = styled.section`
    width: 100%;
-   padding: 120px 20px 135px 142px;
+   padding: 120px 20px 90px 142px;
 
    @media (max-width: 820px) {
-      padding: 80px 20px 100px 60px;
+      padding: 80px 20px 80px 60px;
    }
    @media (max-width: 600px) {
       padding: 70px 20px 60px 20px;

@@ -10,7 +10,7 @@ import { changeColor } from '../../redux/color/color.actions';
 import { useHistory } from 'react-router-dom';
 import { setScroll } from '../../redux/scroll/scroll.actions'
 
-const Logo = ({ color, changeColor, themeColor }) => {
+const Logo = ({ color, changeColor, themeColor, setOpenMenu }) => {
    const history = useHistory()
    const dispatch = useDispatch()
 
@@ -26,6 +26,7 @@ const Logo = ({ color, changeColor, themeColor }) => {
    const handleNavigation = () => {
       history.push('/')
       dispatch(setScroll('typing'))
+      setOpenMenu(0)
    }
 
    return (

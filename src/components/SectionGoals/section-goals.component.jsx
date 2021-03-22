@@ -20,7 +20,7 @@ const SectionGoals = ({ refCases }) => {
    // const history = useHistory();
    const color = useSelector(colorSelectors.color);
    const dispatch = useDispatch()
-   const {t} = useTranslation()
+   const { t } = useTranslation()
 
    const handleScroll = () => {
       dispatch(setScroll('cases'))

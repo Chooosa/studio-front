@@ -7,9 +7,9 @@ display: flex;
 flex-direction: row;
 width: 100%;
 background-color: #111111;
-height:430px;
+height:450px;
 @media(max-width: 768px) {
-    height: 360px;
+    height: 380px;
 
 }
 @media(max-width: 600px) {
@@ -23,7 +23,9 @@ export const ContentContainer = styled.div`
 display: flex;
 flex-direction: column;
 min-width: 365px;
-width: 365px;
+width: 100%;
+max-width: 600px;
+/* width: 365px; */
 justify-content: space-between;
 @media(max-width: 768px) {
     min-width: 50%;
@@ -68,13 +70,13 @@ flex-direction: column;
 justify-content: center;
 width: 100%;
 height: 100%;
-padding: 0 33px 0 60px;
+padding: 10px 33px 10px 60px;
 >div >ul {
     padding-inline-start: 0px;
 }
 @media(max-width: 600px) {
     width: 100%;
-    padding:0 33px 0px 8%;
+    padding: 10px 33px 10px 8%;
     height: 252px;
 }
 `

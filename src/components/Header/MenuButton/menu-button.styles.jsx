@@ -11,6 +11,7 @@ export const MenuButtonContainer = styled.button`
    max-width: 120px;
    display: flex;
    align-items: center;
+   margin-right: 47px;
 
    font-weight: 600;
    font-size: 16px;

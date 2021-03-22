@@ -10,8 +10,8 @@ export const DropdownMenuWrapper = styled.nav`
    position: absolute;
    top: 70px;
    left: 0;
-   border-bottom: 1px solid ${props => props.open ? props.color : 'transparent'};
-   background-color: #0a0a0a;
+   /* border-bottom: 1px solid ${props => props.open ? props.color : 'transparent'}; */
+   /* background-color: #0a0a0a; */
    z-index: 499;
 
    overflow: hidden;
@@ -21,7 +21,7 @@ export const DropdownMenuWrapper = styled.nav`
 
 export const DropdownMenuContainer = styled.div`
    width: 100%;
-   max-width: 1015px;
+   max-width: 1200px;
    height: max-content;
    min-height: 200px;
    display: flex;
@@ -34,7 +34,9 @@ export const WhiteSpace = styled.div`
 `
 
 export const LinksWrapper = styled(ButtonsWrapper)`
-   padding-right: 65px;
+   /* padding-right: 65px; */
+   justify-content: flex-start;
+   margin-right: 55px;
 `
 
 export const LinksCell = styled.div`

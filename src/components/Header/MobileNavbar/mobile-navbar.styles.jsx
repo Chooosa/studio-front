@@ -9,7 +9,7 @@ justify-content: space-between;
 padding-top: 20px;
 padding-bottom: 5px;
 margin: 0 20px;
-background-color: #0A0A0A;
+/* background-color: #0A0A0A; */
 `
 
 export const IconButton = styled.div`
@@ -21,7 +21,7 @@ align-items: center;
 cursor: pointer;
 -webkit-tap-highlight-color:transparent;
 >svg >path {
-    stroke: ${props => props.open? props.color: '#f9f9f9'}
+    stroke: ${props => props.open ? props.color : '#f9f9f9'}
 }
 `
 

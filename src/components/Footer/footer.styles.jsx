@@ -17,7 +17,7 @@ export const FooterWrapper = styled.footer`
 export const FooterContainer = styled.div`
    width: 100%;
    height: 100%;
-   max-width: 956px;
+   max-width: 1200px;
    display: flex;
    align-items: center;
    position: relative;
@@ -44,10 +44,10 @@ export const InfoContainerBottom = styled.div`
    height: 40px;
    max-width: 480px;
    display: flex;
-   align-items: ${props => props.customWidth > 1000 ? 'center' : 'flex-start'};
-   justify-content: ${props => props.customWidth > 1000 ? 'space-between' : 'center'};
-   flex-direction: ${props => props.customWidth > 1000 ? 'row' : 'column'};
-   position: ${props => props.customWidth > 1000 ? 'static' : 'absolute'};
+   align-items: ${props => props.customWidth > 1100 ? 'center' : 'flex-start'};
+   justify-content: ${props => props.customWidth > 1100 ? 'space-between' : 'center'};
+   flex-direction: ${props => props.customWidth > 1100 ? 'row' : 'column'};
+   position: ${props => props.customWidth > 1100 ? 'static' : 'absolute'};
    top: 50%;
 `
 
@@ -89,7 +89,7 @@ export const InfoContainerRight = styled.div`
 
 export const MapWrapper = styled.div`
    width: 100%;
-   max-width: 610px;
+   max-width: 700px;
    height: 100%;
    max-height: 340px;
    position: absolute;
@@ -128,6 +128,7 @@ export const MapContainer = styled(motion.div)`
 
 export const MapButton = styled(CustomButton)`
    /* position: absolute; */
+   max-width: 466px;
    margin: 0 60px 30px 0;
    border-color: #f9f9f9;
    background-color: #f9f9f9;
@@ -243,7 +244,7 @@ width:100%;
 min-height: 632px;
 display: flex;
    min-height: 632px;
-    
+
    width: 100%;
    z-index: 2;
 `

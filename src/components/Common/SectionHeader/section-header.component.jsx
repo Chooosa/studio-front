@@ -21,7 +21,7 @@ const SectionHeader = ({
     headerDescriptionStyles,
     headerContainerStyles,
     padding,
-    nonAnimation = false
+    nonAnimation = true
 }) => {
     const [showSection, setShowSection] = useState(false)
     const { ref, inView } = useInView({

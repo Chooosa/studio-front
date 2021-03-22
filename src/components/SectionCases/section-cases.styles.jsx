@@ -36,10 +36,10 @@ overflow: hidden;
 export const SliderContainer = styled.div`
 perspective: 1000px;
 position: relative;
-height:860px;
+height: 900px;
 z-index: 1;
 @media(max-width: 768px) {
-    height: 720px;
+    height: 760px;
 
 }
 

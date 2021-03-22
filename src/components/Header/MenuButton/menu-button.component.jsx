@@ -1,20 +1,20 @@
 import React, { useContext } from 'react';
 
 import { MenuButtonContainer } from './menu-button.styles';
-import { MenuContext } from '../../../context/menu-state';
+// import { MenuContext } from '../../../context/menu-state';
 // import ArrowSVG from '../../../assets/arrow.svg'
 
-const MenuButton = ({ children, color }) => {
-   const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
+const MenuButton = ({ children, color, isOpen, onOpen }) => {
+   // const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
 
-   const onOpenMenu = () => {
-      toggleMenuMode();
-   };
+   // const onOpenMenu = () => {
+   //    toggleMenuMode();
+   // };
 
    return (
       <MenuButtonContainer
-         active={isMenuOpen}
-         onClick={onOpenMenu}
+         active={isOpen}
+         onClick={onOpen}
          color={color}
       >
          {children}

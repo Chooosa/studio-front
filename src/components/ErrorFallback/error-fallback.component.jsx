@@ -17,45 +17,47 @@ const ErrorBoundary = ({ error }) => {
     console.log(error.message);
 
     useEffect(() => {
-        let data = {
-            route: location.pathname,
-            device: deviceDetect(),
-            error: error.message,
-            // data: moment().format('DD-MM-YYYY'),
-            // time: moment().format('HH:mm:ss'),
-            browser: {
-                name: browserName,
-                version: browserVersion
-            },
-        }
-        console.log(data);
-        axios.interceptors.request.use(config => {
-            console.log(config)
-            return config
-        })
-        console.log('err', error.toString())
-        axios({
-            method: 'post',
-            url: `${API_URL}fronterror`,
-            data: {
+        if (process.env.NODE_ENV === 'production') {
+            let data = {
                 route: location.pathname,
                 device: deviceDetect(),
-                error: error.toString(),
-                data: moment().format('DD-MM-YYYY'),
-                time: moment().format('HH:mm:ss'),
+                error: error.message,
+                // data: moment().format('DD-MM-YYYY'),
+                // time: moment().format('HH:mm:ss'),
                 browser: {
                     name: browserName,
                     version: browserVersion
                 },
-                projectName: 'LilekovStudio'
             }
-        })
-            .then(() => {
-                console.log('success')
+            console.log(data);
+            axios.interceptors.request.use(config => {
+                console.log(config)
+                return config
             })
-            .catch((e) => {
-                console.log('error: ', e)
+            console.log('err', error.toString())
+            axios({
+                method: 'post',
+                url: `${API_URL}fronterror`,
+                data: {
+                    route: location.pathname,
+                    device: deviceDetect(),
+                    error: error.toString(),
+                    data: moment().format('DD-MM-YYYY'),
+                    time: moment().format('HH:mm:ss'),
+                    browser: {
+                        name: browserName,
+                        version: browserVersion
+                    },
+                    projectName: 'LilekovStudio'
+                }
             })
+                .then(() => {
+                    console.log('success')
+                })
+                .catch((e) => {
+                    console.log('error: ', e)
+                })
+        }
     }, [error, location]);
 
 
