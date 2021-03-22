@@ -25,10 +25,10 @@ export const ModalContainer = styled.div`
       text-align: center;
       color: #000000;
    }
-   /* >div {
+   >div {
       width: 100%;
       height: 100%;
-   } */
+   }
    @media(max-width: 768px) {
       min-width: 100vw;
       min-height: 100vh;
