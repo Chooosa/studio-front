@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
 
@@ -21,10 +21,19 @@ const SectionGoals = ({ refCases }) => {
    const color = useSelector(colorSelectors.color);
    const dispatch = useDispatch()
    const { t } = useTranslation()
+   const [openModal, setOpenModal] = useState(false)
 
-   const handleScroll = () => {
-      dispatch(setScroll('cases'))
-      // refCases.current.scrollIntoView({ behavior: 'smooth' })
+   // const handleScroll = () => {
+   //    dispatch(setScroll('cases'))
+   //    // refCases.current.scrollIntoView({ behavior: 'smooth' })
+   // }
+
+   const onOpenModal = () => {
+      setOpenModal(true)
+   }
+
+   const onCloseModal = () => {
+      setOpenModal(false)
    }
 
    return (
@@ -37,9 +46,8 @@ const SectionGoals = ({ refCases }) => {
          }}
          descriptionWidth={'370px'}
       >
-         <Button onClick={handleScroll} color={color}>
-            {t('go_to_portfolio')}
-            <img src={fireIco} alt='fire' />
+         <Button onClick={onOpenModal} color={color}>
+            {t('leave_request')}
          </Button>
       </Section>
    );
