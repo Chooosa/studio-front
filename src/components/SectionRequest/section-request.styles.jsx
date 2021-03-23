@@ -25,7 +25,7 @@ export const InputFieldsColumn = styled.div`
     width: 100%;
     max-width: 460px;
     flex-direction: column;
-    margin: 5px ${props => props.customWidth > 800 ? '10px' : '0px'};
+    margin: 5px ${props => props.customWidth > 800 ? '10px' : '0px'} 5px 0px;
     ${props => props.customWidth > 800 ? 'align-items: space-between' : 'align-items: center;'}
 `
 

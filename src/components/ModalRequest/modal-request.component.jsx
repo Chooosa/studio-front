@@ -42,33 +42,6 @@ const ModalRequest = ({
             <CloseButton onClick={onClose}>
                <img src={closeIcon} alt='Закрыть' />
             </CloseButton>
-            {/* <div style={{
-               backgroundColor: 'red',
-               width: '100%',
-               height: '10000px',
-               overflowY: 'scroll',
-               position: 'relative',
-               margin: '40px'
-            }}>
-               <div
-                  style={{
-                     backgroundColor: 'blue',
-                     width: '100%',
-                     height: '100px',
-                     position: 'absolute',
-                     top: 0
-                  }}
-               />
-               <div
-                  style={{
-                     backgroundColor: 'blue',
-                     width: '100%',
-                     height: '100px',
-                     position: 'absolute',
-                     bottom: 0
-                  }}
-               />
-            </div> */}
             <SectionRequest
                // index={5}
                nonNumber={true}
