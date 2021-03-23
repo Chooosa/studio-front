@@ -29,9 +29,9 @@ const Main = () => {
             <SectionWe />
             <ServicesSection />
             <SectionCases refCases={refCases} />
-            <SectionAbout />
+            {/* <SectionAbout /> */}
             <SectionPlan refApplication={refApplication} />
-            <SectionRequest refApplication={refApplication} index={7} />
+            {/* <SectionRequest refApplication={refApplication} index={7} /> */}
          </MainWrapper>
       </Fragment>
    );
