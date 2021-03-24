@@ -156,6 +156,7 @@ const Navbar = ({
                <DropDownContainer visible={menuVisible === 1}>
                   <LinksCell color={themeColor}>
                      <Link
+                        color={themeColor}
                         custom={{
                            item: 1,
                            count: 2
@@ -167,6 +168,7 @@ const Navbar = ({
                         {t('apps')}
                      </Link>
                      <Link
+                        color={themeColor}
                         custom={{
                            item: 2,
                            count: 2
@@ -197,6 +199,7 @@ const Navbar = ({
                <DropDownContainer visible={menuVisible === 2}>
                   <LinksCell color={themeColor}>
                      <Link
+                        color={themeColor}
                         custom={{
                            item: 1,
                            count: 3
@@ -208,6 +211,7 @@ const Navbar = ({
                         {t('apps')}
                      </Link>
                      <Link
+                        color={themeColor}
                         custom={{
                            item: 2,
                            count: 3
@@ -219,6 +223,7 @@ const Navbar = ({
                         {t('sites')}
                      </Link>
                      <Link
+                        color={themeColor}
                         custom={{
                            item: 3,
                            count: 3
@@ -239,8 +244,8 @@ const Navbar = ({
                </DropDownContainer>
             </DropdownMenuWrapper>
 
-            <CustomLink customMargin onClick={() => history.push('cooperation')} > {t('collaboration')}</CustomLink>
-            <CustomLink onClick={() => history.push('contacts')} > {t('contacts')}</CustomLink>
+            <CustomLink customMargin onClick={() => history.push('/cooperation')} > {t('collaboration')}</CustomLink>
+            <CustomLink onClick={() => history.push('/contacts')} > {t('contacts')}</CustomLink>
          </ButtonsWrapper>
          <div>
             <a href='tel:+79995357879'>

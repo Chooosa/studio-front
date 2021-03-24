@@ -7,9 +7,11 @@ export const ContactsWrapper = styled.div`
 
 export const ContactsContainer = styled.div`
    display: flex;
-   align-items: center;
+   align-items: flex-end;
+   justify-content: space-between;
    margin-bottom: 100px;
    height: max-content;
+   position: relative;
 
    @media(max-width: 960px) {
       flex-direction: column;
@@ -21,17 +23,26 @@ export const ContactsContainer = styled.div`
 `
 
 export const MapContainer = styled.div`
-   margin-top: 40px;
-   position: relative;
+   /* margin-top: 40px; */
+   position: absolute;
+   right: 0;
    /* align-self: center; */
    >img {
+      position: relative;
+      bottom: -5px;
       width: 100%;
+      clip-path: url(#clipPath);
       /* max-width: 720px; */
    }
-   >svg {
+   >svg:first-of-type {
+         * {
+            transition-duration: 0.3s;
+      }
+   }
+   >svg:last-of-type {
       position: absolute;
-      left: 48%;
-      top: 41%;
+      left: 51.5%;
+      top: 35%;
 
       >path {
          fill: #000;
@@ -63,7 +74,10 @@ export const MapContainer = styled.div`
 `
 
 export const InfoWrapper = styled.div`
-   margin-left: 40px;
+   /* margin-left: 40px; */
+   @media(max-width: 1240px) {
+      margin-left: 20px;
+   }
 
    @media(max-width: 960px) {
       margin-left: 0;
@@ -75,16 +89,17 @@ export const InfoContainer = styled.div`
    width: 100%;
    display: flex;
    flex-direction: column;
-
+   padding-left: ${props => props.hoverImg ? '20px' : '0'};
+   transition-duration: 1s;
 
    >span, a {
       width: max-content;
-      margin-bottom: 14px;
-      font-weight: 200;
-      font-size: 14px;
+      margin-bottom: 40px;
+      font-weight: 300;
+      font-size: 16px;
       line-height: 19px;
-      letter-spacing: .3px;
-      color: #F9F9F9;
+      letter-spacing: .05em;
+      color: ${props => props.hoverImg ? '#fff' : '#F9F9F9'};
 
       z-index: 2;
 
@@ -99,11 +114,16 @@ export const InfoContainer = styled.div`
    @media(max-width: 960px) {
       margin-left: 20px;
    }
+   @media(max-width: 768px) {
+      >span, a {
+         font-size: 14px;
+      }
+   }
 `
 
 export const Heading = styled(CustomHeading)`
-   margin-bottom: 24px;
-   margin-top: 15;
+   margin-bottom: 40px;
+   /* margin-top: 15px; */
 
    @media(max-width: 960px) {
       margin-left: 20px;
@@ -175,4 +195,37 @@ export const MapButton = styled(CustomButton)`
    @media(max-width: 400px) {
       margin-left: 0;
    }
+`
+
+export const RequisitesButton = styled(CustomButton)`
+   border-color: ${props => props.color};
+   max-width: 305px;
+
+   z-index: 1;
+   overflow: hidden;
+
+   ${props => props.hoverImg ? 'transition: all 1s ease-out;' : ''}
+
+   ::after {
+      content: "";
+      background-color: ${props => props.color};
+      position: absolute;
+      z-index: -1;
+      padding: 0.85em 0.75em;
+      display: block;
+
+      left: -20%;
+      right: -20%;
+      top: 0;
+      bottom: 0;
+      transform: skewX(-45deg) scale(${props => props.hoverImg ? '1' : '0'}, 1);
+      transition: all 1s ease;
+   }
+
+   /* :hover {
+      transition: all 0.4s ease-out;
+      ::after {
+         transform: skewX(-45deg) scale(1, 1);
+      }
+   } */
 `

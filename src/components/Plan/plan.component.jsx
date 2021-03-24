@@ -28,6 +28,7 @@ import Slider from './Slider/slider.component'
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 // import DraggableTabs from './DraggableTabs/draggable-tabs.component'
 import { useTranslation } from '../../hooks/translation'
+import ModalRequest from '../ModalRequest/modal-request.component';
 
 const Plan = () => {
    const color = useSelector(colorSelectors.color);
@@ -46,6 +47,17 @@ const Plan = () => {
    const progressLine3 = useRef();
    const line3 = useRef();
    const { t } = useTranslation();
+
+   const [openModal, setOpenModal] = useState(false)
+
+   const onOpenModal = () => {
+      setOpenModal(true)
+   }
+
+   const onCloseModal = () => {
+      setOpenModal(false)
+   }
+
 
    useEffect(() => {
       if (scroll === 'plan') {
@@ -630,10 +642,14 @@ const Plan = () => {
                />
             }
          </PlanContainer>
-         <Button onClick={handleScroll} color={color}>
-            {t('scedule_button')}
+         <Button onClick={onOpenModal} color={color}>
+            {t('leave_request')}
             <img src={postIco} alt='post' />
          </Button>
+         <ModalRequest
+            open={openModal}
+            onClose={onCloseModal}
+         />
       </PlanWrapper >
    );
 }
