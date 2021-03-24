@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { CustomButton, CustomHeading } from '../../styles/common'
 
 export const ContactsWrapper = styled.div`
-
+   display: flex;
+   flex-direction: column;
 `
 
 export const ContactsContainer = styled.div`
@@ -13,25 +14,32 @@ export const ContactsContainer = styled.div`
    height: max-content;
    position: relative;
 
-   @media(max-width: 960px) {
+   /* @media(max-width: 960px) {
       flex-direction: column;
       align-items: flex-start;
 
       /* margin-left: 20px; */
       /* justify-content: cente */
-   }
+   /* }  */
 `
 
 export const MapContainer = styled.div`
    /* margin-top: 40px; */
    position: absolute;
    right: 0;
-   /* align-self: center; */
+   /* height: 100%;
+   width: 100%; */
+
+   /* background-image: url(${props => props.mapImg});
+   background-repeat: no-repeat;
+   background-position: bottom right; */
+
    >img {
+   clip-path: url(#clipPath);
       position: relative;
       bottom: -5px;
-      width: 100%;
-      clip-path: url(#clipPath);
+      /* width: 100%; */
+      /* object-fit: none; */
       /* max-width: 720px; */
    }
    >svg:first-of-type {
@@ -41,8 +49,8 @@ export const MapContainer = styled.div`
    }
    >svg:last-of-type {
       position: absolute;
-      left: 51.5%;
-      top: 35%;
+      right: 6.5%;
+      top: 53%;
 
       >path {
          fill: #000;
@@ -94,7 +102,7 @@ export const InfoContainer = styled.div`
 
    >span, a {
       width: max-content;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
       font-weight: 300;
       font-size: 16px;
       line-height: 19px;
@@ -105,6 +113,14 @@ export const InfoContainer = styled.div`
 
       transition-duration: 0.2s;
       opacity: 1;
+   }
+   >span:last-of-type {
+      cursor: pointer;
+
+      :hover {
+         transition-duration: 0.2s;
+         opacity: 0.8;
+      }
    }
    a:hover {
       transition-duration: 0.2s;
@@ -200,7 +216,8 @@ export const MapButton = styled(CustomButton)`
 export const RequisitesButton = styled(CustomButton)`
    border-color: ${props => props.color};
    max-width: 305px;
-
+   margin-bottom: 5px;
+   align-self: center;
    z-index: 1;
    overflow: hidden;
 
@@ -228,4 +245,14 @@ export const RequisitesButton = styled(CustomButton)`
          transform: skewX(-45deg) scale(1, 1);
       }
    } */
+`
+
+export const Button = styled(CustomButton)`
+
+   max-width: 305px;
+   margin-top: 15px;
+   /* margin-top: 50px; */
+
+   border-color: ${props => props.color};
+   background-color: ${props => props.color};
 `
