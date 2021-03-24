@@ -14,6 +14,10 @@ export const ContactsContainer = styled.div`
    height: max-content;
    position: relative;
 
+   @media(max-width: 600px) {
+      margin-bottom: 10px;
+   }
+
    /* @media(max-width: 960px) {
       flex-direction: column;
       align-items: flex-start;
@@ -35,7 +39,7 @@ export const MapContainer = styled.div`
    background-position: bottom right; */
 
    >img {
-   clip-path: url(#clipPath);
+      clip-path: url(#clipPath);
       position: relative;
       bottom: -5px;
       /* width: 100%; */
@@ -135,6 +139,9 @@ export const InfoContainer = styled.div`
          font-size: 14px;
       }
    }
+   @media(max-width: 600px) {
+      margin-left: 10px;
+   }
 `
 
 export const Heading = styled(CustomHeading)`
@@ -143,6 +150,9 @@ export const Heading = styled(CustomHeading)`
 
    @media(max-width: 960px) {
       margin-left: 20px;
+   }
+   @media(max-width: 600px) {
+      margin-left: 10px;
    }
 `
 
@@ -248,9 +258,10 @@ export const RequisitesButton = styled(CustomButton)`
 `
 
 export const Button = styled(CustomButton)`
-
+   /* width: calc(100% - 20px); */
    max-width: 305px;
    margin-top: 15px;
+   margin-right: 20px;
    /* margin-top: 50px; */
 
    border-color: ${props => props.color};

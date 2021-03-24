@@ -78,12 +78,16 @@ export const InfoContainerRight = styled.div`
       opacity: 1;
 
       @media (max-width: 765px) {
-         transform: translateY(-40px);
+         /* transform: translateY(-40px); */
       }
    }
    a:hover {
       transition-duration: 0.2s;
       opacity: 0.8;
+   }
+   @media(max-width: 600px) {
+      position: absolute;
+      top: 3%;
    }
 `
 
@@ -128,7 +132,7 @@ export const MapContainer = styled(motion.div)`
 
 export const MapButton = styled(CustomButton)`
    /* position: absolute; */
-   max-width: 466px;
+   max-width: 400px;
    margin: 0 60px 30px 0;
    border-color: #f9f9f9;
    background-color: #f9f9f9;
@@ -137,7 +141,7 @@ export const MapButton = styled(CustomButton)`
       opacity: 0.8;
    }
    @media(max-width: 612px) {
-      margin: 0;
+      margin: 0 20px 20px 0;
    }
 `
 
@@ -179,8 +183,8 @@ export const FooterContainerMobile = styled.div`
    display: flex;
    flex-direction: column;
    position: relative;
-   min-height: 632px;
-   max-height: 1000px;
+   /* min-height: 632px; */
+   max-height: 500px;
    width: 100%;
    height: 100%;
 `
@@ -208,11 +212,13 @@ export const MapWrapperMobile = styled.div`
 
 export const SocialNetworksWrapperMobile = styled.div`
    position: absolute;
-   top: 5%;
-   left: 10%;
-   height: 200px;
+   top: ${props => props.location ? '20%' : '0%'};
+   /* left: 10%; */
+   width: 100%;
+   padding: 20px;
+   /* height: 200px; */
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    justify-content: space-between;
 `
 
@@ -241,9 +247,9 @@ export const MapButtonMobile = styled(CustomButton)`
 export const Container = styled.div`
 max-height: 1000px;
 width:100%;
-min-height: 632px;
+/* min-height: 632px; */
 display: flex;
-   min-height: 632px;
+   /* min-height: 632px; */
 
    width: 100%;
    z-index: 2;
