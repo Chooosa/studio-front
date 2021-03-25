@@ -261,7 +261,7 @@ export const Button = styled(CustomButton)`
    /* width: calc(100% - 20px); */
    max-width: 305px;
    margin-top: 15px;
-   margin-right: 20px;
+   /* margin-right: 20px; */
    /* margin-top: 50px; */
 
    border-color: ${props => props.color};

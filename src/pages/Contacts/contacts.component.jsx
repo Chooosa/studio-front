@@ -104,8 +104,45 @@ const Contacts = () => {
                   <a href='tel:89995357879'>8 999 535 78 79</a>
                   <a href='mailto:evgeny@lilekov-studio.com'>evgeny@lilekov-studio.com</a>
                   {/* <a href={privacyPolicy} target='_blank' rel='nofollow noopener noreferrer'> {t('privacy_policy')} </a> */}
-                  <div>
-                     <a href={requisites} target='_blank' rel='nofollow noopener noreferrer'>
+                  {
+                     width > 600 &&
+                     <div>
+                        <a
+                           href={requisites}
+                           target='_blank'
+                           rel='nofollow noopener noreferrer'
+                           style={{
+                              width: '100%',
+                              maxWidth: '305px'
+                           }}
+                        >
+                           <RequisitesButton
+                              color={color}
+                              hoverImg={hoverImg}
+                           >
+                              Реквизиты компании
+                           </RequisitesButton>
+                        </a>
+                     </div>
+                  }
+
+               </InfoContainer>
+               {
+                  width < 601 &&
+                  <div style={{
+                     display: 'flex',
+                     flexDirection: 'column',
+                     alignItems: 'center'
+                  }}>
+                     <a
+                        href={requisites}
+                        target='_blank'
+                        rel='nofollow noopener noreferrer'
+                        style={{
+                           width: '100%',
+                           maxWidth: '305px'
+                        }}
+                     >
                         <RequisitesButton
                            color={color}
                            hoverImg={hoverImg}
@@ -113,15 +150,11 @@ const Contacts = () => {
                            Реквизиты компании
                         </RequisitesButton>
                      </a>
+                     <Button onClick={handleOpenModalRequest} color={color}>
+                        {t('leave_request')}
+                     </Button>
                   </div>
-                  {
-                     width < 601 ?
-                        <Button onClick={handleOpenModalRequest} color={color}>
-                           {t('leave_request')}
-                        </Button> :
-                        null
-                  }
-               </InfoContainer>
+               }
             </InfoWrapper>
             {
                width > 600 ?
