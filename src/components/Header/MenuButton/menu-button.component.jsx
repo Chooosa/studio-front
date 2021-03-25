@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import { MenuButtonContainer } from './menu-button.styles';
 // import { MenuContext } from '../../../context/menu-state';

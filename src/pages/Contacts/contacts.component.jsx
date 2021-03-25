@@ -9,22 +9,14 @@ import {
    InfoContainer,
    Heading,
    RequisitesButton,
-   Button,
-   SocialNetworksWrapper,
-   SocialNetworks,
-   MapButton
+   Button
 } from './contacts.styles'
 import SectionRequest from '../../components/SectionRequest/section-request.component'
 import mapImg from '../../assets/map-contacts2.png'
 import { ReactComponent as Marker } from '../../assets/pin2.svg'
 import { colorSelectors } from '../../redux/color/color.selectors'
 import { useTranslation } from '../../hooks/translation'
-import privacyPolicy from '../../assets/privacyPolicy.pdf'
 import requisites from '../../assets/requisites.pdf'
-import telegramSVG from '../../assets/telegram.svg';
-import instagramSVG from '../../assets/instagram.svg';
-import facebookSVG from '../../assets/facebook.svg';
-import flagIcon from '../../assets/flag.png'
 import ModalBase from '../../components/ModalBase/modal-base.component';
 import CustomMap from '../../components/Map/custom-map.component';
 import { useWindowDimensions } from '../../hooks/dimensions'
@@ -120,7 +112,7 @@ const Contacts = () => {
                               color={color}
                               hoverImg={hoverImg}
                            >
-                              Реквизиты компании
+                              {t('contacts_requisites')}
                            </RequisitesButton>
                         </a>
                      </div>
@@ -147,7 +139,7 @@ const Contacts = () => {
                            color={color}
                            hoverImg={hoverImg}
                         >
-                           Реквизиты компании
+                           {t('contacts_requisites')}
                         </RequisitesButton>
                      </a>
                      <Button onClick={handleOpenModalRequest} color={color}>

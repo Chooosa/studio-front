@@ -57,17 +57,17 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
 
    useEffect(() => {
       setSliderWidth(refSheme.current.offsetLeft)
-   }, [width])
+   }, [width, refSheme])
 
-   const Tab = ({ children }) => {
-      return (
-         <span>
-            {
-               children
-            }
-         </span>
-      );
-   }
+   // const Tab = ({ children }) => {
+   //    return (
+   //       <span>
+   //          {
+   //             children
+   //          }
+   //       </span>
+   //    );
+   // }
 
    return (
       <SliderWrapper

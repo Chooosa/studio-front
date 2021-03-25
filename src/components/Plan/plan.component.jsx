@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import smoothscroll from 'smoothscroll-polyfill';
+// import smoothscroll from 'smoothscroll-polyfill';
 
 import {
    PlanWrapper,
@@ -69,10 +69,10 @@ const Plan = () => {
       }
    }, [scroll, dispatch])
 
-   const handleScroll = () => {
-      // refApplication.current.scrollIntoView({ behavior: 'smooth' })
-      dispatch(setScroll('request'))
-   }
+   // const handleScroll = () => {
+   //    // refApplication.current.scrollIntoView({ behavior: 'smooth' })
+   //    dispatch(setScroll('request'))
+   // }
 
    const descriptionTexts = [
       <motion.div

@@ -211,7 +211,8 @@ export const Icon = styled.img`
 export const PersonalDataAgreement = styled.div`
     align-self: center;
     display: flex;
-    width: ${props => props.customWidth > 600 ? '40%' : '85%'};
+    width: 100%;
+    max-width: 460px;
     margin-top: 24px;
     border: 10px #fff;
 

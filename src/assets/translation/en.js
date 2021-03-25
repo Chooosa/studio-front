@@ -211,5 +211,7 @@ export const en = {
 
     notfound_desc_first: 'OOOOOPS! The page you are looking for does not exist',
     notfound_desc_second: 'Please visit home page',
-    notfound_button_label: 'Back to home page'
+    notfound_button_label: 'Back to home page',
+
+    contacts_requisites: 'Company details'
 }

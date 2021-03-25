@@ -31,6 +31,7 @@ import { API_URL } from '../../config';
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 import { useTranslation } from '../../hooks/translation';
+import privacyPolicy from '../../assets/privacyPolicy.pdf'
 
 
 
@@ -255,9 +256,12 @@ const SectionRequest = ({
                     </InputFieldsWrapper>
                 )}
             </Formik>
-            <PersonalDataAgreement customWidth={width}>
+            <PersonalDataAgreement>
                 <span>
-                    {t('personal_data_agreement')} <a href=''> {t('personal_data_agreement_ref')} </a>
+                    {t('personal_data_agreement')}
+                    <a href={privacyPolicy} target='_blank' rel='nofollow noopener noreferrer'>
+                        {t('personal_data_agreement_ref')}
+                    </a>
                 </span>
             </PersonalDataAgreement>
         </Section>

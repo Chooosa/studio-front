@@ -2,7 +2,7 @@ import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 
 import { MenuContext } from '../../../context/menu-state';
@@ -111,6 +111,10 @@ const MobileMenu = () => {
                 history.push('/cooperation')
                 break;
 
+            case 'contacts':
+                history.push('/contacts')
+                break;
+
             default:
                 break;
         }
@@ -202,7 +206,9 @@ const MobileMenu = () => {
                                 </span>
                             </BodyItem>
                         </MenuSection>
-                        <CustomLink>Контакты</CustomLink>
+                        <CustomLink onClick={() => handleNavigation('contacts')}>
+                            {t('contacts')}
+                        </CustomLink>
                         <Divider
                             color={color}
                             initial={{

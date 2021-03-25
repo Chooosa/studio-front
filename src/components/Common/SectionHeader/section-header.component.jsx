@@ -35,10 +35,6 @@ const SectionHeader = ({
         }
     }, [inView])
 
-    useEffect(() => {
-        console.log('nonNumber', nonNumber)
-    }, [nonNumber])
-
     return (
         <Content
             style={{ ...headerContainerStyles }}

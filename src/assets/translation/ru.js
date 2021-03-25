@@ -225,4 +225,6 @@ export const ru = {
     notfound_desc_first: 'ОООООПС! Страницы, которую вы ищите не существует',
     notfound_desc_second: 'Перейдите на главную страницу, пожалуйста',
     notfound_button_label: 'Вернуться на главную',
+
+    contacts_requisites: 'Реквизиты компании'
 }

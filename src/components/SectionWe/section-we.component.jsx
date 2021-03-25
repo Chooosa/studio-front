@@ -3,12 +3,17 @@ import React from 'react';
 import Section from '../Common/Section/section.component';
 import { useTranslation } from '../../hooks/translation';
 import ImageCarousel from '../ImageCarousel/image-carousel.components';
+import imageOne from '../../assets/slider-ex.png'
 
-// import {
-//    WeWrapper,
-//    Heading,
-//    Text
-// } from './section-we.styles';
+const imageArray = [
+   imageOne,  // 1
+   imageOne,  // 2
+   imageOne,  // 3
+   imageOne,  // 4
+   imageOne,  // 5
+   imageOne,  // 6
+   imageOne   // 7
+]
 
 
 const SectionWe = () => {
@@ -20,7 +25,7 @@ const SectionWe = () => {
          index={2}
          descriptionWidth={'390px'}
       >
-         <ImageCarousel />
+         <ImageCarousel imageArray={imageArray} />
       </Section>
    );
 }

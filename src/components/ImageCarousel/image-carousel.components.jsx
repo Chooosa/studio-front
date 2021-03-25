@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 
-import { Container, SlideImage, ImageWrapper } from './image-carousel.styles'
-import imageOne from '../../assets/slider-ex.png'
+import { Container, SlideImage } from './image-carousel.styles'
 import { useWindowDimensions } from '../../hooks/dimensions';
 
-const imageArray = [
-   imageOne,  // 1
-   imageOne,  // 2
-   imageOne,  // 3
-   imageOne,  // 4
-   imageOne,  // 5
-   imageOne,  // 6
-   imageOne   // 7
-]
 
-const ImageCarousel = () => {
+const ImageCarousel = ({ imageArray }) => {
    const { width } = useWindowDimensions()
    const [countSlidesToShow, setCountSlidesToShow] = useState(5)
 

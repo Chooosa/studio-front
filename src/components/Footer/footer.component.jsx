@@ -18,8 +18,7 @@ import {
    MapWrapperMobile,
    SocialNetworksWrapperMobile,
    MapButtonMobileContainer,
-   MapButtonMobile,
-   Container
+   MapButtonMobile
 } from './footer.styles';
 import Logo from '../Logo/logo.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
@@ -39,7 +38,6 @@ import facebookSBigVG from '../../assets/facebook(big).svg';
 import mapPNG from '../../assets/map.png';
 import mapMobilePNG from '../../assets/map-mobile.png';
 import { ReactComponent as Marker } from '../../assets/pin.svg';
-import flagIcon from '../../assets/flag.png'
 import privacyPolicy from '../../assets/privacyPolicy.pdf'
 import { useLocation } from 'react-router';
 

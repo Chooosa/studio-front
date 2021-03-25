@@ -31,15 +31,15 @@ function App() {
   const { pathname } = useLocation()
   const dispatch = useDispatch()
 
-  const addr = window.localStorage.getItem('address')
-  const [websites, setWebsites] = useState(addr ? addr : 'contacts')
+  // const addr = window.localStorage.getItem('address')
+  // const [websites, setWebsites] = useState(addr ? addr : 'contacts')
 
   const [endLoader, setEndLoader] = useState(false)
 
-  const setAddr = () => {
-    setWebsites('kontakty')
-    window.localStorage.setItem('address', 'kontakty')
-  }
+  // const setAddr = () => {
+  //   setWebsites('kontakty')
+  //   window.localStorage.setItem('address', 'kontakty')
+  // }
 
   useEffect(() => {
 
