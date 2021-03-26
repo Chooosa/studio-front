@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const CardContainer = styled(motion.div)`
 flex: 1 1 100%;
 background-color: #111111;
-border: ${props => props.noBorder? 'none': '1px solid #1C1C1C'};
+border: ${props => props.noBorder ? 'none' : '1px solid #1C1C1C'};
 position: relative;
 height: 317px;
 display: flex;
@@ -47,10 +47,32 @@ flex: 1 1 100%;
 
 
 export const Title = styled(motion.span)`
-font-size: 24px;
-line-height: 32px;
-color: #F9F9F9;
-max-width: 12ch;
+    font-size: 24px;
+    line-height: 32px;
+    color: #F9F9F9;
+    max-width: ${props => props.showButton ? '12ch' : '90%'};
+    ${props => props.showButton ? '' : `
+        @media(max-width: 1005px) {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        @media(max-width: 720px) {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        @media(max-width: 500px) {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        @media(max-width: 420px) {
+            font-size: 18px;
+            line-height: 22px;
+        }
+        @media(max-width: 340px) {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    `}
 `
 
 export const Description = styled(motion.span)`
@@ -69,33 +91,33 @@ letter-spacing: .3px;
 
 export const Button = styled(motion.button)`
     position: relative;
-   outline: none;
-   box-shadow: none;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding: 10px;
-   width: 100%;
-   min-height: 60px;
-   border: ${props => `1px solid ${props.color}`};
-   border-radius: 2px;
-   background-color:  ${props => props.color};
-   cursor: pointer;
-   transition-duration: 0.2s;
-   opacity: 1;
+    outline: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    min-height: 60px;
+    border: ${props => `1px solid ${props.color}`};
+    border-radius: 2px;
+    background-color:  ${props => props.color};
+    cursor: pointer;
+    transition-duration: 0.2s;
+    opacity: 1;
 
-   font-weight: 500;
-   font-size: 14px;
-   line-height: 19px;
-   color: #fefefe;
-   >div >svg {
-       transition-duration: 0.3s;
-   }
-   &:hover {
-       >div >svg {
-           transform: scale(1.2);
-       }
-   }
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #fefefe;
+    >div >svg {
+        transition-duration: 0.3s;
+    }
+    &:hover {
+        >div >svg {
+            transform: scale(1.2);
+        }
+    }
 `
 
 export const Icon = styled.div`

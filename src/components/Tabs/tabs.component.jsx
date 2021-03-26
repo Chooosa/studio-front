@@ -18,25 +18,34 @@ import {
 
 
 
-const Tabs = ({children, tabNames, tabOverride, tabNamesEng, language}) => {
-    const [currentTab, setCurrentTab] = useState(tabOverride? tabOverride: 0)
+const Tabs = ({
+    children,
+    tabNames,
+    tabOverride,
+    tabNamesEng,
+    language,
+    changeCurrentTub
+}) => {
+    const [currentTab, setCurrentTab] = useState(tabOverride ? tabOverride : 0)
     const color = useSelector(colorSelectors.color)
     const headerRef = useRef()
-    const [animatedLineStyles, setAnimatedLineStyles] = useState({width: 0, offset: 0})
-    const {width} = useWindowDimensions()
+    const [animatedLineStyles, setAnimatedLineStyles] = useState({ width: 0, offset: 0 })
+    const { width } = useWindowDimensions()
 
 
     useEffect(() => {
-            if (width>612) {
-                const rect = headerRef.current.children[currentTab].getBoundingClientRect()
-                const parentOffset = headerRef.current?.offsetLeft
-                const width = headerRef.current? rect.width: 0
-                const offset = headerRef.current? rect.left - parentOffset : 0
-                setAnimatedLineStyles({width: width, offset: offset})
-            }
+        if (width > 612) {
+            const rect = headerRef.current.children[currentTab].getBoundingClientRect()
+            const parentOffset = headerRef.current?.offsetLeft
+            const width = headerRef.current ? rect.width : 0
+            const offset = headerRef.current ? rect.left - parentOffset : 0
+            setAnimatedLineStyles({ width: width, offset: offset })
+        }
     }, [currentTab, width])
 
-
+    useEffect(() => {
+        changeCurrentTub(currentTab)
+    }, [currentTab])
 
     const handleTabChange = (index) => {
 
@@ -52,49 +61,49 @@ const Tabs = ({children, tabNames, tabOverride, tabNamesEng, language}) => {
         <Fragment>
             <TabsHeaderOuterContainer>
                 {
-                    width> 612?
-                    <Fragment>
-                    <TabsHeader
-                    ref={headerRef}
-                    >
-                        {
-                            tabNames.map((name, index) => {
-                                const ref= React.createRef()
-                                return <TabHeader 
-                                key={index} 
-                                onClick={() => handleTabChange(index)}
-                                color={color}
-                                ref={ref}
-                                active={index===currentTab}
+                    width > 612 ?
+                        <Fragment>
+                            <TabsHeader
+                                ref={headerRef}
+                            >
+                                {
+                                    tabNames.map((name, index) => {
+                                        const ref = React.createRef()
+                                        return <TabHeader
+                                            key={index}
+                                            onClick={() => handleTabChange(index)}
+                                            color={color}
+                                            ref={ref}
+                                            active={index === currentTab}
+                                            animate={{
+                                                color: index === currentTab ? color : '#f9f9f9',
+                                            }}
+                                            transition={{
+                                                duration: 0.3
+                                            }}
+                                        >
+                                            {language === 'ru' ? name : tabNamesEng[index]}
+                                        </TabHeader>
+                                    })
+                                }
+                            </TabsHeader>
+                            <AnimatedLine
                                 animate={{
-                                    color: index===currentTab? color: '#f9f9f9',
+                                    width: animatedLineStyles.width,
+                                    x: animatedLineStyles.offset
                                 }}
                                 transition={{
                                     duration: 0.3
                                 }}
-                                >
-                                    {language === 'ru' ? name : tabNamesEng[index]}
-                                </TabHeader>
-                            })
-                        }
-                    </TabsHeader>
-                    <AnimatedLine
-                    animate={{
-                        width: animatedLineStyles.width,
-                        x: animatedLineStyles.offset
-                    }}
-                    transition={{
-                        duration: 0.3
-                    }}
-                    color={color}
-                    />
-                    </Fragment>
-                    :             
-                    <BottomTabBar
-                    tabNames={tabNames}
-                    currentTab={currentTab}
-                    onTabClick={handleTabChange}
-                    />
+                                color={color}
+                            />
+                        </Fragment>
+                        :
+                        <BottomTabBar
+                            tabNames={tabNames}
+                            currentTab={currentTab}
+                            onTabClick={handleTabChange}
+                        />
                 }
             </TabsHeaderOuterContainer>
             <TabBodyContainer>
@@ -103,12 +112,12 @@ const Tabs = ({children, tabNames, tabOverride, tabNamesEng, language}) => {
                     children.map((child, index) => {
                         return (
                             <Fragment
-                            key={index}
+                                key={index}
                             >
                                 {
-                                    currentTab===index?
-                                    child
-                                    : null
+                                    currentTab === index ?
+                                        child
+                                        : null
                                 }
                             </Fragment>
                         )

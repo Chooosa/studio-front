@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
+import { CustomButton } from '../../styles/common';
 
 export const PageContainer = styled(motion.div)`
 width:100%;
 display: flex;
 flex-direction: column;
 -webkit-overflow-scrolling: auto;
-@media(max-width: 996px) {
+@media(max-width: 1240px) {
     padding: 0px 20px 0px 20px;
 }
 `
@@ -30,4 +31,11 @@ margin-bottom: 48px;
 @media(max-width: 612px) {
     margin-top: 50px;
 }
+`
+
+export const Button = styled(CustomButton)`
+    align-self: center;
+    border-color: ${props => props.color};
+    background-color: ${props => props.color};
+    margin-bottom: 30px;
 `
