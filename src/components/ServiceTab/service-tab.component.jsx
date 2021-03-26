@@ -77,11 +77,11 @@ const ServiceTab = ({ service, content, currentTab }) => {
                                 </ReactMarkdown>
                             </Description>
                             <NumberContainer>
-                                <AnimatedNumbers
+                                {/* <AnimatedNumbers
                                     duration={0.3}
                                     index={1}
                                     show={animate}
-                                />
+                                /> */}
                             </NumberContainer>
                         </TabHeader> :
                         <CardsWrapper>

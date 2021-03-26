@@ -150,7 +150,7 @@ const ServicesPage = () => {
                     : null
             }
             {
-                width > 768 ?
+                width > 800 ?
                     <SectionRequest index={2} padding={'0px'} nonNumber={true} /> :
                     <Button onClick={onOpenModal} color={color}>
                         {t('leave_request')}
