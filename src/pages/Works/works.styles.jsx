@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { CustomButton } from '../../styles/common';
 
 export const PageContainer = styled(motion.div)`
 width:100%;
@@ -30,4 +31,12 @@ margin-bottom: 48px;
 @media(max-width: 612px) {
     margin-top: 50px;
 }
+`
+
+export const Button = styled(CustomButton)`
+    align-self: center;
+    border-color: ${props => props.color};
+    background-color: ${props => props.color};
+    margin-top: 60px;
+    margin-bottom: 30px;
 `

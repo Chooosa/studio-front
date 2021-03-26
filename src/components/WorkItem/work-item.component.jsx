@@ -8,9 +8,10 @@ import { useTranslation } from '../../hooks/translation';
 
 
 import { useWindowDimensions } from '../../hooks/dimensions';
-import { ReactComponent as ArrowRight } from '../../assets/arrow-right.svg';
-import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
-
+// import { ReactComponent as ArrowRight } from '../../assets/arrow-right.svg';
+// import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
+import { ReactComponent as ArrowRight } from '../../assets/right-arrow.svg';
+import { ReactComponent as ArrowLeft } from '../../assets/left-arrow.svg';
 
 import {
     Container,
