@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 width: 100%;
-padding: 34px 20px 34px 20px;
+padding: 34px 70px 34px 70px;
 display: flex;
 flex-direction: column;
 background: #111111;
 margin-top: 100px;
-margin-bottom: 20px;
+margin-bottom: 50px;
 @media(max-width: 600px) {
     margin-top: 50px;
 }
@@ -64,7 +64,7 @@ cursor: pointer;
 export const ArrowContainer = styled.div`
 position: absolute;
 top: calc(50% - 20px);
-${props => !props.right? 'left: -20px;': 'right: -20px;'}
+${props => !props.right ? 'left: -20px;' : 'right: -20px;'}
 z-index: 1;
 width: 40px;
 height: 40px;

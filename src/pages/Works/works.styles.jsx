@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const PageContainer = styled(motion.div)`
 width:100%;
 display: flex;
 flex-direction: column;
 -webkit-overflow-scrolling: auto;
-@media(max-width: 996px) {
+@media(max-width: 1240px) {
     padding: 0px 20px 0px 20px;
 }
 `

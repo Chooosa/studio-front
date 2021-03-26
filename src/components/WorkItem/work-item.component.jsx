@@ -3,13 +3,13 @@ import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
-import {colorSelectors} from '../../redux/color/color.selectors';
+import { colorSelectors } from '../../redux/color/color.selectors';
 import { useTranslation } from '../../hooks/translation';
 
 
 import { useWindowDimensions } from '../../hooks/dimensions';
-import {ReactComponent as ArrowRight} from '../../assets/arrow-right.svg';
-import {ReactComponent as ArrowLeft} from '../../assets/arrow-left.svg';
+import { ReactComponent as ArrowRight } from '../../assets/arrow-right.svg';
+import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
 
 
 import {
@@ -33,7 +33,7 @@ const WorkItem = ({ work }) => {
     const containerRef = useRef()
     const sliderRef = useRef()
     const color = useSelector(colorSelectors.color)
-    const {language} = useTranslation()
+    const { language } = useTranslation()
 
     const reverseFullScreen = () => {
         fullscreenImage.el.addEventListener('transitionend', removeNode)
@@ -111,7 +111,7 @@ const WorkItem = ({ work }) => {
         if (work.Gallery.length > 1) {
             return width > 600 ? work.Gallery[0].height * 0.8 : width * 0.7 * work.Gallery[0].height / work.Gallery[0].width > work.Gallery[0].height * 0.7 ? work.Gallery[0].height * 0.7 : width * 0.7 * work.Gallery[0].height / work.Gallery[0].width
         } else {
-            return (width > 996 ? 956 - 40 : width - 80) * work.Gallery[0].height / work.Gallery[0].width
+            return (width > 1240 ? 1240 - 140 : width - 180) * work.Gallery[0].height / work.Gallery[0].width
         }
     }
 
@@ -139,14 +139,14 @@ const WorkItem = ({ work }) => {
     }
 
     const NextArrow = () => {
-        return <ArrowContainer onClick={() =>  sliderRef.current.slickNext()} color={color} right={true}>
-            <ArrowRight/>
+        return <ArrowContainer onClick={() => sliderRef.current.slickNext()} color={color} right={true}>
+            <ArrowRight />
         </ArrowContainer>
     }
 
     const PrevArrow = () => {
-        return <ArrowContainer onClick={() =>  sliderRef.current.slickPrev()} color={color} right={false}>
-            <ArrowLeft/>
+        return <ArrowContainer onClick={() => sliderRef.current.slickPrev()} color={color} right={false}>
+            <ArrowLeft />
         </ArrowContainer>
     }
 
@@ -179,9 +179,9 @@ const WorkItem = ({ work }) => {
                             initialSlide={0}
                             infinite={false}
                             rows={1}
-                            arrows={width> 612? true: false}
-                            nextArrow={<NextArrow/>}
-                            prevArrow={<PrevArrow/>}
+                            arrows={width > 612 ? true : false}
+                            nextArrow={<NextArrow />}
+                            prevArrow={<PrevArrow />}
                         >
                             {
                                 work.Gallery.map((img, index) => {

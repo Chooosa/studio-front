@@ -24,7 +24,7 @@ const Tabs = ({
     tabOverride,
     tabNamesEng,
     language,
-    changeCurrentTub
+    changeCurrentTub = false
 }) => {
     const [currentTab, setCurrentTab] = useState(tabOverride ? tabOverride : 0)
     const color = useSelector(colorSelectors.color)
@@ -44,7 +44,9 @@ const Tabs = ({
     }, [currentTab, width])
 
     useEffect(() => {
-        changeCurrentTub(currentTab)
+        if (changeCurrentTub) {
+            changeCurrentTub(currentTab)
+        }
     }, [currentTab])
 
     const handleTabChange = (index) => {
