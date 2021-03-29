@@ -245,7 +245,7 @@ const SectionRequest = ({
                             disabled={isRequestSent}
                         >
                             {isRequestSent ? t('request_sent') : t('leave_request')}
-                            <Icon src={Send} />
+                            {/* <Icon src={Send} /> */}
                         </Button>
                         <Error>
                             <p>{errors.name}</p>

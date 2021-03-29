@@ -644,7 +644,7 @@ const Plan = () => {
          </PlanContainer>
          <Button onClick={onOpenModal} color={color}>
             {t('leave_request')}
-            <img src={postIco} alt='post' />
+            {/* <img src={postIco} alt='post' /> */}
          </Button>
          <ModalRequest
             open={openModal}

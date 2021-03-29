@@ -26,13 +26,13 @@ export const Container = styled.div`
    }
 `
 
-export const ImageWrapper = styled.div`
-   height: 320px;
-   padding: 10px;
-`
-
 export const SlideImage = styled.img`
    padding: 0px 5px;
    width: 100%;
    max-width: 220px;
+`
+
+export const ImageWrapper = styled.div`
+   height: 320px;
+   padding: 10px;
 `

@@ -47,6 +47,7 @@ const ImageCarousel = ({ imageArray }) => {
                      <SlideImage
                         src={image}
                         key={index}
+                        alt='team'
                      />
                   )
                })

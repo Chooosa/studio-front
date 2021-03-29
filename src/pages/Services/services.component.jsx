@@ -65,6 +65,7 @@ const ServicesPage = () => {
     const [animate, setAnimate] = useState(false)
     const { width } = useWindowDimensions()
     const services = useSelector(contentSelectors.services)
+    const works = useSelector(contentSelectors.cases)
     const { t, language } = useTranslation()
     const [currentTab, setCurrentTub] = useState(0)
     const [openModal, setOpenModal] = useState(false)
@@ -102,10 +103,6 @@ const ServicesPage = () => {
         }
     }, [itemId])
 
-    useEffect(() => {
-        console.log(section)
-    }, [section])
-
     return (
         <PageContainer
         // initial={{opacity: 0}}
@@ -142,8 +139,9 @@ const ServicesPage = () => {
                             return <ServiceTab
                                 key={index}
                                 service={service}
-                                content={service.service_items}
+                                // content={service.service_items}
                                 currentTab={currentTab}
+                                works={works}
                             />
                         })}
                     </Tabs>

@@ -85,7 +85,7 @@ export const DropDownContainer = styled.div`
    position: absolute;
    width: 120px;
    margin-top: 20px;
-   transition-duration: 0.2s;
+   /* transition-duration: 0.2s; */
    z-index: ${props => props.visible ? '1' : '-1'};
 `
 
