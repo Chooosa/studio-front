@@ -140,9 +140,9 @@ export const en = {
 
     leave_request: 'Submit request',
     leave_request_desc: `
-    You can ask us about website or app development and receive an answer in a way that suits you.
-    We can also tell you how much you project approximately costs and how long its development will take.
-    Tell us about it and we'll help you make it happen.
+    Commission a project or schedule a free consultation
+    and receive our recommendations, find out cost and
+    timeframe of development.
     `,
     your_name: 'Name:',
     your_phone: 'Phone:',

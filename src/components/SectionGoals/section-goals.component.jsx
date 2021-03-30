@@ -17,25 +17,11 @@ import {
 } from './section-goals.styles';
 import ModalRequest from '../ModalRequest/modal-request.component';
 
-const SectionGoals = ({ refCases }) => {
+const SectionGoals = ({ onOpenModal }) => {
    // const history = useHistory();
    const color = useSelector(colorSelectors.color);
    // const dispatch = useDispatch()
    const { t } = useTranslation()
-   const [openModal, setOpenModal] = useState(false)
-
-   // const handleScroll = () => {
-   //    dispatch(setScroll('cases'))
-   //    // refCases.current.scrollIntoView({ behavior: 'smooth' })
-   // }
-
-   const onOpenModal = () => {
-      setOpenModal(true)
-   }
-
-   const onCloseModal = () => {
-      setOpenModal(false)
-   }
 
    return (
       <Section
@@ -50,10 +36,6 @@ const SectionGoals = ({ refCases }) => {
          <Button onClick={onOpenModal} color={color}>
             {t('leave_request')}
          </Button>
-         <ModalRequest
-            open={openModal}
-            onClose={onCloseModal}
-         />
       </Section>
    );
 }

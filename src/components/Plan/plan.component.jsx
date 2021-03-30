@@ -30,7 +30,7 @@ import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { useTranslation } from '../../hooks/translation'
 import ModalRequest from '../ModalRequest/modal-request.component';
 
-const Plan = () => {
+const Plan = ({ onOpenModal }) => {
    const color = useSelector(colorSelectors.color);
    const [currentStep, setCurrentStep] = useState(1);
    const [transitionProgress, setTransitionProgress] = useState(1);
@@ -47,17 +47,6 @@ const Plan = () => {
    const progressLine3 = useRef();
    const line3 = useRef();
    const { t } = useTranslation();
-
-   const [openModal, setOpenModal] = useState(false)
-
-   const onOpenModal = () => {
-      setOpenModal(true)
-   }
-
-   const onCloseModal = () => {
-      setOpenModal(false)
-   }
-
 
    useEffect(() => {
       if (scroll === 'plan') {
@@ -646,10 +635,6 @@ const Plan = () => {
             {t('leave_request')}
             {/* <img src={postIco} alt='post' /> */}
          </Button>
-         <ModalRequest
-            open={openModal}
-            onClose={onCloseModal}
-         />
       </PlanWrapper >
    );
 }

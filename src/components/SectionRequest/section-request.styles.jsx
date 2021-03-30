@@ -14,14 +14,14 @@ export const InputFieldsRowPosition = styled.div`
     width: 100%;
     height: 100%;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     ${props => props.customWidth < 800 ? 'align-items: center' : ''};
 `
 
 export const InputFieldsColumn = styled.div`
     display: flex;
     height: 100%;
-    max-height: 220px;
+    /* max-height: 220px; */
     width: 100%;
     max-width: 460px;
     flex-direction: column;
@@ -248,7 +248,7 @@ export const PersonalDataAgreement = styled.div`
 export const FilesList = styled.ul`
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 0px 8%;
     width: ${props => props.customWidth > 800 ? '100%' : props.customWidth > 600 ? '70%' : '100%'};
     align-self: ${props => props.customWidth > 800 || props.customWidth < 600 ? 'flex-start' : 'center'};

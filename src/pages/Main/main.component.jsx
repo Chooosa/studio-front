@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 // import { useInView, InView } from 'react-intersection-observer';
 
 import { MainWrapper } from './main.styles';
@@ -9,29 +9,36 @@ import SectionWe from '../../components/SectionWe/section-we.component';
 // import SectionAbout from '../../components/SectionAbout/section-about.component';
 import SectionPlan from '../../components/SectionPlan/section-plan.component';
 import SectionCases from '../../components/SectionCases/section-cases.component';
+import ModalRequest from '../../components/ModalRequest/modal-request.component';
 // import SectionRequest from '../../components/SectionRequest/section-request.component';
 // import AnimatedBackground from '../../components/AnimatedBackground/animated-background.component';
 
 const Main = () => {
    const refCases = useRef();
    const refApplication = useRef();
+   const [openModal, setOpenModal] = useState(false)
+
+   const onOpenModal = () => {
+      setOpenModal(true)
+   }
+
+   const onCloseModal = () => {
+      setOpenModal(false)
+   }
 
    return (
       <Fragment>
-         <MainWrapper
-         // initial={{opacity: 0}}
-         // animate={{opacity: 1}}
-         // exit={{opacity: 0}}
-         // transition={{duration: 0.5}}
-         >
+         <MainWrapper>
             <SectionTyping />
-            <SectionGoals refCases={refCases} />
+            <SectionGoals onOpenModal={onOpenModal} />
             <SectionWe />
             <ServicesSection />
             <SectionCases refCases={refCases} />
-            {/* <SectionAbout /> */}
-            <SectionPlan refApplication={refApplication} />
-            {/* <SectionRequest refApplication={refApplication} index={7} /> */}
+            <SectionPlan refApplication={refApplication} onOpenModal={onOpenModal} />
+            <ModalRequest
+               open={openModal}
+               onClose={onCloseModal}
+            />
          </MainWrapper>
       </Fragment>
    );

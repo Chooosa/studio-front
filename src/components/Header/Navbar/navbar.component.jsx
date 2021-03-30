@@ -153,7 +153,7 @@ const Navbar = ({
                >
                   {t('portfolio')}
                </MenuButton>
-               <DropDownContainer visible={menuVisible === 1}>
+               <DropDownContainer visible={menuVisible === 1} none={backgroundWidth}>
                   <LinksCell color={themeColor}>
                      <Link
                         color={themeColor}
@@ -196,7 +196,7 @@ const Navbar = ({
                >
                   {t('services')}
                </MenuButton>
-               <DropDownContainer visible={menuVisible === 2}>
+               <DropDownContainer visible={menuVisible === 2} none={backgroundWidth}>
                   <LinksCell color={themeColor}>
                      <Link
                         color={themeColor}

@@ -10,7 +10,7 @@ import { useTranslation } from '../../hooks/translation';
 // } from './section-plan.styles';
 
 
-const SectionPlan = ({ refApplication }) => {
+const SectionPlan = ({ refApplication, onOpenModal }) => {
    const { t } = useTranslation()
 
    return (
@@ -21,7 +21,7 @@ const SectionPlan = ({ refApplication }) => {
          index={5}
          descriptionWidth={'480px'}
       >
-         <Plan refApplication={refApplication} />
+         <Plan refApplication={refApplication} onOpenModal={onOpenModal} />
       </Section>
    );
 }

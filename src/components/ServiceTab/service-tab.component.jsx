@@ -89,10 +89,13 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                 }
             </InView>
 
-            <ServicesItemWrapper
-                works={works}
-                currentTab={currentTab}
-            />
+            {
+                currentTab !== 2 &&
+                <ServicesItemWrapper
+                    works={works}
+                    currentTab={currentTab}
+                />
+            }
         </TabContainer>
     )
 }
