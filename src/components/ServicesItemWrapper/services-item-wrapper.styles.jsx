@@ -40,6 +40,7 @@ export const SlideContainer = styled.div`
     justify-content: center;
     padding: 20px;
     cursor: pointer;
+    text-align: center;
 `
 
 export const SlideImage = styled.img`
@@ -50,7 +51,7 @@ export const SlideImage = styled.img`
 export const SlideImageBig = styled.img`
     padding: 0px 5px;
     width: 100%;
-    max-width: 800px;
+    /* max-width: 800px; */
 `
 
 export const ArrowContainer = styled.div`

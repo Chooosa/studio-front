@@ -23,32 +23,35 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
     const [content, setContent] = useState([])
     const { width } = useWindowDimensions()
     const [countSlidesToShow, setCountSlidesToShow] = useState(4)
-    const [imageWidth, setImageWidth] = useState(0)
+    const [imageWidth, setImageWidth] = useState(currentTab === 0 ?
+        works.apps[0].Gallery[0].width :
+        works.websites[0].Gallery[0].width) //currentTab === 0 ? works.websites : works.app
     const sliderRef = useRef()
     const [idCases, setCasesId] = useState([])
     const history = useHistory()
 
 
     useEffect(() => {
-        let appsImages = []
-        let id = []
-        if (currentTab === 0) {
-            works.apps.map((app, i) => {
-                appsImages.push(app.Gallery.slice(0, countSlidesToShow))
-                id.push(app.id)
-            })
-            setImageWidth(appsImages[0][0].width)
-        } else {
-            works.websites.map((app, i) => {
-                appsImages.push(app.Gallery.slice(0, 1))
-                id.push(app.id)
-            })
-            setImageWidth(appsImages[0][0].width)
-            setCountSlidesToShow(1)
+        if (width) {
+            let appsImages = []
+            let id = []
+            if (currentTab === 0) {
+                works.apps.map((app, i) => {
+                    appsImages.push(app.Gallery.slice(0, countSlidesToShow))
+                    id.push(app.id)
+                })
+                setImageWidth(works.apps[0].Gallery[0].width)
+            } else {
+                works.websites.map((app, i) => {
+                    appsImages.push(app.Gallery.slice(0, 1))
+                    id.push(app.id)
+                })
+                setImageWidth(works.websites[0].Gallery[0].width)
+                setCountSlidesToShow(1)
+            }
+            setCasesId(id)
+            setContent(appsImages)
         }
-        console.log('id: ', id)
-        setCasesId(id)
-        setContent(appsImages)
     }, [works, currentTab, countSlidesToShow])
 
     useEffect(() => {
@@ -62,7 +65,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                 setCountSlidesToShow(count)
             }
         }
-    }, [width, currentTab, countSlidesToShow])
+    }, [width, currentTab, countSlidesToShow, imageWidth])
 
     const handleNavigation = (id) => {
         if (currentTab === 0) {
@@ -105,8 +108,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
 
     return (
         <ComponentWrapper
-            sliderWidth={imageWidth * countSlidesToShow}
-        // sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
+            // sliderWidth={imageWidth * countSlidesToShow}
+            sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
         >
             <Slider
                 ref={sliderRef}
@@ -133,7 +136,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                         onMouseDown={registerCallBack}
                                         onMouseMove={cancelCallback}
                                         onMouseUp={() => handleMouseUp(idCases[index])}
-                                        key={index}>
+                                        key={index}
+                                    >
                                         {
                                             images.map((img, i) => {
                                                 // setImageWidth(img.width)
@@ -157,10 +161,11 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                     onMouseDown={registerCallBack}
                                     onMouseMove={cancelCallback}
                                     onMouseUp={(e) => handleMouseUp(idCases[index])}
+                                    key={index}
                                 >
                                     <SlideImageBig
                                         src={CMS_URL + images[0].url}
-                                        key={index}
+
                                         alt='itemImage'
                                     />
                                 </SlideContainer>
