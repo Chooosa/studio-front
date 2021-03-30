@@ -9,6 +9,7 @@ export const ComponentWrapper = styled.div`
 
     padding: 0 20px;
 
+
     @media(max-width: 612px) {
         padding: 0;
     }
@@ -38,7 +39,7 @@ export const SlideContainer = styled.div`
     display: flex;
     justify-content: center;
     padding: 20px;
-
+    cursor: pointer;
 `
 
 export const SlideImage = styled.img`
@@ -53,15 +54,15 @@ export const SlideImageBig = styled.img`
 `
 
 export const ArrowContainer = styled.div`
-position: absolute;
-top: calc(50% - 20px);
-${props => !props.right ? 'left: -40px;' : 'right: -45px;'}
-z-index: 1;
-width: 40px;
-height: 40px;
-display: flex;
-align-items: center;
-justify-content: center;
-/* background-color: ${props => props.color}; */
-cursor: pointer;
+    position: absolute;
+    top: calc(50% - 20px);
+    ${props => !props.right ? 'left: -40px;' : 'right: -45px;'}
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: ${props => props.color}; */
+    cursor: pointer;
 `

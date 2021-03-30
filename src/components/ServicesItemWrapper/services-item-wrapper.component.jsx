@@ -14,6 +14,10 @@ import {
 } from './services-item-wrapper.styles';
 import { ReactComponent as ArrowRight } from '../../assets/right-arrow.svg';
 import { ReactComponent as ArrowLeft } from '../../assets/left-arrow.svg';
+import { useHistory } from 'react-router';
+
+
+let callback;
 
 const ServicesItemWrapper = ({ works, currentTab }) => {
     const [content, setContent] = useState([])
@@ -21,22 +25,29 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
     const [countSlidesToShow, setCountSlidesToShow] = useState(4)
     const [imageWidth, setImageWidth] = useState(0)
     const sliderRef = useRef()
+    const [idCases, setCasesId] = useState([])
+    const history = useHistory()
 
 
     useEffect(() => {
         let appsImages = []
+        let id = []
         if (currentTab === 0) {
             works.apps.map((app, i) => {
                 appsImages.push(app.Gallery.slice(0, countSlidesToShow))
+                id.push(app.id)
             })
             setImageWidth(appsImages[0][0].width)
         } else {
             works.websites.map((app, i) => {
                 appsImages.push(app.Gallery.slice(0, 1))
+                id.push(app.id)
             })
             setImageWidth(appsImages[0][0].width)
             setCountSlidesToShow(1)
         }
+        console.log('id: ', id)
+        setCasesId(id)
         setContent(appsImages)
     }, [works, currentTab, countSlidesToShow])
 
@@ -53,7 +64,32 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
         }
     }, [width, currentTab, countSlidesToShow])
 
+    const handleNavigation = (id) => {
+        if (currentTab === 0) {
+            history.push(`/works/Application/${id}`)
+        } else {
+            history.push(`/works/Website/${id}`)
+        }
+    }
 
+    const registerCallBack = () => {
+        callback = true
+    }
+
+    const cancelCallback = (e) => {
+        if (callback) {
+            callback = false
+        }
+    }
+    const handleMouseUp = (id) => {
+        if (callback) {
+            if (currentTab === 0) {
+                history.push(`/works/Application/${id}`)
+            } else {
+                history.push(`/works/Website/${id}`)
+            }
+        }
+    }
 
     const NextArrow = () => {
         return <ArrowContainer onClick={() => sliderRef.current.slickNext()} right={true}>
@@ -69,8 +105,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
 
     return (
         <ComponentWrapper
-            // sliderWidth={imageWidth * countSlidesToShow}
-            sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
+            sliderWidth={imageWidth * countSlidesToShow}
+        // sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
         >
             <Slider
                 ref={sliderRef}
@@ -92,7 +128,12 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                         if (currentTab === 0) {
                             return (
                                 <div>
-                                    <SlideContainer key={index}>
+                                    <SlideContainer
+                                        // onClick={() => handleNavigation(idCases[index])}
+                                        onMouseDown={registerCallBack}
+                                        onMouseMove={cancelCallback}
+                                        onMouseUp={() => handleMouseUp(idCases[index])}
+                                        key={index}>
                                         {
                                             images.map((img, i) => {
                                                 // setImageWidth(img.width)
@@ -110,13 +151,20 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
 
                             )
                         } else {
-                            // console.log('name: ', images[0].name, ', width: ', images[0].width)
                             return (
-                                <SlideImageBig
-                                    src={CMS_URL + images[0].url}
-                                    key={index}
-                                    alt='itemImage'
-                                />
+                                <SlideContainer
+                                    // onClick={() => handleNavigation(idCases[index])}
+                                    onMouseDown={registerCallBack}
+                                    onMouseMove={cancelCallback}
+                                    onMouseUp={(e) => handleMouseUp(idCases[index])}
+                                >
+                                    <SlideImageBig
+                                        src={CMS_URL + images[0].url}
+                                        key={index}
+                                        alt='itemImage'
+                                    />
+                                </SlideContainer>
+
                             )
                         }
                     })
