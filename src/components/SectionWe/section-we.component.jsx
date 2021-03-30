@@ -5,14 +5,20 @@ import { useTranslation } from '../../hooks/translation';
 import ImageCarousel from '../ImageCarousel/image-carousel.components';
 import imageOne from '../../assets/slider-ex.png'
 
+import Evgeny from '../../assets/Team/Evgeny1.JPG'
+import Anna from '../../assets/Team/Anna1.JPG'
+import Sergey from '../../assets/Team/Sergey1.JPG'
+import Olga from '../../assets/Team/Olga1.JPG'
+import Andrey from '../../assets/Team/Andrey1.JPG'
+import Roman from '../../assets/Team/Roman1.JPG'
+
 const imageArray = [
-   imageOne,  // 1
-   imageOne,  // 2
-   imageOne,  // 3
-   imageOne,  // 4
-   imageOne,  // 5
-   imageOne,  // 6
-   imageOne   // 7
+   Evgeny,  // 1
+   Anna,  // 2
+   Sergey,  // 3
+   Olga,  // 4
+   Andrey,  // 5
+   Roman,  // 6
 ]
 
 
