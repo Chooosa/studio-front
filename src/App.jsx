@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import useErrorBoundary from "use-error-boundary";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -30,11 +30,13 @@ function App() {
   const location = useLocation()
   const { pathname } = useLocation()
   const dispatch = useDispatch()
+  const containerRef = useRef()
 
   // const addr = window.localStorage.getItem('address')
   // const [websites, setWebsites] = useState(addr ? addr : 'contacts')
 
   const [endLoader, setEndLoader] = useState(false)
+  const [animationHeight, setAnimationHeight] = useState(containerRef.current?.clientHeight)
 
   // const setAddr = () => {
   //   setWebsites('kontakty')
@@ -46,6 +48,10 @@ function App() {
     localStorage.setItem('scroll', false)
   }, [])
 
+  useEffect(() => {
+    setAnimationHeight(containerRef.current?.clientHeight)
+    console.log(containerRef.current?.clientHeight)
+  }, [pathname])
 
   useEffect(() => {
     dispatch(fetchContent())
@@ -62,7 +68,7 @@ function App() {
               <Header />
             </MenuState>
 
-            <AppContainer>
+            <AppContainer ref={containerRef}>
               {/* <AnimatePresence > */}
               <Switch location={location} key={location.pathname}>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />
@@ -80,7 +86,7 @@ function App() {
               {/* </AnimatePresence> */}
               {/* <button onClick={() => setAddr()}>change</button> */}
             </AppContainer>
-            <AnimatedBackground />
+            <AnimatedBackground animationHeight={animationHeight} />
             <Footer />
           </ErrorBoundary>
       }

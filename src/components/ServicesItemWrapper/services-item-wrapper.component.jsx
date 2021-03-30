@@ -137,6 +137,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                         onMouseMove={cancelCallback}
                                         onMouseUp={() => handleMouseUp(idCases[index])}
                                         key={index}
+                                        countSlide={countSlidesToShow === 1 && currentTab !== 1}
                                     >
                                         {
                                             images.map((img, i) => {
@@ -162,6 +163,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                     onMouseMove={cancelCallback}
                                     onMouseUp={(e) => handleMouseUp(idCases[index])}
                                     key={index}
+                                    countSlide={countSlidesToShow === 1 && currentTab !== 1}
                                 >
                                     <SlideImageBig
                                         src={CMS_URL + images[0].url}

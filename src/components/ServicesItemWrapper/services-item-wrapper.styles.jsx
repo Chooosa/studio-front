@@ -38,9 +38,12 @@ export const ComponentWrapper = styled.div`
 export const SlideContainer = styled.div`
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: ${props => props.countSlide ? '0' : '20px'};
     cursor: pointer;
     text-align: center;
+    @media(max-width: 420px) {
+        padding: 5px;
+    }
 `
 
 export const SlideImage = styled.img`

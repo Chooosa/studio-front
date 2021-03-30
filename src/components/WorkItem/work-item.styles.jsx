@@ -11,6 +11,11 @@ margin-top: 100px;
 margin-bottom: 20px;
 @media(max-width: 600px) {
     margin-top: 50px;
+    padding: 30px;
+}
+@media(max-width: 450px) {
+    margin-top: 50px;
+    padding: 25px 15px;
 }
 `
 

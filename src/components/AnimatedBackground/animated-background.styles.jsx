@@ -1,4 +1,4 @@
-import styled, {keyframes, css} from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 
 const verticalMove = (h) => keyframes`
@@ -50,7 +50,7 @@ const horizontalMove = (w) => keyframes`
   }
   90% {
     transform: ${`translateX(${w}px)`};
-  }  
+  }
   100% {
     transform: ${`translateX(${w}px)`};
   }
@@ -67,7 +67,7 @@ const circle = (dash) => keyframes`
   90% {
     stroke-dashoffset: ${dash}; }
   100% {
-    stroke-dashoffset: ${dash}; } 
+    stroke-dashoffset: ${dash}; }
 `
 
 const lines = keyframes`
@@ -80,7 +80,7 @@ const lines = keyframes`
   90% {
     stroke-dashoffset: 2000; }
   100% {
-    stroke-dashoffset: 2000; } 
+    stroke-dashoffset: 2000; }
 
 `
 
@@ -89,13 +89,14 @@ const lines = keyframes`
 
 export const Container = styled.div`
 width: 100%;
-display: ${props => props.hide? 'none': 'flex'};
+display: ${props => props.hide ? 'none' : 'flex'};
 flex-direction: column;
 z-index: 0;
 position: absolute;
 top:70px;
 left: 0;
 overflow: hidden;
+${props => props.animationHeight ? `height: ${props.animationHeight}px;` : ''}
 `
 
 
@@ -108,7 +109,7 @@ align-items: flex-end;
 export const SecondLines = styled.svg`
 position: relative;
 margin-top: 400px;
-right: ${props => -props.ww/2}px;
+right: ${props => -props.ww / 2}px;
 align-self: flex-end;
 @media(max-width:800px) {
   margin-top: 600px;
@@ -122,7 +123,7 @@ align-self: flex-end;
 export const AnimatedCircle = styled.circle`
 stroke-width: 48px;
 stroke-dasharray: ${props => props.dash};
-animation: ${ props => css`${circle(props.dash)} 10s linear infinite`};
+animation: ${props => css`${circle(props.dash)} 10s linear infinite`};
 `
 
 
@@ -156,34 +157,34 @@ overflow: hidden;
 export const Horizontal = styled.svg`
 margin-top: 48px;
 animation: ${props => css`${horizontalMove(props.w)} 30s linear infinite`};
-animation-delay: ${props => props.index*0.5}s;
+animation-delay: ${props => props.index * 0.5}s;
 transform: ${props => `translateX(${props.w}px)`};
 @media(max-width: 800px) {
     margin-top: 24px;
     animation: ${props => css`${horizontalMove(props.w)} 26s linear infinite`};
-    animation-delay: ${props => props.index*0.5}s;
+    animation-delay: ${props => props.index * 0.5}s;
 }
 @media(max-width: 600px) {
     margin-top: 30px;
     animation: ${props => css`${horizontalMove(props.w)} 26s linear infinite`};
-    animation-delay: ${props => props.index*0.5}s;
+    animation-delay: ${props => props.index * 0.5}s;
 }
 `
 
 export const Vertical = styled.svg`
-margin-right: 48px;  
+margin-right: 48px;
 animation: ${props => css`${verticalMove(props.h)} 15s linear infinite`};
-animation-delay: ${props => props.index*0.5}s;
+animation-delay: ${props => props.index * 0.5}s;
 transform: ${props => `translateY(-${props.h}px)`};
 @media(max-width: 800px) {
     margin-right: 24px;
     animation: ${props => css`${verticalMove(props.h)} 13s linear infinite`};
-    animation-delay: ${props => props.index*0.5}s;
+    animation-delay: ${props => props.index * 0.5}s;
 }
 @media(max-width: 600px) {
     margin-right: 24px;
     animation: ${props => css`${verticalMove(props.h)} 13s linear infinite`};
-    animation-delay: ${props => props.index*0.5}s;
+    animation-delay: ${props => props.index * 0.5}s;
 }
 `
 

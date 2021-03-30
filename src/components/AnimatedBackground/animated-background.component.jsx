@@ -17,28 +17,28 @@ import {
 } from './animated-background.styles';
 
 
-const AnimatedBackground = () => {
+const AnimatedBackground = ({ animationHeight }) => {
 
     const { width, height } = useWindowDimensions()
     const location = useLocation()
     const color = useSelector(colorSelectors.color)
-
+    //hide={location.pathname !== '/'}
     return (
-        <Container hide={location.pathname !== '/'}>
+        <Container animationHeight={animationHeight}>
             {
                 width > 800 ?
                     <FirstLines >
                         <HorizontalContainer>
-                            <Horizontal hide={location.pathname !== '/'} index={0} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <Horizontal index={0} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width={`${0.6 * width}`} height="48" fill={color} opacity='0.05' />
                             </Horizontal>
-                            <Horizontal hide={location.pathname !== '/'} index={1} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <Horizontal index={1} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width={`${0.6 * width}`} height="48" fill={color} opacity='0.05' />
                             </Horizontal>
-                            <Horizontal hide={location.pathname !== '/'} index={2} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <Horizontal index={2} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width={`${0.6 * width}`} height="48" fill={color} opacity='0.05' />
                             </Horizontal>
-                            <Horizontal hide={location.pathname !== '/'} index={3} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <Horizontal index={3} w={0.6 * width} width={`${0.6 * width}`} height="48" viewBox={`0 0 ${0.6 * width} 48`} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width={`${0.6 * width}`} height="48" fill={color} opacity='0.05' />
                             </Horizontal>
                         </HorizontalContainer>
