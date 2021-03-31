@@ -17,13 +17,17 @@ import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
 import AnimatedDescription from './AnimatedDescription/animated-description.component';
+import AnimatedNumbersNew from '../AnimatedNumberNew/animated_number_new.component';
+import { useWindowDimensions } from '../../hooks/dimensions';
+import AnimatedHeaderMobile from '../AnimatedHeaderMobile/animated_header_mobile.component';
+
 
 const ServiceTab = ({ service, content, currentTab, works }) => {
     const [animate, setAnimate] = useState(false)
     const { language } = useTranslation();
     const color = useSelector(colorSelectors.color)
     const { t } = useTranslation();
-
+    const {width} = useWindowDimensions()
 
     const handleViewportChange = (e, entry) => {
         if (e && entry && (entry.intersectionRatio >= 0.5)) {
@@ -45,11 +49,17 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                 {
                     currentTab !== 2 ?
                         <TabHeader>
-                            <Description>
+                            {
+                                width < 600 ?
+                                <AnimatedHeaderMobile/>
+                                :
+                                <AnimatedNumbersNew/>
+                            }
+                            {/* <Description>
                                 <ReactMarkdown>
                                     {language === 'ru' ? service.Description : service.DescriptionEng}
                                 </ReactMarkdown>
-                            </Description>
+                            </Description> */}
                             {/* <AnimatedDescription /> */}
                         </TabHeader> :
                         <CardsWrapper>

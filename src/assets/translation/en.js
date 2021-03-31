@@ -213,5 +213,17 @@ export const en = {
     notfound_desc_second: 'Please visit home page',
     notfound_button_label: 'Back to home page',
 
-    contacts_requisites: 'Company details'
+    contacts_requisites: 'Company details',
+
+
+    service_analytics: "Evaluation of your requirements, analysis of the target audience and competition, refinement, planning and specification drafting.",
+    service_prototype: "Draft realization of website with basic functions for its final functionality analysis.",
+    service_design: "Designing the main page after establishing the theme of website, approval, alterations, other pages design.",
+    service_development: "Website pages development, linking, tuning, testing and debugging.",
+    service_publication: "Passing moderation and publishing requirements.",
+    service_analytics_title: "Analysis and estimate",
+    service_prototype_title: "Wireframing",
+    service_design_title: "Design",
+    service_development_title: "Development",
+    service_publication_title: "Publishing to stores",
 }
