@@ -238,4 +238,8 @@ export const ru = {
     service_design_title: "Разработка дизайна",
     service_development_title: "Разработка приложения",
     service_publication_title: "Публикация в сторах",
+    job_developer: "Разработчик",
+    job_designer: "Дизайнер",
+    job_manager: "Менеджер",
+    job_ceo: "Руководитель"
 }

@@ -66,4 +66,28 @@ export const ImageWrapper = styled.div`
    } */
 `
 
+export const SliderTextContainer = styled.section`
+display: flex;
+justify-content: center;
+align-items: center;
+background: linear-gradient(180deg, rgba(9, 9, 9, 0.16) 25%, #090909 95.83%);
+width: 100%;
+height: 47px;
+position: absolute;
+bottom: 0;
+left: 0;
+`
 
+
+export const SliderText = styled.span`
+font-weight: 300;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height, or 125% */
+
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #F9F9F9;
+
+`

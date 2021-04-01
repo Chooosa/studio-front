@@ -1,15 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 
-import { Container, SlideImage, ImageWrapper } from './image-carousel.styles'
+import { Container, SlideImage, ImageWrapper, SliderText, SliderTextContainer } from './image-carousel.styles'
 import { useWindowDimensions } from '../../hooks/dimensions';
+import { useTranslation } from '../../hooks/translation';
+
+const jobTitles = [
+   "job_ceo",
+   "job_designer",
+   "job_developer",
+   "job_developer",
+   "job_manager",
+   "job_developer"
+]
+
+
+
+
 
 
 const ImageCarousel = ({ imageArray, imageSmileArray }) => {
    const { width } = useWindowDimensions()
    const [countSlidesToShow, setCountSlidesToShow] = useState(5)
    const [smileImage, setSmileImage] = useState(null)
-   
+   const {t} = useTranslation()
 
    const handleChangePhoto = (index) => {
       if (index || index === 0) {
@@ -47,7 +61,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
             // variableWidth={true}
             swipeToSlide={true}
             initialSlide={0}
-            infinite={false}
+            infinite={true}
             rows={1}
             arrows={false}
             slidesToShow={countSlidesToShow}
@@ -65,8 +79,14 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
                               alt='team'
                               onMouseEnter={() => handleChangePhoto(index)}
                               onMouseLeave={() => handleChangePhoto()}
-                           />
-                           {/* <SlideImageHidden
+                           >
+                              </SlideImage>
+                           <SliderTextContainer>
+                              <SliderText>
+                                 {t(jobTitles[index])}
+                              </SliderText>
+                           </SliderTextContainer>
+                           {/* <SlideImageHidde          n
                                                 src={index===smileImage? imageSmileArray[index]:  image}
                                                 key={index}
                                                 alt='team'

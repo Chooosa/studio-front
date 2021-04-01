@@ -79,3 +79,13 @@ justify-content: center;
 /* background-color: ${props => props.color}; */
 cursor: pointer;
 `
+
+
+export const SlideContainer = styled.div`
+display: flex;
+justify-content: center;
+:focus {
+   outline: none !important 
+}
+
+`

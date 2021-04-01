@@ -9,7 +9,7 @@ export const PlanWrapper = styled.div`
    justify-content: space-between;
    background-color: #111;
    overflow: hidden;
-   padding: 77px 0 60px 56px;
+   padding: 77px 0 60px 0px;
    margin-bottom: 10px;
    /* height: 670px; */
 
@@ -83,7 +83,7 @@ export const Text = styled(CustomText)`
 export const PlanContainer = styled.div`
    height: 100%;
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
 
    @media(max-width: 850px) {
       flex-direction: column-reverse;
@@ -97,7 +97,7 @@ export const DescriptionWrapper = styled(motion.div)`
    flex-direction: column;
    max-width: 370px;
    min-width: 300px;
-   margin-right: 40px;
+   margin-right: 113px;
    min-height: 450px;
    overflow: hidden;
 
@@ -172,7 +172,7 @@ export const StepButton = styled.button`
    font-size: 14px;
    line-height: 20px;
    letter-spacing: 0.05em;
-   color: ${props => props.active ? props.color : '#F9F9F9'};
+   color: ${props => props.active  ? props.color :  '#F9F9F9'};
    margin-top: 20px;
    padding: 0;
    padding-bottom: 5px;

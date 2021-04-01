@@ -82,9 +82,9 @@ const AnimatedCard = ({
                                                 color={color}
                                             >
                                                 {t('more_button')}
-                                                <Icon>
+                                                {/* <Icon>
                                                     <BoltSVG />
-                                                </Icon>
+                                                </Icon> */}
                                             </Button>
                                         </Fragment>
                                         : null

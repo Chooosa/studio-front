@@ -226,4 +226,8 @@ export const en = {
     service_design_title: "Design",
     service_development_title: "Development",
     service_publication_title: "Publishing to stores",
+    job_developer: "Developer",
+    job_designer: "Designer",
+    job_manager: "Project manager",
+    job_ceo: "CEO"
 }

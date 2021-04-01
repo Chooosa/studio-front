@@ -422,6 +422,7 @@ const Plan = ({ onOpenModal }) => {
                            onClick={() => setCurrentStep(1)}
                            dashLeft={'0'}
                            active={currentStep === 1}
+                           isStage={true}
                         >
                            {t('interview')}
                         </StepButton>
@@ -514,6 +515,7 @@ const Plan = ({ onOpenModal }) => {
                            onClick={() => setCurrentStep(5)}
                            dashLeft={'0'}
                            active={currentStep === 5}
+                           isStage={true}
                         >
                            {t('contract')}
                         </StepButton>
@@ -544,6 +546,7 @@ const Plan = ({ onOpenModal }) => {
                            left={'0'}
                            onClick={() => setCurrentStep(7)}
                            active={currentStep === 7}
+                           isStage={true}
                         >
                            {t('design')}
                         </StepButton>
@@ -615,6 +618,7 @@ const Plan = ({ onOpenModal }) => {
                            left={'0'}
                            onClick={() => setCurrentStep(10)}
                            active={currentStep === 10}
+                           isStage={true}
                         >
                            {t('support')}
                         </StepButton>
