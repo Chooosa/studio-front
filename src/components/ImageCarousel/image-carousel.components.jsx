@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 
-import { Container, SlideImage, ImageWrapper, SliderText, SliderTextContainer } from './image-carousel.styles'
+import { Container, SlideImage, ImageWrapper, SliderText, SliderTextContainer, SlideContainer } from './image-carousel.styles'
 import { useWindowDimensions } from '../../hooks/dimensions';
 import { useTranslation } from '../../hooks/translation';
 
@@ -61,7 +61,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
             // variableWidth={true}
             swipeToSlide={true}
             initialSlide={0}
-            infinite={true}
+            infinite={false}
             rows={1}
             arrows={false}
             slidesToShow={countSlidesToShow}
@@ -71,7 +71,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
             {
                imageArray.map((image, index) => {
                   return (
-                     <div>
+                     <SlideContainer >
                         <ImageWrapper >
                            <SlideImage
                               src={index===smileImage? imageSmileArray[index]:  image}
@@ -94,7 +94,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
                                                 onMouseLeave={() => handleChangePhoto()}
                            /> */}
                         </ImageWrapper>
-                     </div>
+                     </SlideContainer>
                   )
                })
             }
