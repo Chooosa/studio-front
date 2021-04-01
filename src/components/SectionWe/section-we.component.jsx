@@ -5,12 +5,21 @@ import { useTranslation } from '../../hooks/translation';
 import ImageCarousel from '../ImageCarousel/image-carousel.components';
 import imageOne from '../../assets/slider-ex.png'
 
-import Evgeny from '../../assets/Team/Evgeny1.JPG'
-import Anna from '../../assets/Team/Anna1.JPG'
-import Sergey from '../../assets/Team/Sergey1.JPG'
-import Olga from '../../assets/Team/Olga1.JPG'
-import Andrey from '../../assets/Team/Andrey1.JPG'
-import Roman from '../../assets/Team/Roman1.JPG'
+import Evgeny from '../../assets/Team/eugene.jpeg'
+import Anna from '../../assets/Team/ann.jpeg'
+import Sergey from '../../assets/Team/sergey.jpeg'
+import Olga from '../../assets/Team/olga.jpeg'
+import Andrey from '../../assets/Team/andrew.jpeg'
+import Roman from '../../assets/Team/roma.jpg'
+
+
+import EvgenySmile from '../../assets/Team/eugene_smile.jpeg'
+import AnnaSmile from '../../assets/Team/ann_smile.jpeg'
+import SergeySmile from '../../assets/Team/sergey_smile.jpeg'
+import OlgaSmile from '../../assets/Team/olga_smile.jpeg'
+import AndreySmile from '../../assets/Team/andrew_smile.jpeg'
+import RomanSmile from '../../assets/Team/roma_smile.jpeg'
+
 
 const imageArray = [
    Evgeny,  // 1
@@ -19,6 +28,15 @@ const imageArray = [
    Olga,  // 4
    Andrey,  // 5
    Roman,  // 6
+]
+
+const imageSmileArray = [
+   EvgenySmile,
+   AnnaSmile,
+   SergeySmile,
+   OlgaSmile,
+   AndreySmile,
+   RomanSmile
 ]
 
 
@@ -31,7 +49,7 @@ const SectionWe = () => {
          index={2}
          descriptionWidth={'390px'}
       >
-         <ImageCarousel imageArray={imageArray} />
+         <ImageCarousel imageArray={imageArray} imageSmileArray={imageSmileArray}/>
       </Section>
    );
 }

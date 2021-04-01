@@ -15,9 +15,10 @@ const SectionTyping = () => {
 
    useEffect(() => {
       if (scroll === 'typing') {
-         ref.current?.scrollIntoView({
+         window.scroll({
             behavior: 'smooth',
-            block: 'center'
+            top: 0,
+            left: 0
          })
          dispatch(setScroll(undefined))
       }

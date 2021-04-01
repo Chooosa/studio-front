@@ -34,9 +34,36 @@ export const SlideImage = styled.img`
    @media (max-width: 500px) {
       max-width:300px;
    }
+   transition-duration: 0.5s;
+   opacity: 1;
+`
+
+export const SlideImageHidden = styled(SlideImage)`
+position: absolute;
+/* top: 0;
+left: 0; */
+opacity: 0;
+
 `
 
 export const ImageWrapper = styled.div`
-   height: 320px;
-   padding: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   > div {
+      display: flex!important;
+   }
+   position: relative;
+   /* >:hover {
+      :nth-child(1) {
+         opacity: 0;
+
+      }
+      :nth-child(2) {
+         opacity: 1;
+         
+      }
+   } */
 `
+
+

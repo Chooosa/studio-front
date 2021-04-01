@@ -48,7 +48,7 @@ const Case = ({ caseToDisplay }) => {
                     onClick={() => handleNavigation(caseToDisplay.id)}
                 >
                     {t('whole_work')}
-                    <img src={BoltSVG} alt='bolt' />
+                    {/* <img src={BoltSVG} alt='bolt' /> */}
                 </ActionButton>
             </ContentContainer>
             <PreviewImage

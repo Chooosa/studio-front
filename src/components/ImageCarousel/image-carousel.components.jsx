@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick';
 
-import { Container, SlideImage } from './image-carousel.styles'
+import { Container, SlideImage, ImageWrapper } from './image-carousel.styles'
 import { useWindowDimensions } from '../../hooks/dimensions';
 
 
-const ImageCarousel = ({ imageArray }) => {
+const ImageCarousel = ({ imageArray, imageSmileArray }) => {
    const { width } = useWindowDimensions()
    const [countSlidesToShow, setCountSlidesToShow] = useState(5)
+   const [smileImage, setSmileImage] = useState(null)
+   
+
+   const handleChangePhoto = (index) => {
+      if (index || index === 0) {
+
+         setSmileImage(index)
+      } else {
+         setSmileImage(null)
+      }
+   }
+
+
 
    useEffect(() => {
       let count
@@ -44,11 +57,24 @@ const ImageCarousel = ({ imageArray }) => {
             {
                imageArray.map((image, index) => {
                   return (
-                     <SlideImage
-                        src={image}
-                        key={index}
-                        alt='team'
-                     />
+                     <div>
+                        <ImageWrapper >
+                           <SlideImage
+                              src={index===smileImage? imageSmileArray[index]:  image}
+                              key={index}
+                              alt='team'
+                              onMouseEnter={() => handleChangePhoto(index)}
+                              onMouseLeave={() => handleChangePhoto()}
+                           />
+                           {/* <SlideImageHidden
+                                                src={index===smileImage? imageSmileArray[index]:  image}
+                                                key={index}
+                                                alt='team'
+                                                onMouseEnter={() => handleChangePhoto(index)}
+                                                onMouseLeave={() => handleChangePhoto()}
+                           /> */}
+                        </ImageWrapper>
+                     </div>
                   )
                })
             }

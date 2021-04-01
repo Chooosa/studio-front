@@ -59,28 +59,35 @@ const horizontalMove = (w) => keyframes`
 
 const circle = (dash) => keyframes`
 0% {
-    stroke-dashoffset: -${dash}; }
-  40% {
-    stroke-dashoffset: 0; }
-  60% {
-    stroke-dashoffset: 0; }
-  90% {
+    stroke-dashoffset: ${3*dash}; }
+  20% {
+    stroke-dashoffset: ${2*dash}; }
+  30% {
+    stroke-dashoffset: ${2*dash}; }
+  45% {
     stroke-dashoffset: ${dash}; }
-  100% {
+  50% {
     stroke-dashoffset: ${dash}; }
+    70% {
+    stroke-dashoffset: ${2*dash}; }
+  80% {
+    stroke-dashoffset: ${dash}2*; } 
+    100% {
+    stroke-dashoffset: ${3*dash}; }
+  
 `
 
 const lines = keyframes`
 0% {
-    stroke-dashoffset: -2000; }
+    stroke-dashoffset: 1950; }
   40% {
-    stroke-dashoffset: 0; }
+    stroke-dashoffset: 3900; }
   60% {
-    stroke-dashoffset: 0; }
+    stroke-dashoffset: 3900; }
   90% {
-    stroke-dashoffset: 2000; }
+    stroke-dashoffset: 5800; }
   100% {
-    stroke-dashoffset: 2000; }
+    stroke-dashoffset: 5800; }
 
 `
 
@@ -123,7 +130,7 @@ align-self: flex-end;
 export const AnimatedCircle = styled.circle`
 stroke-width: 48px;
 stroke-dasharray: ${props => props.dash};
-animation: ${props => css`${circle(props.dash)} 10s linear infinite`};
+animation: ${props => css`${circle(props.dash)} 20s linear infinite`};
 `
 
 
