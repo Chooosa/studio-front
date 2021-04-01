@@ -24,6 +24,8 @@ const AnimatedDescription = () => {
 
    const animationStep =  {
       pathLength: 1,
+      // strokeDasharray: 160,
+      // strokeDashoffset: 0,
       transition: {
           duration: 0.5,
           delay: 0.2,
@@ -260,7 +262,8 @@ const AnimatedDescription = () => {
             d="M99 193C99 275.164 147.197 305 211 305" 
             stroke={color} 
             strokeWidth="0.7" 
-            initial={{pathLength: 0}} animate={firstLineAnimation}
+            initial={{ pathLength: 0}} animate={firstLineAnimation}
+
             />
             <motion.path d="M598 201C598 274.361 641.463 301 699 301" stroke={color} strokeWidth="0.7" initial={{pathLength: 0}} animate={thirdLineAnimation}/>
             <motion.path d="M400 306C473.361 306 500 262.537 500 205" stroke={color} strokeWidth="0.7" initial={{pathLength: 0}} animate={secondLineAnimation}/>

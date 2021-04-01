@@ -50,26 +50,32 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
             const pageOffset = window.pageYOffset
             const height = window.innerHeight
             const fullHeight = document.body.offsetHeight
-            if (fullHeight - (pageOffset + height) < 100) {
-                if (!scrollDown.current) {
-                    scrollDown.current=true
-                    setScrollD(true)
-                }
+            console.log(pageOffset, height, fullHeight)
+            if (pageOffset <0) {
+                return 
             } else {
-                if (pageOffset - lastOffset.current > 0) {
-                    if (direction !== -1) {
+                if (fullHeight - (pageOffset + height) < 100) {
+                    if (!scrollDown.current) {
                         scrollDown.current=true
                         setScrollD(true)
                     }
-                    direction.current = -1
                 } else {
-                    if (direction !== 1) {
-                        scrollDown.current=false
-                        setScrollD(false)
+                    if (pageOffset - lastOffset.current > 0) {
+                        if (direction !== -1) {
+                            scrollDown.current=true
+                            setScrollD(true)
+                        }
+                        direction.current = -1
+                    } else {
+                        if (direction !== 1) {
+                            scrollDown.current=false
+                            setScrollD(false)
+                        }
+                        direction.current = 1
                     }
-                    direction.current = 1
+                    lastOffset.current = pageOffset
                 }
-                lastOffset.current = pageOffset
+
             }
         }
         setTimeout(() => {

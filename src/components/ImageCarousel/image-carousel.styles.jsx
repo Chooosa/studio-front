@@ -7,6 +7,7 @@ export const Container = styled.div`
    @media (max-width: 1240px){
       padding-left: 20px;
       padding-right: 20px;
+      height: 450px;
    }
 
    .slick-dots li.slick-active button:before {
@@ -30,6 +31,9 @@ export const SlideImage = styled.img`
    padding: 0px 5px;
    width: 100%;
    max-width: 220px;
+   @media (max-width: 500px) {
+      max-width:300px;
+   }
 `
 
 export const ImageWrapper = styled.div`
