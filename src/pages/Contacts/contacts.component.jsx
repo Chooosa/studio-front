@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 import {
@@ -46,6 +46,15 @@ const Contacts = () => {
    const handleCloseModalRequest = () => {
       setOpenModalRequest(false)
    }
+
+
+   useEffect(() => {
+      window.scroll({
+         // behavior: 'smooth',
+         top: 0,
+         left: 0
+      })
+   }, [])
 
    const getAdaptivePoints = () => {
       if (width > 1000) {
