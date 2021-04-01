@@ -75,7 +75,7 @@ function App() {
               <Header />
             </MenuState>
 
-            <AppContainer ref={containerRef}>
+            <AppContainer id="app-container" ref={containerRef}>
               {/* <AnimatePresence > */}
               <Switch location={location} key={location.pathname}>
                 <Redirect from="/:url*(/+)" to={pathname.slice(0, -1)} />

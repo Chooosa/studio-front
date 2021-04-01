@@ -63,7 +63,10 @@ const WorkItem = ({ work }) => {
         if (fullscreenImage) {
             fullscreenImage.el.addEventListener('click', () => {
                 fullscreenImage.el.addEventListener('transitionend', () => {
+                    console.log(1)
+                    document.querySelector('#app-container').style.zIndex = '1'
                     setTimeout(() => {
+                        
                         fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
                         setFullScreenImage(undefined)
                     }, 100)
@@ -100,6 +103,7 @@ const WorkItem = ({ work }) => {
                 }
             }, 300)
             flyCopy.addEventListener('transitionend', () => {
+                document.querySelector('#app-container').style.zIndex = '1100'
                 setFullScreenImage({ index, el, target: fly })
                 setAnimating(false)
             })
@@ -128,6 +132,7 @@ const WorkItem = ({ work }) => {
 
     const removeNode = () => {
         setTimeout(() => {
+            document.querySelector('#app-container').style.zIndex = '1'
             fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
             setFullScreenImage(undefined)
         }, 100)
