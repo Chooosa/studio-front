@@ -79,7 +79,7 @@ const Footer = () => {
                         <img src={telegramSVG} alt='Telegram' />
                      Telegram
                   </SocialNetworks>
-                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekovstudio/'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekov_studio/'>
                         <img src={instagramSVG} alt='Instagram' />
                      Instagram
                   </SocialNetworks>
