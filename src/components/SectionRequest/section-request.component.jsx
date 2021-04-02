@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -48,22 +48,46 @@ const SectionRequest = ({
     const ref = useRef()
     const { t } = useTranslation();
     const [isRequestSent, setIsRequestSent] = useState(false);
+    const formikRef = useRef()
 
-    const validationSchema = yup.object().shape({
-        email: yup.string()
-            .email(t('error_invalid_email'))
-            .required(t('error_no_email')),
-        phone: yup.string()
-            .min(12, t('error_phone'))
-            .max(12, t('error_phone'))
-            .required(t('error_phone')),
-        name: yup.string()
-            .trim()
-            .required(t('error_name')),
-        text: yup.string()
-            .trim()
-            .required(t('error_text')),
-    })
+    const getValidation = (t) => {
+        const validationSchema = yup.object().shape({
+            email: yup.string()
+                .email('error_invalid_email')
+                .required('error_no_email'),
+            phone: yup.string()
+                .min(12, 'error_phone')
+                .max(12, 'error_phone')
+                .required('error_phone'),
+            name: yup.string()
+                .trim()
+                .required('error_name'),
+            text: yup.string()
+                .trim()
+                .required('error_text'),
+
+            //     email: yup.string()
+            //     .email(t('error_invalid_email'))
+            //     .required(t('error_no_email')),
+            // phone: yup.string()
+            //     .min(12, t('error_phone'))
+            //     .max(12, t('error_phone'))
+            //     .required(t('error_phone')),
+            // name: yup.string()
+            //     .trim()
+            //     .required(t('error_name')),
+            // text: yup.string()
+            //     .trim()
+            //     .required(t('error_text')),
+        })
+
+        return validationSchema
+    }
+
+    const memGetValidation = useMemo(
+        () => getValidation(t),
+        [t]
+    )
 
     const [filesArray, setFilesArray] = useState([]);
 
@@ -141,9 +165,10 @@ const SectionRequest = ({
             padding={padding}
         >
             <Formik
+                ref={formikRef}
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
                 onSubmit={sendRequest}
-                validationSchema={validationSchema}
+                validationSchema={memGetValidation}
                 validateOnChange={false}
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
@@ -248,10 +273,10 @@ const SectionRequest = ({
                             {/* <Icon src={Send} /> */}
                         </Button>
                         <Error>
-                            <p>{errors.name}</p>
-                            <p>{errors.phone}</p>
-                            <p>{errors.email}</p>
-                            <p>{errors.text}</p>
+                            <p>{t(errors.name)}</p>
+                            <p>{t(errors.phone)}</p>
+                            <p>{t(errors.email)}</p>
+                            <p>{t(errors.text)}</p>
                         </Error>
                     </InputFieldsWrapper>
                 )}
