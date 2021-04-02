@@ -163,7 +163,7 @@ const AnimatedCard = ({
                         </CardContainer>
                 }
             </AnimateSharedLayout>
-        </AnimatePresence>
+         </AnimatePresence>
 
     )
 }

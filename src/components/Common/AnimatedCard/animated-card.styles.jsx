@@ -10,6 +10,7 @@ height: 317px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
+overflow: hidden;
 @media(max-width: 600px) {
     height: auto;
 }
