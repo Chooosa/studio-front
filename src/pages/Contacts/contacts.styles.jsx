@@ -38,8 +38,10 @@ export const MapContainer = styled.div`
    background-repeat: no-repeat;
    background-position: bottom right; */
 
+
    >img {
       clip-path: url(#clipPath);
+      -webkit-clip-path: url(#clipPath);
       position: relative;
       bottom: -5px;
       /* width: 100%; */

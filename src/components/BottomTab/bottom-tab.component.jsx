@@ -50,7 +50,7 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
             const pageOffset = window.pageYOffset
             const height = window.innerHeight
             const fullHeight = document.body.offsetHeight
-            console.log(pageOffset, height, fullHeight)
+            
             if (pageOffset <0) {
                 return 
             } else {

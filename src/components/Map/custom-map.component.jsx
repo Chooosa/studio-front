@@ -17,7 +17,7 @@ const CustomMap = () => (
             className='mapContainer'
             style={{ width: '480px', height: '300px' }}
          >
-            <Placemark geometry={coordinate} options={{iconLayout:'default#image', iconImageHref: 'pin.svg', iconImageSize: [55, 55], }}/>
+            <Placemark geometry={coordinate} options={{iconLayout:'default#image', iconImageHref: '/pin.svg', iconImageSize: [55, 55], }}/>
          </Map>
       </YMaps>
    </MapContainer>

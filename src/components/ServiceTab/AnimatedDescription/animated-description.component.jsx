@@ -37,7 +37,7 @@ const AnimatedDescription = () => {
 
    useEffect(() => {
 
-      console.log(currentAnimation)
+
       if (currentAnimation === null) {
          setCurrentAnimation(0)
       } else if (currentAnimation === 2) {
@@ -47,14 +47,13 @@ const AnimatedDescription = () => {
          })
 
       } else if (currentAnimation === 5) {
-         console.log('start2')
          secondLineAnimation.start(animationStep)
          .then(() => {
             animationCallback()
          })
 
       } else if (currentAnimation === 7) {
-         console.log('start3')
+
          thirdLineAnimation.start(animationStep)
          .then(() => {
             animationCallback()

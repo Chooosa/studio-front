@@ -5,13 +5,12 @@ import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import { useTranslation } from '../../hooks/translation';
-
+import CustomSlider from './Slider/slider.component';
 
 import { useWindowDimensions } from '../../hooks/dimensions';
 // import { ReactComponent as ArrowRight } from '../../assets/arrow-right.svg';
 // import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
-import { ReactComponent as ArrowRight } from '../../assets/right-arrow.svg';
-import { ReactComponent as ArrowLeft } from '../../assets/left-arrow.svg';
+
 
 import {
     Container,
@@ -20,8 +19,7 @@ import {
     TextSection,
     Title,
     SlideImage,
-    ArrowContainer,
-    SlideContainer
+
 } from './work-item.styles';
 import { useSelector } from 'react-redux';
 
@@ -36,6 +34,10 @@ const WorkItem = ({ work }) => {
     const sliderRef = useRef()
     const color = useSelector(colorSelectors.color)
     const { language } = useTranslation()
+
+    
+
+
 
     const reverseFullScreen = () => {
         fullscreenImage.el.addEventListener('transitionend', removeNode)
@@ -64,7 +66,7 @@ const WorkItem = ({ work }) => {
         if (fullscreenImage) {
             fullscreenImage.el.addEventListener('click', () => {
                 fullscreenImage.el.addEventListener('transitionend', () => {
-                    console.log(1)
+            
                     document.querySelector('#app-container').style.zIndex = '1'
                     setTimeout(() => {
                         
@@ -111,14 +113,7 @@ const WorkItem = ({ work }) => {
         }
     }
 
-    // const getSlideCount = () =>  {
-    //     if (work.Gallery[0].width > 500) {
-    //         return 1
-    //     }
-    //     if (width > 1048) return 5
-    //     if (width> 888) return 4
-    //     if (width> 0) return 3
-    // }
+
 
     const getSliderHeight = () => {
         if (work.Gallery.length > 1) {
@@ -152,17 +147,7 @@ const WorkItem = ({ work }) => {
         }
     }
 
-    const NextArrow = () => {
-        return <ArrowContainer onClick={() => sliderRef.current.slickNext()} color={color} right={true}>
-            <ArrowRight />
-        </ArrowContainer>
-    }
 
-    const PrevArrow = () => {
-        return <ArrowContainer onClick={() => sliderRef.current.slickPrev()} color={color} right={false}>
-            <ArrowLeft />
-        </ArrowContainer>
-    }
 
     return (
         <Container
@@ -186,42 +171,71 @@ const WorkItem = ({ work }) => {
             >
                 {
                     work.Gallery.length > 1 ?
-                        <Slider
-                            ref={sliderRef}
-                            variableWidth={true}
-                            swipeToSlide={true}
-                            initialSlide={0}
-                            infinite={false}
-                            rows={1}
-                            slidesToScroll={1}
-                            // slidesToShow={getSlideCount()}
-                            arrows={width > 612 ? true : false}
-                            nextArrow={<NextArrow />}
-                            prevArrow={<PrevArrow />}
+
+                        <CustomSlider
+                        width={width > 600 ?  work.Gallery[0].width * 0.8 * work.Gallery.length : width * 0.7 * work.Gallery.length > work.Gallery[0].width * 0.7 * work.Gallery.length ? work.Gallery[0].width * 0.7 *work.Gallery.length : width * 0.7 * work.Gallery.length}
+                        screenWidth={width}
+                        slideWidth = { width > 600 ?  work.Gallery[0].width * 0.8 : width * 0.7 > work.Gallery[0].width * 0.7 ? work.Gallery[0].width * 0.7 : width * 0.7 } 
+                        slideCount={work.Gallery.length}
                         >
                             {
                                 work.Gallery.map((img, index) => {
 
                                     return (
-                                        // onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
-                                        // <div>
-                                        // <SlideContainer >
-
                                         <SlideImage
                                             key={index}
                                             src={CMS_URL + img.url}
                                             alt='example'
                                             style={{ width:  width > 600 ?  img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7 }}
-                                            onMouseDown={registerCallBack}
-                                            onMouseMove={cancelCallback}
-                                            onMouseUp={(e) => handleMouseUp(e, img.width, img.height, width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, index)}
+                                            draggable={false}
+                                            // onMouseDown={registerCallBack}
+                                            // onMouseMove={cancelCallback}
+                                            // onMouseUp={(e) => handleMouseUp(e, img.width, img.height, width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, index)}
                                         />
-                                    // </SlideContainer>
-                                    // </div>
                                     )
                                 })
                             }
-                        </Slider>
+                        </CustomSlider>
+
+
+
+                        // <Slider
+                        //     ref={sliderRef}
+                        //     variableWidth={true}
+                        //     swipeToSlide={true}
+                        //     initialSlide={0}
+                        //     infinite={false}
+                        //     rows={1}
+                        //     slidesToScroll={1}
+                        //     // slidesToShow={getSlideCount()}
+                        //     arrows={width > 612 ? true : false}
+                        //     nextArrow={<NextArrow />}
+                        //     prevArrow={<PrevArrow />}
+                        // >
+                        //     {
+                        //         work.Gallery.map((img, index) => {
+
+                        //             return (
+                        //                 // onClick={(e) => handleFullScreen(e,img.width, img.height, width>600? img.width*0.8: width*0.7> img.width*0.7?img.width*0.7:width*0.7, index)}
+                        //                 // <div>
+                        //                 // <SlideContainer >
+
+                        //                 <SlideImage
+                        //                     key={index}
+                        //                     src={CMS_URL + img.url}
+                        //                     alt='example'
+                        //                     style={{ width:  width > 600 ?  img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7 }}
+                        //                     onMouseDown={registerCallBack}
+                        //                     onMouseMove={cancelCallback}
+                        //                     onMouseUp={(e) => handleMouseUp(e, img.width, img.height, width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, index)}
+                        //                 />
+                        //             // </SlideContainer>
+                        //             // </div>
+                        //             )
+                        //         })
+                        //     }
+                        // </Slider>
+
                         : <img src={CMS_URL + work.Gallery[0].url} alt='example' style={{ width: '100%' }} />
                 }
             </SliderContainer>

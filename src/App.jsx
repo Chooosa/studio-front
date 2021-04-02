@@ -57,7 +57,7 @@ function App() {
 
   useEffect(() => {
     setAnimationHeight(containerRef.current?.clientHeight)
-    console.log(containerRef.current?.clientHeight)
+
   }, [pathname])
 
   useEffect(() => {

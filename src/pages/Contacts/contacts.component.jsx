@@ -22,6 +22,7 @@ import CustomMap from '../../components/Map/custom-map.component';
 import { useWindowDimensions } from '../../hooks/dimensions'
 import { motion } from 'framer-motion'
 import ModalRequest from '../../components/ModalRequest/modal-request.component'
+import { isIOS, isMobileSafari, isSafari } from 'react-device-detect'
 
 const Contacts = () => {
    const color = useSelector(colorSelectors.color);
@@ -54,6 +55,9 @@ const Contacts = () => {
          top: 0,
          left: 0
       })
+      
+
+
    }, [])
 
    const getAdaptivePoints = () => {
@@ -85,12 +89,30 @@ const Contacts = () => {
 
    const onHover = (enter) => {
       if (width > 600) {
+         if (isSafari || isMobileSafari ) {
+            window.requestAnimationFrame(redrawImage)
+         }
          setHoverImg(enter)
       }
    }
 
+   const redrawImage = () => {
+      var img = document.querySelector('#clip-path')
+      if (img && img.style) {
+         img.style.clipPath = "none";
+         console.log(img.offsetWidth);
+         img.style.clipPath = 'url(#clipPath)';
+   
+         window.requestAnimationFrame(redrawImage)
+      }
+
+   }
+
+
+
    return (
       <ContactsWrapper>
+
          <ContactsContainer>
             <InfoWrapper>
                <Heading>{t('contacts')}</Heading>
@@ -157,6 +179,7 @@ const Contacts = () => {
                   </div>
                }
             </InfoWrapper>
+
             {
                width > 600 ?
                   <MapContainer
@@ -165,11 +188,11 @@ const Contacts = () => {
                      onMouseEnter={() => onHover(true)}
                      onMouseLeave={() => onHover(false)}
                   >
-                     <motion.svg
+            <motion.svg
                         height='0'
                         width='0'
-                        preserveAspectRatio="xMinYMin meet"
-                        viewBox='0 0 1200 304'
+                        // preserveAspectRatio="xMinYMin meet"
+                        // viewBox='0 0 1200 304'
                      >
                         <motion.clipPath id='clipPath'>
                            <motion.polygon
@@ -180,6 +203,7 @@ const Contacts = () => {
                         </motion.clipPath>
                      </motion.svg>
                      <img
+                        id="clip-path"
                         src={mapImg}
                         alt='map'
                      />

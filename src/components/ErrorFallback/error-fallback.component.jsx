@@ -14,8 +14,7 @@ const ErrorBoundary = ({ error }) => {
     const { t } = useTranslation();
 
     const location = useLocation();
-    console.log(error.message);
-
+    
     useEffect(() => {
         if (process.env.NODE_ENV === 'production') {
             let data = {
@@ -29,12 +28,9 @@ const ErrorBoundary = ({ error }) => {
                     version: browserVersion
                 },
             }
-            console.log(data);
-            axios.interceptors.request.use(config => {
-                console.log(config)
-                return config
-            })
-            console.log('err', error.toString())
+            
+
+
             axios({
                 method: 'post',
                 url: `${API_URL}fronterror`,
