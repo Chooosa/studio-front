@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -32,6 +32,7 @@ import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 import { useTranslation } from '../../hooks/translation';
 import privacyPolicy from '../../assets/privacyPolicy.pdf'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -39,7 +40,8 @@ const SectionRequest = ({
     refApplication,
     index,
     padding,
-    nonNumber
+    nonNumber,
+    onCloseModal
 }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
@@ -48,36 +50,64 @@ const SectionRequest = ({
     const ref = useRef()
     const { t } = useTranslation();
     const [isRequestSent, setIsRequestSent] = useState(false);
+    const {pathname} = useLocation()
+    const formikRef = useRef()
 
-    const validationSchema = yup.object().shape({
-        email: yup.string()
-            .email(t('error_invalid_email'))
-            .required(t('error_no_email')),
-        phone: yup.string()
-            .min(12, t('error_phone'))
-            .max(12, t('error_phone'))
-            .required(t('error_phone')),
-        name: yup.string()
-            .trim()
-            .required(t('error_name')),
-        text: yup.string()
-            .trim()
-            .required(t('error_text')),
-    })
+    const getValidation = (t) => {
+        const validationSchema = yup.object().shape({
+            email: yup.string()
+                .email('error_invalid_email')
+                .required('error_no_email'),
+            phone: yup.string()
+                .min(12, 'error_phone')
+                .max(12, 'error_phone')
+                .required('error_phone'),
+            name: yup.string()
+                .trim()
+                .required('error_name'),
+            text: yup.string()
+                .trim()
+                .required('error_text'),
+
+            //     email: yup.string()
+            //     .email(t('error_invalid_email'))
+            //     .required(t('error_no_email')),
+            // phone: yup.string()
+            //     .min(12, t('error_phone'))
+            //     .max(12, t('error_phone'))
+            //     .required(t('error_phone')),
+            // name: yup.string()
+            //     .trim()
+            //     .required(t('error_name')),
+            // text: yup.string()
+            //     .trim()
+            //     .required(t('error_text')),
+        })
+
+        return validationSchema
+    }
+
+    const memGetValidation = useMemo(
+        () => getValidation(t),
+        [t]
+    )
 
     const [filesArray, setFilesArray] = useState([]);
 
     const sendRequest = async (values, { resetForm }) => {
-        // axios.interceptors.request.use(function (config) {
-        //     return config;
-        // }, function (error) {
-        //     return Promise.reject(error);
-        // });
         const formData = new FormData();
         formData.append('name', values.name);
         formData.append('email', values.email);
         formData.append('phone', values.phone);
         formData.append('text', values.text);
+        let requestType = localStorage.getItem('requestType')
+
+        if (!requestType) {
+            requestType = 'page: ' + pathname
+        }
+
+        formData.append('section', requestType)
+        
 
         filesArray.forEach((file) => {
             formData.append('file', file);
@@ -85,9 +115,11 @@ const SectionRequest = ({
 
         try {
             const resp = await axios.post(`${API_URL}application`, formData);
+
             resetForm();
             setFilesArray([]);
             setIsRequestSent(true);
+            // onCloseModal()
             return resp;
         }
         catch (err) {
@@ -117,10 +149,11 @@ const SectionRequest = ({
     }
 
     useEffect(() => {
+        
         if (scroll === 'request') {
-            ref.current?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
+            window.scroll({
+                top: ref.current.getBoundingClientRect().top - 220,
+                behavior: 'smooth'
             })
             dispatch(setScroll(undefined))
         }
@@ -141,9 +174,10 @@ const SectionRequest = ({
             padding={padding}
         >
             <Formik
+                ref={formikRef}
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
                 onSubmit={sendRequest}
-                validationSchema={validationSchema}
+                validationSchema={memGetValidation}
                 validateOnChange={false}
             >
                 {({ handleChange, values, handleSubmit, errors, setFieldValue }) => (
@@ -248,10 +282,10 @@ const SectionRequest = ({
                             {/* <Icon src={Send} /> */}
                         </Button>
                         <Error>
-                            <p>{errors.name}</p>
-                            <p>{errors.phone}</p>
-                            <p>{errors.email}</p>
-                            <p>{errors.text}</p>
+                            <p>{t(errors.name)}</p>
+                            <p>{t(errors.phone)}</p>
+                            <p>{t(errors.email)}</p>
+                            <p>{t(errors.text)}</p>
                         </Error>
                     </InputFieldsWrapper>
                 )}

@@ -44,20 +44,12 @@ function App() {
   // }
 
   useEffect(() => {
-    document.addEventListener('touchmove', function(e) {
-      e.preventDefault()
-    }, false)
-    window.addEventListener('touchmove', function(e) {
-      e.preventDefault()
-    }, {
-      passive: false
-   });
     localStorage.setItem('scroll', false)
   }, [])
 
   useEffect(() => {
     setAnimationHeight(containerRef.current?.clientHeight)
-
+    localStorage.setItem('requestType', null)
   }, [pathname])
 
   useEffect(() => {

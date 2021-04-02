@@ -18,7 +18,8 @@ const Main = () => {
    const refApplication = useRef();
    const [openModal, setOpenModal] = useState(false)
 
-   const onOpenModal = () => {
+   const onOpenModal = (key) => {
+      localStorage.setItem('requestType', key)
       setOpenModal(true)
    }
 
@@ -30,11 +31,11 @@ const Main = () => {
       <Fragment>
          <MainWrapper>
             <SectionTyping />
-            <SectionGoals onOpenModal={onOpenModal} />
+            <SectionGoals onOpenModal={() => onOpenModal('Главная страница 1-й раздел')} />
             <SectionWe />
             <ServicesSection />
             <SectionCases refCases={refCases} />
-            <SectionPlan refApplication={refApplication} onOpenModal={onOpenModal} />
+            <SectionPlan refApplication={refApplication} onOpenModal={() => onOpenModal('Главная страница план работы')} />
             <ModalRequest
                open={openModal}
                onClose={onCloseModal}

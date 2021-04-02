@@ -186,7 +186,7 @@ const WorkItem = ({ work }) => {
                                             key={index}
                                             src={CMS_URL + img.url}
                                             alt='example'
-                                            style={{ width:  width > 600 ?  img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7 }}
+                                            style={{ width:  width > 600 ?  img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, height:  width > 600 ?  img.height * 0.8 : height * 0.7 > img.height * 0.7 ? img.height * 0.7 : height * 0.7 }}
                                             draggable={false}
                                             // onMouseDown={registerCallBack}
                                             // onMouseMove={cancelCallback}

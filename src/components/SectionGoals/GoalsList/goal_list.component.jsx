@@ -20,18 +20,18 @@ const GoalsList = () => {
 
     return (
         <ListContainer>
-            <Goal>
+            <Goal color={color}>
                 <ListMark/>
                 {t('your_goals_idea')}
             </Goal>
-            <Goal>
+            <Goal color={color}>
                 <ListMark/>
                 {t('your_goals_site')}
             </Goal>
-            <Goal>
+            <Goal color={color}>
                 <ListMark/>
                 {t('your_goals_product')}
-            </Goal>
+            </Goal >
             <Description>
                 {t('your_goals_desc')}
             </Description>
