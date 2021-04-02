@@ -182,7 +182,7 @@ export const FileInputLabel = styled.label`
 
 export const Error = styled.span`
     width: '100%';
-    color: #771212;
+    color: #f82222;
     font-weight: 200;
     font-size: 14px;
     line-height: 19px;
