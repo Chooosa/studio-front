@@ -6,12 +6,12 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import { useTranslation } from '../../hooks/translation';
 
 const jobTitles = [
-   "job_ceo",
+   "job_jenya",
    "job_designer",
-   "job_developer",
-   "job_developer",
+   "job_full_stack",
+   "job_front_developer",
    "job_manager",
-   "job_developer"
+   "job_front_developer"
 ]
 
 

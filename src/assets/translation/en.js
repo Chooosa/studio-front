@@ -227,7 +227,11 @@ export const en = {
     service_development_title: "Development",
     service_publication_title: "Publishing to stores",
     job_developer: "Developer",
-    job_designer: "Designer",
+    job_full_stack: "Full Stack Developer",
+    job_front_developer: "Frontend Developer",
+    job_backend_developer: "Backend Developer",
+    job_mobile_developer: "Mobile Apps Developer",
+    job_designer: "UI/UX Designer",
     job_manager: "Project manager",
-    job_ceo: "CEO"
+    job_jenya: "Chief/Backend Developer"
 }
