@@ -91,3 +91,12 @@ letter-spacing: 0.05em;
 color: #F9F9F9;
 
 `
+
+export const SlideContainer = styled.div`
+display: flex;
+justify-content: center;
+:focus {
+   outline: none !important 
+}
+
+`
