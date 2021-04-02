@@ -9,7 +9,9 @@ import {
     ContentDescription,
     ContentTitle,
     ContentBody,
-    PreviewImage
+    PreviewImage,
+    CaseLogo,
+    CaseLogoContainer
 } from './case.styles';
 import { CMS_URL } from '../../../config';
 import { useSelector } from 'react-redux';
@@ -17,26 +19,37 @@ import { colorSelectors } from '../../../redux/color/color.selectors';
 import { useHistory } from 'react-router-dom';
 import BoltSVG from '../../../assets/bolt.svg';
 import {useTranslation} from '../../../hooks/translation';
+import { useWindowDimensions } from '../../../hooks/dimensions';
 
 
 const Case = ({ caseToDisplay }) => {
     const color = useSelector(colorSelectors.color)
     const history = useHistory()
     const {t, language} = useTranslation()
-
+    const {width} = useWindowDimensions()
 
     const handleNavigation = (id) => {
         history.push(`/works/${caseToDisplay.Type}/${id}`)
 
     }
+    console.log(caseToDisplay)
 
     return (
         <CaseContainer>
             <ContentContainer>
                 <ContentBody>
-                    <ContentTitle>
-                        {language === 'ru' ? caseToDisplay.Title : caseToDisplay.TitleEng}
-                    </ContentTitle>
+                    { caseToDisplay.Logo?
+                        <CaseLogoContainer>
+                            <CaseLogo  style={{
+                                width: caseToDisplay.Logo.width * (width> 800 ? 1 : width > 600 ?  0.7 : 0.6),
+                                height: caseToDisplay.Logo.height * (width> 800 ? 1 : width > 600 ?  0.7 : 0.6)
+                            }}    src={CMS_URL + caseToDisplay.Logo.url} alt="logo"/>
+                        </CaseLogoContainer>
+                    : <ContentTitle>
+                            {language === 'ru' ? caseToDisplay.Title : caseToDisplay.TitleEng}
+                        </ContentTitle>
+                    }
+                    
                     <ContentDescription>
                         <ReactMarkdown>
                             {language === 'ru' ? caseToDisplay.ShortDescription : caseToDisplay.ShortDescriptionEng}

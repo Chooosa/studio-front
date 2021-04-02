@@ -146,3 +146,35 @@ display: flex;
     height: 320px;
 }
 `
+
+
+
+export const CaseLogo = styled.img`
+    /* width: 100%; */
+    /* height: 100%; */
+    /* object-fit: cover; */
+`
+
+export const CaseLogoContainer = styled.div`
+/* max-height: 96px; */
+/* /* max-width: 200px; */
+margin-bottom: 40px;
+
+@media(max-width: 770px) {
+    /* max-height: 66px;
+    max-width: 140px; */
+    margin-bottom: 35px;
+}
+
+@media(max-width: 650px) {
+    /* max-height: 56px;
+    max-width: 140px; */
+    margin-bottom: 30px;
+}
+
+@media(max-width: 500px) {
+    /* max-height: 46px;
+    max-width: 120px; */
+    margin-bottom: 28px;
+} 
+`
