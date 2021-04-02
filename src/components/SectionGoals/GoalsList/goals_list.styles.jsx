@@ -28,6 +28,9 @@ letter-spacing: 0.05em;
 color: #F9F9F9;
 >svg {
     margin-right: 14px;
+    >circle {
+        stroke: ${props => props.color}
+    }
 }
 
 @media (max-width: 550px) {
