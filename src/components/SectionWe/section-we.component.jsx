@@ -18,7 +18,7 @@ import AnnaSmile from '../../assets/Team/ann_smile.jpeg'
 import SergeySmile from '../../assets/Team/sergey_smile.jpeg'
 import OlgaSmile from '../../assets/Team/olga_smile.jpeg'
 import AndreySmile from '../../assets/Team/andrew_smile.jpeg'
-import RomanSmile from '../../assets/Team/roma_smile.jpeg'
+import RomanSmile from '../../assets/Team/roma_smile.jpg'
 
 
 const imageArray = [
@@ -49,8 +49,7 @@ const SectionWe = () => {
          index={2}
          descriptionWidth={'390px'}
       >
-         <ImageCarousel imageArray={imageArray} imageSmileArray={imageSmileArray}/>
-      </Section>
+         <ImageCarousel imageArray={imageArray} imageSmileArray={imageSmileArray} />      </Section>
    );
 }
 
