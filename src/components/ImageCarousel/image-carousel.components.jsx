@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import { Container, SlideImage, ImageWrapper, SliderText, SliderTextContainer, SlideContainer } from './image-carousel.styles'
 import { useWindowDimensions } from '../../hooks/dimensions';
 import { useTranslation } from '../../hooks/translation';
+import { isMobile, isTablet } from 'react-device-detect';
 
 const jobTitles = [
    "job_jenya",
@@ -27,10 +28,22 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
 
    const handleChangePhoto = (index) => {
       if (index || index === 0) {
+         if (!isMobile && !isTablet) {
 
-         setSmileImage(index)
+            setSmileImage(index)
+         } 
       } else {
          setSmileImage(null)
+      }
+   }
+
+   const handleClick = (index) => {
+      if (isMobile || isTablet) {
+         if (smileImage === index) {
+            setSmileImage(null)
+         } else {
+            setSmileImage(index)
+         }
       }
    }
 
@@ -79,6 +92,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
                               alt='team'
                               onMouseEnter={() => handleChangePhoto(index)}
                               onMouseLeave={() => handleChangePhoto()}
+                              onClick={() => handleClick(index)}
                            >
                               </SlideImage>
                            <SliderTextContainer>

@@ -22,7 +22,8 @@ const SectionHeader = ({
     headerContainerStyles,
     padding,
     nonAnimation = true,
-    nonNumber = false
+    nonNumber = false,
+    custom
 }) => {
     const [showSection, setShowSection] = useState(false)
     const { ref, inView } = useInView({
@@ -57,13 +58,17 @@ const SectionHeader = ({
                             }
 
                         </Header>
+                        {custom? 
+                        custom: 
                         <DescriptionContainer
-                            style={{ ...headerDescriptionStyles }}
-                        >
-                            <Description customWidth={descriptionWidth}>
-                                {description}
-                            </Description>
-                        </DescriptionContainer>
+                        style={{ ...headerDescriptionStyles }}
+                            >
+                                <Description customWidth={descriptionWidth}>
+                                    {description}
+                                </Description>
+                            </DescriptionContainer>
+                        }
+
                     </Fragment>
                     :
                     <Fragment>
@@ -103,9 +108,16 @@ const SectionHeader = ({
                             }}
 
                         >
-                            <Description customWidth={descriptionWidth}>
+                            {
+                            custom?
+                            custom
+                            : <Description customWidth={descriptionWidth}>
                                 {description}
                             </Description>
+                            
+                            
+                            }
+                            
                         </DescriptionContainer>
                     </Fragment>
 

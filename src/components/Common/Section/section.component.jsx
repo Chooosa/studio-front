@@ -18,7 +18,8 @@ const Section = ({
     reff,
     padding,
     nonAnimation,
-    nonNumber
+    nonNumber,
+    custom
 }) => {
     const [animate, setAnimate] = useState(false)
 
@@ -49,6 +50,7 @@ const Section = ({
             >
                 <SectionHeader
                     title={title}
+                    custom={custom}
                     description={description}
                     index={index}
                     show={animate}
@@ -58,6 +60,7 @@ const Section = ({
                     padding={padding}
                     nonAnimation={nonAnimation}
                     nonNumber={nonNumber}
+                    custom={custom}
                 />
                 {children}
             </Container>
