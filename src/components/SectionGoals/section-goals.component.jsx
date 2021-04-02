@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+
+
 // import { useHistory } from 'react-router-dom';
 
 // import fireIco from '../../assets/fire.png';
@@ -16,6 +18,9 @@ import {
    Button
 } from './section-goals.styles';
 import ModalRequest from '../ModalRequest/modal-request.component';
+import GoalsList from './GoalsList/goal_list.component';
+
+
 
 const SectionGoals = ({ onOpenModal }) => {
    // const history = useHistory();
@@ -32,6 +37,7 @@ const SectionGoals = ({ onOpenModal }) => {
             marginBottom: '50px'
          }}
          descriptionWidth={'370px'}
+         custom={<GoalsList/>}
       >
          <Button onClick={onOpenModal} color={color}>
             {t('leave_request')}

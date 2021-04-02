@@ -20,9 +20,12 @@ export const en = {
     web_interfaces: 'Web-interfaces',
 
     your_goals: 'What are your goals?',
+    your_goals_idea: "You have an app or a website idea, but don't know where to start?",
+    your_goals_site: 'You already have a website and want to expand your presence to mobile market?',
+    your_goals_product: "You have a finished product, but users are not engaged enough?",
     your_goals_desc: `As soon as you contact us, we adress the main challenge -
-    how to ensure the maximum benefit from our product for the client.
-    You'll get the best possible solution.`,
+    how to ensure the maximum benefit from our product for the client. Leave a request and we will provide you with an optimal solution for your problem.
+    `,
     go_to_portfolio: 'Go to portfolio',
 
     about_us: 'Who are we?',
