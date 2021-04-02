@@ -240,7 +240,7 @@ export const ru = {
     service_publication_title: "Публикация в сторах",
     job_developer: "Developer",
     job_full_stack: "Full Stack Developer",
-    job_front_developer: "Frontend Developer",
+    job_front_developer: "Frontend/Mobile Developer",
     job_backend_developer: "Backend Developer",
     job_mobile_developer: "Mobile Apps Developer",
     job_designer: "UI/UX Designer",
