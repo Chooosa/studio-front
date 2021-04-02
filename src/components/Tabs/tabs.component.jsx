@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import BottomTabBar from '../BottomTab/bottom-tab.component';
@@ -31,7 +32,7 @@ const Tabs = ({
     const headerRef = useRef()
     const [animatedLineStyles, setAnimatedLineStyles] = useState({ width: 0, offset: 0 })
     const { width } = useWindowDimensions()
-
+    const {pathname} = useLocation()
 
     useEffect(() => {
         if (width > 612) {
@@ -50,7 +51,7 @@ const Tabs = ({
     }, [currentTab])
 
     const handleTabChange = (index) => {
-
+        localStorage.setItem('requestType', 'tab: ' + tabNames[index] + ' page: ' + pathname)
         setCurrentTab(index)
         window.scrollTo({
             top: 0,
