@@ -26,7 +26,8 @@ const AnimatedCard = ({
     onClick,
     color,
     t,
-    showButton = true
+    showButton = true,
+    onCardClick
 }) => {
     const [showOverlay, setShowOverlay] = useState(false)
     const { width } = useWindowDimensions()
@@ -46,6 +47,7 @@ const AnimatedCard = ({
                             onMouseLeave={() => setShowOverlay(false)}
                             noBorder={true}
                             layout
+                            onClick={onCardClick}
                         >
                             <CardInnerContainer
                                 color={color}

@@ -32,6 +32,7 @@ import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 import { useTranslation } from '../../hooks/translation';
 import privacyPolicy from '../../assets/privacyPolicy.pdf'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 
@@ -39,7 +40,8 @@ const SectionRequest = ({
     refApplication,
     index,
     padding,
-    nonNumber
+    nonNumber,
+    onCloseModal
 }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
@@ -48,6 +50,7 @@ const SectionRequest = ({
     const ref = useRef()
     const { t } = useTranslation();
     const [isRequestSent, setIsRequestSent] = useState(false);
+    const {pathname} = useLocation()
     const formikRef = useRef()
 
     const getValidation = (t) => {
@@ -92,16 +95,19 @@ const SectionRequest = ({
     const [filesArray, setFilesArray] = useState([]);
 
     const sendRequest = async (values, { resetForm }) => {
-        // axios.interceptors.request.use(function (config) {
-        //     return config;
-        // }, function (error) {
-        //     return Promise.reject(error);
-        // });
         const formData = new FormData();
         formData.append('name', values.name);
         formData.append('email', values.email);
         formData.append('phone', values.phone);
         formData.append('text', values.text);
+        let requestType = localStorage.getItem('requestType')
+
+        if (!requestType) {
+            requestType = 'page: ' + pathname
+        }
+
+        formData.append('section', requestType)
+        
 
         filesArray.forEach((file) => {
             formData.append('file', file);
@@ -109,9 +115,11 @@ const SectionRequest = ({
 
         try {
             const resp = await axios.post(`${API_URL}application`, formData);
+
             resetForm();
             setFilesArray([]);
             setIsRequestSent(true);
+            // onCloseModal()
             return resp;
         }
         catch (err) {
@@ -141,10 +149,11 @@ const SectionRequest = ({
     }
 
     useEffect(() => {
+        
         if (scroll === 'request') {
-            ref.current?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
+            window.scroll({
+                top: ref.current.getBoundingClientRect().top - 220,
+                behavior: 'smooth'
             })
             dispatch(setScroll(undefined))
         }

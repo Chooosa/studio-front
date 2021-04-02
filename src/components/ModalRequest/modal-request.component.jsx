@@ -45,6 +45,7 @@ const ModalRequest = ({
             <SectionRequest
                // index={5}
                nonNumber={true}
+               onCloseModal={onClose}
             />
          </ModalContainer>
       </CustomDialog >

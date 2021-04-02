@@ -13,13 +13,14 @@ import {
     CardsWrapper,
     CardsContainer
 } from './service-tab.styles';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
 import AnimatedDescription from './AnimatedDescription/animated-description.component';
 import AnimatedNumbersNew from '../AnimatedNumberNew/animated_number_new.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import AnimatedHeaderMobile from '../AnimatedHeaderMobile/animated_header_mobile.component';
+import { setScroll } from '../../redux/scroll/scroll.actions';
 
 
 const ServiceTab = ({ service, content, currentTab, works }) => {
@@ -28,6 +29,9 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
     const color = useSelector(colorSelectors.color)
     const { t } = useTranslation();
     const {width} = useWindowDimensions()
+    const dispatch = useDispatch() 
+
+
 
     const handleViewportChange = (e, entry) => {
         if (e && entry && (entry.intersectionRatio >= 0.5)) {
@@ -38,6 +42,13 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
             setAnimate(false)
         }
     }
+
+    const handleCardClick = (card) => {
+        localStorage.setItem('requestType', card)
+        dispatch(setScroll('request'))
+        
+    } 
+
 
     return (
         <TabContainer>
@@ -70,6 +81,7 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                                     title={language === 'ru' ? service.Title1 : service.TitleEng1}
                                     color={color}
                                     showButton={false}
+                                    onCardClick={() => handleCardClick(service.Title1)}
                                 />
                                 <AnimatedCard
                                     t={t}
@@ -77,6 +89,7 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                                     title={language === 'ru' ? service.Title2 : service.TitleEng2}
                                     color={color}
                                     showButton={false}
+                                    onCardClick={() => handleCardClick(service.Title2)}
                                 />
                             </CardsContainer>
                             <CardsContainer>
@@ -86,6 +99,7 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                                     title={language === 'ru' ? service.Title3 : service.TitleEng3}
                                     color={color}
                                     showButton={false}
+                                    onCardClick={() => handleCardClick(service.Title3)}
                                 />
                                 <AnimatedCard
                                     t={t}
@@ -93,6 +107,7 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                                     title={language === 'ru' ? service.Title4 : service.TitleEng4}
                                     color={color}
                                     showButton={false}
+                                    onCardClick={() => handleCardClick(service.Title4)}
                                 />
                             </CardsContainer>
                         </CardsWrapper>
