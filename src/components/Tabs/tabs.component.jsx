@@ -41,7 +41,7 @@ const Tabs = ({
             const offset = headerRef.current ? rect.left - parentOffset : 0
             setAnimatedLineStyles({ width: width, offset: offset })
         }
-    }, [currentTab, width])
+    }, [currentTab, width, language])
 
     useEffect(() => {
         if (changeCurrentTub) {

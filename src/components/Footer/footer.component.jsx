@@ -129,7 +129,7 @@ const Footer = () => {
                      <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://teleg.run/lilekov_evgeniy'>
                         <img src={telegramBigSVG} alt='Telegram' />
                      </SocialNetworks>
-                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekovstudio/'>
+                     <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.instagram.com/lilekov_studio/'>
                         <img src={instagramBigSVG} alt='Instagram' />
                      </SocialNetworks>
                      <SocialNetworks target='_blank' rel='nofollow noopener noreferrer' href='https://www.facebook.com/lilekovstudio'>
