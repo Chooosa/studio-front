@@ -20,7 +20,7 @@ import {
 } from './plan.styles';
 import { colorSelectors } from '../../redux/color/color.selectors';
 
-import postIco from '../../assets/post.png';
+
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { setScroll } from '../../redux/scroll/scroll.actions'
 import { useWindowDimensions } from '../../hooks/dimensions'
@@ -28,7 +28,7 @@ import Slider from './Slider/slider.component'
 import { scrollSelectors } from '../../redux/scroll/scroll.selectors';
 // import DraggableTabs from './DraggableTabs/draggable-tabs.component'
 import { useTranslation } from '../../hooks/translation'
-import ModalRequest from '../ModalRequest/modal-request.component';
+
 
 const Plan = ({ onOpenModal }) => {
    const color = useSelector(colorSelectors.color);

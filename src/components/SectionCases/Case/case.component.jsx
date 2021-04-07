@@ -17,7 +17,6 @@ import { CMS_URL } from '../../../config';
 import { useSelector } from 'react-redux';
 import { colorSelectors } from '../../../redux/color/color.selectors';
 import { useHistory } from 'react-router-dom';
-import BoltSVG from '../../../assets/bolt.svg';
 import {useTranslation} from '../../../hooks/translation';
 import { useWindowDimensions } from '../../../hooks/dimensions';
 
@@ -32,7 +31,7 @@ const Case = ({ caseToDisplay }) => {
         history.push(`/works/${caseToDisplay.Type}/${id}`)
 
     }
-    console.log(caseToDisplay)
+
 
     return (
         <CaseContainer>

@@ -27,7 +27,7 @@ const ModalRequest = ({
       <CustomDialog
          open={open}
          TransitionComponent={Transition}
-         // disableScrollLock
+         disableScrollLock={width > 768 ? true: false}
          id='modal-base'
          scroll='body'
          keepMounted
@@ -42,11 +42,14 @@ const ModalRequest = ({
             <CloseButton onClick={onClose}>
                <img src={closeIcon} alt='Закрыть' />
             </CloseButton>
-            <SectionRequest
-               // index={5}
-               nonNumber={true}
-               onCloseModal={onClose}
-            />
+            {
+               open&&
+               <SectionRequest
+                  // index={5}
+                  nonNumber={true}
+                  onCloseModal={onClose}
+               />
+            }
          </ModalContainer>
       </CustomDialog >
    );

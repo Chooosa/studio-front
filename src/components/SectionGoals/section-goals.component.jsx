@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 
@@ -17,7 +17,6 @@ import {
    // Text,
    Button
 } from './section-goals.styles';
-import ModalRequest from '../ModalRequest/modal-request.component';
 import GoalsList from './GoalsList/goal_list.component';
 
 
