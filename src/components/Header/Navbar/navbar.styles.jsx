@@ -100,6 +100,8 @@ export const LinksCell = styled.div`
 `
 
 export const Link = styled(motion.span)`
+   width: max-content;
+   line-break: strict;
    font-weight: 200;
    font-size: 14px;
    line-height: 19px;
@@ -113,10 +115,10 @@ export const Link = styled(motion.span)`
    ::before {
       content: "";
       position: absolute;
-      height: 4px;
+      height: 1px;
       width: 0;
       right: 0;
-      bottom: 2px;
+      bottom: -1px;
       z-index: -1;
       opacity: 0;
       transition: all 0.4s ease;
