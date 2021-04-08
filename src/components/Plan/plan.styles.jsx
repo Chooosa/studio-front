@@ -9,8 +9,8 @@ export const PlanWrapper = styled.div`
    justify-content: space-between;
    background-color: #111;
    overflow: hidden;
-   padding: 77px 0 60px 0px;
-   margin-bottom: 10px;
+   padding: 77px 0 80px 0px;
+   margin-bottom: 17px;
    /* height: 670px; */
 
    @media(max-width: 850px) {
@@ -24,7 +24,7 @@ export const PlanWrapper = styled.div`
 export const Button = styled(CustomButton)`
    align-self: center;
    border-color: ${props => props.color};
-   margin-top: 40px;
+   /* margin-top: 40px; */
    margin-right: 56px;
    /* transition-duration: 0.4s; */
 

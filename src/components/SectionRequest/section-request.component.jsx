@@ -171,7 +171,7 @@ const SectionRequest = ({
             index={index}
             nonNumber={nonNumber}
             headerContainerStyles={{
-                marginBottom: '50px'
+                marginBottom: '40px'
             }}
             threshold={0.3}
             descriptionWidth={'390px'}

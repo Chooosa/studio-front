@@ -7,7 +7,7 @@ export const Container = styled.div`
    @media (max-width: 1240px){
       padding-left: 20px;
       padding-right: 20px;
-      height: 450px;
+      /* height: 450px; */
    }
 
    .slick-dots li.slick-active button:before {

@@ -41,7 +41,7 @@ const Cooperation = () => {
                 descriptionWidth={'610px'}
                 headerContainerStyles={{
                     marginTop: '110px',
-                    marginBottom: '20px',
+                    marginBottom: '0px',
                 }}
             />
             {

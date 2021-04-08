@@ -8,7 +8,6 @@ display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: flex-start;
-margin-bottom: 7px;
 margin-top: 40px;
 `
 

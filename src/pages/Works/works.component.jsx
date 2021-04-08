@@ -101,7 +101,7 @@ const WorksPage = () => {
             </Tabs>
             {
                 width > 800 ?
-                    <div style={{ marginTop: '60px' }}>
+                    <div style={{ marginTop: '110px' }}>
                         <SectionRequest index={2} padding={'0px'} nonNumber={true} />
                     </div>
                     : <Button onClick={onOpenModal} color={color}>

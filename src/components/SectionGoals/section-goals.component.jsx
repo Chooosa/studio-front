@@ -33,7 +33,7 @@ const SectionGoals = ({ onOpenModal }) => {
          description={t('your_goals_desc')}
          index={1}
          headerContainerStyles={{
-            marginBottom: '50px'
+            marginBottom: '40px'
          }}
          descriptionWidth={'370px'}
          custom={<GoalsList/>}
