@@ -249,10 +249,18 @@ export const en = {
     service_publication_title: "Publishing to stores",
     job_developer: "Developer",
     job_full_stack: "Full Stack Developer",
-    job_front_developer: "Frontend Developer",
+    job_front_developer: "Frontend/App Developer",
     job_backend_developer: "Backend Developer",
     job_mobile_developer: "Mobile Apps Developer",
     job_designer: "UI/UX Designer",
     job_manager: "Project manager",
-    job_jenya: "Chief/Backend Developer"
+    job_jenya: "Chief/Backend Developer",
+    Lilekov_Evgeniy: 'Evgeniy Lilekov',
+    Kotler_Roman: 'Roman Kotler',
+    Sergey_Yukhanov: 'Sergey Yukhanov',
+    Andrey_Eruh: 'Andrey Erukh',
+    Anna_Kulikova: 'Anna Kulikova',
+    Nasir_Imanov: 'Nasir Imanov',
+    Sergey_Luchinkin: 'Sergey Luchinkin',
+    Olga_Salnikova: 'Olga Salnikova'
 }

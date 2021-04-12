@@ -61,21 +61,23 @@ export const ImageWrapper = styled.div`
       }
       :nth-child(2) {
          opacity: 1;
-         
+
       }
    } */
 `
 
 export const SliderTextContainer = styled.section`
 display: flex;
-justify-content: center;
+flex-direction: column;
+justify-content: space-between;
 align-items: center;
+padding: 6px 0;
 background: linear-gradient(180deg, rgba(9, 9, 9, 0.16) 25%, #090909 95.83%);
-width: 100%;
-height: 47px;
+width: calc(100% - 10px);
+height: 58px;
 position: absolute;
 bottom: 0;
-left: 0;
+left: 5px;
 `
 
 
@@ -96,7 +98,7 @@ export const SlideContainer = styled.div`
 display: flex;
 justify-content: center;
 :focus {
-   outline: none !important 
+   outline: none !important
 }
 
 `

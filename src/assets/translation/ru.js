@@ -240,10 +240,18 @@ export const ru = {
     service_publication_title: "Публикация в сторах",
     job_developer: "Developer",
     job_full_stack: "Full Stack Developer",
-    job_front_developer: "Frontend/Mobile Developer",
+    job_front_developer: "Frontend/App Developer",
     job_backend_developer: "Backend Developer",
     job_mobile_developer: "Mobile Apps Developer",
     job_designer: "UI/UX Designer",
     job_manager: "Project manager",
-    job_jenya: "Chief/Backend Developer"
+    job_jenya: "Chief/Backend Developer",
+    Lilekov_Evgeniy: 'Евгений Лилеков',
+    Kotler_Roman: 'Роман Котлер',
+    Sergey_Yukhanov: 'Сергей Юханов',
+    Andrey_Eruh: 'Андрей Ерух',
+    Anna_Kulikova: 'Анна Куликова',
+    Nasir_Imanov: 'Насир Иманов',
+    Sergey_Luchinkin: 'Сергей Лучинкин',
+    Olga_Salnikova: 'Ольга Сальникова'
 }

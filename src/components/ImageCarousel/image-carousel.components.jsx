@@ -15,7 +15,16 @@ const jobTitles = [
    "job_front_developer"
 ]
 
-
+const names = [
+   "Lilekov_Evgeniy",
+   "Anna_Kulikova",
+   "Sergey_Yukhanov",
+   "Olga_Salnikova",
+   "Andrey_Eruh",
+   "Kotler_Roman",
+   // "Nasir_Imanov",
+   // "Sergey_Luchinkin",
+]
 
 
 
@@ -24,14 +33,14 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
    const { width } = useWindowDimensions()
    const [countSlidesToShow, setCountSlidesToShow] = useState(5)
    const [smileImage, setSmileImage] = useState(null)
-   const {t} = useTranslation()
+   const { t } = useTranslation()
 
    const handleChangePhoto = (index) => {
       if (index || index === 0) {
          if (!isMobile && !isTablet) {
 
             setSmileImage(index)
-         } 
+         }
       } else {
          setSmileImage(null)
       }
@@ -86,20 +95,25 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
                   return (
                      <SlideContainer >
                         <ImageWrapper >
-                           <SlideImage
-                              src={index===smileImage? imageSmileArray[index]:  image}
-                              key={index}
-                              alt='team'
-                              onMouseEnter={() => handleChangePhoto(index)}
-                              onMouseLeave={() => handleChangePhoto()}
-                              onClick={() => handleClick(index)}
-                           >
+                           <div style={{ width: 'max-content', position: 'relative' }}>
+                              <SlideImage
+                                 src={index === smileImage ? imageSmileArray[index] : image}
+                                 key={index}
+                                 alt='team'
+                                 onMouseEnter={() => handleChangePhoto(index)}
+                                 onMouseLeave={() => handleChangePhoto()}
+                                 onClick={() => handleClick(index)}
+                              >
                               </SlideImage>
-                           <SliderTextContainer>
-                              <SliderText>
-                                 {t(jobTitles[index])}
-                              </SliderText>
-                           </SliderTextContainer>
+                              <SliderTextContainer>
+                                 <SliderText>
+                                    {t(names[index])}
+                                 </SliderText>
+                                 <SliderText>
+                                    {t(jobTitles[index])}
+                                 </SliderText>
+                              </SliderTextContainer>
+                           </div>
                            {/* <SlideImageHidde          n
                                                 src={index===smileImage? imageSmileArray[index]:  image}
                                                 key={index}
