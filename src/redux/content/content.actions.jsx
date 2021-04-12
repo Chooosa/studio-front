@@ -30,9 +30,18 @@ export const fetchContent = () => {
             .then((response) => {
                 for (var i = 0; i < response.data.length; i++) {
                     if (response.data[i].Type === 'Website') {
+                        response.data[i].Gallery.forEach((image) => {
+                            image.width = 800
+                            image.height = 481
+                        })
                         apps = response.data.slice(0, i)
                         websites = response.data.slice(i, response.data.length)
                         break;
+                    } else if (response.data[i].Type === 'Application') {
+                        response.data[i].Gallery.forEach((image) => {
+                            image.width = 224
+                            image.height = 473
+                        })
                     }
                 }
                 axios(`${CMS_URL}/services?_sort=id:ASC`)
