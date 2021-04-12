@@ -24,7 +24,7 @@ import {
 import Section from '../Common/Section/section.component';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import { useWindowDimensions } from '../../hooks/dimensions';
-import Send from '../../assets/post.png';
+// import Send from '../../assets/post.png';
 import Attach from '../../assets/attach.png';
 import Delete from '../../assets/delete.png';
 import { API_URL } from '../../config';
@@ -57,32 +57,37 @@ const SectionRequest = ({
         const validationSchema = yup.object().shape({
             email: yup.string()
                 .email('error_invalid_email')
-                .required('error_no_email'),
+                .when('phone', {
+                    is: (val) => {
+                        if (val) {
+                            return true
+                        }
+                        return false
+                    },
+                    then: yup.string(),
+                    otherwise: yup.string().required('error_email'),
+                }),
             phone: yup.string()
+                .when('email', {
+                    is: (val) => {
+                        if (val) {
+                            return true
+                        }
+                        return false
+                    },
+                    then: yup.string(),
+                    otherwise: yup.string().required('error_phone')
+                })
                 .min(12, 'error_phone')
-                .max(12, 'error_phone')
-                .required('error_phone'),
+                .max(12, 'error_phone'),
+                // .required('error_phone'),
             name: yup.string()
                 .trim()
                 .required('error_name'),
             text: yup.string()
                 .trim()
                 .required('error_text'),
-
-            //     email: yup.string()
-            //     .email(t('error_invalid_email'))
-            //     .required(t('error_no_email')),
-            // phone: yup.string()
-            //     .min(12, t('error_phone'))
-            //     .max(12, t('error_phone'))
-            //     .required(t('error_phone')),
-            // name: yup.string()
-            //     .trim()
-            //     .required(t('error_name')),
-            // text: yup.string()
-            //     .trim()
-            //     .required(t('error_text')),
-        })
+        }, [['email', 'phone']])
 
         return validationSchema
     }
@@ -166,7 +171,7 @@ const SectionRequest = ({
             index={index}
             nonNumber={nonNumber}
             headerContainerStyles={{
-                marginBottom: '50px'
+                marginBottom: '40px'
             }}
             threshold={0.3}
             descriptionWidth={'390px'}

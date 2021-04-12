@@ -10,7 +10,7 @@ export const ContactsContainer = styled.div`
    display: flex;
    align-items: flex-end;
    justify-content: space-between;
-   margin-bottom: 100px;
+   margin-bottom: 110px;
    height: max-content;
    position: relative;
 

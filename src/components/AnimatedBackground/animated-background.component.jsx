@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import { colorSelectors } from '../../redux/color/color.selectors';
 
@@ -20,9 +19,8 @@ import {
 const AnimatedBackground = ({ animationHeight }) => {
 
     const { width, height } = useWindowDimensions()
-    const location = useLocation()
     const color = useSelector(colorSelectors.color)
-    //hide={location.pathname !== '/'}
+    
     return (
         <Container animationHeight={animationHeight}>
             {

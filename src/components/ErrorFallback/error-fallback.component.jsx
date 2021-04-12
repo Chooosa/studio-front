@@ -17,18 +17,7 @@ const ErrorBoundary = ({ error }) => {
     
     useEffect(() => {
         if (process.env.NODE_ENV === 'production') {
-            let data = {
-                route: location.pathname,
-                device: deviceDetect(),
-                error: error.message,
-                // data: moment().format('DD-MM-YYYY'),
-                // time: moment().format('HH:mm:ss'),
-                browser: {
-                    name: browserName,
-                    version: browserVersion
-                },
-            }
-            
+           
 
 
             axios({

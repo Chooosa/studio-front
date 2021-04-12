@@ -3,7 +3,6 @@ import React from 'react';
 import Section from '../Common/Section/section.component';
 import { useTranslation } from '../../hooks/translation';
 import ImageCarousel from '../ImageCarousel/image-carousel.components';
-import imageOne from '../../assets/slider-ex.png'
 
 import Evgeny from '../../assets/Team/eugene.jpeg'
 import Anna from '../../assets/Team/ann.jpeg'

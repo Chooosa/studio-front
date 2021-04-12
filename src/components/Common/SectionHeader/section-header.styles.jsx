@@ -5,7 +5,7 @@ import { CustomHeading } from '../../../styles/common';
 
 export const Content = styled.div`
 width: 100%;
-margin-bottom: 60px;
+margin-bottom: 40px;
 display: flex;
 flex-direction: column;
 @media(max-width: 1240px) {
@@ -55,10 +55,11 @@ export const DescriptionContainer = styled.div`
 width: 100%;
 display: flex;
 justify-content: flex-start;
+margin-top: 40px;
 `
 
 export const Description = styled.p`
-margin: 12px 0px;
+margin: 0 0px;
 font-size: 14px;
 color: #F9F9F9;
 letter-spacing: 0.3px;

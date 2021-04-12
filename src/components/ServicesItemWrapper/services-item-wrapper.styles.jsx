@@ -5,7 +5,7 @@ export const ComponentWrapper = styled.div`
     flex-direction: column;
     ${props => props.sliderWidth ? 'align-items: center;' : ''};
     width: 100%;
-    margin: 70px 5px 0px 5px;
+    margin: 20px 5px 0px 5px;
 
     padding: 0 20px;
 

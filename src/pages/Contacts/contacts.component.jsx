@@ -100,7 +100,6 @@ const Contacts = () => {
       var img = document.querySelector('#clip-path')
       if (img && img.style) {
          img.style.clipPath = "none";
-         console.log(img.offsetWidth);
          img.style.clipPath = 'url(#clipPath)';
    
          window.requestAnimationFrame(redrawImage)

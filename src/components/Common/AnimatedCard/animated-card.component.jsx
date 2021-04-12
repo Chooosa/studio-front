@@ -11,12 +11,10 @@ import {
     Description,
     Title,
     Button,
-    Icon,
     CardHeader,
     CardIcon,
     CardInnerContainer
 } from './animated-card.styles';
-import { ReactComponent as BoltSVG } from '../../../assets/bolt.svg';
 import { useWindowDimensions } from '../../../hooks/dimensions';
 import { ReactComponent as ArrowRightSVG } from '../../../assets/ArrowRight.svg';
 

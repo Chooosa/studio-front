@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useInView, InView } from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
 import AnimatedNumbers from '../../Common/AnimatedNumbers/animated-numbers.component';
 
 import {

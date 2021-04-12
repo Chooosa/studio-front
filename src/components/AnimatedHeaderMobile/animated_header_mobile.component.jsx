@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+
 import React from 'styled-components';
 import { useTranslation } from '../../hooks/translation';
 import AnimatedHeaderSection from './AnimatedHeaderSection/animated_header_section';

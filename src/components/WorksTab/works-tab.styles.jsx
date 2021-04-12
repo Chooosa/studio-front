@@ -5,7 +5,7 @@ export const  TabContainer  = styled(motion.div)`
 width: 100%;
 display: flex;
 flex-direction: column;
-padding-top: 100px;
+padding-top: 28px;
 @media(max-width: 600px) {
     padding-top: 12px;
 }

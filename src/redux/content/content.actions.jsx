@@ -26,7 +26,7 @@ export const fetchContent = () => {
         let cases;
         let apps;
         let websites;
-        axios(`${CMS_URL}/cases?_sort=Type:ASC`)
+        axios(`${CMS_URL}/cases?_sort=Type:ASC,Priority:Desc`)
         .then((response) => {
             for (var i=0; i<response.data.length; i++) {
                 if (response.data[i].Type==='Website') {

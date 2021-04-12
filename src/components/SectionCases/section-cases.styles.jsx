@@ -9,7 +9,7 @@ flex-direction: row;
 @media(max-width: 600px) {
     flex-direction: column;
 }
-margin-bottom: 35px;
+margin-bottom: 40px;
 `
 
 
@@ -68,7 +68,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-margin-top: 50px;
+margin-top: 40px;
 @media(max-width:600px) {
     margin-top: 12px;
 }

@@ -61,7 +61,7 @@ export const LinksCell = styled.div`
       ::before {
          content: "";
          position: absolute;
-         height: 4px;
+         height: 1px;
          width: 0;
          right: 0;
          bottom: 2px;

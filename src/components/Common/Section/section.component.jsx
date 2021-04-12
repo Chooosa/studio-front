@@ -60,7 +60,6 @@ const Section = ({
                     padding={padding}
                     nonAnimation={nonAnimation}
                     nonNumber={nonNumber}
-                    custom={custom}
                 />
                 {children}
             </Container>
