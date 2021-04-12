@@ -21,10 +21,10 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
 
    useEffect(() => {
       if (currentStep) {
-         if (currentStep > 0 && currentStep < 5) {
+         if (currentStep > 0 && currentStep < 4) {
             setCurrentTab(0)
          }
-         if (currentStep > 4 && currentStep < 7) {
+         if (currentStep > 3 && currentStep < 7) {
             setCurrentTab(1)
          }
          if (currentStep > 6 && currentStep < 10) {
@@ -42,7 +42,7 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
             setCurrentStep(1)
             break;
          case 1:
-            setCurrentStep(5)
+            setCurrentStep(4)
             break;
          case 2:
             setCurrentStep(7)

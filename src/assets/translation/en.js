@@ -110,6 +110,8 @@ export const en = {
     design_specification_desc_second: `At this stage we assess which specialists will be engaged in the development and how much time they will need.
     Each specialist will receive a spicific task.`,
 
+    prototyping: 'Prototyping',
+
     design: 'Design',
     design_desc: `It depends on the designer what the website or the app will look like and whether
     users will like it.`,

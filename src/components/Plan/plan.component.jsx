@@ -306,14 +306,12 @@ const Plan = ({ onOpenModal }) => {
          if (currentStep > 4) {
             switch (currentStep) {
                case 5:
-                  return '6%'
+                  return '0%'
                case 6:
-                  return '38%'
+                  return '50%'
                case 7:
-                  return '60%'
-               case 8:
                   return '89%'
-               case 9:
+               case 8:
                   return '100%'
                default:
                   return '100%'
@@ -330,10 +328,12 @@ const Plan = ({ onOpenModal }) => {
 
    const handlePaintingOver3 = () => {
       if (transitionProgress === 3) {
-         if (currentStep > 8) {
+         if (currentStep > 7) {
             switch (currentStep) {
+               case 8:
+                  return '0%'
                case 9:
-                  return '35%'
+                  return '55%'
                case 10:
                   return '100%'
                default:
@@ -346,6 +346,11 @@ const Plan = ({ onOpenModal }) => {
          return '0%'
       }
    }
+
+   useEffect(() => {
+      console.log('transitionProgress: ', transitionProgress)
+      console.log('currentStep: ', currentStep)
+   }, [currentStep, transitionProgress])
 
    const handleTransitionEnd = () => {
       if (line1.current?.offsetWidth === progressLine1.current?.offsetWidth) {
@@ -360,14 +365,14 @@ const Plan = ({ onOpenModal }) => {
       if (line2.current?.offsetWidth === progressLine2.current?.offsetWidth) {
          setTransitionProgress(3)
       }
-      if (progressLine2.current?.offsetWidth === 0) {
+      if (progressLine2.current?.offsetWidth === 0 && currentStep !== 5) {
          setTransitionProgress(1)
       }
    }
 
    const handleTransitionEnd3 = () => {
       if (transitionProgress > 1) {
-         if (progressLine3.current?.offsetWidth === 0) {
+         if (progressLine3.current?.offsetWidth === 0 && currentStep !== 8) {
             setTransitionProgress(2)
          }
       }
@@ -392,7 +397,9 @@ const Plan = ({ onOpenModal }) => {
                <LineWrapper>
                   <Line
                      ref={line1}
-                     lineWidth='calc(100% - 6%)'>
+                     // lineWidth='calc(100% - 6%)'
+                     lineWidth='100%'
+                  >
                      <LineLabel
                         left={'0%'}
                      >
@@ -450,11 +457,11 @@ const Plan = ({ onOpenModal }) => {
                      >
                         <StepButton
                            color={color}
-                           left={'-50px'}
+                           left={'-22px'}
                            onClick={() => setCurrentStep(3)}
                            active={currentStep === 3}
                         >
-                           {t('briefing')}
+                           {t('budget')}
                         </StepButton>
                      </Dash>
 
@@ -465,11 +472,11 @@ const Plan = ({ onOpenModal }) => {
                      >
                         <StepButton
                            color={color}
-                           left={'-22px'}
+                           left={'-25px'}
                            onClick={() => setCurrentStep(4)}
                            active={currentStep === 4}
                         >
-                           {t('budget')}
+                           {t('contract')}
                         </StepButton>
                      </Dash>
                   </Line>
@@ -505,7 +512,7 @@ const Plan = ({ onOpenModal }) => {
                      />
 
                      <Dash
-                        left={'6%'}
+                        left={'0%'}
                         color={color}
                         active={currentStep >= 5}
                      >
@@ -517,53 +524,38 @@ const Plan = ({ onOpenModal }) => {
                            active={currentStep === 5}
                            isStage={true}
                         >
-                           {t('contract')}
-                        </StepButton>
-                     </Dash>
-
-                     <Dash
-                        left={'38%'}
-                        color={color}
-                        active={currentStep >= 6}
-                     >
-                        <StepButton
-                           color={color}
-                           left={'-40px'}
-                           onClick={() => setCurrentStep(6)}
-                           active={currentStep === 6}
-                        >
                            {t('design_specification')}
                         </StepButton>
                      </Dash>
 
                      <Dash
-                        left={'60%'}
+                        left={'50%'}
                         color={color}
-                        active={currentStep >= 7}
+                        active={currentStep >= 6}
                      >
                         <StepButton
                            color={color}
-                           left={'0'}
-                           onClick={() => setCurrentStep(7)}
-                           active={currentStep === 7}
-                           isStage={true}
+                           left={'-70px'}
+                           onClick={() => setCurrentStep(6)}
+                           active={currentStep === 6}
                         >
-                           {t('design')}
+                           {t('prototyping')}
                         </StepButton>
                      </Dash>
 
                      <Dash
                         left={'89%'}
                         color={color}
-                        active={currentStep >= 8}
+                        active={currentStep >= 7}
                      >
                         <StepButton
                            color={color}
-                           left={'-40px'}
-                           onClick={() => setCurrentStep(8)}
-                           active={currentStep === 8}
+                           left={'-20px'}
+                           onClick={() => setCurrentStep(7)}
+                           active={currentStep === 7}
+                           isStage={true}
                         >
-                           {t('development')}
+                           {t('design')}
                         </StepButton>
                      </Dash>
                   </Line>
@@ -572,7 +564,7 @@ const Plan = ({ onOpenModal }) => {
                <LineWrapper alignLeft>
                   <Line
                      ref={line3}
-                     lineWidth={'50%'}>
+                     lineWidth={'75%'}>
                      <LineLabel
                         left={'100%'}
                      >
@@ -593,7 +585,22 @@ const Plan = ({ onOpenModal }) => {
                      />
 
                      <Dash
-                        left={'35%'}
+                        left={'0%'}
+                        color={color}
+                        active={currentStep >= 8}
+                     >
+                        <StepButton
+                           color={color}
+                           left={'0'}
+                           onClick={() => setCurrentStep(8)}
+                           active={currentStep === 8}
+                        >
+                           {t('development')}
+                        </StepButton>
+                     </Dash>
+
+                     <Dash
+                        left={'55%'}
                         color={color}
                         active={currentStep >= 9}
                      >
