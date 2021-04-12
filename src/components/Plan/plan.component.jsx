@@ -16,7 +16,8 @@ import {
    Dash,
    ProgressLine,
    ProgressDot,
-   LineLabel
+   LineLabel,
+   Dot
 } from './plan.styles';
 import { colorSelectors } from '../../redux/color/color.selectors';
 
@@ -76,6 +77,9 @@ const Plan = ({ onOpenModal }) => {
             {t('interview')}
          </Heading>
          <Text>
+            {t('interview_desc_intro_first')}
+            <br />
+            <br />
             {t('interview_desc_intro')}
             <ul>
                <li>
@@ -83,9 +87,6 @@ const Plan = ({ onOpenModal }) => {
                </li>
                <li>
                   {t('interview_desc_list_second')}
-               </li>
-               <li>
-                  {t('interview_desc_list_third')}
                </li>
             </ul>
             {t('interview_desc_outro')}
@@ -109,9 +110,9 @@ const Plan = ({ onOpenModal }) => {
                <li>
                   {t('analysis_desc_list_first')}
                </li>
-               <li>
+               {/* <li>
                   {t('analysis_desc_list_second')}
-               </li>
+               </li> */}
                <li>
                   {t('analysis_desc_list_third')}
                </li>
@@ -129,31 +130,6 @@ const Plan = ({ onOpenModal }) => {
 
       >
          <Heading>
-            {t('briefing')}
-         </Heading>
-         <Text>
-            {t('briefing_desc_intro')}
-            <ul>
-               <li>
-                  {t('briefing_desc_list_first')}
-               </li>
-               <li>
-                  {t('briefing_desc_second')}
-               </li>
-            </ul>
-            {t('briefing_desc_outro')}
-         </Text>
-      </motion.div>,
-
-      <motion.div
-         key={4}
-         initial={{ x: '-100%' }}
-         animate={{ x: '0%' }}
-         exit={{ x: '100%' }}
-         transition={{ duration: 0.3 }}
-
-      >
-         <Heading>
             {t('budget')}
          </Heading>
          <Text>
@@ -164,7 +140,7 @@ const Plan = ({ onOpenModal }) => {
       </motion.div>,
 
       <motion.div
-         key={5}
+         key={4}
          initial={{ x: '-100%' }}
          animate={{ x: '0%' }}
          exit={{ x: '100%' }}
@@ -185,7 +161,7 @@ const Plan = ({ onOpenModal }) => {
       </motion.div>,
 
       <motion.div
-         key={6}
+         key={5}
          initial={{ x: '-100%' }}
          animate={{ x: '0%' }}
          exit={{ x: '100%' }}
@@ -199,6 +175,24 @@ const Plan = ({ onOpenModal }) => {
             <p> {t('design_specification_desc')} </p>
             <br />
             <p> {t('design_specification_desc_second')} </p>
+         </Text>
+      </motion.div>,
+
+      <motion.div
+         key={6}
+         initial={{ x: '-100%' }}
+         animate={{ x: '0%' }}
+         exit={{ x: '100%' }}
+         transition={{ duration: 0.3 }}
+
+      >
+         <Heading>
+            {t('prototyping')}
+         </Heading>
+         <Text>
+            <p> {t('prototyping_desc')} </p>
+            <br />
+            <p> {t('prototyping_desc_second')} </p>
          </Text>
       </motion.div>,
 
@@ -282,7 +276,7 @@ const Plan = ({ onOpenModal }) => {
       if (transitionProgress === 1) {
          switch (currentStep) {
             case 1:
-               return '0%'
+               return '0.0001px'
             case 2:
                return '34%'
             case 3:
@@ -306,7 +300,7 @@ const Plan = ({ onOpenModal }) => {
          if (currentStep > 4) {
             switch (currentStep) {
                case 5:
-                  return '0%'
+                  return '0.0001px'
                case 6:
                   return '50%'
                case 7:
@@ -331,7 +325,7 @@ const Plan = ({ onOpenModal }) => {
          if (currentStep > 7) {
             switch (currentStep) {
                case 8:
-                  return '0%'
+                  return '0.0001px'
                case 9:
                   return '55%'
                case 10:
@@ -356,6 +350,7 @@ const Plan = ({ onOpenModal }) => {
       if (line1.current?.offsetWidth === progressLine1.current?.offsetWidth) {
          setTransitionProgress(2)
       }
+      console.log('1 ', progressLine2.current?.offsetWidth)
    }
 
    const handleTransitionEnd2 = () => {
@@ -368,6 +363,7 @@ const Plan = ({ onOpenModal }) => {
       if (progressLine2.current?.offsetWidth === 0 && currentStep !== 5) {
          setTransitionProgress(1)
       }
+      console.log('2 ', progressLine2.current?.offsetWidth)
    }
 
    const handleTransitionEnd3 = () => {
@@ -405,6 +401,23 @@ const Plan = ({ onOpenModal }) => {
                      >
                         {t('first_stage')}
                      </LineLabel>
+                     <Dot
+                        left={'0.0001px'}
+                        color={color}
+                        active
+                     />
+
+                     <LineLabel
+                        left={'64%'}
+                     >
+                        {t('second_stage')}
+                     </LineLabel>
+                     <Dot
+                        left={'64%'}
+                        color={color}
+                        active={currentStep >= 3}
+                     />
+
                      <ProgressLine
                         ref={progressLine1}
                         cusstomWidth={handlePaintingOver}
@@ -420,6 +433,7 @@ const Plan = ({ onOpenModal }) => {
                      />
 
                      <Dash
+                        left={'0.0001px'}
                         color={color}
                         active
                      >
@@ -460,6 +474,7 @@ const Plan = ({ onOpenModal }) => {
                            left={'-22px'}
                            onClick={() => setCurrentStep(3)}
                            active={currentStep === 3}
+                           isStage={true}
                         >
                            {t('budget')}
                         </StepButton>
@@ -487,15 +502,16 @@ const Plan = ({ onOpenModal }) => {
                      ref={line2}
                   >
                      <LineLabel
-                        left={'6%'}
-                     >
-                        {t('second_stage')}
-                     </LineLabel>
-                     <LineLabel
-                        left={'60%'}
+                        left={'0%'}
                      >
                         {t('third_stage')}
                      </LineLabel>
+                     <Dot
+                        left={'0.0001px'}
+                        color={color}
+                        active={currentStep >= 5}
+                     />
+
                      <ProgressLine
                         ref={progressLine2}
                         cusstomWidth={() => handlePaintingOver2}
@@ -512,7 +528,7 @@ const Plan = ({ onOpenModal }) => {
                      />
 
                      <Dash
-                        left={'0%'}
+                        left={'0.0001px'}
                         color={color}
                         active={currentStep >= 5}
                      >
@@ -553,7 +569,6 @@ const Plan = ({ onOpenModal }) => {
                            left={'-20px'}
                            onClick={() => setCurrentStep(7)}
                            active={currentStep === 7}
-                           isStage={true}
                         >
                            {t('design')}
                         </StepButton>
@@ -566,10 +581,27 @@ const Plan = ({ onOpenModal }) => {
                      ref={line3}
                      lineWidth={'75%'}>
                      <LineLabel
-                        left={'100%'}
+                        left={'0%'}
                      >
                         {t('fourth_stage')}
                      </LineLabel>
+                     <Dot
+                        left={'0.0001px'}
+                        color={color}
+                        active={currentStep >= 8}
+                     />
+
+                     <LineLabel
+                        left={'100%'}
+                     >
+                        {t('fifth_stage')}
+                     </LineLabel>
+                     <Dot
+                        left={'100%'}
+                        color={color}
+                        active={currentStep >= 10}
+                     />
+
                      <ProgressLine
                         ref={progressLine3}
                         cusstomWidth={() => handlePaintingOver3}
@@ -585,7 +617,7 @@ const Plan = ({ onOpenModal }) => {
                      />
 
                      <Dash
-                        left={'0%'}
+                        left={'0.0001px'}
                         color={color}
                         active={currentStep >= 8}
                      >
@@ -594,6 +626,7 @@ const Plan = ({ onOpenModal }) => {
                            left={'0'}
                            onClick={() => setCurrentStep(8)}
                            active={currentStep === 8}
+                           isStage={true}
                         >
                            {t('development')}
                         </StepButton>

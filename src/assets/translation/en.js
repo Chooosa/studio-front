@@ -64,23 +64,28 @@ export const en = {
     second_stage: 'Stage 2',
     third_stage: 'Stage 3',
     fourth_stage: 'Stage 4',
+    fifth_stage: 'Stage 5',
 
     interview: 'Interview',
-    interview_desc_intro: `You tell us what you want to achieve and we discuss the specifics of you project. It takes shape at this stage
-    and we are able to:`,
-    interview_desc_list_first: 'provide you with full cost estimate.',
-    interview_desc_list_second: 'estimate how much time each stage requires.',
-    interview_desc_list_third: 'offer you additional benefits.',
-    interview_desc_outro: `At this stage you get an understanding of how long the development will take and how much it will cost. Meanwhile we
-    work out a transparent development schedule.`,
+    interview_desc_intro_first: `Interview is an essential step.
+    It helps to learn more about the intentions behind
+    the development of a website or an app and about
+    the goals it should achieve.`,
+    interview_desc_intro: `Here with your help we:`,
+    interview_desc_list_first: `Get to learn about your preferences on the project's design and implementation.`,
+    interview_desc_list_second: 'Learn information about your business for future use in our work.',
+    // interview_desc_list_third: 'offer you additional benefits.',
+    interview_desc_outro: `It's all needed so that the final product is adapted
+    to your business, meets all your expectations and does its job excellently.`,
 
     analysis: 'Analytics',
-    analysis_desc_intro: `At this stage we analyze your project: `,
-    analysis_desc_list_first: 'We assess the market.',
-    analysis_desc_list_second: 'We analyze the competition.',
-    analysis_desc_list_third: 'We find the best possible way of achieving your goal.',
-    analysis_desc_outro: `Of course, it's only the first step and in no way binding. However, here methods and stages of future work are shaped.
-    We draw out a plan we can follow in the future development.`,
+    analysis_desc_intro: `At this step we perform a UX analysis of your future project: `,
+    analysis_desc_list_first: 'We assess the market and main competitors.',
+    // analysis_desc_list_second: 'We analyze the competition.',
+    analysis_desc_list_third: 'We figure out the best methods for achieving the goals.',
+    analysis_desc_outro: `Naturally it's just an initial step in the work and is non-binding.
+    However methods and steps of the work are formed here.
+    A draft of the plan is being shaped up, that can be used as a basis for further development.`,
 
     briefing: 'Briefing',
     briefing_desc_intro: `Briefing is one of the main steps. It allows us to get a clearer picture of what the website or the app is for and
@@ -90,18 +95,24 @@ export const en = {
     briefing_desc_outro: `It guarantees that the final product will be adapted for your business, meet your expectations and
     perfectly perform its functions.`,
 
-    budget: 'Budget',
-    budget_desc: `Given the data we've received, we already have a complete understanding of what kind of product
-    you want and what aims you pursue. And we're able to develop a plan to achieve this: to assess how
-    much time it takes for our team to develop the product and what it will require.`,
-    budget_desc_second: `At this stage we can assess the budget. It will tell you how much your project costs.`,
+    budget: 'Cost estimate',
+    budget_desc: `On the basis of the received information we
+    already have a full understanding of what kind of project
+    you want to get and what goals to achieve. And we can draw
+    up a plan for the project - estimate how much time its
+    development will take for different specialists on out
+    team and what resources will be used.`,
+    budget_desc_second: `At this step we can already provide you with a cost estimate.
+    It will allow you to know exactly how much you project will cost.`,
 
     contract: 'Contract',
     contract_desc: `Signing a contract is an important step in our cooperation.`,
-    contract_desc_second: `The contract is signed after the project has been discussed and approved. Then we start the development.`,
-    contract_desc_third: `The contract is a legally binding document which formalizes both sides' obligations.
-    As our work is oficial it's an obligatory step. We always fulfill all our obligations.
-    They vary from project to project due to differences in workload and established deadlines.`,
+    contract_desc_second: `The contract is signed after the project was discussed and approved. After that we start working on it.`,
+    contract_desc_third: `Contract is an official document which
+    formalizes obligations of all sides. As out work is official
+    this document is required. And we always fulfill all our
+    obligations. They vary from one project to another
+    because of differences in volumes of work and deadlines.`,
 
     design_specification: 'Specifications',
     design_specification_desc: `Developing specifications is the basis of the whole project.
@@ -110,7 +121,12 @@ export const en = {
     design_specification_desc_second: `At this stage we assess which specialists will be engaged in the development and how much time they will need.
     Each specialist will receive a spicific task.`,
 
-    prototyping: 'Prototyping',
+    prototyping: 'Wireframing',
+    prototyping_desc: `A thorough prototype saves time at later stages of development.
+    It helps you to understand what the final project will look
+    like and introduce adjustments before the work began.`,
+    prototyping_desc_second: `Time invested in wireframing reduces the number of
+    follow-up adjustments that may arise after the development is finished.`,
 
     design: 'Design',
     design_desc: `It depends on the designer what the website or the app will look like and whether
@@ -134,11 +150,11 @@ export const en = {
     That is why we first test the product on different devices and in different conditions and
     figure out every way your product may not work properly. We solve every issue we find.`,
     testing_desc_second: `You receive a thoroughly tested product and we can guarantee its high quality. `,
+
     support: 'Support',
     support_desc: `
     Even after the project is completed it requires support. At this stage our clients receive
-    comprehensive help from our team, make themselves familiar with their website or app and learn how
-    they can promote it in the future.`,
+    comprehensive help from our team, make themselves familiar with their website or app.`,
     support_desc_second: `You are not left to deal with you project on your own and can count on our help in solving even simplest issues.`,
 
     scedule_button: 'Scedule a meeting',

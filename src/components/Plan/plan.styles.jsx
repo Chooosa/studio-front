@@ -172,7 +172,7 @@ export const StepButton = styled.button`
    font-size: 14px;
    line-height: 20px;
    letter-spacing: 0.05em;
-   color: ${props => props.active  ? props.color :  '#F9F9F9'};
+   color: ${props => props.active || props.isStage ? props.color : '#F9F9F9'};
    margin-top: 20px;
    padding: 0;
    padding-bottom: 5px;
@@ -208,6 +208,7 @@ export const Dash = styled.div`
    left: ${props => props.left};
    position: absolute;
    z-index: 0;
+   transition-duration: 0.2s;
 `
 
 const visibilityDot = (props) => {
@@ -255,6 +256,17 @@ export const ProgressDot = styled.div`
    left: calc(${props => props.left} - 4px);
    transition: left 0.5s ease;
    visibility: ${props => visibilityDot(props)};
+`
+
+export const Dot = styled.div`
+   width: 10px;
+   height: 10px;
+   background-color: ${props => props.active ? props.color : '#404040'};
+   position: absolute;
+   top: -4px;
+   border-radius: 50%;
+   left: calc(${props => props.left} - 4px);
+   transition-duration: 0.2s;
 `
 // visibility: ${props => props.currentStep >= 5 ? 'hidden' : 'visible'};
 
