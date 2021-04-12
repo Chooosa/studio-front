@@ -35,7 +35,7 @@ const WorkItem = ({ work }) => {
     const color = useSelector(colorSelectors.color)
     const { language } = useTranslation()
 
-    
+
 
 
 
@@ -66,10 +66,10 @@ const WorkItem = ({ work }) => {
         if (fullscreenImage) {
             fullscreenImage.el.addEventListener('click', () => {
                 fullscreenImage.el.addEventListener('transitionend', () => {
-            
+
                     document.querySelector('#app-container').style.zIndex = '1'
                     setTimeout(() => {
-                        
+
                         fullscreenImage.el.parentNode?.removeChild(fullscreenImage.el)
                         setFullScreenImage(undefined)
                     }, 100)
@@ -173,24 +173,30 @@ const WorkItem = ({ work }) => {
                     work.Gallery.length > 1 ?
 
                         <CustomSlider
-                        width={width > 600 ?  work.Gallery[0].width * 0.8 * work.Gallery.length : width * 0.7 * work.Gallery.length > work.Gallery[0].width * 0.7 * work.Gallery.length ? work.Gallery[0].width * 0.7 *work.Gallery.length : width * 0.7 * work.Gallery.length}
-                        screenWidth={width}
-                        slideWidth = { width > 600 ?  work.Gallery[0].width * 0.8 : width * 0.7 > work.Gallery[0].width * 0.7 ? work.Gallery[0].width * 0.7 : width * 0.7 } 
-                        slideCount={work.Gallery.length}
+                            width={width > 600 ? work.Gallery[0].width * 0.8 * work.Gallery.length : width * 0.7 * work.Gallery.length > work.Gallery[0].width * 0.7 * work.Gallery.length ? work.Gallery[0].width * 0.7 * work.Gallery.length : width * 0.7 * work.Gallery.length}
+                            screenWidth={width}
+                            slideWidth={width > 600 ? work.Gallery[0].width * 0.8 : width * 0.7 > work.Gallery[0].width * 0.7 ? work.Gallery[0].width * 0.7 : width * 0.7}
+                            slideCount={work.Gallery.length}
                         >
                             {
                                 work.Gallery.map((img, index) => {
+                                    // console.log(height)
+                                    // console.log(width > 600 ? img.height * 0.8 : height * 0.7 > img.height * 0.7 ? img.height * 0.7 : height * 0.7)
+
+                                    let imageW = width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7
+                                    let image = imageW * img.height / img.width
+
 
                                     return (
                                         <SlideImage
                                             key={index}
                                             src={CMS_URL + img.url}
                                             alt='example'
-                                            style={{ width:  width > 600 ?  img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, height:  width > 600 ?  img.height * 0.8 : height * 0.7 > img.height * 0.7 ? img.height * 0.7 : height * 0.7 }}
+                                            style={{ width: width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, height: width > 600 ? img.height * 0.8 : width * 0.7 * img.height / img.width }}
                                             draggable={false}
-                                            // onMouseDown={registerCallBack}
-                                            // onMouseMove={cancelCallback}
-                                            // onMouseUp={(e) => handleMouseUp(e, img.width, img.height, width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, index)}
+                                        // onMouseDown={registerCallBack}
+                                        // onMouseMove={cancelCallback}
+                                        // onMouseUp={(e) => handleMouseUp(e, img.width, img.height, width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, index)}
                                         />
                                     )
                                 })
