@@ -43,8 +43,8 @@ export const en = {
 
     cases_desc: `Our studio's most recent projects with detailed description of
     the objective and our solution.`,
-    whole_work: 'Go to project',
-    all_works: 'All projects',
+    whole_work: 'View details',
+    all_works: 'Portfolio',
 
     about_team: 'Our team',
     about_team_desc: `
