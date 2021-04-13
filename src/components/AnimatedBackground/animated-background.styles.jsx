@@ -59,22 +59,22 @@ const horizontalMove = (w) => keyframes`
 
 const circle = (dash) => keyframes`
 0% {
-    stroke-dashoffset: ${3*dash}; }
+    stroke-dashoffset: ${3 * dash}; }
   20% {
-    stroke-dashoffset: ${2*dash}; }
+    stroke-dashoffset: ${2 * dash}; }
   30% {
-    stroke-dashoffset: ${2*dash}; }
+    stroke-dashoffset: ${2 * dash}; }
   45% {
     stroke-dashoffset: ${dash}; }
   50% {
     stroke-dashoffset: ${dash}; }
     70% {
-    stroke-dashoffset: ${2*dash}; }
+    stroke-dashoffset: ${2 * dash}; }
   80% {
-    stroke-dashoffset: ${dash}2*; } 
+    stroke-dashoffset: ${dash}2*; }
     100% {
-    stroke-dashoffset: ${3*dash}; }
-  
+    stroke-dashoffset: ${3 * dash}; }
+
 `
 
 const lines = keyframes`
