@@ -31,8 +31,10 @@ export const SlideImage = styled.img`
    padding: 0px 5px;
    width: 100%;
    max-width: 220px;
+   max-height: 315px;
    @media (max-width: 500px) {
       max-width:300px;
+      max-height: 435px;
    }
    transition-duration: 0.5s;
    opacity: 1;
