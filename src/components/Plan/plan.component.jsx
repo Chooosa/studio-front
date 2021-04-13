@@ -278,7 +278,7 @@ const Plan = ({ onOpenModal }) => {
             case 1:
                return '0.0001px'
             case 2:
-               return '34%'
+               return '39%'
             case 3:
                return '64%'
             case 4:
@@ -302,7 +302,7 @@ const Plan = ({ onOpenModal }) => {
                case 5:
                   return '0.0001px'
                case 6:
-                  return '50%'
+                  return '57%'
                case 7:
                   return '89%'
                case 8:
@@ -327,7 +327,7 @@ const Plan = ({ onOpenModal }) => {
                case 8:
                   return '0.0001px'
                case 9:
-                  return '55%'
+                  return '65%'
                case 10:
                   return '100%'
                default:
@@ -450,7 +450,7 @@ const Plan = ({ onOpenModal }) => {
                      </Dash>
 
                      <Dash
-                        left={'34%'}
+                        left={'39%'}
                         color={color}
                         active={currentStep >= 2}
                      >
@@ -545,7 +545,7 @@ const Plan = ({ onOpenModal }) => {
                      </Dash>
 
                      <Dash
-                        left={'50%'}
+                        left={'57%'}
                         color={color}
                         active={currentStep >= 6}
                      >
@@ -576,7 +576,7 @@ const Plan = ({ onOpenModal }) => {
                   </Line>
                </LineWrapper>
 
-               <LineWrapper alignLeft>
+               <LineWrapper alignLeft style={{ paddingRight: '20px' }}>
                   <Line
                      ref={line3}
                      lineWidth={'75%'}>
@@ -633,7 +633,7 @@ const Plan = ({ onOpenModal }) => {
                      </Dash>
 
                      <Dash
-                        left={'55%'}
+                        left={'65%'}
                         color={color}
                         active={currentStep >= 9}
                      >

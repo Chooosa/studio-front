@@ -9,15 +9,21 @@ export const PlanWrapper = styled.div`
    justify-content: space-between;
    background-color: #111;
    overflow: hidden;
-   padding: 77px 0 80px 0px;
+   padding: 77px 35px 80px 20px;
    margin-bottom: 17px;
    /* height: 670px; */
 
    @media(max-width: 850px) {
-      padding: 0px 10px 50px 10px;
+      padding: 0px 20px 50px 20px;
+   }
+   @media(max-width: 480px) {
+      padding: 0 20px 40px 15px;
    }
    @media(max-width: 410px) {
-      padding: 0 0 40px 0;
+      padding: 0 20px 40px 15px;
+   }
+   @media(max-width: 370px) {
+      padding: 0 23px 40px 15px;
    }
 `
 
@@ -57,6 +63,7 @@ export const Button = styled(CustomButton)`
 
    @media(max-width: 850px) {
       margin-right: 0;
+      margin-top: 30px;
    }
    /* background-color: ${props => props.color}; */
 `
@@ -101,13 +108,16 @@ export const DescriptionWrapper = styled(motion.div)`
    min-height: 450px;
    overflow: hidden;
 
+   @media(max-width: 1020px) {
+      margin-right: 80px;
+   }
    @media(max-width: 850px) {
       margin-right: 0;
       min-height: 380px;
    }
    @media(max-width: 410px) {
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 20px;
+      margin-right: 15px;
    }
 `
 
