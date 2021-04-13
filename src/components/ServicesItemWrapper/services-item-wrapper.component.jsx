@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Fragment } from 'react';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import { useWindowDimensions } from '../../hooks/dimensions';
 
@@ -15,6 +15,7 @@ import {
 import { ReactComponent as ArrowRight } from '../../assets/right-arrow.svg';
 import { ReactComponent as ArrowLeft } from '../../assets/left-arrow.svg';
 import { useHistory } from 'react-router';
+import Slider from './Slider/slider.component'
 
 
 let callback;
@@ -24,8 +25,9 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
     const { width } = useWindowDimensions()
     const [countSlidesToShow, setCountSlidesToShow] = useState(4)
     const [imageWidth, setImageWidth] = useState(currentTab === 0 ?
-        works.apps[0].Gallery[0].width :
-        works.websites[0].Gallery[0].width) //currentTab === 0 ? works.websites : works.app
+        345 : 1124)
+    const [imageHeight, setImageHeight] = useState(currentTab === 0 ?
+        700 : 676)
     const sliderRef = useRef()
     const [idCases, setCasesId] = useState([])
     const history = useHistory()
@@ -37,43 +39,45 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
             let id = []
             if (currentTab === 0) {
                 works.apps.map((app, i) => {
-                    appsImages.push(app.Gallery.slice(0, countSlidesToShow))
+                    appsImages.push(app.MainImage)
                     id.push(app.id)
                 })
-                setImageWidth(works.apps[0].Gallery[0].width)
+                // setImageWidth(works.apps[0].Gallery[0].width)
             } else {
                 works.websites.map((app, i) => {
-                    appsImages.push(app.Gallery.slice(0, 1))
+                    appsImages.push(app.MainImage)
                     id.push(app.id)
                 })
-                setImageWidth(works.websites[0].Gallery[0].width)
+                // setImageWidth(works.websites[0].Gallery[0].width)
                 setCountSlidesToShow(1)
             }
             setCasesId(id)
             setContent(appsImages)
         }
-    }, [works, currentTab, countSlidesToShow])
+    }, [works, currentTab])
 
-    useEffect(() => {
-        if (currentTab === 0) {
-            if (width > 1240) {
-                setCountSlidesToShow(4)
-            } else {
-                const padding = width > 612 ? 80 : 40
-                let count = Math.floor((width - padding) / imageWidth)
-                count = count > 4 ? 4 : count < 1 ? 1 : count
-                setCountSlidesToShow(count)
-            }
-        }
-    }, [width, currentTab, countSlidesToShow, imageWidth])
+    // useEffect(() => {
+    //     if (currentTab === 0) {
+    //         if (width > 1240) {
+    //             setCountSlidesToShow(4)
+    //         } else {
+    //             const padding = width > 612 ? 80 : 40
+    //             let count = Math.floor((width - padding) / imageWidth)
+    //             count = count > 4 ? 4 : count < 1 ? 1 : count
+    //             setCountSlidesToShow(count)
+    //         }
+    //     }
+    // }, [width, currentTab, countSlidesToShow, imageWidth])
 
-    const handleNavigation = (id) => {
-        if (currentTab === 0) {
-            history.push(`/works/Application/${id}`)
-        } else {
-            history.push(`/works/Website/${id}`)
-        }
-    }
+    // console.log(works.apps[0].MainImage)
+
+    // const handleNavigation = (id) => {
+    //     if (currentTab === 0) {
+    //         history.push(`/works/Application/${id}`)
+    //     } else {
+    //         history.push(`/works/Website/${id}`)
+    //     }
+    // }
 
     const registerCallBack = () => {
         callback = true
@@ -94,24 +98,65 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
         }
     }
 
-    const NextArrow = () => {
-        return <ArrowContainer onClick={() => sliderRef.current.slickNext()} right={true}>
-            <ArrowRight />
-        </ArrowContainer>
-    }
+    // const NextArrow = () => {
+    //     return <ArrowContainer onClick={() => sliderRef.current.slickNext()} right={true}>
+    //         <ArrowRight />
+    //     </ArrowContainer>
+    // }
 
-    const PrevArrow = () => {
-        return <ArrowContainer onClick={() => sliderRef.current.slickPrev()} right={false}>
-            <ArrowLeft />
-        </ArrowContainer>
-    }
+    // const PrevArrow = () => {
+    //     return <ArrowContainer onClick={() => sliderRef.current.slickPrev()} right={false}>
+    //         <ArrowLeft />
+    //     </ArrowContainer>
+    // }
 
     return (
         <ComponentWrapper
-            // sliderWidth={imageWidth * countSlidesToShow}
-            sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
+        // sliderWidth={imageWidth * countSlidesToShow}
+        // sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
         >
             <Slider
+                width={imageWidth * content.length}
+                screenWidth={width}
+                slideWidth={imageWidth}
+                slideCount={content.length}
+            >
+                {
+                    console.log(content)
+                }
+                {
+                    // content.length > 0 && content.map((images, index) => {
+                    //     return (
+                    //         <div>
+                    //             <SlideContainer
+                    //                 // onClick={() => handleNavigation(idCases[index])}
+                    //                 onMouseDown={registerCallBack}
+                    //                 onMouseMove={cancelCallback}
+                    //                 onMouseUp={() => handleMouseUp(idCases[index])}
+                    //                 key={index}
+                    //                 countSlide={countSlidesToShow === 1 && currentTab !== 1}
+                    //             >
+                    //                 {
+                    //                     images.map((img, i) => {
+                    //                         // setImageWidth(img.width)
+                    //                         return (
+                    //                             <SlideImage
+                    //                                 src={CMS_URL + img.url}
+                    //                                 key={i}
+                    //                                 alt='itemImage'
+                    //                             />
+                    //                         )
+                    //                     })
+                    //                 }
+                    //             </SlideContainer>
+                    //         </div>
+                    //     )
+                    // })
+                }
+            </Slider>
+
+
+            {/* <Slider
                 ref={sliderRef}
                 dots={true}
                 swipeToSlide={true}
@@ -122,7 +167,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                 slidesToShow={1}
                 focusOnSelect={false}
                 slidesToScroll={1}
-                arrows={width > 612 ? true : false}
+                arrows={false}
                 nextArrow={<NextArrow />}
                 prevArrow={<PrevArrow />}
             >
@@ -176,7 +221,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                         }
                     })
                 }
-            </Slider>
+            </Slider> */}
         </ComponentWrapper>
     )
 }
