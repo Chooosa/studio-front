@@ -184,7 +184,7 @@ const WorkItem = ({ work }) => {
                                     // console.log(width > 600 ? img.height * 0.8 : height * 0.7 > img.height * 0.7 ? img.height * 0.7 : height * 0.7)
 
                                     let imageW = width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7
-                                    let image = imageW * img.height / img.width
+                                    let imageH = imageW * img.height / img.width
 
 
                                     return (
@@ -192,7 +192,7 @@ const WorkItem = ({ work }) => {
                                             key={index}
                                             src={CMS_URL + img.url}
                                             alt='example'
-                                            style={{ width: width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, height: width > 600 ? img.height * 0.8 : width * 0.7 * img.height / img.width }}
+                                            style={{ width: width > 600 ? img.width * 0.8 : width * 0.7 > img.width * 0.7 ? img.width * 0.7 : width * 0.7, height: imageH }}
                                             draggable={false}
                                         // onMouseDown={registerCallBack}
                                         // onMouseMove={cancelCallback}
