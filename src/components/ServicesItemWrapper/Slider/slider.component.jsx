@@ -14,7 +14,7 @@ import { colorSelectors } from '../../../redux/color/color.selectors';
 
 
 
-const Slider = ({children, width, screenWidth, slideWidth, slideCount}) => {
+const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
     const x = useMotionValue(0)
     const x2 = useSpring(0)
     const containerRef = useRef()
@@ -26,32 +26,32 @@ const Slider = ({children, width, screenWidth, slideWidth, slideCount}) => {
     useEffect(() => {
         if (containerRef.current) {
             const sliderWidth = containerRef.current.getBoundingClientRect().width
-            
+
             setDragConstraints(width - sliderWidth)
         }
     }, [width])
 
-    
+
 
 
 
     const NextArrow = () => {
-        return <ArrowContainer onClick={() => { 
-            
+        return <ArrowContainer onClick={() => {
+
             if (x.get() > -dragConstraints) {
                 x.stop()
                 var currentSlide = Math.round((Math.abs(x.get()) / slideWidth))
                 var newLocation;
 
 
-                if ( (dragConstraints + x.get() )  < slideWidth ) {
+                if ((dragConstraints + x.get()) < slideWidth) {
                     newLocation = - dragConstraints
                 } else {
                     newLocation = - (currentSlide + 1) * slideWidth
                 }
-                
-                dragControl.start({x: newLocation})
-                
+
+                dragControl.start({ x: newLocation })
+
             }
         }} color={color} right={true}>
             <ArrowRight />
@@ -63,14 +63,14 @@ const Slider = ({children, width, screenWidth, slideWidth, slideCount}) => {
             if (x.get() < 0) {
                 var currentSlide = Math.round(Math.abs(x.get() / slideWidth))
                 var newLocation;
-                
+
                 if (currentSlide === 0) {
                     newLocation = 0
                 } else {
                     newLocation = - (currentSlide - 1) * slideWidth
                 }
                 x.stop()
-                dragControl.start({x: newLocation})
+                dragControl.start({ x: newLocation })
             }
         }} color={color} right={false}>
             <ArrowLeft />
@@ -78,32 +78,32 @@ const Slider = ({children, width, screenWidth, slideWidth, slideCount}) => {
     }
 
     return (
-        <div style={{position: 'relative'}}>
+        <div style={{ position: 'relative' }}>
             {screenWidth > 600 ?
-            <PrevArrow/>
-            : null
+                <PrevArrow />
+                : null
             }
-            <div style={{overflowX: 'hidden'}} ref={containerRef}>
+            <div style={{ overflow: 'hidden' }} ref={containerRef}>
                 <SliderContainer
 
-                drag="x"
-                initial={{x: 0}}
-                style={{x, }}
-                animate={dragControl}
+                    drag="x"
+                    initial={{ x: 0 }}
+                    style={{ x, }}
+                    animate={dragControl}
 
-                dragConstraints={{
-                    left: -dragConstraints,
-                    right: 0
-                }}
+                    dragConstraints={{
+                        left: -dragConstraints,
+                        right: 0
+                    }}
 
-                dragTransition={{bounceDamping: 10, bounceStiffness: 100}}
+                    dragTransition={{ bounceDamping: 10, bounceStiffness: 100 }}
                 >
                     {children}
                 </SliderContainer>
             </div>
             {screenWidth > 600 ?
-            <NextArrow/>
-            : null
+                <NextArrow />
+                : null
             }
         </div>
     )

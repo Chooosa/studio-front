@@ -5,13 +5,14 @@ export const ComponentWrapper = styled.div`
     flex-direction: column;
     ${props => props.sliderWidth ? 'align-items: center;' : ''};
     width: 100%;
-    margin: 20px 5px 0px 5px;
+    margin: 80px 5px 0px 5px;
 
     padding: 0 20px;
 
 
     @media(max-width: 612px) {
         padding: 0;
+        margin-top: 50px;
     }
 
     .slick-slider {
@@ -50,10 +51,7 @@ export const SlideContainer = styled.div`
 `
 
 export const SlideImage = styled.img`
-    ${props => props.apps ? 'object-fit: cover;' : ''}
-    /* padding: 0px 5px; */
     width: 100%;
-    /* max-width: 220px; */
 `
 export const SlideImageBig = styled.img`
     padding: 0px 5px;
@@ -67,34 +65,40 @@ export const SlideOverlay = styled.div`
     position: absolute;
     z-index: 100;
     background-color: rgba(10,10,10,0.6);
-    transition-duration: 0.2s;
+    /* background:  */
+    backdrop-filter: blur(2px);
+    transition-duration: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 
-    >img {
-            transition-duration: 0.3s;
-            opacity: 1;
-        }
 
-    :hover {
-        background-color: rgba(0,0,0,0);
-        transition-duration: 0.2s;
-        >img {
-            transition-duration: 0.3s;
-            /* animation: translateLogo 0.5s; */
-            /* opacity: 0; */
-            transform:  translateX(-150%);
+    >img {
+        width: ${props => props.imgWidth}px;
+        transition-duration: ${props => props.apps ? '0.5s' : '0.8s'};
+        opacity: 1;
+        position: absolute;
+        :first-of-type {
+        clip-path: polygon(0 0, 62% 0%, 32% 100%, 0 100%);
+        }
+        :last-of-type {
+        clip-path: polygon(61% 0, 100% 0%, 100% 100%, 31% 100%);
         }
     }
 
-    @keyframes translateLogo {
-        from {
-            transform: rotate(-25deg) translateX(0);
-        }
-        to {
-            transform:  translateX(-150%);
+    :hover {
+        background-color: rgba(0,0,0,0);
+        transition-duration: 0.3s;
+        backdrop-filter: blur(0);
+        >img {
+            transition-duration: ${props => props.apps ? '0.5s' : '0.8s'};
+            :first-of-type {
+                transform:  translateX(-${props => props.translate}px) translateY(${props => props.translate}px);
+            }
+            :last-of-type {
+                transform:  translateX(${props => props.translate}px) translateY(-${props => props.translate}px);
+            }
         }
     }
 `

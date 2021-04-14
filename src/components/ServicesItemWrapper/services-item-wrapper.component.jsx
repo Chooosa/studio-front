@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Fragment } from 'react';
-// import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
 import { useWindowDimensions } from '../../hooks/dimensions';
 
@@ -8,13 +6,9 @@ import { useWindowDimensions } from '../../hooks/dimensions';
 import {
     ComponentWrapper,
     SlideImage,
-    SlideImageBig,
     SlideContainer,
-    ArrowContainer,
     SlideOverlay
 } from './services-item-wrapper.styles';
-import { ReactComponent as ArrowRight } from '../../assets/right-arrow.svg';
-import { ReactComponent as ArrowLeft } from '../../assets/left-arrow.svg';
 import { useHistory } from 'react-router';
 import Slider from './Slider/slider.component'
 
@@ -35,9 +29,39 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
 
     useEffect(() => {
         if (currentTab === 0) {
-            setImageWidth(345)
+            if (width > 1070) {
+                setImageWidth(345)
+                setImageHeight(700)
+            } else if (width > 380) {
+                setImageWidth(300)
+                setImageHeight(600)
+            } else {
+                setImageWidth(250)
+                setImageHeight(400)
+            }
         } else {
-            setImageWidth(1124)
+            if (width > 1245) {
+                setImageWidth(1124)
+                setImageHeight(676)
+            } else if (width > 920) {
+                setImageWidth(800)
+                setImageHeight(500)
+            } else if (width > 720) {
+                setImageWidth(600)
+                setImageHeight(400)
+            } else if (width > 490) {
+                setImageWidth(400)
+                setImageHeight(300)
+            } else if (width > 420) {
+                setImageWidth(350)
+                setImageHeight(225)
+            } else if (width > 365) {
+                setImageWidth(300)
+                setImageHeight(200)
+            } else if (width > 300) {
+                setImageWidth(250)
+                setImageHeight(150)
+            }
         }
     }, [width, imageWidth, currentTab])
 
@@ -68,29 +92,6 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
         console.log(currentTab)
     }, [works, currentTab])
 
-    // useEffect(() => {
-    //     if (currentTab === 0) {
-    //         if (width > 1240) {
-    //             setCountSlidesToShow(4)
-    //         } else {
-    //             const padding = width > 612 ? 80 : 40
-    //             let count = Math.floor((width - padding) / imageWidth)
-    //             count = count > 4 ? 4 : count < 1 ? 1 : count
-    //             setCountSlidesToShow(count)
-    //         }
-    //     }
-    // }, [width, currentTab, countSlidesToShow, imageWidth])
-
-    // console.log(works.apps[0].MainImage)
-
-    // const handleNavigation = (id) => {
-    //     if (currentTab === 0) {
-    //         history.push(`/works/Application/${id}`)
-    //     } else {
-    //         history.push(`/works/Website/${id}`)
-    //     }
-    // }
-
     const registerCallBack = () => {
         callback = true
     }
@@ -110,23 +111,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
         }
     }
 
-    // const NextArrow = () => {
-    //     return <ArrowContainer onClick={() => sliderRef.current.slickNext()} right={true}>
-    //         <ArrowRight />
-    //     </ArrowContainer>
-    // }
-
-    // const PrevArrow = () => {
-    //     return <ArrowContainer onClick={() => sliderRef.current.slickPrev()} right={false}>
-    //         <ArrowLeft />
-    //     </ArrowContainer>
-    // }
-
     return (
-        <ComponentWrapper
-        // sliderWidth={imageWidth * countSlidesToShow}
-        // sliderWidth={currentTab === 0 ? imageWidth * countSlidesToShow : 0}
-        >
+        <ComponentWrapper>
             <Slider
                 width={imageWidth * content.length}
                 screenWidth={width}
@@ -134,7 +120,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                 slideCount={content.length}
             >
                 {
-                    console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
+                    // console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
+                    console.log(currentTab)
                 }
                 {
                     content.length > 0 && content.map((image, index) => {
@@ -149,12 +136,18 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                     key={index}
                                     countSlide={countSlidesToShow === 1 && currentTab !== 1}
                                 >
-                                    <SlideOverlay>
-                                        <img src={CMS_URL + image?.logo.url} alt='logo' />
+                                    <SlideOverlay
+                                        translate={imageWidth}
+                                        apps={currentTab === 0}
+                                        imgWidth={width < 400 && currentTab === 1 ? image.logo?.width * 0.45 : width < 600 ? image.logo?.width * 0.6 : image.logo?.width}
+                                    >
+                                        <img src={CMS_URL + image.logo?.url} alt='logo' />
+                                        <img src={CMS_URL + image.logo?.url} alt='logo' />
                                     </SlideOverlay>
                                     <SlideImage
+                                        id='slide'
                                         apps={currentTab === 0}
-                                        src={currentTab === 0 ? CMS_URL + image?.img.url : CMS_URL + image.img[0]?.url}
+                                        src={currentTab === 0 ? CMS_URL + image.img?.url : CMS_URL + image.img[0]?.url}
                                         key={index}
                                         alt='itemImage'
                                         draggable={false}
@@ -165,74 +158,6 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                     })
                 }
             </Slider>
-
-
-            {/* <Slider
-                ref={sliderRef}
-                dots={true}
-                swipeToSlide={true}
-                initialSlide={0}
-                infinite={false}
-                rows={1}
-                arrows={false}
-                slidesToShow={1}
-                focusOnSelect={false}
-                slidesToScroll={1}
-                arrows={false}
-                nextArrow={<NextArrow />}
-                prevArrow={<PrevArrow />}
-            >
-                {
-                    content.length > 0 && content.map((images, index) => {
-                        if (currentTab === 0) {
-                            return (
-                                <div>
-                                    <SlideContainer
-                                        // onClick={() => handleNavigation(idCases[index])}
-                                        onMouseDown={registerCallBack}
-                                        onMouseMove={cancelCallback}
-                                        onMouseUp={() => handleMouseUp(idCases[index])}
-                                        key={index}
-                                        countSlide={countSlidesToShow === 1 && currentTab !== 1}
-                                    >
-                                        {
-                                            images.map((img, i) => {
-                                                // setImageWidth(img.width)
-                                                return (
-                                                    <SlideImage
-                                                        src={CMS_URL + img.url}
-                                                        key={i}
-                                                        alt='itemImage'
-                                                    />
-                                                )
-                                            })
-                                        }
-                                    </SlideContainer>
-                                </div>
-
-                            )
-                        } else {
-                            return (
-                                <SlideContainer
-                                    // onClick={() => handleNavigation(idCases[index])}
-                                    onMouseDown={registerCallBack}
-                                    onMouseMove={cancelCallback}
-                                    onMouseUp={(e) => handleMouseUp(idCases[index])}
-                                    key={index}
-                                    countSlide={countSlidesToShow === 1 && currentTab !== 1}
-                                >
-                                    <SlideImageBig
-                                        src={CMS_URL + images[0].url}
-
-                                        alt='itemImage'
-                                    />
-                                </SlideContainer>
-
-                            )
-                        }
-                    })
-                }
-            </Slider> */}
         </ComponentWrapper>
     )
 }
