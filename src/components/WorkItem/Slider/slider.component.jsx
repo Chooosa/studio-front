@@ -78,7 +78,7 @@ const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
     }
 
     return (
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative' }} onTouchMove={(e) => e.stopPropagation()}>
             {screenWidth > 600 ?
                 <PrevArrow />
                 : null

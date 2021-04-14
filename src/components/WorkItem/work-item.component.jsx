@@ -152,6 +152,7 @@ const WorkItem = ({ work }) => {
     return (
         <Container
             ref={containerRef}
+            onTouchMove={(e) => e.stopPropagation()}
         >
             <Title>
                 {language === 'ru' ? work.Title : work.TitleEng}
