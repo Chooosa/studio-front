@@ -9,6 +9,9 @@ export const Container = styled.div`
       padding-right: 20px;
       /* height: 450px; */
    }
+   @media (max-width: 500px) {
+      height: 470px;
+   }
 
    .slick-dots li.slick-active button:before {
       opacity: 1;
