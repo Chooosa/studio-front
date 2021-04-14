@@ -38,23 +38,65 @@ export const ComponentWrapper = styled.div`
 export const SlideContainer = styled.div`
     display: flex;
     justify-content: center;
-    padding: ${props => props.countSlide ? '0' : '20px'};
+    /* padding: ${props => props.countSlide ? '0' : '20px'}; */
+    padding: 8px;
     cursor: pointer;
     text-align: center;
+    position: relative;
+    z-index: 10;
     @media(max-width: 420px) {
         padding: 5px;
     }
 `
 
 export const SlideImage = styled.img`
-    padding: 0px 5px;
+    ${props => props.apps ? 'object-fit: cover;' : ''}
+    /* padding: 0px 5px; */
     width: 100%;
-    max-width: 220px;
+    /* max-width: 220px; */
 `
 export const SlideImageBig = styled.img`
     padding: 0px 5px;
     width: 100%;
     /* max-width: 800px; */
+`
+
+export const SlideOverlay = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(10,10,10,0.6);
+    transition-duration: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    >img {
+            transition-duration: 0.3s;
+            opacity: 1;
+        }
+
+    :hover {
+        background-color: rgba(0,0,0,0);
+        transition-duration: 0.2s;
+        >img {
+            transition-duration: 0.3s;
+            /* animation: translateLogo 0.5s; */
+            /* opacity: 0; */
+            transform:  translateX(-150%);
+        }
+    }
+
+    @keyframes translateLogo {
+        from {
+            transform: rotate(-25deg) translateX(0);
+        }
+        to {
+            transform:  translateX(-150%);
+        }
+    }
 `
 
 export const ArrowContainer = styled.div`
