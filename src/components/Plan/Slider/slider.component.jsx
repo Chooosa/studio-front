@@ -21,17 +21,20 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
 
    useEffect(() => {
       if (currentStep) {
-         if (currentStep > 0 && currentStep < 4) {
+         if (currentStep > 0 && currentStep < 3) {
             setCurrentTab(0)
          }
-         if (currentStep > 3 && currentStep < 7) {
+         if (currentStep > 2 && currentStep < 4) {
             setCurrentTab(1)
          }
-         if (currentStep > 6 && currentStep < 10) {
+         if (currentStep > 4 && currentStep < 8) {
             setCurrentTab(2)
          }
-         if (currentStep === 10) {
+         if (currentStep > 7 && currentStep < 10) {
             setCurrentTab(3)
+         }
+         if (currentStep === 10) {
+            setCurrentTab(4)
          }
       }
    }, [currentStep])
@@ -42,12 +45,15 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
             setCurrentStep(1)
             break;
          case 1:
-            setCurrentStep(4)
+            setCurrentStep(3)
             break;
          case 2:
-            setCurrentStep(7)
+            setCurrentStep(5)
             break;
          case 3:
+            setCurrentStep(8)
+            break;
+         case 4:
             setCurrentStep(10)
             break;
          default:
@@ -86,8 +92,9 @@ const Slider = ({ refSheme, currentStep, setCurrentStep }) => {
                   onItemClick={(item, index) => handleClickTab(index)}
                   items={[
                      <span>{t('interview')}</span>,
-                     <span>{t('contract')}</span>,
-                     <span>{t('design')}</span>,
+                     <span>{t('budget')}</span>,
+                     <span>{t('design_specification')}</span>,
+                     <span>{t('development')}</span>,
                      <span>{t('support')}</span>
                   ]}
                   borderPosition="top"
