@@ -117,14 +117,14 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
     return (
         <ComponentWrapper>
             <Slider
-                width={imageWidth * content.length}
+                width={(imageWidth * content.length) + (16 * content.length)}
                 screenWidth={width}
                 slideWidth={imageWidth}
                 slideCount={content.length}
             >
                 {
-                    // console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
-                    console.log('content.length: ', content.length)
+                    console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
+                    // console.log('content.length: ', content.length)
                 }
                 {
                     content.length > 0 ? content.map((image, index) => {
@@ -144,8 +144,8 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                                         apps={currentTab === 0}
                                         imgWidth={width < 400 && currentTab === 1 ? image.logo?.width * 0.45 : width < 600 ? image.logo?.width * 0.6 : currentTab === 1 ? image.logo?.width * 0.7 : image.logo?.width}
                                     >
-                                        <img src={CMS_URL + image.logo?.url} alt='logo' />
-                                        <img src={CMS_URL + image.logo?.url} alt='logo' />
+                                        <img draggable={false} src={CMS_URL + image.logo?.url} alt='logo' />
+                                        <img draggable={false} src={CMS_URL + image.logo?.url} alt='logo' />
                                     </SlideOverlay>
                                     <SlideImage
                                         id='slide'
