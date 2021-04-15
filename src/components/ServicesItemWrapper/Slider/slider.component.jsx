@@ -79,13 +79,14 @@ const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
 
     return (
         <div style={{ position: 'relative' }}>
-            {screenWidth > 600 ?
-                <PrevArrow />
-                : null
+            {
+                // screenWidth > 600 ?
+                //     <PrevArrow />
+                //     : null
             }
             <div style={{ overflow: 'hidden' }} ref={containerRef}>
                 <SliderContainer
-
+                    dragDirectionLock={true}
                     drag="x"
                     initial={{ x: 0 }}
                     style={{ x, }}
@@ -101,9 +102,10 @@ const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
                     {children}
                 </SliderContainer>
             </div>
-            {screenWidth > 600 ?
-                <NextArrow />
-                : null
+            {
+                // screenWidth > 600 ?
+                //     <NextArrow />
+                //     : null
             }
         </div>
     )

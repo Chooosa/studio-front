@@ -40,7 +40,10 @@ export const SlideContainer = styled.div`
     display: flex;
     justify-content: center;
     /* padding: ${props => props.countSlide ? '0' : '20px'}; */
-    padding: 8px;
+    /* padding: 8px; */
+    margin: 8px;
+    overflow: hidden;
+    border-radius: 6px;
     cursor: pointer;
     text-align: center;
     position: relative;
@@ -76,28 +79,31 @@ export const SlideOverlay = styled.div`
 
     >img {
         width: ${props => props.imgWidth}px;
-        transition-duration: ${props => props.apps ? '0.5s' : '0.8s'};
+        /* transition-duration: ${props => props.apps ? '0.5s' : '0.8s'}; */
+        transition-duration: 0.8s;
         opacity: 1;
         position: absolute;
         :first-of-type {
-        clip-path: polygon(0 0, 62% 0%, 32% 100%, 0 100%);
+            clip-path: polygon(0 0, 62% 0%, 32% 100%, 0 100%);
         }
         :last-of-type {
-        clip-path: polygon(61% 0, 100% 0%, 100% 100%, 31% 100%);
+            clip-path: polygon(61% 0, 100% 0%, 100% 100%, 31% 100%);
         }
     }
-
-    :hover {
-        background-color: rgba(0,0,0,0);
-        transition-duration: 0.3s;
-        backdrop-filter: blur(0);
-        >img {
-            transition-duration: ${props => props.apps ? '0.5s' : '0.8s'};
-            :first-of-type {
-                transform:  translateX(-${props => props.translate}px) translateY(${props => props.translate}px);
-            }
-            :last-of-type {
-                transform:  translateX(${props => props.translate}px) translateY(-${props => props.translate}px);
+    @media(min-width: 768px) {
+        :hover {
+            background-color: rgba(0,0,0,0);
+            transition-duration: 0.3s;
+            backdrop-filter: blur(0);
+            >img {
+                /* transition-duration: ${props => props.apps ? '0.5s' : '0.8s'}; */
+                transition-duration: 0.8s;
+                :first-of-type {
+                    transform:  translateX(-${props => props.translate - 100}px) translateY(${props => props.translate + 100}px);
+                }
+                :last-of-type {
+                    transform:  translateX(${props => props.translate - 100}px) translateY(-${props => props.translate + 100}px);
+                }
             }
         }
     }

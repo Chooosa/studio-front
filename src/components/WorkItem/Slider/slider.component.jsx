@@ -85,7 +85,7 @@ const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
             }
             <div style={{ overflowX: 'hidden' }} ref={containerRef}>
                 <SliderContainer
-
+                    dragDirectionLock={true}
                     drag="x"
                     initial={{ x: 0 }}
                     style={{ x, }}
