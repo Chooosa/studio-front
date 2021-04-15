@@ -14,12 +14,9 @@ const ErrorBoundary = ({ error }) => {
     const { t } = useTranslation();
 
     const location = useLocation();
-    
+
     useEffect(() => {
         if (process.env.NODE_ENV === 'production') {
-           
-
-
             axios({
                 method: 'post',
                 url: `${API_URL}fronterror`,
@@ -50,7 +47,7 @@ const ErrorBoundary = ({ error }) => {
         <ErrorBoundaryContainer>
             <p> {t('error_happened')} </p>
             <p> {t('error_beign_fixed')} </p>
-            <a href={'lilekov-studio.com'}> {t('error_to_main_page')} </a>
+            <a href={'https://lilekov-studio.com'}> {t('error_to_main_page')} </a>
         </ErrorBoundaryContainer>
     )
 }
