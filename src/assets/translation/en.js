@@ -237,16 +237,32 @@ export const en = {
     contacts_requisites: 'Company details',
 
 
-    service_analytics: "Evaluation of your requirements, analysis of the target audience and competition, refinement, planning and specification drafting.",
-    service_prototype: "Draft realization of website with basic functions for its final functionality analysis.",
-    service_design: "Designing the main page after establishing the theme of website, approval, alterations, other pages design.",
-    service_development: "Website pages development, linking, tuning, testing and debugging.",
-    service_publication: "Passing moderation and publishing requirements.",
+    service_analytics: "Identification of your needs, target audience and competition analysis, planning and specifications drafting",
+    service_prototype: "Prototype of the app  with basic features for the application analysis",
+    service_design: "Design of the main page after establishing the theme of the app, redesigning and design finalization",
+    service_development: "App development, linking, tuning, testing and debugging",
+    service_publication: "Passing moderation and publishing requirements in stores",
+
     service_analytics_title: "Analysis and estimate",
     service_prototype_title: "Wireframing",
     service_design_title: "Design",
     service_development_title: "Development",
     service_publication_title: "Publishing to stores",
+
+
+    service_analytics_web: "Identification of your needs, target audience and competition analysis, planning and specifications drafting",
+    service_prototype_web: "Prototype of the website with basic features for the application analysis ",
+    service_design_web: "Design of the main page after establishing the theme of the website , redesigning and design finalization",
+    service_development_web: "Layout of site pages, connection, configuration, testing and debugging",
+    service_publication_web: "Passing moderation and publishing requirements in web",
+
+    service_analytics_title_web: "Analysis and estimate",
+    service_prototype_title_web: "Wireframing ",
+    service_design_title_web: "Design",
+    service_development_title_web: "Development",
+    service_publication_title_web: "Publishing to the web",
+
+
     job_developer: "Developer",
     job_full_stack: "Full Stack Developer",
     job_front_developer: "Frontend/App Developer",

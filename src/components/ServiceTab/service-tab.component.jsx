@@ -28,8 +28,8 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
     const { language } = useTranslation();
     const color = useSelector(colorSelectors.color)
     const { t } = useTranslation();
-    const {width} = useWindowDimensions()
-    const dispatch = useDispatch() 
+    const { width } = useWindowDimensions()
+    const dispatch = useDispatch()
 
 
 
@@ -46,8 +46,8 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
     const handleCardClick = (card) => {
         localStorage.setItem('requestType', card)
         dispatch(setScroll('request'))
-        
-    } 
+
+    }
 
 
     return (
@@ -62,9 +62,9 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                         <TabHeader>
                             {
                                 width < 600 ?
-                                <AnimatedHeaderMobile/>
-                                :
-                                <AnimatedNumbersNew/>
+                                    <AnimatedHeaderMobile currentTab={currentTab} />
+                                    :
+                                    <AnimatedNumbersNew currentTab={currentTab} />
                             }
                             {/* <Description>
                                 <ReactMarkdown>

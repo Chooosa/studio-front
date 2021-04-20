@@ -1,5 +1,6 @@
 import React from 'react';
 import AnimatedDescription from '../ServiceTab/AnimatedDescription/animated-description.component';
+import AnimatedDescriptionWeb from '../ServiceTab/AnimatedDescriptionWeb/animated-description-web.component';
 
 
 import {
@@ -7,10 +8,14 @@ import {
 
 } from './animated_number_new.styles';
 
-const AnimatedNumbersNew = () => {
+const AnimatedNumbersNew = ({ currentTab }) => {
     return (
         <AnimatedNumbersContainer>
-            <AnimatedDescription/>
+            {
+                currentTab === 0 ?
+                    <AnimatedDescription />
+                    : <AnimatedDescriptionWeb />
+            }
         </AnimatedNumbersContainer>
     )
 }

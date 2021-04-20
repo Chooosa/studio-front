@@ -229,15 +229,31 @@ export const ru = {
     contacts_requisites: 'Реквизиты компании',
 
     service_analytics: "Выявление Ваших потребностей, анализ ЦА и конкурентов, уточнение, планирование и составление ТЗ ",
-    service_prototype: "Черновая реализация мобильного приложения с базовой функциональностью для анализа работы приложения",
-    service_design: "Разработка главного экрана после определения тематики мобильного приложения, правки и утверждения дизайна",
+    service_prototype: "Черновая реализация  с базовой функциональностью для анализа работы приложения",
+    service_design: "Определения тематики мобильного приложения, правки и утверждения дизайна",
     service_development: "Верстка экранов мобильного приложения, подключение, настройка, тестирование и отладка ",
     service_publication: "Прохождение модерации и требований для публикации ",
+
     service_analytics_title: "Аналитика и оценка",
     service_prototype_title: "Прототипирование ",
     service_design_title: "Разработка дизайна",
     service_development_title: "Разработка приложения",
     service_publication_title: "Публикация в сторах",
+
+
+    service_analytics_web: "Выявляение Ваших потребнстей, анализ ЦА и конкурентов, уточнение, планирование и составление ТЗ  ",
+    service_prototype_web: "Черновая реализация сайта с базовой функциональностью для анализа работы ",
+    service_design_web: "Определения тематики сайта, правки и утверждения дизайна",
+    service_development_web: "Верстка страниц сайта, подключение, настройка, тестирование и отладка  ",
+    service_publication_web: "Прохождение модерации и требований для публикации ",
+
+    service_analytics_title_web: "Аналитика и оценка",
+    service_prototype_title_web: "Прототипирование ",
+    service_design_title_web: "Разработка дизайна",
+    service_development_title_web: "Разработка сайта",
+    service_publication_title_web: "Публикация в сеть",
+
+
     job_developer: "Developer",
     job_full_stack: "Full Stack Developer",
     job_front_developer: "Frontend/App Developer",
