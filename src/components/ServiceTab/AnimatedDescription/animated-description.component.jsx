@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment, useMemo } from 'react'
 import AnimatedPath from './AnimatedPath/animated_path';
 
 import {
@@ -22,53 +22,63 @@ const AnimatedDescription = () => {
    const language = useSelector(languageSelectors.language)
    const { width } = useWindowDimensions()
 
-   const animationStep = {
-      pathLength: 1,
-      // strokeDasharray: 160,
-      // strokeDashoffset: 0,
-      transition: {
-         duration: 0.5,
-         delay: 0.2,
-         ease: 'easeInOut'
+   const onAnimationStep = () => {
+      const animationStep = {
+         pathLength: 1,
+         // strokeDasharray: 160,
+         // strokeDashoffset: 0,
+         transition: {
+            duration: 0.5,
+            delay: 0.2,
+            ease: 'easeInOut'
+         }
       }
+      return animationStep
    }
 
-
+   const memoAnimationStep = useMemo(() => onAnimationStep(), [])
 
    useEffect(() => {
-
-
+      let cleanupFunction = false;
       if (currentAnimation === null) {
          setCurrentAnimation(0)
       } else if (currentAnimation === 2) {
-         firstLineAnimation.start(animationStep)
+         firstLineAnimation.start(memoAnimationStep)
             .then(() => {
-               animationCallback()
+               if (!cleanupFunction) {
+                  animationCallback()
+               }
             })
 
       } else if (currentAnimation === 5) {
-         secondLineAnimation.start(animationStep)
+         secondLineAnimation.start(memoAnimationStep)
             .then(() => {
-               animationCallback()
+               if (!cleanupFunction) {
+                  animationCallback()
+               }
             })
 
       } else if (currentAnimation === 7) {
 
-         thirdLineAnimation.start(animationStep)
+         thirdLineAnimation.start(memoAnimationStep)
             .then(() => {
-               animationCallback()
+               if (!cleanupFunction) {
+                  animationCallback()
+               }
             })
 
       } else if (currentAnimation === 9) {
-         fourthLineAnimation.start(animationStep)
+         fourthLineAnimation.start(memoAnimationStep)
             .then(() => {
-               animationCallback()
+               if (!cleanupFunction) {
+                  animationCallback()
+               }
             })
 
       }
 
-
-   }, [currentAnimation, animationStep, color])
+      return () => cleanupFunction = true
+   }, [currentAnimation, memoAnimationStep, color, firstLineAnimation, secondLineAnimation, thirdLineAnimation, fourthLineAnimation])
 
    const animationCallback = () => {
       setCurrentAnimation(c => c + 1)
@@ -275,7 +285,7 @@ const AnimatedDescription = () => {
 
                </SVG>
                :
-               <SVG width="897" height={width < 800 ? "357" : "507"} viewBox={width < 800 ? "0 0 897 357" : "0 0 897 507"} fill="none" preserveAspectRatio="xMidYMin meet" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <SVG width="897" height={width < 800 ? "357" : "507"} viewBox={width < 800 ? "0 0 897 357" : "0 0 897 507"} fill="none" preserveAspectRatio="xMidYMin meet" xmlns="http://www.w3.org/2000/svg">
 
                   {/*-Number 0 (1)-*/}
                   <AnimatedPath

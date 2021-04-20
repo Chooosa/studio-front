@@ -48,7 +48,8 @@ const SectionWe = () => {
          index={2}
          descriptionWidth={'390px'}
       >
-         <ImageCarousel imageArray={imageArray} imageSmileArray={imageSmileArray} />      </Section>
+         <ImageCarousel imageArray={imageArray} imageSmileArray={imageSmileArray} />
+      </Section>
    );
 }
 

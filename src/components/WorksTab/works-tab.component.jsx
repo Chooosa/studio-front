@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import InView from 'react-intersection-observer';
-import AnimatedNumbers from '../Common/AnimatedNumbers/animated-numbers.component';
 import WorkItem from '../WorkItem/work-item.component';
 
 import {
@@ -37,11 +36,6 @@ const WorksTab = ({ description, works }) => {
                         {description}
                     </Description>
                     <NumberContainer>
-                        {/* <AnimatedNumbers
-                        duration={0.3}
-                        index={1}
-                        show={animate}
-                        /> */}
                     </NumberContainer>
                 </TabHeader>
             </InView>

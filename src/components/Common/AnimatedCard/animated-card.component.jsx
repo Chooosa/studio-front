@@ -82,9 +82,6 @@ const AnimatedCard = ({
                                                 color={color}
                                             >
                                                 {t('more_button')}
-                                                {/* <Icon>
-                                                    <BoltSVG />
-                                                </Icon> */}
                                             </Button>
                                         </Fragment>
                                         : null
@@ -150,9 +147,6 @@ const AnimatedCard = ({
                                                         color={color}
                                                     >
                                                         {t('more_button')}
-                                                        {/* <Icon>
-                                                            <BoltSVG />
-                                                        </Icon> */}
                                                     </Button>
                                                 }
                                             </Fragment>
@@ -163,7 +157,7 @@ const AnimatedCard = ({
                         </CardContainer>
                 }
             </AnimateSharedLayout>
-         </AnimatePresence>
+        </AnimatePresence>
 
     )
 }

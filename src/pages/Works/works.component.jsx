@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-
 import Tabs from '../../components/Tabs/tabs.component';
 import WorksTab from '../../components/WorksTab/works-tab.component';
-
 
 import {
     PageContainer,
@@ -12,8 +10,6 @@ import {
     PageTitle,
     Button
 } from './works.styles';
-import AnimatedNumbers from '../../components/Common/AnimatedNumbers/animated-numbers.component';
-import { useInView } from 'react-intersection-observer';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import SectionRequest from '../../components/SectionRequest/section-request.component';
 import { useSelector } from 'react-redux';
@@ -25,8 +21,6 @@ import { colorSelectors } from '../../redux/color/color.selectors';
 const WorksPage = () => {
     const works = useSelector(contentSelectors.cases)
     const { itemId, section } = useParams()
-    const { inView, ref } = useInView()
-    const [animate, setAnimate] = useState(false)
     const { width } = useWindowDimensions()
     const { t, language } = useTranslation()
     const [openModal, setOpenModal] = useState(false)
@@ -41,15 +35,6 @@ const WorksPage = () => {
     }
 
     useEffect(() => {
-        if (inView) {
-            setAnimate(true)
-        } else {
-            setAnimate(false)
-        }
-    }, [inView])
-
-
-    useEffect(() => {
         window.scrollTo(0, 0)
         if (itemId === 'all') {
             window.scrollTo(0, 0)
@@ -62,27 +47,11 @@ const WorksPage = () => {
 
 
     return (
-        <PageContainer
-        // initial={{opacity: 0}}
-        // animate={{opacity: 1}}
-        // exit={{opacity: 0}}
-        // transition={{duration: 0.5}}
-        >
-            <PageHeader
-                ref={ref}
-            >
+        <PageContainer>
+            <PageHeader>
                 <PageTitle>
                     {t('portfolio')}:
                 </PageTitle>
-                {/* {
-                    width < 612 ?
-                        <AnimatedNumbers
-                            duration={0.3}
-                            index={1}
-                            show={animate}
-                        />
-                        : null
-                } */}
             </PageHeader>
             <Tabs
                 tabNames={['Мобильные приложения', 'Сайты']}

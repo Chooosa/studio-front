@@ -93,7 +93,7 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
             {
                imageArray.map((image, index) => {
                   return (
-                     <SlideContainer >
+                     <SlideContainer key={index}>
                         <ImageWrapper >
                            <div style={{ width: 'max-content', position: 'relative' }}>
                               <SlideImage
@@ -114,13 +114,6 @@ const ImageCarousel = ({ imageArray, imageSmileArray }) => {
                                  </SliderText>
                               </SliderTextContainer>
                            </div>
-                           {/* <SlideImageHidde          n
-                                                src={index===smileImage? imageSmileArray[index]:  image}
-                                                key={index}
-                                                alt='team'
-                                                onMouseEnter={() => handleChangePhoto(index)}
-                                                onMouseLeave={() => handleChangePhoto()}
-                           /> */}
                         </ImageWrapper>
                      </SlideContainer>
                   )

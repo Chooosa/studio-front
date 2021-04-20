@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import InView from 'react-intersection-observer';
-import ReactMarkdown from 'react-markdown';
-import { CMS_URL } from '../../config';
 import ServicesItemWrapper from '../ServicesItemWrapper/services-item-wrapper.component';
 import { useTranslation } from '../../hooks/translation';
 
 import {
     TabContainer,
-    Description,
-    NumberContainer,
     TabHeader,
     CardsWrapper,
     CardsContainer
@@ -16,14 +12,13 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { colorSelectors } from '../../redux/color/color.selectors';
 import AnimatedCard from '../Common/AnimatedCard/animated-card.component';
-import AnimatedDescription from './AnimatedDescription/animated-description.component';
 import AnimatedNumbersNew from '../AnimatedNumberNew/animated_number_new.component';
 import { useWindowDimensions } from '../../hooks/dimensions';
 import AnimatedHeaderMobile from '../AnimatedHeaderMobile/animated_header_mobile.component';
 import { setScroll } from '../../redux/scroll/scroll.actions';
 
 
-const ServiceTab = ({ service, content, currentTab, works }) => {
+const ServiceTab = ({ service, currentTab, works }) => {
     const [animate, setAnimate] = useState(false)
     const { language } = useTranslation();
     const color = useSelector(colorSelectors.color)
@@ -66,12 +61,6 @@ const ServiceTab = ({ service, content, currentTab, works }) => {
                                     :
                                     <AnimatedNumbersNew currentTab={currentTab} />
                             }
-                            {/* <Description>
-                                <ReactMarkdown>
-                                    {language === 'ru' ? service.Description : service.DescriptionEng}
-                                </ReactMarkdown>
-                            </Description> */}
-                            {/* <AnimatedDescription /> */}
                         </TabHeader> :
                         <CardsWrapper>
                             <CardsContainer>

@@ -40,8 +40,7 @@ const SectionRequest = ({
     refApplication,
     index,
     padding,
-    nonNumber,
-    onCloseModal
+    nonNumber
 }) => {
     const themeColor = useSelector(colorSelectors.color);
     const { width } = useWindowDimensions();
@@ -50,8 +49,7 @@ const SectionRequest = ({
     const ref = useRef()
     const { t } = useTranslation();
     const [isRequestSent, setIsRequestSent] = useState(false);
-    const {pathname} = useLocation()
-    const formikRef = useRef()
+    const { pathname } = useLocation()
 
     const getValidation = (t) => {
         const validationSchema = yup.object().shape({
@@ -80,7 +78,7 @@ const SectionRequest = ({
                 })
                 .min(12, 'error_phone')
                 .max(12, 'error_phone'),
-                // .required('error_phone'),
+            // .required('error_phone'),
             name: yup.string()
                 .trim()
                 .required('error_name'),
@@ -112,7 +110,7 @@ const SectionRequest = ({
         }
 
         formData.append('section', requestType)
-        
+
 
         filesArray.forEach((file) => {
             formData.append('file', file);
@@ -154,7 +152,7 @@ const SectionRequest = ({
     }
 
     useEffect(() => {
-        
+
         if (scroll === 'request') {
             window.scroll({
                 top: ref.current.getBoundingClientRect().top - 220,
@@ -179,7 +177,6 @@ const SectionRequest = ({
             padding={padding}
         >
             <Formik
-                ref={formikRef}
                 initialValues={{ email: '', name: '', phone: '', text: '' }}
                 onSubmit={sendRequest}
                 validationSchema={memGetValidation}

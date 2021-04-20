@@ -132,7 +132,7 @@ const MobileMenu = () => {
                         initial='hidden'
                         animate='shown'
                     >
-                        <MenuSection
+                        {/* <MenuSection
                             title={t('menu')}
                         >
                             <BodyItem>
@@ -156,7 +156,7 @@ const MobileMenu = () => {
                                     {t('work_plan')}
                                 </span>
                             </BodyItem>
-                        </MenuSection>
+                        </MenuSection> */}
                         <MenuSection
                             title={t('portfolio')}
                         >
@@ -192,7 +192,7 @@ const MobileMenu = () => {
                                 </span>
                             </BodyItem>
                         </MenuSection>
-                        <MenuSection
+                        {/* <MenuSection
                             title={t('other')}
                         >
                             <BodyItem>
@@ -205,7 +205,10 @@ const MobileMenu = () => {
                                     {t('collaboration')}
                                 </span>
                             </BodyItem>
-                        </MenuSection>
+                        </MenuSection> */}
+                        <CustomLink onClick={() => handleNavigation('cooperation')}>
+                            {t('collaboration')}
+                        </CustomLink>
                         <CustomLink onClick={() => handleNavigation('contacts')}>
                             {t('contacts')}
                         </CustomLink>

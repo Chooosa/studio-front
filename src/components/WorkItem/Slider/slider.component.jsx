@@ -1,4 +1,4 @@
-import { useAnimation, useMotionValue, useSpring } from 'framer-motion';
+import { useAnimation, useMotionValue } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import { ReactComponent as ArrowRight } from '../../../assets/right-arrow.svg';
 import { ReactComponent as ArrowLeft } from '../../../assets/left-arrow.svg';
@@ -14,9 +14,8 @@ import { colorSelectors } from '../../../redux/color/color.selectors';
 
 
 
-const Slider = ({ children, width, screenWidth, slideWidth, slideCount }) => {
+const Slider = ({ children, width, screenWidth, slideWidth }) => {
     const x = useMotionValue(0)
-    const x2 = useSpring(0)
     const containerRef = useRef()
     const [dragConstraints, setDragConstraints] = useState(0)
     const color = useSelector(colorSelectors.color)

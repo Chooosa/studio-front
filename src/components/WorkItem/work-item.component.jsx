@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import Slider from 'react-slick';
 import { CMS_URL } from '../../config';
-import { colorSelectors } from '../../redux/color/color.selectors';
 import { useTranslation } from '../../hooks/translation';
 import CustomSlider from './Slider/slider.component';
 
 import { useWindowDimensions } from '../../hooks/dimensions';
-// import { ReactComponent as ArrowRight } from '../../assets/arrow-right.svg';
-// import { ReactComponent as ArrowLeft } from '../../assets/arrow-left.svg';
-
 
 import {
     Container,
@@ -21,23 +16,14 @@ import {
     SlideImage,
 
 } from './work-item.styles';
-import { useSelector } from 'react-redux';
 
-let callback;
 
 const WorkItem = ({ work }) => {
-    const { width, height } = useWindowDimensions()
+    const { width } = useWindowDimensions()
     const [fullscreenImage, setFullScreenImage] = useState(undefined)
-    const [animating, setAnimating] = useState(false)
     const { section, itemId } = useParams()
     const containerRef = useRef()
-    const sliderRef = useRef()
-    const color = useSelector(colorSelectors.color)
     const { language } = useTranslation()
-
-
-
-
 
     const reverseFullScreen = () => {
         fullscreenImage.el.addEventListener('transitionend', removeNode)
@@ -83,53 +69,11 @@ const WorkItem = ({ work }) => {
         }
     }, [fullscreenImage])
 
-
-    const handleFullScreen = (e, w, h, currentWidth, index) => {
-        if (!animating) {
-            setAnimating(true)
-            const fly = e.target
-            let disLeft = fly.getBoundingClientRect().left;
-            let disTop = fly.getBoundingClientRect().top;
-            const flyCopy = fly.cloneNode(true)
-            flyCopy.style = `z-index: 1111; width:${currentWidth}px; border-radius:20px; opacity:1; position:fixed; top:${disTop}px;left:${disLeft}px;transition: 0.5s cubic-bezier(1, 1, 1, 1); outline: none;`;
-            const el = document.body.appendChild(flyCopy);
-            setTimeout(() => {
-                if (w > width) {
-                    const newheight = width * 0.8 * h / w
-                    flyCopy.style.left = `${(width - width * 0.8) / 2}px`;
-                    flyCopy.style.top = `${(height - newheight) / 2}px`;
-                    flyCopy.style.width = `${width * 0.8}px`;
-                } else {
-                    flyCopy.style.left = `${(width - w) / 2}px`;
-                    flyCopy.style.top = `${(height - h) / 2}px`;
-                    flyCopy.style.width = `${w}px`;
-                }
-            }, 300)
-            flyCopy.addEventListener('transitionend', () => {
-                document.querySelector('#app-container').style.zIndex = 'unset'
-                setFullScreenImage({ index, el, target: fly })
-                setAnimating(false)
-            })
-        }
-    }
-
-
-
     const getSliderHeight = () => {
         if (work.Gallery.length > 1) {
             return width > 600 ? work.Gallery[0].height * 0.8 : width * 0.7 * work.Gallery[0].height / work.Gallery[0].width > work.Gallery[0].height * 0.7 ? work.Gallery[0].height * 0.7 : width * 0.7 * work.Gallery[0].height / work.Gallery[0].width
         } else {
             return (width > 1240 ? 1240 - 140 : width - 180) * work.Gallery[0].height / work.Gallery[0].width
-        }
-    }
-
-    const registerCallBack = () => {
-        callback = true
-    }
-
-    const cancelCallback = (e) => {
-        if (callback) {
-            callback = false
         }
     }
 
@@ -140,14 +84,6 @@ const WorkItem = ({ work }) => {
             setFullScreenImage(undefined)
         }, 100)
     }
-
-    const handleMouseUp = (e, w, h, currentWidth, index) => {
-        if (callback) {
-            handleFullScreen(e, w, h, currentWidth, index)
-        }
-    }
-
-
 
     return (
         <Container

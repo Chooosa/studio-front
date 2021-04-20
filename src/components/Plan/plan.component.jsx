@@ -341,16 +341,10 @@ const Plan = ({ onOpenModal }) => {
       }
    }
 
-   useEffect(() => {
-      console.log('transitionProgress: ', transitionProgress)
-      console.log('currentStep: ', currentStep)
-   }, [currentStep, transitionProgress])
-
    const handleTransitionEnd = () => {
       if (line1.current?.offsetWidth === progressLine1.current?.offsetWidth) {
          setTransitionProgress(2)
       }
-      console.log('1 ', progressLine2.current?.offsetWidth)
    }
 
    const handleTransitionEnd2 = () => {
@@ -363,7 +357,6 @@ const Plan = ({ onOpenModal }) => {
       if (progressLine2.current?.offsetWidth === 0 && currentStep !== 5) {
          setTransitionProgress(1)
       }
-      console.log('2 ', progressLine2.current?.offsetWidth)
    }
 
    const handleTransitionEnd3 = () => {

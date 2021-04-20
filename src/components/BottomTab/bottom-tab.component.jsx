@@ -42,33 +42,34 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
     const lastOffset = useRef(0)
     const direction = useRef(0)
     const scrollDown = useRef(false)
-    const [scrollD, setScrollD] = useState(false) 
-    const {language} = useTranslation()
-    
+    const [scrollD, setScrollD] = useState(false)
+    const { language } = useTranslation()
+
     useEffect(() => {
+        let cleanupFunction = false;
         const handleScroll = () => {
             const pageOffset = window.pageYOffset
             const height = window.innerHeight
             const fullHeight = document.body.offsetHeight
-            
-            if (pageOffset <0) {
-                return 
+
+            if (pageOffset < 0) {
+                return
             } else {
                 if (fullHeight - (pageOffset + height) < 100) {
                     if (!scrollDown.current) {
-                        scrollDown.current=true
+                        scrollDown.current = true
                         setScrollD(true)
                     }
                 } else {
                     if (pageOffset - lastOffset.current > 0) {
                         if (direction !== -1) {
-                            scrollDown.current=true
+                            scrollDown.current = true
                             setScrollD(true)
                         }
                         direction.current = -1
                     } else {
                         if (direction !== 1) {
-                            scrollDown.current=false
+                            scrollDown.current = false
                             setScrollD(false)
                         }
                         direction.current = 1
@@ -78,13 +79,20 @@ const BottomTabBar = ({ tabNames, onTabClick, currentTab }) => {
 
             }
         }
-        setTimeout(() => {
-            lastOffset.current = window.pageYOffset
-            document.addEventListener('scroll', handleScroll)
-            return () => {
-                document.removeEventListener('scroll', handleScroll)
-            }
-        }, 2000)
+        let timeout
+        if (!cleanupFunction) {
+            timeout = setTimeout(() => {
+                lastOffset.current = window.pageYOffset
+                document.addEventListener('scroll', handleScroll)
+                return () => {
+                    document.removeEventListener('scroll', handleScroll)
+                }
+            }, 2000)
+        }
+        return () => {
+            cleanupFunction = true
+            clearTimeout(timeout)
+        }
     }, [])
 
 
