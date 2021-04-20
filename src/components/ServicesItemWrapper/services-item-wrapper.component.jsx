@@ -77,7 +77,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                     appsImages.push({ img: app.MainImageServices, logo: app.Logo })
                     id.push(app.id)
                 })
-                console.log('111', appsImages)
+                // console.log('111', appsImages)
                 // setImageWidth(works.apps[0].Gallery[0].width)
             } else {
                 works.websites.map((app, i) => {
@@ -92,7 +92,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
             setCasesId(id)
             setContent(appsImages)
         }
-        console.log('currentTab', currentTab)
+        // console.log('currentTab', currentTab)
     }, [works, currentTab, width])
 
     const registerCallBack = () => {
@@ -123,7 +123,7 @@ const ServicesItemWrapper = ({ works, currentTab }) => {
                 slideCount={content.length}
             >
                 {
-                    console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
+                    // console.log('width: ', imageWidth * content.length, ' screenWidth: ', width, ' slideWidth: ', imageWidth, ' slideCount: ', content.length)
                     // console.log('content.length: ', content.length)
                 }
                 {
