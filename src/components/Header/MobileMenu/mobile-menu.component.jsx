@@ -224,6 +224,7 @@ const MobileMenu = () => {
                                 }
                             }}
                         />
+
                         <CustomLink color={color}>
                             <a href='tel:+79995357879'>
                                 8 999 535 78 79
